@@ -1,0 +1,100 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>juxo.triephotoV2</groupId>
+  <artifactId>TriePhotoV2</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>TriePhotoV2</name>
+  <url>http://maven.apache.org</url>
+ <dependencies>
+      <!--generation uri-->
+      <dependency>
+          <groupId>org.glassfish.jersey.ext</groupId>
+          <artifactId>jersey-declarative-linking</artifactId>
+          <version>2.8</version>
+      </dependency>
+      <!-- test -->
+      <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>4.8.1</version>
+          <scope>test</scope>
+      </dependency>
+      <dependency>
+          <groupId>org.glassfish.jersey.test-framework.providers</groupId>
+          <artifactId>jersey-test-framework-provider-grizzly2</artifactId>
+          <version>2.8</version>
+      </dependency>
+      
+      
+      <!-- ** Jersey 2.x ** -->
+      <dependency>
+          <!-- jersey core Servlet 3.x implementation -->
+          <groupId>org.glassfish.jersey.containers</groupId>
+          <artifactId>jersey-container-servlet</artifactId>
+          <version>2.8</version>
+      </dependency>
+      <dependency>
+          <groupId>org.glassfish.jersey.core</groupId>
+          <artifactId>jersey-client</artifactId>
+          <version>2.8</version>
+      </dependency>
+      <dependency>
+          <groupId>org.glassfish.jersey.security</groupId>
+          <artifactId>oauth1-client</artifactId>
+          <version>2.8</version>
+      </dependency>
+      <dependency>
+          <groupId>org.glassfish.jersey.security</groupId>
+          <artifactId>oauth2-client</artifactId>
+          <version>2.8</version>
+      </dependency>
+      <dependency>
+          <groupId>org.glassfish.jersey.security</groupId>
+          <artifactId>oauth1-signature</artifactId>
+          <version>2.8</version>
+      </dependency>
+      <dependency>
+          <groupId>org.glassfish.jersey.media</groupId>
+          <artifactId>jersey-media-json-jackson</artifactId>
+          <version>2.8</version>
+      </dependency>
+      <dependency>
+          <groupId>org.glassfish.jersey.media</groupId>
+          <artifactId>jersey-media-multipart</artifactId>
+          <version>2.8</version>
+      </dependency>
+      
+      <dependency>
+          <groupId>oauth.signpost</groupId>
+          <artifactId>signpost-core</artifactId>
+          <version>1.2</version>
+          <scope>compile</scope>
+      </dependency>
+      <dependency>
+	    <groupId>com.fasterxml.jackson.jaxrs</groupId>
+	    <artifactId>jackson-jaxrs-json-provider</artifactId>
+	    <version>2.4.1</version>
+	</dependency>
+  </dependencies>
+  <build>
+      <plugins>
+          <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-compiler-plugin</artifactId>
+              <version>3.1</version>
+              <configuration>
+                  <source>1.7</source>
+                  <target>1.7</target>
+              </configuration>
+          </plugin>
+          <plugin>
+              <groupId>org.mortbay.jetty</groupId>
+              <artifactId>jetty-maven-plugin</artifactId>
+              <version>8.1.15.v20140411</version>
+          </plugin>
+      </plugins>
+      <finalName>clientCalendar</finalName>
+  </build>
+</project>
