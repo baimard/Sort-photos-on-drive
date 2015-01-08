@@ -32,8 +32,7 @@ public class OAuth2Token {
      * @param scope
      */
     public OAuth2Token(ClientIdentifier clientId, String callbackURI, String scope) {
-    	Builder<OAuth2FlowGoogleBuilder> builder = OAuth2ClientSupport
-				.googleFlowBuilder(clientId, callbackURI, scope);
+    	Builder<OAuth2FlowGoogleBuilder> builder = OAuth2ClientSupport.googleFlowBuilder(clientId, callbackURI, scope);
 
 		flow = builder
 				.property(OAuth2CodeGrantFlow.Phase.AUTHORIZATION, "readOnly","true")

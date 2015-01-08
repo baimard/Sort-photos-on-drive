@@ -27,12 +27,15 @@ import org.glassfish.jersey.client.oauth2.OAuth2ClientSupport;
  */
 public class ConnexionGoogle {
 	public static ConnexionGoogle googleConnexion = null;
+	//Pour obtenir un code de retour
 	public static String OOB = "urn:ietf:wg:oauth:2.0:oob";
-	public static String PICASA_SCOPE = "https://www.googleapis.com/auth/calendar";
+	//Lien d'accès API
+	public static String CALENDAR_SCOPE = "https://www.googleapis.com/auth/calendar";
+	
 	public OAuth2Token token;
+	//Réponse quand on demande des données
 	public static MediaGroup m;
-	
-	
+	//Identification utilisateur
 	private ConsumerCredentials credentials;
 	
 	
@@ -53,17 +56,15 @@ public class ConnexionGoogle {
 	 * @throws IOException 
 	 */
 	public ConnexionGoogle (String api_key, String secret) throws IOException, URISyntaxException{
+		//Information d'authentification
 		credentials = new ConsumerCredentials(api_key,secret);
-		
-		this.buildToken("urn:ietf:wg:oauth:2.0:oob");
-		
-		if(Desktop.isDesktopSupported())
-		{
+		this.buildToken(this.OOB);
+		//Permet d'ouvrir un lien dans un explorateur Internet
+		if(Desktop.isDesktopSupported()){
 		  Desktop.getDesktop().browse(new URI(token.getValidateURI()));
 		}
 		
 		String response = JOptionPane.showInputDialog("Veuillez indiquer le code retour");
-		
 		this.initToken(token, response);
 	}
 	
@@ -77,7 +78,7 @@ public class ConnexionGoogle {
 	public OAuth2Token buildToken(String callbackURI) {
 		ClientIdentifier clientId = new ClientIdentifier(
 				credentials.getConsumerKey(), credentials.getConsumerSecret());
-		token = new OAuth2Token(clientId, callbackURI, PICASA_SCOPE);
+		token = new OAuth2Token(clientId, callbackURI, CALENDAR_SCOPE);
 		return token;
 	}
 	

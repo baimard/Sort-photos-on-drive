@@ -24,10 +24,11 @@ public class ProcessChargementCalendriers extends Thread{
 	}
 	
 	public void run() {
-		
+			//Afficher quelque chose dans Jlist dans l'interface graphique
 			DefaultListModel<String> model = (DefaultListModel<String>) jlab.getModel();
 			model.add(0, "Connexion Google ...");
 
+			//Connexion google
 	    	try{
 	    		if(ConnexionGoogle.googleConnexion == null)
 	    			ConnexionGoogle.googleConnexion = new ConnexionGoogle("125768752842-8kgilik6k7ucmbhph49kqoia3bum3pqr.apps.googleusercontent.com", "oKcIMqOmQKDIuT8_Xhw9SKBE");
