@@ -9,7 +9,7 @@ public class AfficherNotification {
 			
 	
 			
-			// On v¨¦rifie que le support de la feature du SystemTray est compatible avec l'OS hot
+			// On verifie que le support de la feature du SystemTray est compatible avec l'OS hot
 			if (SystemTray.isSupported()) {
 				// Notre icone dans la barre syst¨¨me
 				final TrayIcon trayIcon ; 
