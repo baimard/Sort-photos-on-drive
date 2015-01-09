@@ -10,6 +10,7 @@ public class Calendrier {
 
 	public static ArrayList<Calendrier> calendriers = new ArrayList<Calendrier>();
 	public String nomCalendrier;
+	public String test;
 	
 	public Calendrier(String nomCalendrier){
 		this.nomCalendrier = nomCalendrier;
