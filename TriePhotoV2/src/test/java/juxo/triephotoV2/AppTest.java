@@ -22,6 +22,5 @@ public class AppTest
 		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball");
 		Fichiers.generationListe(f);
 		Map<Calendar, Fichiers> listFic = Fichier.listFic;
-		System.out.println("stop");
 	}
 }
