@@ -7,7 +7,6 @@ import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 
-import juxo.triephotoV2.accessFichier.Dossier;
 import juxo.triephotoV2.accessFichier.Fichier;
 import juxo.triephotoV2.accessFichier.Fichiers;
 
@@ -27,7 +26,7 @@ public class ProcessChargementFichier extends Thread{
 				DefaultListModel<String> model = (DefaultListModel<String>) logueur.getModel();
 				model.add(0,"Chargement des dossiers ...");
 				Fichier.listFic = new HashMap<Calendar, Fichiers>();
-				Dossier mondossier = new Dossier(dossierAnalyser);
+				Fichiers mondossier = new Fichiers(dossierAnalyser);
 				mondossier.listFichier();
 				model.add(0,"Fin de chargement de dossier : " + Fichier.listFic.size() + " Journée à analyser");
 			}catch(IOException e){

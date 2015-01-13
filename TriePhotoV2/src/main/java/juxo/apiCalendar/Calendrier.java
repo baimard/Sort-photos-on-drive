@@ -11,6 +11,7 @@ public class Calendrier {
 	public static ArrayList<Calendrier> calendriers = new ArrayList<Calendrier>();
 	public String nomCalendrier;
 	
+	
 	public Calendrier(String nomCalendrier){
 		this.nomCalendrier = nomCalendrier;
 		calendriers.add(this);

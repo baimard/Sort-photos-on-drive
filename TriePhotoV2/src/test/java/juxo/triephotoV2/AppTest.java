@@ -1,8 +1,16 @@
 package juxo.triephotoV2;
 
+import java.io.IOException;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+import juxo.threads.ProcessChargementFichier;
+import juxo.triephotoV2.accessFichier.Fichier;
+import juxo.triephotoV2.accessFichier.Fichiers;
 
 /**
  * Unit test for simple App.
@@ -10,29 +18,10 @@ import junit.framework.TestSuite;
 public class AppTest 
     extends TestCase
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
+	public void testChargementFichier() throws IOException{
+		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball");
+		Fichiers.generationListe(f);
+		Map<Calendar, Fichiers> listFic = Fichier.listFic;
+		System.out.println("stop");
+	}
 }
