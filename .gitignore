@@ -5,4 +5,11 @@
 
 *.java
 
+<<<<<<< Updated upstream
+=======
+*.java
+
+*.class
+
+>>>>>>> Stashed changes
 *.class
