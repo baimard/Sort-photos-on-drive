@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
@@ -48,6 +47,6 @@ public class ProcessChargementEvenements extends Thread{
 	    	}
 	    	
 			model.add(0, "Connexion réussie :) - " + EvenementCalendrier.evenements.size() + " d'événements trouvés");
-			model.add(0, "Votre clef d'accès : " + ConnexionGoogle.googleConnexion.token.getToken());
+			model.add(0, "Votre clef d'accès : " + ConnexionGoogle.googleConnexion.token.tokenAcess);
 	  }				
 }

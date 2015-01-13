@@ -9,7 +9,6 @@ import javax.swing.JList;
 import javax.swing.JTextArea;
 
 import juxo.apiCalendar.Calendrier;
-import juxo.apiCalendar.EvenementCalendrier;
 import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
 
 public class ProcessChargementCalendriers extends Thread{
