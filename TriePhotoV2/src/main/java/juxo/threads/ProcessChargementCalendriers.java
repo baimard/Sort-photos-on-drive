@@ -47,6 +47,6 @@ public class ProcessChargementCalendriers extends Thread{
 	    		textAreaCalendrier.setText(c.nomCalendrier + ";\r\n" + textAreaCalendrier.getText() );
 	    	}
 	    	
-			model.add(0, "Votre clef d'accès : " + ConnexionGoogle.googleConnexion.token.getToken());
+			model.add(0, "Votre clef d'accès : " + ConnexionGoogle.googleConnexion.token.tokenAcess);
 	  }				
 }
