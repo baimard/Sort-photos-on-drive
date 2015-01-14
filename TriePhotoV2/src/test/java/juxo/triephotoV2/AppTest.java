@@ -18,9 +18,15 @@ import juxo.triephotoV2.accessFichier.Fichiers;
 public class AppTest 
     extends TestCase
 {
-	public void testChargementFichier() throws IOException{
+	/*public void testChargementFichier() throws IOException{
 		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball");
 		Fichiers.generationListe(f);
 		Map<Calendar, Fichiers> listFic = Fichier.listFic;
+	}*/
+	
+	public void testRenommage() throws IOException{
+		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball");
+		Fichiers.listFichier(f.listFiles());
+		//f.renommerFichier(f);
 	}
 }

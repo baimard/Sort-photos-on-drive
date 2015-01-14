@@ -59,7 +59,7 @@ public class Fichiers extends ArrayList<Fichier>{
 			Fichier monfic = new Fichier(fic.getPath());
 			System.out.println(monfic);
 			if (monfic.isDirectory()) {
-				generationListe(monfic);
+				listFichier(monfic.listFiles());
 			}
 
 		}

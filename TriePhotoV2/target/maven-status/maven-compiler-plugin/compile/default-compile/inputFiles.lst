@@ -1,6 +1,35 @@
-/Users/Juxo/hubiC/Projet jav/TriePhotoV2/src/main/java/juxo/triephotoV2/accessFichier/Horaire.java
-/Users/Juxo/hubiC/Projet jav/TriePhotoV2/src/main/java/juxo/triephotoV2/accessFichier/Duree.java
-/Users/Juxo/hubiC/Projet jav/TriePhotoV2/src/main/java/juxo/triephotoV2/accessFichier/Dossier.java
-/Users/Juxo/hubiC/Projet jav/TriePhotoV2/src/main/java/juxo/triephotoV2/App.java
-/Users/Juxo/hubiC/Projet jav/TriePhotoV2/src/main/java/juxo/triephotoV2/accessFichier/Fichier.java
-/Users/Juxo/hubiC/Projet jav/TriePhotoV2/src/main/java/juxo/triephotoV2/accessFichier/TrancheHoraire.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/App.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/threads/ProcessChargementCalendriers.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/UiTriePhotoV2/UiQuestionActionListener.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/UiTriePhotoV2/UiUserActionListener.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/apiCalendar/definitionClasse/Gadget.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/apiCalendar/definitionClasse/Start.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/apiCalendar/definitionClasse/Items.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/apiCalendar/clefMap.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/apiCalendar/definitionClasse/Reminders.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/apiCalendar/definitionClasse/Preferences.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/apiCalendar/definitionClasse/Creator.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/threads/ProcessGlobal.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/UiTriePhotoV2/UiQuestion.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/apiCalendar/definitionClasse/Organizer.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/notification/AfficherNotification.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/apiCalendar/definitionClasse/DefaultReminders.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/threads/ProcessChargementEvenements.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/notification/NotificationListener.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/apiCalendar/definitionClasse/Source.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/apiCalendar/definitionClasse/Overrides.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/apiCalendar/connexionGoogle/OAuth2Token.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/apiCalendar/connexionGoogle/ConnexionGoogle.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/apiCalendar/definitionClasse/ExtendedProperties.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/threads/ProcessChargementFichier.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/apiCalendar/Calendrier.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/apiCalendar/definitionClasse/Attendees.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/triephotoV2/accessFichier/Fichier.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/apiCalendar/EvenementCalendrier.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/triephotoV2/accessFichier/Fichiers.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/apiCalendar/Evenements.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/UiTriePhotoV2/UiUser.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/threads/ProcessTrieFichier.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/apiCalendar/definitionClasse/End.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/apiCalendar/definitionClasse/ResponseCorsFilter.java
+/Users/Juxo/git/PROJETTDA/TriePhotoV2/src/main/java/juxo/apiCalendar/definitionClasse/MediaGroup.java
