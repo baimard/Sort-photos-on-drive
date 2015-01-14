@@ -26,8 +26,8 @@ public class ProcessChargementFichier extends Thread{
 				DefaultListModel<String> model = (DefaultListModel<String>) logueur.getModel();
 				model.add(0,"Chargement des dossiers ...");
 				Fichier.listFic = new HashMap<Calendar, Fichiers>();
-				Fichiers mondossier = new Fichiers(dossierAnalyser);
-				mondossier.listFichier();
+				Fichier f = new Fichier(dossierAnalyser);
+				Fichiers.generationListe(f);
 				model.add(0,"Fin de chargement de dossier : " + Fichier.listFic.size() + " Journée à analyser");
 			}catch(IOException e){
 				System.out.println(e);
