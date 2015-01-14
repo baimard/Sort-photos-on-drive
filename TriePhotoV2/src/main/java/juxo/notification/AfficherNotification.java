@@ -9,15 +9,15 @@ public class AfficherNotification {
 			
 	
 			
-			// On verifie que le support de la feature du SystemTray est compatible avec l'OS hot
+			// On verifie que le support de la figure du SystemTray est compatible avec l'OS hot
 			if (SystemTray.isSupported()) {
-				// Notre icone dans la barre syst¨¨me
+				// Notre icone dans la barre systeme
 				final TrayIcon trayIcon ; 
 				 
 			    SystemTray tray = SystemTray.getSystemTray();
 			    
-			    // On r¨¦cup¨¨re l'image qui nous servira d'icone
-	            Image image = Toolkit.getDefaultToolkit().getImage("titre de la foto.extension"); 
+			    // On recupere l'image qui nous servira d'icone
+	            Image image = Toolkit.getDefaultToolkit().getImage("triephoto.gif"); 
 	            // Notre menu (clic droit sur l'icone systray)
 			    PopupMenu popup = new PopupMenu();
 			    MenuItem defaultItem = new MenuItem("Quitter");
@@ -29,7 +29,7 @@ public class AfficherNotification {
 			    	});
 			    	
 			    popup.add(defaultItem);
-			    // Cr¨¦ation de l'icone systray
+			    // Creation de l'icone systray
 			    trayIcon = new TrayIcon(image, "Trie Photo", popup); 
 
 			    		ActionListener actionListener = new ActionListener() {
