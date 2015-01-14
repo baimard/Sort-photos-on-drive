@@ -1,14 +1,8 @@
 
 *.class
 
-*.java
-
-*.java
-
 <<<<<<< Updated upstream
 =======
-*.java
-
 *.class
 
 >>>>>>> Stashed changes
@@ -22,7 +16,6 @@
 =======
 *.class
 *.class
-TriePhotoV2/src/main/java/juxo/notification/AfficherNotification.java
 >>>>>>> origin/master
 
 *.class
