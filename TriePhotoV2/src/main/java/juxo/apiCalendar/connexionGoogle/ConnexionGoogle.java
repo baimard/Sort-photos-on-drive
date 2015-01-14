@@ -5,12 +5,16 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
+
 import javax.swing.JOptionPane;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Feature;
+
+import juxo.apiCalendar.definitionClasse.InfoToken;
 import juxo.apiCalendar.definitionClasse.MediaGroup;
+
 import org.glassfish.jersey.client.oauth2.ClientIdentifier;
 import org.glassfish.jersey.client.oauth2.OAuth2ClientSupport;
 
@@ -51,6 +55,11 @@ public class ConnexionGoogle {
 		//Fenêtre pour copier le lien input
 		String code = JOptionPane.showInputDialog("Veuillez indiquer le code retour");
 		token.doAccessTokenRequest(code);
+		
+		if(googleConnexion==null){
+			googleConnexion=this;
+		}
+		
 	}
 	
 	/***
@@ -59,6 +68,10 @@ public class ConnexionGoogle {
 	 */
 	public ConnexionGoogle(String token){
 		this.token = new OAuth2Token(token);
+		
+		if(googleConnexion==null){
+			googleConnexion=this;
+		}
 	}
 	
 	/***
@@ -87,10 +100,10 @@ public class ConnexionGoogle {
 	/***
 	 * Renvoie un calendrier selon le nom du calendrier
 	 * Il faut avoir obtenu un token au préalable
-	 * @param target
+	 * @param nomCalendrier
 	 * @return
 	 */
-	public MediaGroup accessCalendrier(String target){
+	public MediaGroup accessCalendrier(String nomCalendrier){
 		m = null;
     	Feature filterFeature = OAuth2ClientSupport.feature(token.tokenAcess);
 		Client client = ClientBuilder.newBuilder().register(filterFeature).build();
@@ -98,7 +111,7 @@ public class ConnexionGoogle {
 
 		try{
 			
-			String s = "https://www.googleapis.com/calendar/v3/calendars/"+URLEncoder.encode(target)+"/events?maxResults=2500&key="+API_KEY;
+			String s = "https://www.googleapis.com/calendar/v3/calendars/"+URLEncoder.encode(nomCalendrier)+"/events?maxResults=2500&key="+API_KEY;
 			service = client.target(s);
 			m = service.request().get(MediaGroup.class);
 		}catch(javax.ws.rs.NotFoundException e){
@@ -129,5 +142,20 @@ public class ConnexionGoogle {
 		return m;
 	}
 	
+	
+	public void getTokenInformation(){
+		Feature filterFeature = OAuth2ClientSupport.feature(token.tokenAcess);
+		Client client = ClientBuilder.newBuilder().register(filterFeature).build();
+		WebTarget service = null;
+		try {
+			service = client.target(new URI("https://www.googleapis.com/oauth2/v1/tokeninfo?access_token="+token.tokenAcess));
+		} catch (URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		InfoToken tok = service.request().get(InfoToken.class);
+		token.expirationDelay = tok.getExpires_in();
+	}
 	
 }

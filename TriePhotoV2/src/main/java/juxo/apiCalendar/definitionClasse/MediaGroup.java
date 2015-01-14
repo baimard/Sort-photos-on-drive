@@ -42,7 +42,9 @@ public class MediaGroup {
     protected String nextPageToken;
     @XmlElement
     protected String description;
-    
+	@XmlElement
+	public List<Items> items;
+	
     public String getDescription() {
 		return description;
 	}
@@ -61,8 +63,7 @@ public class MediaGroup {
 	public void setNextSyncToken(String nextSyncToken) {
 		this.nextSyncToken = nextSyncToken;
 	}
-	@XmlElement
-	public List<Items> items;
+
     
     
 	public String getUpdated() {
