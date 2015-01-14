@@ -20,7 +20,7 @@ public class AfficherNotification {
 			    
 			    // On recupere l'image qui nous servira d'icone
 	          //  Image image = Toolkit.getDefaultToolkit().getImage("triephoto.gif"); 
-			    BufferedImage imageBuffered= ImageIO.read(getClass().getResource("triephoto.gif"));
+			    BufferedImage imageBuffered= ImageIO.read(getClass().getResource("triephoto.png"));
 			    int trayIconWidth= new TrayIcon(imageBuffered).getSize().width;
 			    // Creation de l'icone systray
 			    final TrayIcon trayIcon1 = new TrayIcon(imageBuffered.getScaledInstance(trayIconWidth, -1, Image.SCALE_SMOOTH));
@@ -50,6 +50,7 @@ public class AfficherNotification {
 				    	try {
 				    		tray.add(trayIcon1);} 
 				    	catch (AWTException e) {
+				    		System.out.println(e);
 				        e.printStackTrace();
 				    	}
 
