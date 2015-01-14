@@ -6,9 +6,7 @@ import java.awt.event.ActionListener;
 public class AfficherNotification {
 	
 		public void notification() {
-			
-	
-			
+						
 			// On verifie que le support de la figure du SystemTray est compatible avec l'OS hot
 			if (SystemTray.isSupported()) {
 				// Notre icone dans la barre systeme
