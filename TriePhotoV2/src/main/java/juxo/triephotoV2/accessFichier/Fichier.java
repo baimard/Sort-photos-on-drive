@@ -172,6 +172,10 @@ public class Fichier extends File {
 		}
 	}
 	
+	public void renommerFichier(Fichier fichier){
+		File destination = new File("mon fichier renommé");
+		fichier.renameTo(destination);
+	}
 	
 	/***
 	 * On isole le fichier en cas de problème
