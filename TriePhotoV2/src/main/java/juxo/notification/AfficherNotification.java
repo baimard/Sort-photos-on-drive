@@ -22,6 +22,7 @@ public class AfficherNotification {
 	          //  Image image = Toolkit.getDefaultToolkit().getImage("triephoto.gif"); 
 			    BufferedImage imageBuffered= ImageIO.read(getClass().getResource("triephoto.gif"));
 			    int trayIconWidth= new TrayIcon(imageBuffered).getSize().width;
+			    // Creation de l'icone systray
 			    final TrayIcon trayIcon1 = new TrayIcon(imageBuffered.getScaledInstance(trayIconWidth, -1, Image.SCALE_SMOOTH));
 	            // Notre menu (clic droit sur l'icone systray)
 			    PopupMenu popup = new PopupMenu();
@@ -34,7 +35,7 @@ public class AfficherNotification {
 			    	});
 			    	
 			    popup.add(defaultItem);
-			    // Creation de l'icone systray
+			   
 			    //trayIcon = new TrayIcon(image, "Trie Photo", popup); 
 
 			    		ActionListener actionListener = new ActionListener() {
