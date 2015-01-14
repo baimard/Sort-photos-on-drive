@@ -17,7 +17,7 @@ public class AfficherNotification {
 			    SystemTray tray = SystemTray.getSystemTray();
 			    
 			    // On r¨¦cup¨¨re l'image qui nous servira d'icone
-	            Image image = Toolkit.getDefaultToolkit().getImage("titre de la foto.extension"); 
+	            Image image = Toolkit.getDefaultToolkit().getImage("triephoto.gif"); 
 	            // Notre menu (clic droit sur l'icone systray)
 			    PopupMenu popup = new PopupMenu();
 			    MenuItem defaultItem = new MenuItem("Quitter");
