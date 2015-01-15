@@ -222,6 +222,7 @@ public class Fichier extends File {
 	public String toString(){
 		return this.getPath();
 	}
+	
 	/**
 	 * Renvoie l'extension du fichier
 	 * @return
@@ -234,8 +235,12 @@ public class Fichier extends File {
         	return "";
 	}
 	
-	public void renommerFichier(String nomFichier){
-		Fichier destination = new Fichier(this.getParentFile() + "/"+ nomFichier + "." + this.getFileExtension());
+	/**
+	 * Renomme un fichier
+	 * @param iterator
+	 */
+	public void renommerFichier(int iterator){
+		Fichier destination = new Fichier(this.getParentFile() + "/" + this.getyearfic() + "-" + this.getmoisfic() + "-" + this.getdayfic() + "-" + iterator + "." + this.getFileExtension());
 		this.renameTo(destination);
 	}
 	
