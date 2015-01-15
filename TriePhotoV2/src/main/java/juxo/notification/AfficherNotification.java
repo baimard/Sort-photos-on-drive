@@ -7,56 +7,50 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+
+import org.glassfish.jersey.message.internal.NewCookieProvider;
+
+
+
 public class AfficherNotification {
 	
-		public void notification() throws IOException {
-						
-			// On verifie que le support de la figure du SystemTray est compatible avec l'OS hot
+    private NotificationListener nL;
+    //private MenuItem defaultItem;
+    private PopupMenu popup = new PopupMenu();
+    private SystemTray tray = SystemTray.getSystemTray();
+	
+		public  AfficherNotification() throws IOException, AWTException {
+			
 			if (SystemTray.isSupported()) {
-				// Notre icone dans la barre systeme
-				final TrayIcon trayIcon ; 
+				
+				 //Ajout d'un menu à la trayIcon
+				 MenuItem menu1 = new MenuItem("Quitter");
+				 menu1.setActionCommand("Quitter");
 				 
-			    SystemTray tray = SystemTray.getSystemTray();
-			    
-			    // On recupere l'image qui nous servira d'icone
-	          //  Image image = Toolkit.getDefaultToolkit().getImage("triephoto.gif"); 
-			    BufferedImage imageBuffered= ImageIO.read(getClass().getResource("triephoto.png"));
-			    int trayIconWidth= new TrayIcon(imageBuffered).getSize().width;
-			    // Creation de l'icone systray
-			    final TrayIcon trayIcon1 = new TrayIcon(imageBuffered.getScaledInstance(trayIconWidth, -1, Image.SCALE_SMOOTH));
-	            // Notre menu (clic droit sur l'icone systray)
-			    PopupMenu popup = new PopupMenu();
-			    MenuItem defaultItem = new MenuItem("Quitter");
-			    
-			    	defaultItem.addActionListener(new ActionListener() {
-			        public void actionPerformed(ActionEvent e) {
-			            System.exit(0);
-			        }
-			    	});
-			    	
-			    popup.add(defaultItem);
-			   
-			    //trayIcon = new TrayIcon(image, "Trie Photo", popup); 
-
-			    		ActionListener actionListener = new ActionListener() {
-			    		public void actionPerformed(ActionEvent e) {
-			    			trayIcon1.displayMessage("Trie Photo disponible",
-			             null, TrayIcon.MessageType.INFO);
-			    		}
-			    		};
+				 MenuItem menu2 = new MenuItem("toto");
+				 
+				//Création d'une image pour l'icone de notification
+				BufferedImage imageBuffered= ImageIO.read(getClass().getResource("triephoto.png"));
+				int trayIconWidth = new TrayIcon(imageBuffered).getSize().width;
+				
+				//Création de l'icone de notification
+			    final TrayIcon trayIcon1 = new TrayIcon(imageBuffered.getScaledInstance(trayIconWidth, -1, Image.SCALE_SMOOTH), "Trie Photo", popup);
+			    trayIcon1.setActionCommand("message");
 			    trayIcon1.setImageAutoSize(true);
-			    trayIcon1.addActionListener(actionListener);
 			    
-				    	try {
-				    		tray.add(trayIcon1);} 
-				    	catch (AWTException e) {
-				    		System.out.println(e);
-				        e.printStackTrace();
-				    	}
+			    //Création de Listener
+				nL = new NotificationListener(trayIcon1);
+				
+				//Ajout du menu à l'icon de tray
+			    popup.add(menu1);
+			    popup.add(menu2);
 
-			} else {
-				// ...
+			    //Ajout de l'action listener aux objets écouté
+			    menu1.addActionListener(nL);
+			    trayIcon1.addActionListener(nL);
+			   
+			    //ON ajoute à la barre de tâche notre icone
+				tray.add(trayIcon1);
 			}
-		System.out.println("Stop Debug");
 	}
 }
