@@ -7,11 +7,14 @@ import java.net.URISyntaxException;
 import java.net.URLEncoder;
 
 import javax.swing.JOptionPane;
+import javax.ws.rs.BadRequestException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Invocation.Builder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Feature;
 
+import juxo.apiCalendar.definitionClasse.Erreur;
 import juxo.apiCalendar.definitionClasse.InfoToken;
 import juxo.apiCalendar.definitionClasse.MediaGroup;
 
@@ -143,19 +146,21 @@ public class ConnexionGoogle {
 	}
 	
 	
-	public void getTokenInformation(){
+	public void getTokenInformation() throws URISyntaxException {
 		Feature filterFeature = OAuth2ClientSupport.feature(token.tokenAcess);
 		Client client = ClientBuilder.newBuilder().register(filterFeature).build();
-		WebTarget service = null;
-		try {
-			service = client.target(new URI("https://www.googleapis.com/oauth2/v1/tokeninfo?access_token="+token.tokenAcess));
-		} catch (URISyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		WebTarget service = null;	
+		service = client.target(new URI("https://www.googleapis.com/oauth2/v1/tokeninfo?access_token="+token.tokenAcess));
+		Builder b = service.request();
+		try{
+			InfoToken tok = b.get(InfoToken.class);
+			token.expirationDelay = tok.getExpires_in();
+		}catch(BadRequestException e){
+			Erreur err = b.get(Erreur.class);
+			token.statut=err.getErrorDescription();
 		}
 		
-		InfoToken tok = service.request().get(InfoToken.class);
-		token.expirationDelay = tok.getExpires_in();
+		
 	}
 	
 }
