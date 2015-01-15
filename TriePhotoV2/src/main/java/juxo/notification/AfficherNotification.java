@@ -52,5 +52,9 @@ public class AfficherNotification {
 			    //ON ajoute à la barre de tâche notre icone
 				tray.add(trayIcon1);
 			}
+			
 	}
+		public void AfficherMsgNotification (String msg) {
+			
+		}
 }
