@@ -48,7 +48,7 @@ public class Fichiers extends ArrayList<Fichier>{
 	}
 	
 	public static void renommerFichiers(File[] listeFichiers){
-		int it=1;
+		int it=0;
 		//On parcours tous les fichiers
 		for (File fichierCourant : listeFichiers) {
 			if (fichierCourant.isFile()) {
