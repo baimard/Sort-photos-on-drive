@@ -42,16 +42,22 @@ public class apiCalendarTest extends TestCase {
 	
 	@Test
 	public void testExpireDelayToken(){
-		ConnexionGoogle.googleConnexion.getTokenInformation();
-		System.out.println(ConnexionGoogle.googleConnexion.token);
+		try {
+			ConnexionGoogle.googleConnexion.getTokenInformation();
+		} catch (URISyntaxException e) {
+			System.out.println(e);
+		}
+		System.out.println(ConnexionGoogle.googleConnexion.token.statut);
 	}
 
 	public void testReceptionDonnees(){
-		ConnexionGoogle c = ConnexionGoogle.googleConnexion;
-		if(c!=null){
-			MediaGroup m = c.accessListCalendrier();
-			for(Items i : m.items){
-				System.out.println(i.getSummary());
+		if(ConnexionGoogle.googleConnexion.token.expirationDelay!=0){
+			ConnexionGoogle c = ConnexionGoogle.googleConnexion;
+			if(c!=null){
+				MediaGroup m = c.accessListCalendrier();
+				for(Items i : m.items){
+					System.out.println(i.getSummary());
+				}
 			}
 		}
 	}

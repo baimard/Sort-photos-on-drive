@@ -18,7 +18,7 @@ public class OAuth2Token {
     public String type; 
     public int expirationDelay;
 	public static String OOB = "urn:ietf:wg:oauth:2.0:oob";
-	
+	public String statut;
     /***
      * Construction d'un objet token selon les spécifications google
      * @param clientId

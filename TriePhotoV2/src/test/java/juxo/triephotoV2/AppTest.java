@@ -20,13 +20,14 @@ public class AppTest
 {
 	/*public void testChargementFichier() throws IOException{
 		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball");
-		Fichiers.generationListe(f);
+		Fichiers.listFichier(f.listFiles());
 		Map<Calendar, Fichiers> listFic = Fichier.listFic;
 	}*/
 	
 	public void testRenommage() throws IOException{
-		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball");
-		Fichiers.listFichier(f.listFiles());
+		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball2");
+		Fichiers.renommerFichiers(f.listFiles());
+		//Fichiers.listFichier(f.listFiles());
 		//f.renommerFichier(f);
 	}
 }

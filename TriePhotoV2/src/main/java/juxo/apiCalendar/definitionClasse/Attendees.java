@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 
 public class Attendees {
-	@XmlElement
+	
 	protected String email;
 	@XmlElement
 	protected String displayName;
