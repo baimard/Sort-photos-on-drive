@@ -172,11 +172,6 @@ public class Fichier extends File {
 		}
 	}
 	
-	public void renommerFichier(Fichier fichier){
-		File destination = new File("mon fichier renommé");
-		fichier.renameTo(destination);
-	}
-	
 	/***
 	 * On isole le fichier en cas de problème
 	 * @param Nwxdossier
@@ -226,6 +221,27 @@ public class Fichier extends File {
 	
 	public String toString(){
 		return this.getPath();
+	}
+	
+	/**
+	 * Renvoie l'extension du fichier
+	 * @return
+	 */
+	public String getFileExtension() {
+        String fileName = this.getName();
+        if(fileName.lastIndexOf(".") != -1 && fileName.lastIndexOf(".") != 0)
+        	return fileName.substring(fileName.lastIndexOf(".")+1);
+        else 
+        	return "";
+	}
+	
+	/**
+	 * Renomme un fichier
+	 * @param iterator
+	 */
+	public void renommerFichier(int iterator){
+		Fichier destination = new Fichier(this.getParentFile() + "/" + this.getyearfic() + "-" + this.getmoisfic() + "-" + this.getdayfic() + "-" + iterator + "." + this.getFileExtension());
+		this.renameTo(destination);
 	}
 	
 	//plein d'accesseurs qui servent à rien

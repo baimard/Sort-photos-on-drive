@@ -47,6 +47,20 @@ public class Fichiers extends ArrayList<Fichier>{
 		}
 	}
 	
+	public static void renommerFichiers(File[] listeFichiers){
+		int it=1;
+		//On parcours tous les fichiers
+		for (File fichierCourant : listeFichiers) {
+			if (fichierCourant.isFile()) {
+				//System.out.println(it);
+				//System.out.println(getFileExtension(fichierCourant));
+				Fichier monfic = new Fichier(fichierCourant.getPath());
+				monfic.renommerFichier(it++);
+			}
+		}
+	}
+	
+	
 	/***
 	 * Trie des fichiers contenus dans un dossier
 	 * On parcour le dossier sans se soucier de son arborescence
