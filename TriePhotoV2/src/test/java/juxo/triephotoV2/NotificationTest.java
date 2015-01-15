@@ -8,8 +8,7 @@ import juxo.notification.AfficherNotification;
 public class NotificationTest extends TestCase {
 	
 	public void testNotif() throws IOException{
-		AfficherNotification testnotification =  new AfficherNotification();
-		testnotification.notification();
+		//AfficherNotification testnotification =  new AfficherNotification();
 	}
 	//test
 }
