@@ -14,14 +14,13 @@ import javax.ws.rs.client.Invocation.Builder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Feature;
 
-import juxo.apiCalendar.definitionClasse.Erreur;
 import juxo.apiCalendar.definitionClasse.InfoToken;
 import juxo.apiCalendar.definitionClasse.MediaGroup;
 
 import org.glassfish.jersey.client.oauth2.ClientIdentifier;
 import org.glassfish.jersey.client.oauth2.OAuth2ClientSupport;
 
-/***
+/**
  * 
  * @author benjamin AIMARD
  *Permet d'obtenir un token pour une connexion aux ressources google api
@@ -52,11 +51,16 @@ public class ConnexionGoogle {
 		API_KEY = api_key;
 		API_SECRET = secret;
 		
+		//Construction de la demande pour le token
 		buildRequestToken();
+		
+		//Ouverture du lien dans une fenêtre web
 		openResquestTokenUrl();
 		
 		//Fenêtre pour copier le lien input
 		String code = JOptionPane.showInputDialog("Veuillez indiquer le code retour");
+		
+		//Demande d'accès à google par l'application
 		token.doAccessTokenRequest(code);
 		
 		if(googleConnexion==null){
@@ -65,16 +69,17 @@ public class ConnexionGoogle {
 		
 	}
 	
-	/***
+	/**
 	 * Fournit une connexion si on a déjà un TOKEN (Jeton)
 	 * @param token
+	 * @param aPI_SECRET2 
+	 * @param aPI_KEY2 
 	 */
-	public ConnexionGoogle(String token){
+	public ConnexionGoogle(String token, String api_key, String secret){
+		API_KEY = api_key;
+		API_SECRET = secret;
 		this.token = new OAuth2Token(token);
-		
-		if(googleConnexion==null){
-			googleConnexion=this;
-		}
+		googleConnexion=this;
 	}
 	
 	/***
@@ -87,6 +92,12 @@ public class ConnexionGoogle {
 	public void buildRequestToken() {
 		ClientIdentifier clientId = new ClientIdentifier(API_KEY, API_SECRET);
 		token = new OAuth2Token(clientId, CALENDAR_SCOPE);
+	}
+	
+	
+	public void buildRefreshToken(){
+		ClientIdentifier clientId = new ClientIdentifier(API_KEY, API_SECRET);
+		token.refreshToken(clientId, CALENDAR_SCOPE);
 	}
 	
 	/**
@@ -146,6 +157,7 @@ public class ConnexionGoogle {
 	}
 	
 	
+
 	public void getTokenInformation() throws URISyntaxException {
 		Feature filterFeature = OAuth2ClientSupport.feature(token.tokenAcess);
 		Client client = ClientBuilder.newBuilder().register(filterFeature).build();
@@ -155,9 +167,9 @@ public class ConnexionGoogle {
 		try{
 			InfoToken tok = b.get(InfoToken.class);
 			token.expirationDelay = tok.getExpires_in();
+			token.statut = 200;
 		}catch(BadRequestException e){
-			Erreur err = b.get(Erreur.class);
-			token.statut=err.getErrorDescription();
+			token.statut = e.getResponse().getStatus();
 		}
 		
 		

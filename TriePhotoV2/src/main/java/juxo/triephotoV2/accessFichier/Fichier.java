@@ -222,7 +222,7 @@ public class Fichier extends File {
 	public String toString(){
 		return this.getPath();
 	}
-	
+
 	/**
 	 * Renvoie l'extension du fichier
 	 * @return

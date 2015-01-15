@@ -18,8 +18,9 @@ public class OAuth2Token {
     public String type; 
     public int expirationDelay;
 	public static String OOB = "urn:ietf:wg:oauth:2.0:oob";
-	public String statut;
-    /***
+	public int statut;
+    
+	/***
      * Construction d'un objet token selon les spécifications google
      * @param clientId
      * @param callbackURI
@@ -32,16 +33,26 @@ public class OAuth2Token {
 				.property(OAuth2CodeGrantFlow.Phase.AUTHORIZATION, "readOnly","true")
 				.property(OAuth2CodeGrantFlow.Phase.AUTHORIZATION,"redirect_uri", OOB)
 				.property(OAuth2CodeGrantFlow.Phase.AUTHORIZATION, "state", "")
-				.property(OAuth2CodeGrantFlow.Phase.AUTHORIZATION, "ttl", "1000")
 				.scope(scope).build();
     	authURI = flow.start();
     }
     
-    
-    public void refreshToken(){
+    /**
+     * Permet d'actualiser le token pour avoir accès aux données
+     * Dans le cas où l'utilisateur a déjà accepté que l'application utilise les données
+     * (C'est à dire qu'on a déjà obtenu un token) 
+     * @param clientId
+     * @param scope
+     */
+    public void refreshToken(ClientIdentifier clientId, String scope){
+    	Builder<OAuth2FlowGoogleBuilder> builder = 
+    			OAuth2ClientSupport.googleFlowBuilder(clientId, OOB, scope);
+		flow = builder.build();
     	TokenResult result = flow.refreshAccessToken(refreshToken);
         this.tokenAcess = result.getAccessToken();
-        this.refreshToken = (String) result.getAllProperties().get("refresh_token");
+        String refreshtok = (String) result.getAllProperties().get("refresh_token");
+        if(refreshtok!=null)
+        	this.refreshToken = refreshtok; 
         this.expirationDelay = (int) result.getAllProperties().get("expires_in");
         this.type = (String) result.getAllProperties().get("token_type");
     }
@@ -59,8 +70,7 @@ public class OAuth2Token {
      * @param code
      */
     public void doAccessTokenRequest(String code) {
-    	TokenResult result = flow.finish(code, "");
-    	// we do not provide state
+    	TokenResult result = flow.finish(code, "");// we do not provide state
         this.tokenAcess = result.getAccessToken();
         this.refreshToken = (String) result.getAllProperties().get("refresh_token");
         this.expirationDelay = (int) result.getAllProperties().get("expires_in");
@@ -73,6 +83,7 @@ public class OAuth2Token {
     	s += "Token Access : " + tokenAcess + "\n";
     	s += "Refresh Access : " + refreshToken + "\n";
     	s += "Expire in : " + expirationDelay + "\n";
+    	s += "Statut code : " + statut + "\n";
 		return s;
     	
     }
