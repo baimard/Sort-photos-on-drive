@@ -55,7 +55,7 @@ public class Fichiers extends ArrayList<Fichier>{
 				//System.out.println(it);
 				//System.out.println(getFileExtension(fichierCourant));
 				Fichier monfic = new Fichier(fichierCourant.getPath());
-				monfic.renommerFichier("fichier-" + it++);
+				monfic.renommerFichier(it++);
 			}
 		}
 	}
