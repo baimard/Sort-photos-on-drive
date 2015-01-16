@@ -6,6 +6,7 @@ import java.net.URISyntaxException;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import juxo.apiCalendar.Calendrier;
 import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
 import juxo.apiCalendar.definitionClasse.Items;
 import juxo.apiCalendar.definitionClasse.MediaGroup;
@@ -68,7 +69,6 @@ public class apiCalendarTest{
 		System.out.println(ConnexionGoogle.googleConnexion.getToken());
 	}
 
-	@Ignore
 	@Test
 	public void testReceptionDonnees(){
 		if(ConnexionGoogle.googleConnexion.getToken().getExpirationDelay()!=0){
@@ -77,9 +77,12 @@ public class apiCalendarTest{
 				MediaGroup m = c.accessListCalendrier();
 				for(Items i : m.items){
 					System.out.println(i.getSummary());
+					new Calendrier(i.summary);
 				}
 			}
 		}
+		
+		Calendrier.getCalendriers().enregistrerObjet();
 	}
 	
 }

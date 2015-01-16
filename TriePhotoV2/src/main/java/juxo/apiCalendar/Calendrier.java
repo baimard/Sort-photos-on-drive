@@ -6,9 +6,13 @@ import juxo.apiCalendar.definitionClasse.MediaGroup;
 
 public class Calendrier {
 
-	public static Calendriers calendriers = new Calendriers();
-	public String nomCalendrier;
+	private static Calendriers calendriers = new Calendriers();
+	private String nomCalendrier;
 	
+	/**
+	 * Constructeur par défaut pour la sérialisation
+	 */
+	public Calendrier(){}
 	
 	public Calendrier(String nomCalendrier){
 		this.nomCalendrier = nomCalendrier;
@@ -24,6 +28,22 @@ public class Calendrier {
 				System.out.println("C'est pas grave ... : " + e);
 			}
 		}
+	}
+
+	public static Calendriers getCalendriers() {
+		return calendriers;
+	}
+
+	public static void setCalendriers(Calendriers calendriers) {
+		Calendrier.calendriers = calendriers;
+	}
+
+	public String getNomCalendrier() {
+		return nomCalendrier;
+	}
+
+	public void setNomCalendrier(String nomCalendrier) {
+		this.nomCalendrier = nomCalendrier;
 	}
 	
 }
