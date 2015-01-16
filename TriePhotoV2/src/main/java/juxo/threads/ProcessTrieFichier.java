@@ -6,7 +6,7 @@ import java.util.Iterator;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import juxo.UiTriePhotoV2.UiQuestion;
-import juxo.apiCalendar.EvenementCalendrier;
+import juxo.apiCalendar.Evenement;
 import juxo.apiCalendar.Evenements;
 import juxo.triephotoV2.accessFichier.Fichier;
 import juxo.triephotoV2.accessFichier.Fichiers;
@@ -33,13 +33,13 @@ public class ProcessTrieFichier extends Thread{
 				
 				Fichiers listFile = Fichier.listFic.get(keyCalendar);
 
-				listEv = EvenementCalendrier.searchDateEvenement(keyCalendar);
+				listEv = Evenement.searchDateEvenement(keyCalendar);
 				
 				if(listEv != null){
 					UiQuestion ui = new UiQuestion(null, format1.format(keyCalendar.getTime()), true, listEv, listFile);
-					EvenementCalendrier evenement = ui.showUiQuestion();
+					Evenement evenement = ui.showUiQuestion();
 					if(evenement != null && evenement.nomEvenement.equals("aucun")){
-						EvenementCalendrier.evenements.remove(listEv.ownKey);
+						Evenement.evenements.remove(listEv.ownKey);
 						listFile.deplacerTousLesFichier(Nwxdossier);
 					}else{
 						String nomDossier=evenement.getNomPropre();

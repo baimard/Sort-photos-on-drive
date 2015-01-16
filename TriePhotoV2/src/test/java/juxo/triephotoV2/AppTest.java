@@ -15,8 +15,7 @@ import juxo.triephotoV2.accessFichier.Fichiers;
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-    extends TestCase
+public class AppTest extends TestCase
 {
 	/*public void testChargementFichier() throws IOException{
 		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball");

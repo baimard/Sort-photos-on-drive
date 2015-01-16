@@ -8,7 +8,7 @@ import java.util.HashMap;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 
-import juxo.apiCalendar.EvenementCalendrier;
+import juxo.apiCalendar.Evenement;
 import juxo.apiCalendar.Evenements;
 import juxo.apiCalendar.clefMap;
 import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
@@ -38,15 +38,15 @@ public class ProcessChargementEvenements extends Thread{
 	    	}catch(URISyntaxException e){
 	    		System.out.println(e);
 	    	}
-	    	EvenementCalendrier.evenements = new HashMap<clefMap, Evenements>();
+	    	Evenement.evenements = new HashMap<clefMap, Evenements>();
 	    	for(String cal : mesIdCalendrier){
 	    		System.out.println(cal);
 	    		MediaGroup m = ConnexionGoogle.googleConnexion.accessCalendrier(cal);
 	    		if(m!=null)
-	    			EvenementCalendrier.chargementEvenement(m);
+	    			Evenement.chargementEvenement(m);
 	    	}
 	    	
-			model.add(0, "Connexion réussie :) - " + EvenementCalendrier.evenements.size() + " d'événements trouvés");
-			model.add(0, "Votre clef d'accès : " + ConnexionGoogle.googleConnexion.token.tokenAcess);
+			model.add(0, "Connexion réussie :) - " + Evenement.evenements.size() + " d'événements trouvés");
+			model.add(0, "Votre clef d'accès : " + ConnexionGoogle.googleConnexion.getToken().getTokenAcess());
 	  }				
 }

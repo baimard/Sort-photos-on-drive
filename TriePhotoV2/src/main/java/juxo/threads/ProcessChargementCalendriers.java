@@ -9,6 +9,7 @@ import javax.swing.JList;
 import javax.swing.JTextArea;
 
 import juxo.apiCalendar.Calendrier;
+import juxo.apiCalendar.Calendriers;
 import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
 
 public class ProcessChargementCalendriers extends Thread{
@@ -38,14 +39,14 @@ public class ProcessChargementCalendriers extends Thread{
 	    		System.out.println(e);
 	    	}
 	    	
-	    	Calendrier.calendriers = new ArrayList<Calendrier>();
+	    	Calendrier.setCalendriers(new Calendriers());
 	    	textAreaCalendrier.setText("");
 	    	Calendrier.chargementCalendriers(
 	    			ConnexionGoogle.googleConnexion.accessListCalendrier());
-	    	for(Calendrier c : Calendrier.calendriers){
-	    		textAreaCalendrier.setText(c.nomCalendrier + ";\r\n" + textAreaCalendrier.getText() );
+	    	for(Calendrier c : Calendrier.getCalendriers()){
+	    		textAreaCalendrier.setText(c.getNomCalendrier() + ";\r\n" + textAreaCalendrier.getText() );
 	    	}
 	    	
-			model.add(0, "Votre clef d'accès : " + ConnexionGoogle.googleConnexion.token.tokenAcess);
+			model.add(0, "Votre clef d'accès : " + ConnexionGoogle.googleConnexion.getToken().getTokenAcess());
 	  }				
 }
