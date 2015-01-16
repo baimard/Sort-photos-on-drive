@@ -10,7 +10,7 @@ public class App
 {
 	public static void main( String[] args ) throws IOException
     {
-		//new UiUser();
+		new UiUser();
 		try {
 			AfficherNotification an = new AfficherNotification();
 		} catch (AWTException e) {

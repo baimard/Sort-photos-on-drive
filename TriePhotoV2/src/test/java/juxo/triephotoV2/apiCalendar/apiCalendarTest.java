@@ -47,7 +47,7 @@ public class apiCalendarTest extends TestCase {
 		} catch (URISyntaxException e) {
 			System.out.println(e);
 		}
-		System.out.println(ConnexionGoogle.googleConnexion.token.statut);
+		System.out.println(ConnexionGoogle.googleConnexion.token);
 	}
 
 	public void testReceptionDonnees(){
