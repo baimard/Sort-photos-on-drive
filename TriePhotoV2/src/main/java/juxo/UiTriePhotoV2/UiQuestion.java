@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.util.Date;
 import java.util.Random;
+
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -35,7 +36,8 @@ public class UiQuestion extends JDialog {
 	    
 	    listEvenement = new DefaultListModel<Evenement>();
 	    
-	    Evenement nullEv = new Evenement("aucun", new Date(1,1,1960), new Date(1,1,1960));
+	    @SuppressWarnings("deprecation")
+		Evenement nullEv = new Evenement("aucun", new Date(1,1,1960), new Date(1,1,1960));
 	    listEvenement.addElement(nullEv);
 	    
 	    for(Evenement e : l){

@@ -2,6 +2,7 @@ package juxo.apiCalendar.connexionGoogle;
 
 import java.awt.Desktop;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URLEncoder;
@@ -32,8 +33,9 @@ public class ConnexionGoogle {
 	public static OAuth2CodeGrantFlow flow;
 	private String CALENDAR_SCOPE = "https://www.googleapis.com/auth/calendar";
 	private OAuth2Token token;
-	private String API_KEY;
-	private String API_SECRET;
+	private final String API_KEY = "125768752842-8kgilik6k7ucmbhph49kqoia3bum3pqr.apps.googleusercontent.com";
+	private final String API_SECRET ="oKcIMqOmQKDIuT8_Xhw9SKBE";
+	private final ClientIdentifier clientId = new ClientIdentifier(API_KEY, API_SECRET);
 
 	/**
 	 * Renvoie une connexion aux API GOOGLE
@@ -43,15 +45,20 @@ public class ConnexionGoogle {
 	 * @throws URISyntaxException 
 	 * @throws IOException 
 	 */
-	public ConnexionGoogle (String api_key, String secret) throws IOException, URISyntaxException{
+	public ConnexionGoogle () throws IOException, URISyntaxException{
 		
-		API_KEY = api_key;
-		API_SECRET = secret;
+		chargerToken();
 		
-		buildRequestToken();
-		openResquestTokenUrl();
-		String code = JOptionPane.showInputDialog("Veuillez indiquer le code retour");
-		token.doAccessTokenRequest(code);
+		if(token!=null){
+			token.refreshToken(clientId, CALENDAR_SCOPE);
+		}else{
+			buildRequestToken();
+			openResquestTokenUrl();
+			String code = JOptionPane.showInputDialog("Veuillez indiquer le code retour");
+			token.doAccessTokenRequest(code);
+			enregistrerObjet();
+		}
+
 		
 		if(googleConnexion==null){
 			googleConnexion=this;
@@ -65,9 +72,8 @@ public class ConnexionGoogle {
 	 * @param aPI_SECRET2 
 	 * @param aPI_KEY2 
 	 */
-	public ConnexionGoogle(String token, String api_key, String secret){
-		API_KEY = api_key;
-		API_SECRET = secret;
+	public ConnexionGoogle(String token){
+
 		this.token = new OAuth2Token(token);
 		googleConnexion=this;
 	}
@@ -80,13 +86,11 @@ public class ConnexionGoogle {
 	 * @return
 	 */
 	public void buildRequestToken() {
-		ClientIdentifier clientId = new ClientIdentifier(API_KEY, API_SECRET);
 		token = new OAuth2Token(clientId, CALENDAR_SCOPE);
 	}
 	
 	
 	public void buildRefreshToken(){
-		ClientIdentifier clientId = new ClientIdentifier(API_KEY, API_SECRET);
 		token.refreshToken(clientId, CALENDAR_SCOPE);
 	}
 	
@@ -106,14 +110,15 @@ public class ConnexionGoogle {
 	 * Il faut avoir obtenu un token au préalable
 	 * @param nomCalendrier
 	 * @return
+	 * @throws UnsupportedEncodingException 
 	 */
-	public MediaGroup accessCalendrier(String nomCalendrier){
+	public MediaGroup accessCalendrier(String nomCalendrier) throws UnsupportedEncodingException{
 		MediaGroup m = null;
     	Feature filterFeature = OAuth2ClientSupport.feature(token.getTokenAcess());
 		Client client = ClientBuilder.newBuilder().register(filterFeature).build();
 		WebTarget service = null;
 		try{
-			String s = "https://www.googleapis.com/calendar/v3/calendars/"+URLEncoder.encode(nomCalendrier)+"/events?maxResults=2500&key="+API_KEY;
+			String s = "https://www.googleapis.com/calendar/v3/calendars/"+URLEncoder.encode(nomCalendrier, "UTF-8")+"/events?maxResults=2500&key="+API_KEY;
 			service = client.target(s);
 			m = service.request().get(MediaGroup.class);
 		}catch(javax.ws.rs.NotFoundException e){
@@ -162,6 +167,23 @@ public class ConnexionGoogle {
 			token.setStatut(e.getResponse().getStatus());
 		}
 	}
+	
+    public void enregistrerObjet(){
+    	try{
+    		XMLTools.encodeToFile(this.token, "token");
+    	} catch(Exception e){
+    		System.out.println(e);
+    	}
+    }
+
+    public void chargerToken(){
+    	try{
+    		token = (OAuth2Token) XMLTools.decodeFromFile("token");
+    	} catch(Exception e){
+    		System.out.println(e);
+    	}
+    }
+
 
 	public OAuth2Token getToken() {
 		return token;
@@ -185,22 +207,6 @@ public class ConnexionGoogle {
 
 	public void setCALENDAR_SCOPE(String cALENDAR_SCOPE) {
 		CALENDAR_SCOPE = cALENDAR_SCOPE;
-	}
-
-	public String getAPI_KEY() {
-		return API_KEY;
-	}
-
-	public void setAPI_KEY(String aPI_KEY) {
-		API_KEY = aPI_KEY;
-	}
-
-	public String getAPI_SECRET() {
-		return API_SECRET;
-	}
-
-	public void setAPI_SECRET(String aPI_SECRET) {
-		API_SECRET = aPI_SECRET;
 	}
 
 	public static OAuth2CodeGrantFlow getFlow() {

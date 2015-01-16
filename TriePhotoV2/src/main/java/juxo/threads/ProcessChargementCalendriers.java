@@ -2,7 +2,6 @@ package juxo.threads;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
@@ -31,7 +30,7 @@ public class ProcessChargementCalendriers extends Thread{
 			//Connexion google
 	    	try{
 	    		if(ConnexionGoogle.googleConnexion == null)
-	    			ConnexionGoogle.googleConnexion = new ConnexionGoogle("125768752842-8kgilik6k7ucmbhph49kqoia3bum3pqr.apps.googleusercontent.com", "oKcIMqOmQKDIuT8_Xhw9SKBE");
+	    			ConnexionGoogle.googleConnexion = new ConnexionGoogle();
 		    		
 	    	}catch(IOException e){
 	    		System.out.println(e);
