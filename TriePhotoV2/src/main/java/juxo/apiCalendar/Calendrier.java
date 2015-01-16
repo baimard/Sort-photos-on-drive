@@ -1,14 +1,12 @@
 package juxo.apiCalendar;
 
 import java.util.List;
-import java.util.ArrayList;
-
 import juxo.apiCalendar.definitionClasse.Items;
 import juxo.apiCalendar.definitionClasse.MediaGroup;
 
 public class Calendrier {
 
-	public static ArrayList<Calendrier> calendriers = new ArrayList<Calendrier>();
+	public static Calendriers calendriers = new Calendriers();
 	public String nomCalendrier;
 	
 	

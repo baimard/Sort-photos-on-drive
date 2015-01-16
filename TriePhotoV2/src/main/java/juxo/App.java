@@ -2,8 +2,6 @@ package juxo;
 
 import java.awt.AWTException;
 import java.io.IOException;
-
-import juxo.UiTriePhotoV2.UiUser;
 import juxo.notification.AfficherNotification;
 
 public class App 
@@ -14,7 +12,6 @@ public class App
 		try {
 			AfficherNotification an = new AfficherNotification();
 		} catch (AWTException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
     }

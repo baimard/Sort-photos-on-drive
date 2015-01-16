@@ -13,17 +13,7 @@ import javax.swing.JTextField;
 import javax.swing.text.DefaultCaret;
 
 public class UiUser extends JFrame{
-	/* 
-	 * TODO Faire une UI navigateur web 
-	 * qui afficherait la demande utilisateur pour valider 
-	 * l'authentification, voir si on peut récupérer le code d'authentification.
-	 * http://www.mnfauvel.com/Kb/html/afficher.htm
-	*/
-	
-	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	
 	private JPanel pan = new JPanel();

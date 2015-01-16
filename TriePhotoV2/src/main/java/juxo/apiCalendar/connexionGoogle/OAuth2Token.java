@@ -1,6 +1,8 @@
 package juxo.apiCalendar.connexionGoogle;
 
-import javax.ws.rs.client.Client;
+import java.io.Serializable;
+
+import juxo.serialisation.XMLTools;
 
 import org.glassfish.jersey.client.oauth2.ClientIdentifier;
 import org.glassfish.jersey.client.oauth2.OAuth2ClientSupport;
@@ -9,17 +11,26 @@ import org.glassfish.jersey.client.oauth2.OAuth2CodeGrantFlow.Builder;
 import org.glassfish.jersey.client.oauth2.OAuth2FlowGoogleBuilder;
 import org.glassfish.jersey.client.oauth2.TokenResult;
 
-public class OAuth2Token {
+public class OAuth2Token implements Serializable {
 	
-    public OAuth2CodeGrantFlow flow;
-    public String authURI;
-    public String tokenAcess;
-    public String refreshToken;
-    public String type; 
-    public int expirationDelay;
-	public static String OOB = "urn:ietf:wg:oauth:2.0:oob";
-	public int statut;
-    
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 2L;
+
+    private String authURI;
+    private String tokenAcess;
+    private String refreshToken;
+    private String type; 
+    private String OOB = "urn:ietf:wg:oauth:2.0:oob";
+    private int statut;
+    private int expirationDelay;
+	
+	public OAuth2Token(){
+		
+	}
+	
+	
 	/***
      * Construction d'un objet token selon les spécifications google
      * @param clientId
@@ -29,12 +40,12 @@ public class OAuth2Token {
     public OAuth2Token(ClientIdentifier clientId, String scope) {
     	Builder<OAuth2FlowGoogleBuilder> builder = 
     			OAuth2ClientSupport.googleFlowBuilder(clientId, OOB, scope);
-		flow = builder
+		ConnexionGoogle.flow = builder
 				.property(OAuth2CodeGrantFlow.Phase.AUTHORIZATION, "readOnly","true")
 				.property(OAuth2CodeGrantFlow.Phase.AUTHORIZATION,"redirect_uri", OOB)
 				.property(OAuth2CodeGrantFlow.Phase.AUTHORIZATION, "state", "")
 				.scope(scope).build();
-    	authURI = flow.start();
+    	authURI = ConnexionGoogle.flow.start();
     }
     
     /**
@@ -47,8 +58,8 @@ public class OAuth2Token {
     public void refreshToken(ClientIdentifier clientId, String scope){
     	Builder<OAuth2FlowGoogleBuilder> builder = 
     			OAuth2ClientSupport.googleFlowBuilder(clientId, OOB, scope);
-		flow = builder.build();
-    	TokenResult result = flow.refreshAccessToken(refreshToken);
+    	ConnexionGoogle.flow = builder.build();
+    	TokenResult result = ConnexionGoogle.flow.refreshAccessToken(refreshToken);
         this.tokenAcess = result.getAccessToken();
         String refreshtok = (String) result.getAllProperties().get("refresh_token");
         if(refreshtok!=null)
@@ -70,21 +81,102 @@ public class OAuth2Token {
      * @param code
      */
     public void doAccessTokenRequest(String code) {
-    	TokenResult result = flow.finish(code, "");// we do not provide state
+    	TokenResult result = ConnexionGoogle.flow.finish(code, "");// we do not provide state
         this.tokenAcess = result.getAccessToken();
         this.refreshToken = (String) result.getAllProperties().get("refresh_token");
         this.expirationDelay = (int) result.getAllProperties().get("expires_in");
         this.type = (String) result.getAllProperties().get("token_type");
     }
 
-    
     public String toString(){
     	String s = "";
     	s += "Token Access : " + tokenAcess + "\n";
     	s += "Refresh Access : " + refreshToken + "\n";
     	s += "Expire in : " + expirationDelay + "\n";
     	s += "Statut code : " + statut + "\n";
-		return s;
-    	
+		return s;	
     }
+    
+    public void enregistrerObjet(){
+    	try{
+    		XMLTools.encodeToFile(this, "token");
+    	} catch(Exception e){
+    		System.out.println(e);
+    	}
+    }
+
+
+	public String getAuthURI() {
+		return authURI;
+	}
+
+
+	public void setAuthURI(String authURI) {
+		this.authURI = authURI;
+	}
+
+
+	public String getTokenAcess() {
+		return tokenAcess;
+	}
+
+
+	public void setTokenAcess(String tokenAcess) {
+		this.tokenAcess = tokenAcess;
+	}
+
+
+	public String getRefreshToken() {
+		return refreshToken;
+	}
+
+
+	public void setRefreshToken(String refreshToken) {
+		this.refreshToken = refreshToken;
+	}
+
+
+	public String getType() {
+		return type;
+	}
+
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+
+	public String getOOB() {
+		return OOB;
+	}
+
+
+	public void setOOB(String oOB) {
+		OOB = oOB;
+	}
+
+
+	public int getStatut() {
+		return statut;
+	}
+
+
+	public void setStatut(int statut) {
+		this.statut = statut;
+	}
+
+
+	public int getExpirationDelay() {
+		return expirationDelay;
+	}
+
+
+	public void setExpirationDelay(int expirationDelay) {
+		this.expirationDelay = expirationDelay;
+	}
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 }
