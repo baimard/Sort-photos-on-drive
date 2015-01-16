@@ -1,9 +1,6 @@
 package juxo.apiCalendar.connexionGoogle;
 
 import java.io.Serializable;
-
-import juxo.serialisation.XMLTools;
-
 import org.glassfish.jersey.client.oauth2.ClientIdentifier;
 import org.glassfish.jersey.client.oauth2.OAuth2ClientSupport;
 import org.glassfish.jersey.client.oauth2.OAuth2CodeGrantFlow;
@@ -97,14 +94,6 @@ public class OAuth2Token implements Serializable {
 		return s;	
     }
     
-    public void enregistrerObjet(){
-    	try{
-    		XMLTools.encodeToFile(this, "token");
-    	} catch(Exception e){
-    		System.out.println(e);
-    	}
-    }
-
 
 	public String getAuthURI() {
 		return authURI;

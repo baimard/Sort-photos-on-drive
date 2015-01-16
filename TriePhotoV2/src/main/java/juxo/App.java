@@ -10,7 +10,7 @@ public class App
     {
 		//new UiUser();
 		try {
-			AfficherNotification an = new AfficherNotification();
+			new AfficherNotification();
 		} catch (AWTException e) {
 			e.printStackTrace();
 		}
