@@ -15,8 +15,10 @@ import javax.imageio.ImageIO;
 
 import com.drew.imaging.ImageMetadataReader;
 import com.drew.imaging.ImageProcessingException;
+import com.drew.lang.GeoLocation;
 import com.drew.metadata.Metadata;
 import com.drew.metadata.exif.ExifSubIFDDirectory;
+import com.drew.metadata.exif.GpsDirectory;
 
 public class Fichier extends File {
 
@@ -118,6 +120,34 @@ public class Fichier extends File {
 		}
 		return date;
 	}
+	
+	public GeoLocation getGPS() {
+		//Initialisation de la variable date
+		GeoLocation coordinates = null;
+		
+		//On vérifie qu'on est pas à faire à un dossier
+		if (this.isFile()) {
+			try {
+				//On lit les meta
+				Metadata mesexifs = ImageMetadataReader.readMetadata(this);
+				//Recherche dans l'arborescence du dossier contenant les coordonnées de la photo
+				GpsDirectory directory = mesexifs.getDirectory(GpsDirectory.class);
+				if (directory != null) {
+					//Les coordonnées dans l'exif
+					coordinates = directory.getGeoLocation();
+				}
+				//Si erreur on ne déplace pas le fichier
+			} catch (ImageProcessingException e) {
+				deplacable = false;
+				System.out.println(e);
+			} catch (IOException ex) {
+				deplacable = false;
+				System.out.println(ex);
+			}
+		}
+		return coordinates;
+	}
+	
 
 	/*** 
 	 * Permet de déplacer le fichier (uniquement si pas dossier)

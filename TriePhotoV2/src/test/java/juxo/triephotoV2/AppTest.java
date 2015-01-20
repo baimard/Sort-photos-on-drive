@@ -17,8 +17,10 @@ public class AppTest extends TestCase
 	}*/
 	
 	public void testRenommage() throws IOException{
-		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball2");
+		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball2/IMG_1890.JPG");
+		//Fichiers.listFichier(f.listFiles());
+		System.out.println(f.getGPS());
 		//Fichiers.renommerFichiersParDate(f.listFiles());
-		Fichiers.renommerFichiers(f.listFiles());
+		//Fichiers.renommerFichiers(f.listFiles());
 	}
 }
