@@ -52,8 +52,6 @@ public class Fichiers extends ArrayList<Fichier>{
 		//On parcours tous les fichiers
 		for (File fichierCourant : listeFichiers) {
 			if (fichierCourant.isFile()) {
-				//System.out.println(it);
-				//System.out.println(getFileExtension(fichierCourant));
 				Fichier monfic = new Fichier(fichierCourant.getPath());
 				monfic.renommerFichier(it++);
 			}
