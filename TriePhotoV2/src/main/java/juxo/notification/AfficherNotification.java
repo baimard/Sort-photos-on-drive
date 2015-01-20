@@ -16,7 +16,7 @@ public class AfficherNotification {
 	//	trayIcon1=i;
 //	}
 	
-	  //Création de Listener
+	  //Crï¿½ation de Listener
     NotificationListener nL = new NotificationListener();
     
     //private MenuItem defaultItem;
@@ -31,13 +31,14 @@ public class AfficherNotification {
 				 MenuItem menu1 = new MenuItem("Quitter");
 				 menu1.setActionCommand("Quitter");
 				 
-				 MenuItem menu2 = new MenuItem("toto");
+				 MenuItem menu2 = new MenuItem("Stoper Obersion Dossier");
+				 menu2.setActionCommand("StoperThread");
 				 
 				//Crï¿½ation d'une image pour l'icone de notification
 				BufferedImage imageBuffered= ImageIO.read(getClass().getResource("triephoto.png"));
 				int trayIconWidth = new TrayIcon(imageBuffered).getSize().width;
 
-				//Création de l'icone de notification
+				//Crï¿½ation de l'icone de notification
 				trayIcon1 = new TrayIcon(imageBuffered.getScaledInstance(trayIconWidth, -1, Image.SCALE_SMOOTH), "Trie Photo", popup);
 			    trayIcon1.setActionCommand("message");
 			    trayIcon1.setImageAutoSize(true);
@@ -48,6 +49,7 @@ public class AfficherNotification {
 
 			    //Ajout de l'action listener aux objets ï¿½coutï¿½
 			    menu1.addActionListener(nL);
+			    menu2.addActionListener(nL);
 			    trayIcon1.addActionListener(nL);
 			   
 			    //ON ajoute ï¿½ la barre de tï¿½che notre icone
@@ -55,21 +57,9 @@ public class AfficherNotification {
 			}
 			
 	}
-		public static  void  AfficherMsgNotification (String msg) {
-			
-		trayIcon1.displayMessage(msg,null, TrayIcon.MessageType.INFO);
-				
-			/*JFrame fenetre = new JFrame();
-			JPanel panel = new JPanel();
-	fenetre.setVisible(true);
-	fenetre.setTitle("Message de notification");
-	fenetre.setSize(200, 150);
-	fenetre.setLocationRelativeTo(null);
-	fenetre.getContentPane().add(panel);
-	JLabel label =new JLabel(msg);
-	JToolTip toolTip = label.createToolTip();
-	toolTip.setTipText(msg);
-	panel.add(label);*/
+		public static synchronized void  AfficherMsgNotification (String msg) {
+			if(trayIcon1!=null)
+				trayIcon1.displayMessage(msg,null, TrayIcon.MessageType.INFO);
 		}
 	
 }

@@ -92,10 +92,14 @@ public class Fichiers extends ArrayList<Fichier>{
 	 */
 	public static void listFichier(File[] listeFichiers) throws IOException {
 		//On parcours tous les fichiers
+		Fichier monfic = null;
+		
 		for (File fic : listeFichiers) {
-			Fichier monfic = new Fichier(fic.getPath());
+			if(!(fic.isHidden()))
+				monfic = new Fichier(fic.getPath());
+			
 			System.out.println(monfic);
-			if (monfic.isDirectory()) {
+			if (monfic!= null && monfic.isDirectory()){
 				listFichier(monfic.listFiles());
 			}
 
