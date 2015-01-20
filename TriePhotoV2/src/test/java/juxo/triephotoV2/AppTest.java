@@ -18,8 +18,7 @@ public class AppTest extends TestCase
 	
 	public void testRenommage() throws IOException{
 		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball2");
+		//Fichiers.renommerFichiersParDate(f.listFiles());
 		Fichiers.renommerFichiers(f.listFiles());
-		//Fichiers.listFichier(f.listFiles());
-		//f.renommerFichier(f);
 	}
 }

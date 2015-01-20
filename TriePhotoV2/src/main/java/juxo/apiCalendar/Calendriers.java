@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import juxo.serialisation.XMLTools;
+import juxo.system.XMLToolsSerialisation;
 
 public class Calendriers extends ArrayList<Calendrier> implements Serializable  {
 	/**
@@ -14,7 +14,7 @@ public class Calendriers extends ArrayList<Calendrier> implements Serializable  
 
     public void enregistrerObjet(){
     	try{
-    		XMLTools.encodeToFile( this, "calendriers");
+    		XMLToolsSerialisation.encodeToFile( this, "calendriers");
     	} catch(Exception e){
     		System.out.println(e);
     	}
@@ -22,7 +22,7 @@ public class Calendriers extends ArrayList<Calendrier> implements Serializable  
     
     public static void chargerCalendrier(){
     	try {
-    		Calendriers c = (Calendriers) XMLTools.decodeFromFile("calendriers");
+    		Calendriers c = (Calendriers) XMLToolsSerialisation.decodeFromFile("calendriers");
 			Calendrier.setCalendriers(c);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

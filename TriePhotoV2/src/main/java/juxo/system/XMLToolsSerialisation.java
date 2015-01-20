@@ -1,4 +1,4 @@
-package juxo.serialisation;
+package juxo.system;
 
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
@@ -8,9 +8,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public final class XMLTools {
+public final class XMLToolsSerialisation {
 
-	private XMLTools() {}
+	private XMLToolsSerialisation() {}
 	
 	
 	/**
