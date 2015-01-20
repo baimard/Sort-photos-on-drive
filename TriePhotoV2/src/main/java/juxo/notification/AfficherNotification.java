@@ -10,11 +10,21 @@ import javax.imageio.ImageIO;
 
 import org.glassfish.jersey.message.internal.NewCookieProvider;
 
+import javax.swing.*;
 
 
 public class AfficherNotification {
 	
-    private NotificationListener nL;
+	
+	public static TrayIcon trayIcon1;
+	
+//	public NotificationListener(TrayIcon i){
+	//	trayIcon1=i;
+//	}
+	
+	  //Création de Listener
+    NotificationListener nL = new NotificationListener();
+    
     //private MenuItem defaultItem;
     private PopupMenu popup = new PopupMenu();
     private SystemTray tray = SystemTray.getSystemTray();
@@ -34,12 +44,11 @@ public class AfficherNotification {
 				int trayIconWidth = new TrayIcon(imageBuffered).getSize().width;
 				
 				//Création de l'icone de notification
-			    final TrayIcon trayIcon1 = new TrayIcon(imageBuffered.getScaledInstance(trayIconWidth, -1, Image.SCALE_SMOOTH), "Trie Photo", popup);
+				trayIcon1 = new TrayIcon(imageBuffered.getScaledInstance(trayIconWidth, -1, Image.SCALE_SMOOTH), "Trie Photo", popup);
 			    trayIcon1.setActionCommand("message");
 			    trayIcon1.setImageAutoSize(true);
 			    
-			    //Création de Listener
-				nL = new NotificationListener(trayIcon1);
+			  
 				
 				//Ajout du menu à l'icon de tray
 			    popup.add(menu1);
@@ -54,7 +63,21 @@ public class AfficherNotification {
 			}
 			
 	}
-		public void AfficherMsgNotification (String msg) {
+		public static  void  AfficherMsgNotification (String msg) {
 			
+		trayIcon1.displayMessage(msg,null, TrayIcon.MessageType.INFO);
+				
+			/*JFrame fenetre = new JFrame();
+			JPanel panel = new JPanel();
+	fenetre.setVisible(true);
+	fenetre.setTitle("Message de notification");
+	fenetre.setSize(200, 150);
+	fenetre.setLocationRelativeTo(null);
+	fenetre.getContentPane().add(panel);
+	JLabel label =new JLabel(msg);
+	JToolTip toolTip = label.createToolTip();
+	toolTip.setTipText(msg);
+	panel.add(label);*/
 		}
+	
 }

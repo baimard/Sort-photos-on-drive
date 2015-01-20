@@ -10,9 +10,11 @@ public class App
 {
 	public static void main( String[] args ) throws IOException
     {
+		String t= new String("dgiudn");
 		//new UiUser();
 		try {
 			AfficherNotification an = new AfficherNotification();
+			//an.AfficherMsgNotification(t);
 		} catch (AWTException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
