@@ -11,10 +11,9 @@ import juxo.threads.ProcessObservationDossier;
 public class App 
 {
 	public static void main( String[] args ) throws IOException
-    {
-		
+    {		
 		try {
-			
+
 			new AfficherNotification();
 			
 			Parametrage.chargerObjet();
