@@ -230,16 +230,16 @@ public class Fichier extends File {
 	public String getFileExtension() {
         String fileName = this.getName();
         if(fileName.lastIndexOf(".") != -1 && fileName.lastIndexOf(".") != 0)
-        	return fileName.substring(fileName.lastIndexOf(".")+1);
+        	return fileName.substring(fileName.lastIndexOf("."));
         else 
         	return "";
 	}
 	
 	/**
-	 * Renomme un fichier
+	 * Renomme un fichier avec la date de prise de vue
 	 * @param iterator
 	 */
-	public void renommerFichier(int iterator){
+	public void renommerFichierParDate(int iterator){
 		String mois = Integer.toString(this.getmoisfic());
 		String jour = Integer.toString(this.getdayfic());
 		if (this.getmoisfic() < 10){
@@ -249,12 +249,26 @@ public class Fichier extends File {
 			jour = "0" + jour;
 		}
 		if (this.getPriseVue() != null){
-			Fichier destination = new Fichier(this.getParentFile() + "/" + this.getyearfic() + "-" + mois + "-" + jour + " - " + iterator + "." + this.getFileExtension());
+			Fichier destination = new Fichier(this.getParentFile() + "/" + this.getyearfic() + "-" + mois + "-" + jour + " - " + iterator + this.getFileExtension());
 			this.renameTo(destination);
 		}
 		else {
 			System.out.println("Le fichier " + this.getName() + " ne possède pas de date de prise de vue.");
 		}
+	}
+	
+	/**
+	 * Renomme un fichier avec le choix du nom par l'utilisateur
+	 * @param iterator
+	 */
+	public void renommerFichier(String nom, int iterator) {
+		if (this.getPriseVue() != null){
+			Fichier destination = new Fichier(this.getParentFile() + "/" + nom + " - " + iterator + this.getFileExtension());
+			this.renameTo(destination);
+		}
+		else {
+			System.out.println("Le fichier " + this.getName() + " ne possède pas de date de prise de vue.");
+		}	
 	}
 	
 	//plein d'accesseurs qui servent à rien
