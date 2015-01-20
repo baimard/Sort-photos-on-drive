@@ -2,13 +2,13 @@ package juxo.apiCalendar;
 
 import java.util.ArrayList;
 
-public class Evenements extends ArrayList<EvenementCalendrier>{
+public class Evenements extends ArrayList<Evenement>{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private EvenementCalendrier evenementUtilisable;
+	private Evenement evenementUtilisable;
 	public clefMap ownKey;
 
 	public Evenements(){
@@ -16,11 +16,11 @@ public class Evenements extends ArrayList<EvenementCalendrier>{
 		evenementUtilisable = null;
 	}
 	
-	public EvenementCalendrier getDateUtilisable(){	
+	public Evenement getDateUtilisable(){	
 		return evenementUtilisable;
 	}
 	
-	public void setDateUtilisable( EvenementCalendrier e){
+	public void setDateUtilisable( Evenement e){
 		evenementUtilisable = e;
 	}
 	

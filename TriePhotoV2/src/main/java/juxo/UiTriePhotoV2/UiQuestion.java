@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.util.Date;
 import java.util.Random;
+
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
-import juxo.apiCalendar.EvenementCalendrier;
+import juxo.apiCalendar.Evenement;
 import juxo.apiCalendar.Evenements;
 import juxo.triephotoV2.accessFichier.Fichiers;
 
@@ -23,8 +24,8 @@ public class UiQuestion extends JDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public JList<EvenementCalendrier> listEve;
-	private DefaultListModel<EvenementCalendrier> listEvenement = null;
+	public JList<Evenement> listEve;
+	private DefaultListModel<Evenement> listEvenement = null;
 	
 	public UiQuestion(JFrame parent, String title, boolean modal, Evenements l, Fichiers fs){
 		super(parent, title, modal);
@@ -33,12 +34,13 @@ public class UiQuestion extends JDialog {
 	    this.setResizable(false);
 	    this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 	    
-	    listEvenement = new DefaultListModel<EvenementCalendrier>();
+	    listEvenement = new DefaultListModel<Evenement>();
 	    
-	    EvenementCalendrier nullEv = new EvenementCalendrier("aucun", new Date(1,1,1960), new Date(1,1,1960));
+	    @SuppressWarnings("deprecation")
+		Evenement nullEv = new Evenement("aucun", new Date(1,1,1960), new Date(1,1,1960));
 	    listEvenement.addElement(nullEv);
 	    
-	    for(EvenementCalendrier e : l){
+	    for(Evenement e : l){
 	    	listEvenement.addElement(e);
 	    }
 	   
@@ -48,7 +50,7 @@ public class UiQuestion extends JDialog {
 	private void initComponent(Fichiers fs) {
 		JPanel listpan = new JPanel();
 
-		listEve = new JList<EvenementCalendrier>(listEvenement);
+		listEve = new JList<Evenement>(listEvenement);
 		listEve.setPreferredSize(new Dimension(500, 200));
 		
 		JLabel j1 = new JLabel("Veuillez sélectionner l'événement correspondant à vos images :");
@@ -92,7 +94,7 @@ public class UiQuestion extends JDialog {
 		listpan.add(valideButton);
 	}
 
-	public EvenementCalendrier showUiQuestion(){
+	public Evenement showUiQuestion(){
 		this.setVisible(true);
 		return listEve.getSelectedValue();
 	}

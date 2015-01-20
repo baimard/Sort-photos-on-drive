@@ -222,7 +222,7 @@ public class Fichier extends File {
 	public String toString(){
 		return this.getPath();
 	}
-	
+
 	/**
 	 * Renvoie l'extension du fichier
 	 * @return
@@ -240,8 +240,21 @@ public class Fichier extends File {
 	 * @param iterator
 	 */
 	public void renommerFichier(int iterator){
-		Fichier destination = new Fichier(this.getParentFile() + "/" + this.getyearfic() + "-" + this.getmoisfic() + "-" + this.getdayfic() + "-" + iterator + "." + this.getFileExtension());
-		this.renameTo(destination);
+		String mois = Integer.toString(this.getmoisfic());
+		String jour = Integer.toString(this.getdayfic());
+		if (this.getmoisfic() < 10){
+			mois = "0" + mois;
+		}
+		if (this.getdayfic() < 10){
+			jour = "0" + jour;
+		}
+		if (this.getPriseVue() != null){
+			Fichier destination = new Fichier(this.getParentFile() + "/" + this.getyearfic() + "-" + mois + "-" + jour + " - " + iterator + "." + this.getFileExtension());
+			this.renameTo(destination);
+		}
+		else {
+			System.out.println("Le fichier " + this.getName() + " ne possède pas de date de prise de vue.");
+		}
 	}
 	
 	//plein d'accesseurs qui servent à rien

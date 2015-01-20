@@ -2,13 +2,13 @@ package juxo.threads;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JTextArea;
 
 import juxo.apiCalendar.Calendrier;
+import juxo.apiCalendar.Calendriers;
 import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
 
 public class ProcessChargementCalendriers extends Thread{
@@ -30,7 +30,7 @@ public class ProcessChargementCalendriers extends Thread{
 			//Connexion google
 	    	try{
 	    		if(ConnexionGoogle.googleConnexion == null)
-	    			ConnexionGoogle.googleConnexion = new ConnexionGoogle("125768752842-8kgilik6k7ucmbhph49kqoia3bum3pqr.apps.googleusercontent.com", "oKcIMqOmQKDIuT8_Xhw9SKBE");
+	    			ConnexionGoogle.googleConnexion = new ConnexionGoogle();
 		    		
 	    	}catch(IOException e){
 	    		System.out.println(e);
@@ -38,14 +38,14 @@ public class ProcessChargementCalendriers extends Thread{
 	    		System.out.println(e);
 	    	}
 	    	
-	    	Calendrier.calendriers = new ArrayList<Calendrier>();
+	    	Calendrier.setCalendriers(new Calendriers());
 	    	textAreaCalendrier.setText("");
 	    	Calendrier.chargementCalendriers(
 	    			ConnexionGoogle.googleConnexion.accessListCalendrier());
-	    	for(Calendrier c : Calendrier.calendriers){
-	    		textAreaCalendrier.setText(c.nomCalendrier + ";\r\n" + textAreaCalendrier.getText() );
+	    	for(Calendrier c : Calendrier.getCalendriers()){
+	    		textAreaCalendrier.setText(c.getNomCalendrier() + ";\r\n" + textAreaCalendrier.getText() );
 	    	}
 	    	
-			model.add(0, "Votre clef d'accès : " + ConnexionGoogle.googleConnexion.token.tokenAcess);
+			model.add(0, "Votre clef d'accès : " + ConnexionGoogle.googleConnexion.getToken().getTokenAcess());
 	  }				
 }

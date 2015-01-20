@@ -25,6 +25,8 @@
 
 *.class
 *.class
-*.java
+*.class
+
+*.class
 *.class
 *.class

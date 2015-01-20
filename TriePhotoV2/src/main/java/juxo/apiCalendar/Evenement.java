@@ -15,7 +15,7 @@ import juxo.apiCalendar.definitionClasse.MediaGroup;
  * @author Juxo
  *
  */
-public class EvenementCalendrier {
+public class Evenement {
 	
 	/**
 	 * Liste des événements
@@ -35,7 +35,7 @@ public class EvenementCalendrier {
 	 * @param e
 	 * @param d
 	 */
-	public EvenementCalendrier(String e, Date debut, Date fin){
+	public Evenement(String e, Date debut, Date fin){
 		
 		nomEvenement = e;
 		dateEvenement = Calendar.getInstance();
@@ -109,7 +109,7 @@ public class EvenementCalendrier {
     	List<Items> mylist = m.items;
 		for( Items i : mylist){
 			try{
-				new EvenementCalendrier(i.summary, i.getStart().getRealDate(), i.getEnd().getRealDate());
+				new Evenement(i.summary, i.getStart().getRealDate(), i.getEnd().getRealDate());
 			}catch(NullPointerException e){
 				System.out.println("C'est pas grave ... : " + e);
 			}
