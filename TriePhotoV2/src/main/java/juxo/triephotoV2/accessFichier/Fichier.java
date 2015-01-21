@@ -13,6 +13,8 @@ import java.util.Map;
 
 import javax.imageio.ImageIO;
 
+import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
+
 import com.drew.imaging.ImageMetadataReader;
 import com.drew.imaging.ImageProcessingException;
 import com.drew.lang.GeoLocation;
@@ -122,7 +124,7 @@ public class Fichier extends File {
 	}
 	
 	public GeoLocation getGPS() {
-		//Initialisation de la variable date
+		//Initialisation de la variable coordinates
 		GeoLocation coordinates = null;
 		
 		//On vérifie qu'on est pas à faire à un dossier
@@ -288,17 +290,30 @@ public class Fichier extends File {
 	}
 	
 	/**
+	 * Renomme un fichier avec le lieu
+	 * @param iterator
+	 */
+	public void renommerFichierParLieu(int iterator) {
+		if (this.getGPS() != null){
+			double lat = this.getGPS().getLatitude();
+			double lon = this.getGPS().getLongitude();
+			ConnexionGoogle c = ConnexionGoogle.googleConnexion;
+			String ville = c.getAddress(lat, lon);
+			Fichier destination = new Fichier(this.getParentFile() + "/" + ville + " - " + iterator + this.getFileExtension());
+			this.renameTo(destination);
+		}
+		else {
+			System.out.println("Le fichier " + this.getName() + " ne possède pas de coordonnées GPS.");
+		}	
+	}
+	
+	/**
 	 * Renomme un fichier avec le choix du nom par l'utilisateur
 	 * @param iterator
 	 */
 	public void renommerFichier(String nom, int iterator) {
-		if (this.getPriseVue() != null){
-			Fichier destination = new Fichier(this.getParentFile() + "/" + nom + " - " + iterator + this.getFileExtension());
-			this.renameTo(destination);
-		}
-		else {
-			System.out.println("Le fichier " + this.getName() + " ne possède pas de date de prise de vue.");
-		}	
+		Fichier destination = new Fichier(this.getParentFile() + "/" + nom + " - " + iterator + this.getFileExtension());
+		this.renameTo(destination);
 	}
 	
 	//plein d'accesseurs qui servent à rien

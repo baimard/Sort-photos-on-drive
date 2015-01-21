@@ -60,8 +60,24 @@ public class Fichiers extends ArrayList<Fichier>{
 	}
 	
 	/**
+	 * Fontion de renommage des fichiers en fonction du lieu de prise de vue
+	 * @param listeFichiers
+	 */
+	public static void renommerFichiersParLieu(File[] listeFichiers){
+		int it=0;
+		//On parcours tous les fichiers
+		for (File fichierCourant : listeFichiers) {
+			if (fichierCourant.isFile()) {
+				Fichier monfic = new Fichier(fichierCourant.getPath());
+				monfic.renommerFichierParLieu(it++);
+			}
+		}
+	}
+	
+	/**
 	 * Fontion de renommage des fichiers simple
 	 * @param listeFichiers
+	 * @param nom
 	 */
 	public static void renommerFichiers(File[] listeFichiers, String nom){
 		int it=0;

@@ -39,10 +39,10 @@ public class apiCalendarTest{
 	@Test
 	public void testGetAddress(){
 		ConnexionGoogle c = ConnexionGoogle.googleConnexion;
-		System.out.println(c.getAdrress(48.8588589,2.3470599));
-		System.out.println(c.getAdrress(44.8688317,-0.6803284));
-		System.out.println(c.getAdrress(45.0472061,-0.43125));
-		System.out.println(c.getAdrress(31.2243489,121.4767528));
+		System.out.println(c.getAddress(48.8588589,2.3470599));
+		System.out.println(c.getAddress(44.8688317,-0.6803284));
+		System.out.println(c.getAddress(45.0472061,-0.43125));
+		System.out.println(c.getAddress(31.2243489,121.4767528));
 	}
 	
 	

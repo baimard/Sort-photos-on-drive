@@ -156,7 +156,7 @@ public class ConnexionGoogle {
 	 * @param longitude
 	 * @return
 	 */
-	public String getAdrress(double latitude, double longitude){
+	public String getAddress(double latitude, double longitude){
 		GeocodeResponse g = null;
 		String ville = null;
     	Feature filterFeature = OAuth2ClientSupport.feature(token.getTokenAcess());
