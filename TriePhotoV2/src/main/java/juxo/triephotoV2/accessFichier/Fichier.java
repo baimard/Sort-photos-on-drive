@@ -33,6 +33,8 @@ public class Fichier extends File {
 	
 	private Calendar ladatefic;
 	private Boolean deplacable;
+	private double lat;
+	private double lon;
 	/***
 	 * Création d'un fichier à partir de son path
 	 * @param pathname
@@ -43,7 +45,6 @@ public class Fichier extends File {
 		//On initialise les variables de travail
 		deplacable = true;
 		ladatefic = Calendar.getInstance();
-		
 		//Recherche si le fichier à une date de prise de vue
 		if (this.getPriseVue() != null){
 			ladatefic.setTime(this.getPriseVue());
@@ -54,6 +55,13 @@ public class Fichier extends File {
 		}else
 			ladatefic.set(1960, 1, 1);
 		
+		lat = this.getGPS().getLatitude();
+		lon = this.getGPS().getLongitude();
+		ajoutList();
+
+	}
+	
+	public void ajoutList(){
 		Fichiers l = null;
 		//Séparation des dossiers et des fichiers
 		if(this.isFile()){
@@ -69,23 +77,17 @@ public class Fichier extends File {
 		}else{
 			listDossier.add(this);
 		}
-
 	}
 	
 	public Fichiers searchExistDate(Calendar d){
 		Iterator<Calendar> it = listFic.keySet().iterator();
 		boolean trouve = false;
 		Fichiers ficList = null;
-		
 		while(it.hasNext() && !trouve){
-			
 			Calendar key = it.next();
-			//System.out.println(d.get(Calendar.DAY_OF_MONTH)+"/"+d.get(Calendar.MONTH)+"/"+d.get(Calendar.YEAR));
-			//System.out.println(key.get(Calendar.DAY_OF_MONTH)+"/"+key.get(Calendar.MONTH)+"/"+key.get(Calendar.YEAR));
-
-			if(d.get(Calendar.DAY_OF_MONTH) == key.get(Calendar.DAY_OF_MONTH) &&
+			if(		d.get(Calendar.DAY_OF_MONTH) == key.get(Calendar.DAY_OF_MONTH) &&
 					d.get(Calendar.MONTH) == key.get(Calendar.MONTH) &&
-							d.get(Calendar.YEAR)==key.get(Calendar.YEAR)){
+					d.get(Calendar.YEAR) == key.get(Calendar.YEAR)){
 				trouve = true;
 				ficList = listFic.get(key);
 			}
@@ -99,21 +101,14 @@ public class Fichier extends File {
 	 * @return
 	 */
 	public Date getPriseVue() {
-		//Initialisation de la variable date
 		Date date = null;
-		
-		//On vérifie qu'on est pas à faire à un dossier
 		if (this.isFile()) {
 			try {
-				//On lit les meta
 				Metadata mesexifs = ImageMetadataReader.readMetadata(this);
-				//Recherche dans l'arborescence du dossier contenant la date de prise de vue
 				ExifSubIFDDirectory directory = mesexifs.getDirectory(ExifSubIFDDirectory.class);
 				if (directory != null) {
-					//La date de prise de vue dans l'exif
 					date = directory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL);
 				}
-				//Si erreur on ne déplace pas le fichier
 			} catch (ImageProcessingException e) {
 				deplacable = false;
 				System.out.println(e);
@@ -128,7 +123,6 @@ public class Fichier extends File {
 	public GeoLocation getGPS() {
 		//Initialisation de la variable coordinates
 		GeoLocation coordinates = null;
-		
 		//On vérifie qu'on est pas à faire à un dossier
 		if (this.isFile()) {
 			try {
@@ -137,7 +131,6 @@ public class Fichier extends File {
 				//Recherche dans l'arborescence du dossier contenant les coordonnées de la photo
 				GpsDirectory directory = mesexifs.getDirectory(GpsDirectory.class);
 				if (directory != null) {
-					//Les coordonnées dans l'exif
 					coordinates = directory.getGeoLocation();
 				}
 				//Si erreur on ne déplace pas le fichier
@@ -153,18 +146,16 @@ public class Fichier extends File {
 	}
 	
 
-	/*** 
+	/**
 	 * Permet de déplacer le fichier (uniquement si pas dossier)
 	 * @param Nwxdossier
 	 */
 	public void Deplacer(String Nwxdossier) {
-		
-
 		//Si la date du fichier n'est pas null
 		if (this.isFile() 
 				&& this.deplacable 
 				&& this.ladatefic != null) {
-			File ledossier = new File(Nwxdossier + "/" + this.getyearfic() + "/" + this.getmoisfic());
+			File ledossier = new File(Nwxdossier + "/" + this.getYearFile() + "/" + this.getMouthFile());
 			rangerFichier(ledossier);
 		} else if(this.isFile() 
 				&& this.deplacable ){
@@ -172,7 +163,7 @@ public class Fichier extends File {
 		}
 	}
 	
-	/***
+	/**
 	 * On déplace dans le dossier de destination
 	 * et on force le nom du dossier
 	 * @param Nwxdossier
@@ -183,7 +174,7 @@ public class Fichier extends File {
 		if (this.isFile() 
 				&& this.deplacable 
 				&& this.ladatefic != null) {
-			File ledossier = new File(Nwxdossier + "/" + this.getyearfic() + "/" + this.getmoisfic()+ "/" + nomDossier);
+			File ledossier = new File(Nwxdossier + "/" + this.getYearFile() + "/" + this.getMouthFile()+ "/" + nomDossier);
 			rangerFichier(ledossier);
 		} else if(this.isFile() 
 				&& this.deplacable ){
@@ -191,7 +182,7 @@ public class Fichier extends File {
 		}
 	}
 	
-	/***
+	/**
 	 * On range le fichier dans le dossier déterminé
 	 * le dossier est crée si inexistant
 	 * @param ledossier
@@ -206,7 +197,7 @@ public class Fichier extends File {
 		}
 	}
 	
-	/***
+	/**
 	 * On isole le fichier en cas de problème
 	 * @param Nwxdossier
 	 */
@@ -243,6 +234,13 @@ public class Fichier extends File {
 		return dimg;
 	}
 	
+	/**
+	 * On met une image en cache avec une certaine hauteur et largeur
+	 * @param image
+	 * @param Largeur
+	 * @param Longueur
+	 * @return
+	 */
 	public BufferedImage convertToBufferedImage(Image image, int Largeur, int Longueur)
 	{
 	    BufferedImage bi = new BufferedImage(Largeur, Longueur, BufferedImage.TRANSLUCENT);
@@ -253,6 +251,9 @@ public class Fichier extends File {
 	    return bi;
 	}
 	
+	/**
+	 * Renvoie le path du fichier.
+	 */
 	public String toString(){
 		return this.getPath();
 	}
@@ -274,19 +275,18 @@ public class Fichier extends File {
 	 * @param iterator
 	 */
 	public void renommerFichierParDate(int iterator){
-		String mois = Integer.toString(this.getmoisfic());
-		String jour = Integer.toString(this.getdayfic());
-		if (this.getmoisfic() < 10){
+		String mois = Integer.toString(this.getMouthFile());
+		String jour = Integer.toString(this.getDayFile());
+		if (this.getMouthFile() < 10){
 			mois = "0" + mois;
 		}
-		if (this.getdayfic() < 10){
+		if (this.getDayFile() < 10){
 			jour = "0" + jour;
 		}
 		if (this.getPriseVue() != null){
-			Fichier destination = new Fichier(this.getParentFile() + "/" + this.getyearfic() + "-" + mois + "-" + jour + " - " + iterator + this.getFileExtension());
+			Fichier destination = new Fichier(this.getParentFile() + "/" + this.getYearFile() + "-" + mois + "-" + jour + " - " + iterator + this.getFileExtension());
 			this.renameTo(destination);
-		}
-		else {
+		}else{
 			System.out.println("Le fichier " + this.getName() + " ne possède pas de date de prise de vue.");
 		}
 	}
@@ -297,14 +297,11 @@ public class Fichier extends File {
 	 */
 	public void renommerFichierParLieu(int iterator) {
 		if (this.getGPS() != null){
-			double lat = this.getGPS().getLatitude();
-			double lon = this.getGPS().getLongitude();
 			ConnexionGoogle c = ConnexionGoogle.googleConnexion;
 			String ville = c.getAddress(lat, lon);
 			Fichier destination = new Fichier(this.getParentFile() + "/" + ville + " - " + iterator + this.getFileExtension());
 			this.renameTo(destination);
-		}
-		else {
+		}else {
 			System.out.println("Le fichier " + this.getName() + " ne possède pas de coordonnées GPS.");
 		}	
 	}
@@ -319,35 +316,35 @@ public class Fichier extends File {
 	}
 	
 	//plein d'accesseurs qui servent à rien
-	public int getheurefic() {
+	public int getHourFile() {
 		return ladatefic.get(Calendar.HOUR);
 	}
 
-	public int getminutefic() {
+	public int getMinuteFile() {
 		return ladatefic.get(Calendar.MINUTE);
 	}
 
-	public int getmoisfic() {
+	public int getMouthFile() {
 		return ladatefic.get(Calendar.MONTH) + 1;
 	}
 
-	public int getdayfic() {
+	public int getDayFile() {
 		return ladatefic.get(Calendar.DAY_OF_MONTH);
 	}
 
-	public int getyearfic() {
+	public int getYearFile() {
 		return ladatefic.get(Calendar.YEAR);
 	}
 
-	public Calendar getLadatefic() {
+	public Calendar getCalendarFile() {
 		return ladatefic;
 	}
 
-	public void setLadatefic(Calendar ladatefic) {
+	public void setCalendarFile(Calendar ladatefic) {
 		this.ladatefic = ladatefic;
 	}
 
-	public boolean getdeplacable() {
+	public boolean isMovable() {
 		return deplacable;
 	}
 

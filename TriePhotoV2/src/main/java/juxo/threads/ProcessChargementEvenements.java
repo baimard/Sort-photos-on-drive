@@ -20,8 +20,7 @@ public class ProcessChargementEvenements extends Thread{
 	private JList<String> jlab;
 	private ArrayList<String> mesIdCalendrier;
 	
-	public ProcessChargementEvenements(ArrayList<String> l, JList<String> j){
-		jlab = j;
+	public ProcessChargementEvenements(ArrayList<String> l){
 		mesIdCalendrier = l;
 	}
 	
