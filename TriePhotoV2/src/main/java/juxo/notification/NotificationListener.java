@@ -1,10 +1,7 @@
 package juxo.notification;
 
-import java.awt.AWTException;
-import java.awt.TrayIcon;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 import juxo.threads.ProcessObservationDossier;
 
