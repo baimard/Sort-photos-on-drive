@@ -33,6 +33,7 @@ public class apiCalendarTest{
 		System.out.println("token google : " + c.getToken().getTokenAcess());
 		System.out.println("Refresh token google : " + c.getToken().getRefreshToken());
 		System.out.println("token time valide : " + c.getToken().getExpirationDelay());
+		testReceptionDonnees();
 	}
 	
 	@Test
@@ -82,8 +83,6 @@ public class apiCalendarTest{
 
 	}
 
-	@Ignore
-	@Test
 	public void testReceptionDonnees(){
 		if(ConnexionGoogle.googleConnexion.getToken().getExpirationDelay()!=0){
 			ConnexionGoogle c = ConnexionGoogle.googleConnexion;

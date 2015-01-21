@@ -52,7 +52,9 @@ public class ConnexionGoogle {
 		
 		if(token!=null){
 			token.refreshToken(clientId, CALENDAR_SCOPE);
-		}else{
+		}
+		
+		if(token.getStatut()==400 || token==null ){
 			buildRequestToken();
 			openResquestTokenUrl();
 			String code = JOptionPane.showInputDialog("Veuillez indiquer le code retour");

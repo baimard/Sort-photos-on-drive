@@ -1,6 +1,10 @@
 package juxo.apiCalendar.connexionGoogle;
 
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
+
+import javax.ws.rs.ProcessingException;
+
 import org.glassfish.jersey.client.oauth2.ClientIdentifier;
 import org.glassfish.jersey.client.oauth2.OAuth2ClientSupport;
 import org.glassfish.jersey.client.oauth2.OAuth2CodeGrantFlow;
@@ -53,16 +57,22 @@ public class OAuth2Token implements Serializable {
      * @param scope
      */
     public void refreshToken(ClientIdentifier clientId, String scope){
-    	Builder<OAuth2FlowGoogleBuilder> builder = 
-    			OAuth2ClientSupport.googleFlowBuilder(clientId, OOB, scope);
-    	ConnexionGoogle.flow = builder.build();
-    	TokenResult result = ConnexionGoogle.flow.refreshAccessToken(refreshToken);
-        this.tokenAcess = result.getAccessToken();
-        String refreshtok = (String) result.getAllProperties().get("refresh_token");
-        if(refreshtok!=null)
-        	this.refreshToken = refreshtok; 
-        this.expirationDelay = (int) result.getAllProperties().get("expires_in");
-        this.type = (String) result.getAllProperties().get("token_type");
+    	try{
+        	Builder<OAuth2FlowGoogleBuilder> builder = 
+        			OAuth2ClientSupport.googleFlowBuilder(clientId, OOB, scope);
+        	ConnexionGoogle.flow = builder.build();
+        	TokenResult result = ConnexionGoogle.flow.refreshAccessToken(refreshToken);
+            this.tokenAcess = result.getAccessToken();
+            String refreshtok = (String) result.getAllProperties().get("refresh_token");
+            if(refreshtok!=null)
+            	this.refreshToken = refreshtok; 
+            this.expirationDelay = (int) result.getAllProperties().get("expires_in");
+            this.type = (String) result.getAllProperties().get("token_type");
+    	}catch(ProcessingException e){
+    		this.statut=400;
+    	}
+
+       
     }
     
     /***

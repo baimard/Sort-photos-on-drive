@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="1.7.0_65" class="java.beans.XMLDecoder">
+<java version="1.7.0_51" class="java.beans.XMLDecoder">
  <object class="juxo.apiCalendar.connexionGoogle.OAuth2Token">
   <void property="authURI">
    <string>https://accounts.google.com/o/oauth2/auth?scope=https://www.googleapis.com/auth/calendar&amp;response_type=code&amp;readOnly=true&amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;state=&amp;client_id=125768752842-8kgilik6k7ucmbhph49kqoia3bum3pqr.apps.googleusercontent.com</string>
@@ -8,10 +8,10 @@
    <int>3600</int>
   </void>
   <void property="refreshToken">
-   <string>1/F2bWCJ0ZGe11e6HCbcSGkd2huem4zJoMGTpzwQf6AKs</string>
+   <string>1/wofUvw4jSfEnyxd5G7tqVp2NtKtkIYGgIlb6OhEHF4wMEudVrK5jSpoR30zcRFq6</string>
   </void>
   <void property="tokenAcess">
-   <string>ya29._QAV5rIUrEJD2QbgVaIzAmk-U2vSYAaYEYt1iV2nt1HLFaiZj1zlQCICrRjAeK2yucCH-l-GrmgQBg</string>
+   <string>ya29.AgFrjDCUYpzzBbTXlWE20Tv0gkKhOHHaY7uhq4Rh95CRg6ScoMQY-CiOxQABcku_D_2UG_k9ZBl40w</string>
   </void>
   <void property="type">
    <string>Bearer</string>
