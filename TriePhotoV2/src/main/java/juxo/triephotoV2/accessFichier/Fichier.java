@@ -42,6 +42,8 @@ public class Fichier extends File {
 	public Fichier(String pathname) {
 		//On hérite de fichier donc on appelle le constructeur père
 		super(pathname);
+		
+		Map<Calendar, Fichiers> l = listFic;
 		//On initialise les variables de travail
 		deplacable = true;
 		ladatefic = Calendar.getInstance();
@@ -55,8 +57,11 @@ public class Fichier extends File {
 		}else
 			ladatefic.set(1960, 1, 1);
 		
-		lat = this.getGPS().getLatitude();
-		lon = this.getGPS().getLongitude();
+		if(getGPS()!=null){
+			lat = this.getGPS().getLatitude();
+			lon = this.getGPS().getLongitude();
+		}
+
 		ajoutList();
 
 	}

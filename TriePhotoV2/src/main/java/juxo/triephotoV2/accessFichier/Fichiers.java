@@ -68,8 +68,7 @@ public class Fichiers extends ArrayList<Fichier>{
 		//On parcours tous les fichiers
 		for (Fichier fichierCourant : this) {
 			if (fichierCourant.isFile()) {
-				Fichier monfic = new Fichier(fichierCourant.getPath());
-				monfic.renommerFichierParLieu(it++);
+				fichierCourant.renommerFichierParLieu(it++);
 			}
 		}
 	}
@@ -102,6 +101,7 @@ public class Fichiers extends ArrayList<Fichier>{
 		for (File fic : listeFichiers) {
 			if(!(fic.isHidden()))
 				monfic = new Fichier(fic.getPath());
+			
 			if (monfic!= null && monfic.isDirectory()){
 				listFichier(monfic.listFiles());
 			}

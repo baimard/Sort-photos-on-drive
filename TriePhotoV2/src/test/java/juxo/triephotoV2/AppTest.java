@@ -22,7 +22,7 @@ public class AppTest extends TestCase
 	}*/
 	
 	public void testRenommage() throws IOException, URISyntaxException{
-		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball2");
+		Fichier f = new Fichier("/Users/Juxo/Pictures/est");
 		//Fichiers.listFichier(f.listFiles());
 		//System.out.println(f.getGPS());
 		ConnexionGoogle c = ConnexionGoogle.googleConnexion;
