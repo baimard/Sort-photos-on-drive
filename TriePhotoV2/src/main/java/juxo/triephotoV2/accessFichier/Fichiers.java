@@ -49,7 +49,7 @@ public class Fichiers extends ArrayList<Fichier>{
 	 * @param listeFichiers
 	 */
 	public static void renommerFichiersParDate(File[] listeFichiers){
-		int it=0;
+		int it=1;
 		//On parcours tous les fichiers
 		for (File fichierCourant : listeFichiers) {
 			if (fichierCourant.isFile()) {
@@ -63,10 +63,10 @@ public class Fichiers extends ArrayList<Fichier>{
 	 * Fontion de renommage des fichiers en fonction du lieu de prise de vue
 	 * @param listeFichiers
 	 */
-	public static void renommerFichiersParLieu(File[] listeFichiers){
-		int it=0;
+	public void renommerFichiersParLieu(){
+		int it=1;
 		//On parcours tous les fichiers
-		for (File fichierCourant : listeFichiers) {
+		for (Fichier fichierCourant : this) {
 			if (fichierCourant.isFile()) {
 				Fichier monfic = new Fichier(fichierCourant.getPath());
 				monfic.renommerFichierParLieu(it++);
@@ -80,7 +80,7 @@ public class Fichiers extends ArrayList<Fichier>{
 	 * @param nom
 	 */
 	public static void renommerFichiers(File[] listeFichiers, String nom){
-		int it=0;
+		int it=1;
 		for (File fichierCourant : listeFichiers) {
 			if (fichierCourant.isFile()) {
 				Fichier monfic = new Fichier(fichierCourant.getPath());
@@ -102,8 +102,6 @@ public class Fichiers extends ArrayList<Fichier>{
 		for (File fic : listeFichiers) {
 			if(!(fic.isHidden()))
 				monfic = new Fichier(fic.getPath());
-			
-			System.out.println(monfic);
 			if (monfic!= null && monfic.isDirectory()){
 				listFichier(monfic.listFiles());
 			}

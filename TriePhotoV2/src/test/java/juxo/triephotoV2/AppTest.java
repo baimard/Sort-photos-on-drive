@@ -2,7 +2,9 @@ package juxo.triephotoV2;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Calendar;
 
+import javassist.bytecode.Descriptor.Iterator;
 import junit.framework.TestCase;
 import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
 import juxo.triephotoV2.accessFichier.Fichier;
@@ -27,7 +29,13 @@ public class AppTest extends TestCase
 		c = new ConnexionGoogle();
 		//System.out.println(c.getAddress(f.getGPS().getLatitude(),f.getGPS().getLongitude()));
 		//ConnexionGoogle.googleConnexion.getAddress(f.getGPS().getLatitude(),f.getGPS().getLongitude());
-		Fichiers.renommerFichiersParLieu(f.listFiles());
-		//Fichiers.renommerFichiers(f.listFiles());
+		Fichiers.listFichier(f.listFiles());
+		java.util.Iterator<Calendar> i = Fichier.listFic.keySet().iterator();
+		while(i.hasNext()){
+			Calendar cal = i.next();
+			Fichiers mesFichiers = Fichier.listFic.get(cal);
+			mesFichiers.renommerFichiersParLieu();
+		}
+		//Fichiers.renommerFichiers(f.listFiles(), "Pessac");
 	}
 }

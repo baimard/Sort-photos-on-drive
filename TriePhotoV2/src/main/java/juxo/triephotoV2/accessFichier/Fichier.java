@@ -23,11 +23,13 @@ import com.drew.metadata.exif.ExifSubIFDDirectory;
 import com.drew.metadata.exif.GpsDirectory;
 
 public class Fichier extends File {
+	
 
 	private static final long serialVersionUID = 1L;
 	
 	public static Map<Calendar, Fichiers> listFic = new HashMap<Calendar, Fichiers>();
 	public static Fichiers listDossier = new Fichiers();
+	public static final String separator = "" + separatorChar;
 	
 	private Calendar ladatefic;
 	private Boolean deplacable;
