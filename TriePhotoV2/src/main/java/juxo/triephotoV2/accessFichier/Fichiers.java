@@ -21,26 +21,22 @@ public class Fichiers extends ArrayList<Fichier>{
 		listFichier(dossier.listFiles());
 	}
 
-	/***
-	 * Création d'un objet fichiers avec sa liste de fichier format objet Fichier
-	 * En fait le fichier est un dossier
-	 * @param dossier
-	 * @throws IOException
+	/**
+	 * Déplace les fichiers de la liste dans le nouveau nom de dossier
+	 * @param Nwxdossier
+	 * @param nomDossier
 	 */
-	/*public Fichiers(Fichier dossier) throws IOException {
-		listeFichiers = dossier.listFiles();
-	}
-
-	public Fichiers() {
-		listeFichiers = null;
-	}*/
-
 	public void deplacerTousLesFichier(String Nwxdossier, String nomDossier){
 		for(Fichier f : this){
 			f.Deplacer(Nwxdossier, nomDossier);
 		}
 	}
 	
+	/**
+	 * Déplace tous les fichiers sans indiquer de nouveau dossier
+	 * Donc par ANNEES ET PAR MOIS
+	 * @param Nwxdossier
+	 */
 	public void deplacerTousLesFichier(String Nwxdossier){
 		for(Fichier f : this){
 			f.Deplacer(Nwxdossier);
@@ -64,18 +60,11 @@ public class Fichiers extends ArrayList<Fichier>{
 	}
 	
 	/**
-	 * Fontion de renommage des fichiers par date
+	 * Fontion de renommage des fichiers simple
 	 * @param listeFichiers
 	 */
-	public static void renommerFichiers(File[] listeFichiers){
+	public static void renommerFichiers(File[] listeFichiers, String nom){
 		int it=0;
-		String nom = "Nom fichier";
-		/*@SuppressWarnings("resource")
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Veuillez choisir le nom d'un fichier :");
-		String nom = sc.nextLine();
-		System.out.println("Vous avez saisi : " + nom);*/
-		//On parcours tous les fichiers
 		for (File fichierCourant : listeFichiers) {
 			if (fichierCourant.isFile()) {
 				Fichier monfic = new Fichier(fichierCourant.getPath());
