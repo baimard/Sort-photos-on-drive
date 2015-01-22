@@ -80,8 +80,13 @@ public class Fichiers extends ArrayList<Fichier>{
 	public void renommerFichiers(String nom){
 		int it=1;
 		for (Fichier fichierCourant : this) {
+			//int i = this.indexOf(fichierCourant.getParentFile());
+			//System.out.println(i);
+			//System.out.println(this.get(i+1));
 			if (fichierCourant.isFile()) {
-				fichierCourant.renommerFichier(nom, it++);
+				//while (fichierCourant.getParentFile() == this.get(i+1)){
+					fichierCourant.renommerFichier(nom, it++);
+				//}
 			}
 		}
 	}
