@@ -78,16 +78,27 @@ public class Fichiers extends ArrayList<Fichier>{
 	 * @param listeFichiers
 	 * @param nom
 	 */
-	public void renommerFichiers(String nom){
+	public void renommerFichiers(String nom) throws IndexOutOfBoundsException{
 		int it=1;
 		for (Fichier fichierCourant : this) {
-			//int i = this.indexOf(fichierCourant.getParentFile());
-			//System.out.println(i);
-			//System.out.println(this.get(i+1));
-			if (fichierCourant.isFile()) {
-				//while (fichierCourant.getParentFile() == this.get(i+1)){
-				fichierCourant.renommerFichier(nom, it++);
-				//}
+			try{
+				int index = this.indexOf(fichierCourant);
+				if (fichierCourant.isFile()) {
+					if(index+1 < this.size()){
+						if(fichierCourant.getParentFile().compareTo(this.get(index+1).getParentFile()) == 0){
+							fichierCourant.renommerFichier(nom, it++);
+						}
+						else{
+							fichierCourant.renommerFichier(nom, it++);
+							it=1;
+						}
+					}
+					else{
+						fichierCourant.renommerFichier(nom, it++);
+					}
+				}	
+			}catch(IndexOutOfBoundsException e){
+				System.out.println("Fin de la liste");
 			}
 		}
 	}

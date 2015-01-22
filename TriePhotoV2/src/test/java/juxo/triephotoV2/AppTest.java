@@ -35,11 +35,12 @@ public class AppTest
 			Calendar cal = i.next();
 			Fichiers mesFichiers = Fichier.listFic.get(cal);
 			//mesFichiers.renommerFichiersParLieu();
-			mesFichiers.renommerFichiers("Pessac");
+			mesFichiers.renommerFichiers("I");
 			
 		}
 	}
 
+	@Ignore
 	@Test
 	public void testChargementFichiers() throws IOException{
 		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball2");

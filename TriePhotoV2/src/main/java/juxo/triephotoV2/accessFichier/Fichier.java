@@ -318,11 +318,12 @@ public class Fichier extends File {
 	 * @param iterator
 	 */
 	public void renommerFichier(String nom, int iterator) throws ConcurrentModificationException {
-		File destination = new File(this.getParentFile() + "/" + nom + " -- " + iterator + this.getFileExtension());
+		File destination = new File(this.getParentFile() + "/" + nom + " - " + iterator + this.getFileExtension());
 		if(!(destination.exists())){
 			this.renameTo(destination);
+			System.out.println(destination);
 		}else
-			System.out.println("Fichier ayant déjà le même nom");
+			System.out.println("Le fichier " + this.getName() + " existe déjà.");
 		
 	}
 	
