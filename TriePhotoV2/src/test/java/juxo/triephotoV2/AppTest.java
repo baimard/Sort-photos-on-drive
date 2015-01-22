@@ -37,7 +37,7 @@ public class AppTest
 	@Ignore
 	@Test
 	public void testRenommage() throws IOException, URISyntaxException{
-		Fichier f = new Fichier("/Users/Juxo/Pictures/est");
+		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball2");
 		//Fichiers.listFichier(f.listFiles());
 		//System.out.println(f.getGPS());
 		ConnexionGoogle.googleConnexion = new ConnexionGoogle();
@@ -53,10 +53,10 @@ public class AppTest
 			
 		}
 	}
-	@Ignore
+
 	@Test
 	public void testChargementFichiers() throws IOException{
-		Fichier f = new Fichier("/Users/Juxo/Pictures/est");
+		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball2");
 		Fichiers.listFichier(f.listFiles());
 		java.util.Iterator<Calendar> i = Fichier.listFic.keySet().iterator();
 		while(i.hasNext()){
