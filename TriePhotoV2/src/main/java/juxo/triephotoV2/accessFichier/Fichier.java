@@ -43,7 +43,6 @@ public class Fichier extends File {
 		//On hérite de fichier donc on appelle le constructeur père
 		super(pathname);
 		
-		Map<Calendar, Fichiers> l = listFic;
 		//On initialise les variables de travail
 		deplacable = true;
 		ladatefic = Calendar.getInstance();

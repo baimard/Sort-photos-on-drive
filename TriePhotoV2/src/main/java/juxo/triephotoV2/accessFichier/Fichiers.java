@@ -48,13 +48,12 @@ public class Fichiers extends ArrayList<Fichier>{
 	 * Fontion de renommage des fichiers par date
 	 * @param listeFichiers
 	 */
-	public static void renommerFichiersParDate(File[] listeFichiers){
+	public void renommerFichiersParDate(){
 		int it=1;
 		//On parcours tous les fichiers
-		for (File fichierCourant : listeFichiers) {
+		for (Fichier fichierCourant : this) {
 			if (fichierCourant.isFile()) {
-				Fichier monfic = new Fichier(fichierCourant.getPath());
-				monfic.renommerFichierParDate(it++);
+				fichierCourant.renommerFichierParDate(it++);
 			}
 		}
 	}
@@ -78,12 +77,11 @@ public class Fichiers extends ArrayList<Fichier>{
 	 * @param listeFichiers
 	 * @param nom
 	 */
-	public static void renommerFichiers(File[] listeFichiers, String nom){
+	public void renommerFichiers(String nom){
 		int it=1;
-		for (File fichierCourant : listeFichiers) {
+		for (Fichier fichierCourant : this) {
 			if (fichierCourant.isFile()) {
-				Fichier monfic = new Fichier(fichierCourant.getPath());
-				monfic.renommerFichier(nom, it++);
+				fichierCourant.renommerFichier(nom, it++);
 			}
 		}
 	}
