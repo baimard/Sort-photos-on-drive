@@ -35,6 +35,8 @@ public class Fichier extends File {
 	private Boolean deplacable;
 	private double lat;
 	private double lon;
+	
+	
 	/***
 	 * Création d'un fichier à partir de son path
 	 * @param pathname
