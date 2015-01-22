@@ -17,7 +17,7 @@ import javax.ws.rs.core.Feature;
 
 import juxo.apiCalendar.definitionClasse.InfoToken;
 import juxo.apiCalendar.definitionClasse.MediaGroup;
-import juxo.serialisation.XMLTools;
+import juxo.system.XMLToolsSerialisation;
 
 import org.glassfish.jersey.client.oauth2.ClientIdentifier;
 import org.glassfish.jersey.client.oauth2.OAuth2ClientSupport;
@@ -170,7 +170,7 @@ public class ConnexionGoogle {
 	
     public void enregistrerObjet(){
     	try{
-    		XMLTools.encodeToFile(this.token, "token");
+    		XMLToolsSerialisation.encodeToFile(this.token, "token");
     	} catch(Exception e){
     		System.out.println(e);
     	}
@@ -178,7 +178,7 @@ public class ConnexionGoogle {
 
     public void chargerToken(){
     	try{
-    		token = (OAuth2Token) XMLTools.decodeFromFile("token");
+    		token = (OAuth2Token) XMLToolsSerialisation.decodeFromFile("token");
     	} catch(Exception e){
     		System.out.println(e);
     	}

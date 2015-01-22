@@ -24,12 +24,12 @@ public class ProcessGlobal extends Thread{
 
 		Thread tConnexionGoogle = new ProcessChargementEvenements(listeCalendrier, logueur);
 		tConnexionGoogle.start();
-		Thread tChargementFichier = new ProcessChargementFichier(dossierAnalyse, logueur);
+		//Thread tChargementFichier = new ProcessChargementFichier(dossierAnalyse);
 		
-		tChargementFichier.start();
+	//	tChargementFichier.start();
 		try {
 			tConnexionGoogle.join();
-			tChargementFichier.join();
+		//	tChargementFichier.join();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

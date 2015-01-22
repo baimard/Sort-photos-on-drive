@@ -47,19 +47,42 @@ public class Fichiers extends ArrayList<Fichier>{
 		}
 	}
 	
-	public static void renommerFichiers(File[] listeFichiers){
+	
+	/**
+	 * Fontion de renommage des fichiers par date
+	 * @param listeFichiers
+	 */
+	public static void renommerFichiersParDate(File[] listeFichiers){
 		int it=0;
 		//On parcours tous les fichiers
 		for (File fichierCourant : listeFichiers) {
 			if (fichierCourant.isFile()) {
-				//System.out.println(it);
-				//System.out.println(getFileExtension(fichierCourant));
 				Fichier monfic = new Fichier(fichierCourant.getPath());
-				monfic.renommerFichier(it++);
+				monfic.renommerFichierParDate(it++);
 			}
 		}
 	}
 	
+	/**
+	 * Fontion de renommage des fichiers par date
+	 * @param listeFichiers
+	 */
+	public static void renommerFichiers(File[] listeFichiers){
+		int it=0;
+		String nom = "Nom fichier";
+		/*@SuppressWarnings("resource")
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Veuillez choisir le nom d'un fichier :");
+		String nom = sc.nextLine();
+		System.out.println("Vous avez saisi : " + nom);*/
+		//On parcours tous les fichiers
+		for (File fichierCourant : listeFichiers) {
+			if (fichierCourant.isFile()) {
+				Fichier monfic = new Fichier(fichierCourant.getPath());
+				monfic.renommerFichier(nom, it++);
+			}
+		}
+	}
 	
 	/***
 	 * Trie des fichiers contenus dans un dossier
@@ -69,10 +92,14 @@ public class Fichiers extends ArrayList<Fichier>{
 	 */
 	public static void listFichier(File[] listeFichiers) throws IOException {
 		//On parcours tous les fichiers
+		Fichier monfic = null;
+		
 		for (File fic : listeFichiers) {
-			Fichier monfic = new Fichier(fic.getPath());
+			if(!(fic.isHidden()))
+				monfic = new Fichier(fic.getPath());
+			
 			System.out.println(monfic);
-			if (monfic.isDirectory()) {
+			if (monfic!= null && monfic.isDirectory()){
 				listFichier(monfic.listFiles());
 			}
 

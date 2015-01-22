@@ -3,12 +3,22 @@ package juxo.notification;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
+import org.glassfish.jersey.message.internal.NewCookieProvider;
+import javax.swing.*;
 
 public class AfficherNotification {
 	
-    private NotificationListener nL;
+	
+	public static TrayIcon trayIcon1;
+	
+//	public NotificationListener(TrayIcon i){
+	//	trayIcon1=i;
+//	}
+	
+	  //Cr�ation de Listener
+    NotificationListener nL = new NotificationListener();
+    
     //private MenuItem defaultItem;
     private PopupMenu popup = new PopupMenu();
     private SystemTray tray = SystemTray.getSystemTray();
@@ -21,26 +31,25 @@ public class AfficherNotification {
 				 MenuItem menu1 = new MenuItem("Quitter");
 				 menu1.setActionCommand("Quitter");
 				 
-				 MenuItem menu2 = new MenuItem("toto");
+				 MenuItem menu2 = new MenuItem("Stoper Obersion Dossier");
+				 menu2.setActionCommand("StoperThread");
 				 
 				//Cr�ation d'une image pour l'icone de notification
 				BufferedImage imageBuffered= ImageIO.read(getClass().getResource("triephoto.png"));
 				int trayIconWidth = new TrayIcon(imageBuffered).getSize().width;
-				
+
 				//Cr�ation de l'icone de notification
-			    final TrayIcon trayIcon1 = new TrayIcon(imageBuffered.getScaledInstance(trayIconWidth, -1, Image.SCALE_SMOOTH), "Trie Photo", popup);
+				trayIcon1 = new TrayIcon(imageBuffered.getScaledInstance(trayIconWidth, -1, Image.SCALE_SMOOTH), "Trie Photo", popup);
 			    trayIcon1.setActionCommand("message");
 			    trayIcon1.setImageAutoSize(true);
-			    
-			    //Cr�ation de Listener
-				nL = new NotificationListener(trayIcon1);
 				
-				//Ajout du menu � l'icon de tray
+			//Ajout du menu � l'icon de tray
 			    popup.add(menu1);
 			    popup.add(menu2);
 
 			    //Ajout de l'action listener aux objets �cout�
 			    menu1.addActionListener(nL);
+			    menu2.addActionListener(nL);
 			    trayIcon1.addActionListener(nL);
 			   
 			    //ON ajoute � la barre de t�che notre icone
@@ -48,7 +57,9 @@ public class AfficherNotification {
 			}
 			
 	}
-		public void AfficherMsgNotification (String msg) {
-			
+		public static synchronized void  AfficherMsgNotification (String msg) {
+			if(trayIcon1!=null)
+				trayIcon1.displayMessage(msg,null, TrayIcon.MessageType.INFO);
 		}
+	
 }

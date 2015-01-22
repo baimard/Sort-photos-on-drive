@@ -15,8 +15,10 @@ import javax.imageio.ImageIO;
 
 import com.drew.imaging.ImageMetadataReader;
 import com.drew.imaging.ImageProcessingException;
+import com.drew.lang.GeoLocation;
 import com.drew.metadata.Metadata;
 import com.drew.metadata.exif.ExifSubIFDDirectory;
+import com.drew.metadata.exif.GpsDirectory;
 
 public class Fichier extends File {
 
@@ -118,6 +120,34 @@ public class Fichier extends File {
 		}
 		return date;
 	}
+	
+	public GeoLocation getGPS() {
+		//Initialisation de la variable date
+		GeoLocation coordinates = null;
+		
+		//On vérifie qu'on est pas à faire à un dossier
+		if (this.isFile()) {
+			try {
+				//On lit les meta
+				Metadata mesexifs = ImageMetadataReader.readMetadata(this);
+				//Recherche dans l'arborescence du dossier contenant les coordonnées de la photo
+				GpsDirectory directory = mesexifs.getDirectory(GpsDirectory.class);
+				if (directory != null) {
+					//Les coordonnées dans l'exif
+					coordinates = directory.getGeoLocation();
+				}
+				//Si erreur on ne déplace pas le fichier
+			} catch (ImageProcessingException e) {
+				deplacable = false;
+				System.out.println(e);
+			} catch (IOException ex) {
+				deplacable = false;
+				System.out.println(ex);
+			}
+		}
+		return coordinates;
+	}
+	
 
 	/*** 
 	 * Permet de déplacer le fichier (uniquement si pas dossier)
@@ -230,16 +260,16 @@ public class Fichier extends File {
 	public String getFileExtension() {
         String fileName = this.getName();
         if(fileName.lastIndexOf(".") != -1 && fileName.lastIndexOf(".") != 0)
-        	return fileName.substring(fileName.lastIndexOf(".")+1);
+        	return fileName.substring(fileName.lastIndexOf("."));
         else 
         	return "";
 	}
 	
 	/**
-	 * Renomme un fichier
+	 * Renomme un fichier avec la date de prise de vue
 	 * @param iterator
 	 */
-	public void renommerFichier(int iterator){
+	public void renommerFichierParDate(int iterator){
 		String mois = Integer.toString(this.getmoisfic());
 		String jour = Integer.toString(this.getdayfic());
 		if (this.getmoisfic() < 10){
@@ -249,12 +279,26 @@ public class Fichier extends File {
 			jour = "0" + jour;
 		}
 		if (this.getPriseVue() != null){
-			Fichier destination = new Fichier(this.getParentFile() + "/" + this.getyearfic() + "-" + mois + "-" + jour + " - " + iterator + "." + this.getFileExtension());
+			Fichier destination = new Fichier(this.getParentFile() + "/" + this.getyearfic() + "-" + mois + "-" + jour + " - " + iterator + this.getFileExtension());
 			this.renameTo(destination);
 		}
 		else {
 			System.out.println("Le fichier " + this.getName() + " ne possède pas de date de prise de vue.");
 		}
+	}
+	
+	/**
+	 * Renomme un fichier avec le choix du nom par l'utilisateur
+	 * @param iterator
+	 */
+	public void renommerFichier(String nom, int iterator) {
+		if (this.getPriseVue() != null){
+			Fichier destination = new Fichier(this.getParentFile() + "/" + nom + " - " + iterator + this.getFileExtension());
+			this.renameTo(destination);
+		}
+		else {
+			System.out.println("Le fichier " + this.getName() + " ne possède pas de date de prise de vue.");
+		}	
 	}
 	
 	//plein d'accesseurs qui servent à rien
