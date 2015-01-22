@@ -3,6 +3,7 @@ package juxo.triephotoV2.accessFichier;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 
 public class Fichiers extends ArrayList<Fichier>{
 
@@ -85,7 +86,7 @@ public class Fichiers extends ArrayList<Fichier>{
 			//System.out.println(this.get(i+1));
 			if (fichierCourant.isFile()) {
 				//while (fichierCourant.getParentFile() == this.get(i+1)){
-					fichierCourant.renommerFichier(nom, it++);
+				fichierCourant.renommerFichier(nom, it++);
 				//}
 			}
 		}

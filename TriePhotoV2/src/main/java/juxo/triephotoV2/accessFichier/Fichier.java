@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.ConcurrentModificationException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -290,7 +291,7 @@ public class Fichier extends File {
 			jour = "0" + jour;
 		}
 		if (this.getPriseVue() != null){
-			Fichier destination = new Fichier(this.getParentFile() + "/" + this.getYearFile() + "-" + mois + "-" + jour + " - " + iterator + this.getFileExtension());
+			Fichier destination = new Fichier(this.getParentFile() + "/" + this.getYearFile() + "-" + mois + "-" + jour + " -- " + iterator + this.getFileExtension());
 			this.renameTo(destination);
 		}else{
 			System.out.println("Le fichier " + this.getName() + " ne possède pas de date de prise de vue.");
@@ -316,9 +317,13 @@ public class Fichier extends File {
 	 * Renomme un fichier avec le choix du nom par l'utilisateur
 	 * @param iterator
 	 */
-	public void renommerFichier(String nom, int iterator) {
-		Fichier destination = new Fichier(this.getParentFile() + "/" + nom + " - " + iterator + this.getFileExtension());
-		this.renameTo(destination);
+	public void renommerFichier(String nom, int iterator) throws ConcurrentModificationException {
+		File destination = new File(this.getParentFile() + "/" + nom + " -- " + iterator + this.getFileExtension());
+		if(!(destination.exists())){
+			this.renameTo(destination);
+		}else
+			System.out.println("Fichier ayant déjà le même nom");
+		
 	}
 	
 	//plein d'accesseurs qui servent à rien
