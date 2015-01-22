@@ -15,6 +15,7 @@ import javax.ws.rs.client.Invocation.Builder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.Feature;
 
+import juxo.apiCalendar.definitionClasse.GeocodeResponse;
 import juxo.apiCalendar.definitionClasse.InfoToken;
 import juxo.apiCalendar.definitionClasse.MediaGroup;
 import juxo.system.XMLToolsSerialisation;
@@ -51,7 +52,9 @@ public class ConnexionGoogle {
 		
 		if(token!=null){
 			token.refreshToken(clientId, CALENDAR_SCOPE);
-		}else{
+		}
+		
+		if(token.getStatut()==400 || token==null ){
 			buildRequestToken();
 			openResquestTokenUrl();
 			String code = JOptionPane.showInputDialog("Veuillez indiquer le code retour");
@@ -147,6 +150,30 @@ public class ConnexionGoogle {
 		return m;
 	}
 
+	/**
+	 * afficher l'address qui correspond une latitude et une longitude
+	 * @param latitude
+	 * @param longitude
+	 * @return
+	 */
+	public String getAddress(double latitude, double longitude){
+		GeocodeResponse g = null;
+		String ville = null;
+    	Feature filterFeature = OAuth2ClientSupport.feature(token.getTokenAcess());
+		Client client = ClientBuilder.newBuilder().register(filterFeature).build();
+		WebTarget service = null;
+		try{
+			String s = "https://maps.googleapis.com/maps/api/geocode/xml?latlng="+latitude+","+longitude;
+			service = client.target(s);
+			Builder b = service.request();
+			g = b.get(GeocodeResponse.class);
+			ville = g.getResult().get(0).getVille();
+		}catch(javax.ws.rs.NotFoundException e){
+			System.out.println(e);
+		}
+		return ville;
+	}
+	
 	/**
 	 * Permet d'obtenir des informations sur un token enregistré.
 	 * notamment la durée de sa validité.

@@ -21,26 +21,22 @@ public class Fichiers extends ArrayList<Fichier>{
 		listFichier(dossier.listFiles());
 	}
 
-	/***
-	 * Création d'un objet fichiers avec sa liste de fichier format objet Fichier
-	 * En fait le fichier est un dossier
-	 * @param dossier
-	 * @throws IOException
+	/**
+	 * Déplace les fichiers de la liste dans le nouveau nom de dossier
+	 * @param Nwxdossier
+	 * @param nomDossier
 	 */
-	/*public Fichiers(Fichier dossier) throws IOException {
-		listeFichiers = dossier.listFiles();
-	}
-
-	public Fichiers() {
-		listeFichiers = null;
-	}*/
-
 	public void deplacerTousLesFichier(String Nwxdossier, String nomDossier){
 		for(Fichier f : this){
 			f.Deplacer(Nwxdossier, nomDossier);
 		}
 	}
 	
+	/**
+	 * Déplace tous les fichiers sans indiquer de nouveau dossier
+	 * Donc par ANNEES ET PAR MOIS
+	 * @param Nwxdossier
+	 */
 	public void deplacerTousLesFichier(String Nwxdossier){
 		for(Fichier f : this){
 			f.Deplacer(Nwxdossier);
@@ -52,34 +48,40 @@ public class Fichiers extends ArrayList<Fichier>{
 	 * Fontion de renommage des fichiers par date
 	 * @param listeFichiers
 	 */
-	public static void renommerFichiersParDate(File[] listeFichiers){
-		int it=0;
+	public void renommerFichiersParDate(){
+		int it=1;
 		//On parcours tous les fichiers
-		for (File fichierCourant : listeFichiers) {
+		for (Fichier fichierCourant : this) {
 			if (fichierCourant.isFile()) {
-				Fichier monfic = new Fichier(fichierCourant.getPath());
-				monfic.renommerFichierParDate(it++);
+				fichierCourant.renommerFichierParDate(it++);
 			}
 		}
 	}
 	
 	/**
-	 * Fontion de renommage des fichiers par date
+	 * Fontion de renommage des fichiers en fonction du lieu de prise de vue
 	 * @param listeFichiers
 	 */
-	public static void renommerFichiers(File[] listeFichiers){
-		int it=0;
-		String nom = "Nom fichier";
-		/*@SuppressWarnings("resource")
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Veuillez choisir le nom d'un fichier :");
-		String nom = sc.nextLine();
-		System.out.println("Vous avez saisi : " + nom);*/
+	public void renommerFichiersParLieu(){
+		int it=1;
 		//On parcours tous les fichiers
-		for (File fichierCourant : listeFichiers) {
+		for (Fichier fichierCourant : this) {
 			if (fichierCourant.isFile()) {
-				Fichier monfic = new Fichier(fichierCourant.getPath());
-				monfic.renommerFichier(nom, it++);
+				fichierCourant.renommerFichierParLieu(it++);
+			}
+		}
+	}
+	
+	/**
+	 * Fontion de renommage des fichiers simple
+	 * @param listeFichiers
+	 * @param nom
+	 */
+	public void renommerFichiers(String nom){
+		int it=1;
+		for (Fichier fichierCourant : this) {
+			if (fichierCourant.isFile()) {
+				fichierCourant.renommerFichier(nom, it++);
 			}
 		}
 	}
@@ -93,12 +95,12 @@ public class Fichiers extends ArrayList<Fichier>{
 	public static void listFichier(File[] listeFichiers) throws IOException {
 		//On parcours tous les fichiers
 		Fichier monfic = null;
-		
+		Fichier.listFic = new MapDateFichiers();
+		Fichier.listDossier = new Fichiers();
 		for (File fic : listeFichiers) {
 			if(!(fic.isHidden()))
 				monfic = new Fichier(fic.getPath());
 			
-			System.out.println(monfic);
 			if (monfic!= null && monfic.isDirectory()){
 				listFichier(monfic.listFiles());
 			}

@@ -9,24 +9,21 @@ import javax.swing.JList;
 public class ProcessGlobal extends Thread{
 		
 	private ArrayList<String> listeCalendrier;
-	private JList<String> logueur;
-	private String dossierAnalyse;
 	private String destinationDossier;
+	private String sourceDossier;
 	
-	public ProcessGlobal(ArrayList<String> l, JList<String> logueur, String dossier, String destinationDossier){
+	public ProcessGlobal(ArrayList<String> l, JList<String> logueur, String dossierAnalyse, String destinationDossier){
 		this.listeCalendrier =  l;
-		this.logueur = logueur;
-		this.dossierAnalyse=dossier;
 		this.destinationDossier=destinationDossier;
+		sourceDossier = dossierAnalyse;
 	}
 	
 	public void run() {
 
-		Thread tConnexionGoogle = new ProcessChargementEvenements(listeCalendrier, logueur);
+		Thread tConnexionGoogle = new ProcessChargementEvenements(listeCalendrier);
 		tConnexionGoogle.start();
-		//Thread tChargementFichier = new ProcessChargementFichier(dossierAnalyse);
-		
-	//	tChargementFichier.start();
+		/*Thread tChargementFichier = new ProcessChargementFichier(sourceDossier);
+		tChargementFichier.start();*/
 		try {
 			tConnexionGoogle.join();
 		//	tChargementFichier.join();
@@ -34,10 +31,7 @@ public class ProcessGlobal extends Thread{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		Thread tTrieFichier = new ProcessTrieFichier(destinationDossier, logueur);
+		Thread tTrieFichier = new ProcessTrieFichier(destinationDossier);
 		tTrieFichier.start();
-		DefaultListModel<String> model = (DefaultListModel<String>) logueur.getModel();
-		model.add(0, "Fermeture des processus");
 	}
 }

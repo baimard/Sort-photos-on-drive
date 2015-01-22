@@ -33,7 +33,19 @@ public class apiCalendarTest{
 		System.out.println("token google : " + c.getToken().getTokenAcess());
 		System.out.println("Refresh token google : " + c.getToken().getRefreshToken());
 		System.out.println("token time valide : " + c.getToken().getExpirationDelay());
+		testReceptionDonnees();
 	}
+	
+	@Test
+	public void testGetAddress(){
+		ConnexionGoogle c = ConnexionGoogle.googleConnexion;
+		System.out.println(c.getAddress(48.8588589,2.3470599));
+		System.out.println(c.getAddress(44.8688317,-0.6803284));
+		System.out.println(c.getAddress(45.0472061,-0.43125));
+		System.out.println(c.getAddress(31.2243489,121.4767528));
+	}
+	
+	
 	@Ignore
 	@Test
 	public void testSerialisationNouvelleConnexion() throws IOException, URISyntaxException{
@@ -71,8 +83,6 @@ public class apiCalendarTest{
 
 	}
 
-	
-	@Test
 	public void testReceptionDonnees(){
 		if(ConnexionGoogle.googleConnexion.getToken().getExpirationDelay()!=0){
 			ConnexionGoogle c = ConnexionGoogle.googleConnexion;
