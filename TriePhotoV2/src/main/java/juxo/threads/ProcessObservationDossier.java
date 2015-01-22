@@ -1,14 +1,11 @@
 package juxo.threads;
 
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
-
 import juxo.notification.AfficherNotification;
 import juxo.system.Parametrage;
 import juxo.triephotoV2.accessFichier.Fichier;
 import juxo.triephotoV2.accessFichier.Fichiers;
+import juxo.triephotoV2.accessFichier.MapDateFichiers;
 
 public class ProcessObservationDossier extends Thread {
 	
@@ -23,12 +20,10 @@ public class ProcessObservationDossier extends Thread {
 		
 		while (execution){
 			try {
-				Fichier.listFic = new HashMap<Calendar, Fichiers>();
-				Fichier f = new Fichier(p.getDossierSource());
-				Fichiers.generationListe(f);
-				Map<Calendar, Fichiers> ff = Fichier.listFic;
-				AfficherNotification.AfficherMsgNotification(ff.size()+" Fichiers ont été trouvés");
-				sleep(10000);
+				Fichier.listFic = new MapDateFichiers();
+				Fichiers.generationListe(new Fichier(p.getDossierSource()));
+				AfficherNotification.AfficherMsgNotification(Fichier.listFic.size()+" Fichiers ont été trouvés");
+				sleep(60000);
 			} catch (InterruptedException e) {
 				System.out.println(e);
 			}catch(IOException e){

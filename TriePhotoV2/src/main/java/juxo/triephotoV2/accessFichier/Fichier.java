@@ -27,7 +27,7 @@ public class Fichier extends File {
 
 	private static final long serialVersionUID = 1L;
 	
-	public static Map<Calendar, Fichiers> listFic = new HashMap<Calendar, Fichiers>();
+	public static MapDateFichiers listFic = new MapDateFichiers();
 	public static Fichiers listDossier = new Fichiers();
 	public static final String separator = "" + separatorChar;
 	

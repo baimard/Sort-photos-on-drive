@@ -95,7 +95,8 @@ public class Fichiers extends ArrayList<Fichier>{
 	public static void listFichier(File[] listeFichiers) throws IOException {
 		//On parcours tous les fichiers
 		Fichier monfic = null;
-		
+		Fichier.listFic = new MapDateFichiers();
+		Fichier.listDossier = new Fichiers();
 		for (File fic : listeFichiers) {
 			if(!(fic.isHidden()))
 				monfic = new Fichier(fic.getPath());
