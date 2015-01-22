@@ -159,7 +159,7 @@ public class Fichier extends File {
 		if (this.isFile() 
 				&& this.deplacable 
 				&& this.ladatefic != null) {
-			File ledossier = new File(Nwxdossier + "/" + this.getYearFile() + "/" + this.getMouthFile());
+			File ledossier = new File(Nwxdossier + "/" + this.getYearFile() + "/" + this.getMonthFile());
 			rangerFichier(ledossier);
 		} else if(this.isFile() 
 				&& this.deplacable ){
@@ -178,7 +178,7 @@ public class Fichier extends File {
 		if (this.isFile() 
 				&& this.deplacable 
 				&& this.ladatefic != null) {
-			File ledossier = new File(Nwxdossier + "/" + this.getYearFile() + "/" + this.getMouthFile()+ "/" + nomDossier);
+			File ledossier = new File(Nwxdossier + "/" + this.getYearFile() + "/" + this.getMonthFile()+ "/" + nomDossier);
 			rangerFichier(ledossier);
 		} else if(this.isFile() 
 				&& this.deplacable ){
@@ -279,9 +279,9 @@ public class Fichier extends File {
 	 * @param iterator
 	 */
 	public void renommerFichierParDate(int iterator){
-		String mois = Integer.toString(this.getMouthFile());
+		String mois = Integer.toString(this.getMonthFile());
 		String jour = Integer.toString(this.getDayFile());
-		if (this.getMouthFile() < 10){
+		if (this.getMonthFile() < 10){
 			mois = "0" + mois;
 		}
 		if (this.getDayFile() < 10){
@@ -328,7 +328,7 @@ public class Fichier extends File {
 		return ladatefic.get(Calendar.MINUTE);
 	}
 
-	public int getMouthFile() {
+	public int getMonthFile() {
 		return ladatefic.get(Calendar.MONTH) + 1;
 	}
 
