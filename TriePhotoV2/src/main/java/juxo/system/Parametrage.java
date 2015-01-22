@@ -2,6 +2,9 @@ package juxo.system;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.List;
+
+import juxo.triephotoV2.methode.AbstractSortMethod;
 
 public class Parametrage implements Serializable {
 
@@ -13,7 +16,7 @@ public class Parametrage implements Serializable {
 	private static Parametrage param;
 	
 	
-
+	private List<AbstractSortMethod> methodSort;
 	private String dossierSource;
 	private String dossierDestination;
 	

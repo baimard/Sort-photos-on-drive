@@ -7,7 +7,7 @@ public class parametrageTest {
 	
 	@Test
 	public void testInstanciationParametrage(){
-		new Parametrage("/Users/Juxo", "/Users/Juxo");
+		new Parametrage("/Users/Juxo/Pictures/est", "/Users/Juxo");
 	}
 	
 	@Test

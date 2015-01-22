@@ -8,9 +8,7 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.ConcurrentModificationException;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 
 import javax.imageio.ImageIO;
 
@@ -29,7 +27,6 @@ public class Fichier extends File {
 	private static final long serialVersionUID = 1L;
 	
 	public static MapDateFichiers listFic = new MapDateFichiers();
-	public static Fichiers listDossier = new Fichiers();
 	public static final String separator = "" + separatorChar;
 	
 	private Calendar ladatefic;
@@ -81,8 +78,6 @@ public class Fichier extends File {
 				listFic.put(ladatefic, l);
 			}
 				
-		}else{
-			listDossier.add(this);
 		}
 	}
 	
@@ -157,16 +152,16 @@ public class Fichier extends File {
 	 * Permet de déplacer le fichier (uniquement si pas dossier)
 	 * @param Nwxdossier
 	 */
-	public void Deplacer(String Nwxdossier) {
+	public void Deplacer(String nomDossierDestination) {
 		//Si la date du fichier n'est pas null
 		if (this.isFile() 
 				&& this.deplacable 
 				&& this.ladatefic != null) {
-			File ledossier = new File(Nwxdossier + "/" + this.getYearFile() + "/" + this.getMonthFile());
+			File ledossier = new File(nomDossierDestination + "/" + this.getYearFile() + "/" + this.getMonthFile());
 			rangerFichier(ledossier);
 		} else if(this.isFile() 
 				&& this.deplacable ){
-			this.isolerFichier(Nwxdossier);
+			this.isolerFichier(nomDossierDestination);
 		}
 	}
 	
@@ -176,17 +171,29 @@ public class Fichier extends File {
 	 * @param Nwxdossier
 	 * @param nomDossier
 	 */
-	public void Deplacer(String Nwxdossier, String nomDossier) {
+	public void Deplacer(String nomDossierDestination, String nomDossier) {
 		//Si la date du fichier n'est pas null
 		if (this.isFile() 
 				&& this.deplacable 
 				&& this.ladatefic != null) {
-			File ledossier = new File(Nwxdossier + "/" + this.getYearFile() + "/" + this.getMonthFile()+ "/" + nomDossier);
+			File ledossier = new File(nomDossierDestination + "/" + this.getYearFile() + "/" + this.getMonthFile()+ "/" + nomDossier);
 			rangerFichier(ledossier);
 		} else if(this.isFile() 
 				&& this.deplacable ){
-			this.isolerFichier(Nwxdossier);
+			this.isolerFichier(nomDossierDestination);
 		}
+	}
+	
+	public boolean DeplacerParLieu(String Nwxdossier){
+		String laVille = null;
+		if(getGPS() != null)
+			laVille = ConnexionGoogle.googleConnexion.getAddress(lat, lon);
+		boolean retour = false;
+		if(laVille!=null){
+			Deplacer(Nwxdossier, laVille);
+			retour=true;
+		}
+		return retour;
 	}
 	
 	/**
