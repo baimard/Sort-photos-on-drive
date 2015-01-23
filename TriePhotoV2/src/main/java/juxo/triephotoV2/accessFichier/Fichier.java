@@ -13,6 +13,7 @@ import java.util.Iterator;
 import javax.imageio.ImageIO;
 
 import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
+import juxo.system.Parametrage;
 
 import com.drew.imaging.ImageMetadataReader;
 import com.drew.imaging.ImageProcessingException;
@@ -157,7 +158,7 @@ public class Fichier extends File {
 		if (this.isFile() 
 				&& this.deplacable 
 				&& this.ladatefic != null) {
-			File ledossier = new File(nomDossierDestination + "/" + this.getYearFile() + "/" + this.getMonthFile());
+			File ledossier = new File(nomDossierDestination + Parametrage.SEPARATOR + this.getYearFile() + Parametrage.SEPARATOR + this.getMonthFile());
 			rangerFichier(ledossier);
 		} else if(this.isFile() 
 				&& this.deplacable ){
@@ -176,7 +177,7 @@ public class Fichier extends File {
 		if (this.isFile() 
 				&& this.deplacable 
 				&& this.ladatefic != null) {
-			File ledossier = new File(nomDossierDestination + "/" + this.getYearFile() + "/" + this.getMonthFile()+ "/" + nomDossier);
+			File ledossier = new File(nomDossierDestination + Parametrage.SEPARATOR+ this.getYearFile() + Parametrage.SEPARATOR + this.getMonthFile()+ Parametrage.SEPARATOR + nomDossier);
 			rangerFichier(ledossier);
 		} else if(this.isFile() 
 				&& this.deplacable ){
@@ -202,7 +203,7 @@ public class Fichier extends File {
 	 * @param ledossier
 	 */
 	private void rangerFichier(File ledossier){
-		File adeplacer = new File(ledossier + "/" + this.getName());
+		File adeplacer = new File(ledossier + Parametrage.SEPARATOR + this.getName());
 		if ((!ledossier.exists()) && (deplacable)) {
 			ledossier.mkdirs();
 			this.renameTo(adeplacer);
@@ -216,8 +217,8 @@ public class Fichier extends File {
 	 * @param Nwxdossier
 	 */
 	private void isolerFichier(String Nwxdossier){
-		File ledossier = new File(Nwxdossier + "/impossibleadeplacer");
-		File adeplacer = new File(ledossier + "/" + this.getName());
+		File ledossier = new File(Nwxdossier + Parametrage.SEPARATOR + "impossibleadeplacer");
+		File adeplacer = new File(ledossier + Parametrage.SEPARATOR + this.getName());
 		if ((!ledossier.exists()) && (deplacable)) {
 			ledossier.mkdirs();
 			this.renameTo(adeplacer);
@@ -298,7 +299,7 @@ public class Fichier extends File {
 			jour = "0" + jour;
 		}
 		if (this.getPriseVue() != null){
-			Fichier destination = new Fichier(this.getParentFile() + "/" + this.getYearFile() + "-" + mois + "-" + jour + " -- " + iterator + this.getFileExtension());
+			Fichier destination = new Fichier(this.getParentFile() + Parametrage.SEPARATOR + this.getYearFile() + "-" + mois + "-" + jour + " -- " + iterator + this.getFileExtension());
 			this.renameTo(destination);
 		}else{
 			System.out.println("Le fichier " + this.getName() + " ne possède pas de date de prise de vue.");
@@ -313,7 +314,7 @@ public class Fichier extends File {
 		if (this.getGPS() != null){
 			ConnexionGoogle c = ConnexionGoogle.googleConnexion;
 			String ville = c.getAddress(lat, lon);
-			Fichier destination = new Fichier(this.getParentFile() + "/" + ville + " - " + iterator + this.getFileExtension());
+			Fichier destination = new Fichier(this.getParentFile() + Parametrage.SEPARATOR + ville + " - " + iterator + this.getFileExtension());
 			this.renameTo(destination);
 		}else {
 			System.out.println("Le fichier " + this.getName() + " ne possède pas de coordonnées GPS.");
@@ -325,7 +326,7 @@ public class Fichier extends File {
 	 * @param iterator
 	 */
 	public void renommerFichier(String nom, int iterator) throws ConcurrentModificationException {
-		File destination = new File(this.getParentFile() + "/" + nom + " -- " + iterator + this.getFileExtension());
+		File destination = new File(this.getParentFile() + Parametrage.SEPARATOR + nom + " -- " + iterator + this.getFileExtension());
 		if(!(destination.exists())){
 			this.renameTo(destination);
 		}else

@@ -3,15 +3,17 @@ package juxo.notification;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import juxo.threads.ProcessObservationDossier;
+
 public class NotificationListener implements ActionListener{
 
 	
    public void actionPerformed(ActionEvent e) {
 	
 	   switch (e.getActionCommand()){
-	   		case "message" :
-
-
+	   
+	   		case "StoperThread" :
+	   			ProcessObservationDossier.stopExecution();
 			break;
 			
 	   		case "Quitter" :
@@ -19,7 +21,7 @@ public class NotificationListener implements ActionListener{
 	   		break;
 	   }
 	   
-	 
+	   
 		
 
    }
