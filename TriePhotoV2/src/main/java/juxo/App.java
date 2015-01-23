@@ -18,7 +18,7 @@ public class App
 		try {
 
 			new AfficherNotification();
-			
+			AfficherNotification.AfficherMsgNotification("Application Lancée");
 			Parametrage.chargerObjet();
 			if(Parametrage.getInstance() == null){
 				//Ouvrir ici la fenêtre de premier démarrage et bloque l'écoute du thread d'observation
