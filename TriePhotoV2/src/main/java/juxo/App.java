@@ -18,7 +18,7 @@ public class App
 		//new UiUser();
 		new UiParametre();
 
-	/*	try {
+	try {
 			new UiParametre();
 			new AfficherNotification();
 			AfficherNotification.AfficherMsgNotification("Application Lancée");
@@ -36,6 +36,6 @@ public class App
 			
 		} catch (AWTException e) {
 			e.printStackTrace();
-		}*/
+		}
     }
 }
