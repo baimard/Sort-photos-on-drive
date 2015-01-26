@@ -4,6 +4,8 @@ import java.awt.AWTException;
 import java.io.IOException;
 
 
+
+import juxo.UiTriePhotoV2.UiParametre;
 import juxo.UiTriePhotoV2.UiUser;
 import juxo.notification.AfficherNotification;
 import juxo.system.Parametrage;
@@ -14,9 +16,10 @@ public class App
 	public static void main( String[] args ) throws IOException
     {
 		//new UiUser();
-		//new UiParametre();
-		try {
+		new UiParametre();
 
+	/*	try {
+			new UiParametre();
 			new AfficherNotification();
 			AfficherNotification.AfficherMsgNotification("Application Lancée");
 			Parametrage.chargerObjet();
@@ -33,6 +36,6 @@ public class App
 			
 		} catch (AWTException e) {
 			e.printStackTrace();
-		}
+		}*/
     }
 }
