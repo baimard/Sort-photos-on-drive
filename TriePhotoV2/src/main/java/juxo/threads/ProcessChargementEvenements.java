@@ -26,8 +26,6 @@ public class ProcessChargementEvenements extends Thread{
 	
 	public void run() {
 		
-			DefaultListModel<String> model = (DefaultListModel<String>) jlab.getModel();
-			model.add(0, "Connexion Google ...");
 
 	    	try{
 	    		if(ConnexionGoogle.googleConnexion == null)
@@ -52,7 +50,5 @@ public class ProcessChargementEvenements extends Thread{
 
 	    	}
 	    	
-			model.add(0, "Connexion réussie :) - " + Evenement.evenements.size() + " d'événements trouvés");
-			model.add(0, "Votre clef d'accès : " + ConnexionGoogle.googleConnexion.getToken().getTokenAcess());
 	  }				
 }

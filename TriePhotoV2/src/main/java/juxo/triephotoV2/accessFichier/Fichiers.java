@@ -3,7 +3,6 @@ package juxo.triephotoV2.accessFichier;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.ConcurrentModificationException;
 
 public class Fichiers extends ArrayList<Fichier>{
 
@@ -11,8 +10,8 @@ public class Fichiers extends ArrayList<Fichier>{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	//private File[] listeFichiers;
-
+	
+	
 	/***
 	 * Création d'un objet fichiers avec sa liste de fichiers format String
 	 * @param dossier
@@ -27,9 +26,9 @@ public class Fichiers extends ArrayList<Fichier>{
 	 * @param Nwxdossier
 	 * @param nomDossier
 	 */
-	public void deplacerTousLesFichier(String Nwxdossier, String nomDossier){
+	public void deplacerTousLesFichier(String nomDossierDestination, String nomDossier){
 		for(Fichier f : this){
-			f.Deplacer(Nwxdossier, nomDossier);
+			f.Deplacer(nomDossierDestination, nomDossier);
 		}
 	}
 	
@@ -38,12 +37,43 @@ public class Fichiers extends ArrayList<Fichier>{
 	 * Donc par ANNEES ET PAR MOIS
 	 * @param Nwxdossier
 	 */
-	public void deplacerTousLesFichier(String Nwxdossier){
+	public void deplacerTousLesFichier(String nomDossierDestination){
 		for(Fichier f : this){
-			f.Deplacer(Nwxdossier);
+			f.Deplacer(nomDossierDestination);
 		}
 	}
 	
+	/**
+	 * Déplace les fichier dans un dossier avec la date du jour de prise de vue
+	 * @param nomDossierDestination
+	 */
+	public void deplacerTousLesFichierDateJour(String nomDossierDestination){
+		for(Fichier f: this){
+			f.Deplacer(nomDossierDestination, Integer.toString(f.getDayFile()));
+		}
+	}
+	
+	/**
+	 * Déplace par lieu de prise de vue
+	 * Puis efface le fichier de la liste pour pouvoir effectuer une nouvelle itération
+	 * @param Nwxdossier
+	 */
+	public void deplacerTousLesFichiersParLieu(String nomDossierDestination){
+		
+		ArrayList<Fichier> faSupprimer = new ArrayList<Fichier>();
+		for(Fichier f : this){
+			if(f.DeplacerParLieu(nomDossierDestination)){
+				faSupprimer.add(f);
+			}
+		}
+		supprimerFichier(faSupprimer);
+	}
+
+	public void supprimerFichier(ArrayList<Fichier> f){
+		for(Fichier fic : f){
+			this.remove(fic);
+		}
+	}
 	
 	/**
 	 * Fontion de renommage des fichiers par date
