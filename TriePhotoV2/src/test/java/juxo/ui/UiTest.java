@@ -1,18 +1,15 @@
 package juxo.ui;
-/*
+
 import java.io.IOException;
 import java.util.Date;
-
 import javax.swing.JFrame;
 import juxo.UiTriePhotoV2.UiParametre;
 import juxo.UiTriePhotoV2.UiPremierDemarrage;
-
 import juxo.UiTriePhotoV2.UiQuestion;
 import juxo.apiCalendar.Evenement;
 import juxo.apiCalendar.Evenements;
 import juxo.triephotoV2.accessFichier.Fichier;
 import juxo.triephotoV2.accessFichier.Fichiers;
-
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -51,4 +48,3 @@ public class UiTest {
 		Thread.sleep(10000);
 	}
 }
-*/
