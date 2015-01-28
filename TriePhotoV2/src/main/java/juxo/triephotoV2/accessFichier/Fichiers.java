@@ -175,13 +175,14 @@ public class Fichiers extends ArrayList<Fichier>{
 		//On parcours tous les fichiers
 		Fichier monfic = null;
 		for (File fic : listeFichiers) {
-			if(!(fic.isHidden()))
+			System.out.println("fic = " + fic);
+			if(!(fic.isHidden())){
 				monfic = new Fichier(fic.getPath());
-			
+				System.out.println("monfic = " + monfic);
+			} 
 			if (monfic!= null && monfic.isDirectory()){
 				listFichier(monfic.listFiles());
 			}
-
 		}
 	}
 }
