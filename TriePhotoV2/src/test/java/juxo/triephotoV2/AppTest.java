@@ -54,14 +54,7 @@ public class AppTest
 			//mesFichiers.renommerFichiersParDate();		
 		}
 	}
-<<<<<<< HEAD
-	
-=======
 
-<<<<<<< Updated upstream
-=======
->>>>>>> FETCH_HEAD
->>>>>>> Stashed changes
 	@Ignore
 	@Test
 	public void testChargementFichiers() throws IOException{
