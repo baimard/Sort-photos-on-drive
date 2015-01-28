@@ -45,12 +45,23 @@ public class AppTest
 		while(i.hasNext()){
 			Calendar cal = i.next();
 			Fichiers mesFichiers = Fichier.listFic.get(cal);
+			Collections.sort(mesFichiers, new FichierComparator());
+			for (Fichier fic : mesFichiers){
+				System.out.println(fic + " Dossier PArent : " + fic.getParentDirectory());
+			}
 			//mesFichiers.renommerFichiersParLieu();
-			mesFichiers.renommerFichiers("D");
+			//mesFichiers.renommerFichiers("D");
 			//mesFichiers.renommerFichiersParDate();		
 		}
 	}
+<<<<<<< HEAD
+	
+=======
 
+<<<<<<< Updated upstream
+=======
+>>>>>>> FETCH_HEAD
+>>>>>>> Stashed changes
 	@Ignore
 	@Test
 	public void testChargementFichiers() throws IOException{

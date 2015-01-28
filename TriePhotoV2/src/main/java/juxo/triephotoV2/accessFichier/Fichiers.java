@@ -140,7 +140,7 @@ public class Fichiers extends ArrayList<Fichier>{
 	 * @param listeFichiers
 	 * @param nom
 	 */
-	public void renommerFichiers(String nom) throws IndexOutOfBoundsException{
+	/*public void renommerFichiers(String nom) throws IndexOutOfBoundsException{
 		int it=1;
 		for (Fichier fichierCourant : this) {
 			try{
@@ -163,34 +163,23 @@ public class Fichiers extends ArrayList<Fichier>{
 				System.out.println("Fin de la liste");
 			}
 		}
+	}*/
+	
+	public void renommerFichiers(String nom) throws IndexOutOfBoundsException{
+		int it=1;
+		for (Fichier fichierCourant : this) {
+			if (fichierCourant.isFile()) {
+				fichierCourant.renommerFichier(nom, it++);
+			}	
+		}
 	}
-	/*
-	/***
+
+	/**
 	 * Trie des fichiers contenus dans un dossier
 	 * On parcour le dossier sans se soucier de son arborescence
 	 * @param Nwxdossier
 	 * @throws IOException
-	 
-	public static void listFichier(File[] listeFichiers) throws IOException {
-		//On parcours tous les fichiers
-		Fichier monfic = null;
-		for (File fic : listeFichiers) {
-			if(!(fic.isHidden()) && fic.isFile()){
-				monfic = new Fichier(fic.getPath());
-				//System.out.println("monfic = " + monfic);
-			} 
-		}
-		for (File fic : listeFichiers) {
-			if(!(fic.isHidden()) && fic.isDirectory()){
-				monfic = new Fichier(fic.getPath());
-				//System.out.println("monDoss = " + monfic);
-			} 
-			if (monfic!= null && monfic.isDirectory()){
-				listFichier(monfic.listFiles());
-			}
-		}
-	}
-	*/
+	 */
 	
 	public static void listFichier(File[] listeFichiers) throws IOException {
 		//On parcours tous les fichiers

@@ -1,4 +1,4 @@
-package juxo.ui;
+/*package juxo.ui;
 
 import java.io.IOException;
 import java.util.Date;
@@ -47,4 +47,4 @@ public class UiTest {
 		UiPremierDemarrage param = new UiPremierDemarrage();
 		Thread.sleep(10000);
 	}
-}
+}*/
