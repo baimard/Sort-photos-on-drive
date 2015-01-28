@@ -34,14 +34,14 @@ public class AppTest
 	@Test
 	public void testRenommage() throws IOException, URISyntaxException{
 		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball2");
-		//ConnexionGoogle.googleConnexion = new ConnexionGoogle();
+		ConnexionGoogle.googleConnexion = new ConnexionGoogle();
 		Fichiers.listFichier(f.listFiles());
 		java.util.Iterator<Calendar> i = Fichier.listFic.keySet().iterator();
 		while(i.hasNext()){
 			Calendar cal = i.next();
 			Fichiers mesFichiers = Fichier.listFic.get(cal);
 			//mesFichiers.renommerFichiersParLieu();
-			mesFichiers.renommerFichiers("C");
+			mesFichiers.renommerFichiers("D");
 			//mesFichiers.renommerFichiersParDate();		
 		}
 	}
