@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.swing.JFrame;
 
+import juxo.UiTriePhotoV2.UiParametre;
 import juxo.UiTriePhotoV2.UiQuestion;
 import juxo.apiCalendar.Evenement;
 import juxo.apiCalendar.Evenements;
