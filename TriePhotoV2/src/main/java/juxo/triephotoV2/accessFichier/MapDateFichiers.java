@@ -73,7 +73,6 @@ public class MapDateFichiers extends HashMap<Calendar, Fichiers> {
 					listFichier.deplacerTousLesFichier(Parametrage.getInstance().getDossierDestination(), evenement.getNomPropre());
 					listeDesObjetsSupprimer.add(maClefDeListe);
 				}
-
 			}
 		}
 		supprimerDesEntrees(listeDesObjetsSupprimer);
@@ -84,4 +83,15 @@ public class MapDateFichiers extends HashMap<Calendar, Fichiers> {
 			this.remove(c);
 		}
 	}
+	
+	public ArrayList<Fichier> getAllFichierItem(){
+		ArrayList<Fichier> newList  = new ArrayList<Fichier>();
+		for(Fichiers lesFichiers : this.values()){
+			for(Fichier fic : lesFichiers){
+				newList.add(fic);
+			}
+		}
+		return newList;
+	}
+	
 }

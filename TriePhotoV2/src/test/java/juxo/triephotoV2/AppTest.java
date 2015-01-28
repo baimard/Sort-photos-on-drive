@@ -7,6 +7,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Collections;
 
 import org.junit.Test;
@@ -50,6 +51,7 @@ public class AppTest
 		}
 	}
 
+	@Ignore
 	@Test
 	public void testChargementFichiers() throws IOException{
 		Fichier f = new Fichier("/Users/Juxo/Pictures/est");
@@ -64,6 +66,14 @@ public class AppTest
 				System.out.println(fic);
 			}
 		}
+	}
+	
+	@Test
+	public void testTrieFichier() throws IOException{
+		Fichier f = new Fichier("/Users/Juxo/Pictures/est");
+		Fichiers.listFichier(f.listFiles());
+		ArrayList<Fichier> maCollec = Fichier.listFic.getAllFichierItem();
+		Collections.sort(maCollec, new FichierComparator());
 	}
 	
 	@Ignore
