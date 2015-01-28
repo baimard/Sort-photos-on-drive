@@ -1,10 +1,13 @@
 package juxo.triephotoV2;
 
+import java.awt.List;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 
 import org.junit.Test;
 import org.junit.Ignore;
@@ -16,6 +19,7 @@ import juxo.apiCalendar.definitionClasse.MediaGroup;
 import juxo.system.Parametrage;
 import juxo.threads.ProcessChargementEvenements;
 import juxo.triephotoV2.accessFichier.Fichier;
+import juxo.triephotoV2.accessFichier.FichierComparator;
 import juxo.triephotoV2.accessFichier.Fichiers;
 import juxo.triephotoV2.accessFichier.MapDateFichiers;
 import juxo.triephotoV2.methode.AbstractSortMethod;
@@ -30,7 +34,7 @@ import juxo.triephotoV2.methode.SortNormal;
 public class AppTest
 {
 
-	
+	@Ignore
 	@Test
 	public void testRenommage() throws IOException, URISyntaxException{
 		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball2");
@@ -46,20 +50,22 @@ public class AppTest
 		}
 	}
 
-	@Ignore
 	@Test
 	public void testChargementFichiers() throws IOException{
-		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball2");
+		Fichier f = new Fichier("/Users/Juxo/Pictures/est");
+		
 		Fichiers.listFichier(f.listFiles());
 		java.util.Iterator<Calendar> i = Fichier.listFic.keySet().iterator();
 		while(i.hasNext()){
 			Calendar cal = i.next();
 			Fichiers mesFichiers = Fichier.listFic.get(cal);
+			Collections.sort(mesFichiers, new FichierComparator());
 			for (Fichier fic : mesFichiers){
 				System.out.println(fic);
 			}
 		}
 	}
+	
 	@Ignore
 	@Test
 	public void testTrieFichiersDepuisLaMap() throws IOException, URISyntaxException, InterruptedException{

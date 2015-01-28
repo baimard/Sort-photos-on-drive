@@ -6,8 +6,11 @@ import juxo.triephotoV2.accessFichier.Fichier;
 
 public class SortByEvent extends AbstractSortMethod {
 
+	private static SortByEvent mySort;
+	
 	public SortByEvent(int p) {
 		super(p);
+		mySort = this;
 	}
 	
 	@Override
@@ -17,4 +20,8 @@ public class SortByEvent extends AbstractSortMethod {
 		}
 	}
 
+	public SortByEvent getInstance(){
+		return mySort;
+	}
+	
 }

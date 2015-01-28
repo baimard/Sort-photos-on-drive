@@ -21,7 +21,8 @@ import com.drew.metadata.Metadata;
 import com.drew.metadata.exif.ExifSubIFDDirectory;
 import com.drew.metadata.exif.GpsDirectory;
 
-public class Fichier extends File {
+
+public class Fichier  extends File{
 	
 
 	private static final long serialVersionUID = 1L;
@@ -368,4 +369,11 @@ public class Fichier extends File {
 		return deplacable;
 	}
 
+	public String getParentDirectory(){		
+		String[] mesRepertoires = this.getParent().toString().split(SEPARATOR);
+		int derniereOccurence = mesRepertoires.length - 1;
+		return mesRepertoires[derniereOccurence];
+	}
+
+	
 }

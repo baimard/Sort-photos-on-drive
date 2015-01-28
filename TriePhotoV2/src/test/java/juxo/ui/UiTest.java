@@ -1,14 +1,9 @@
 package juxo.ui;
-
+/*
 import java.io.IOException;
 import java.util.Date;
 
 import javax.swing.JFrame;
-
-
-
-
-
 import juxo.UiTriePhotoV2.UiParametre;
 import juxo.UiTriePhotoV2.UiPremierDemarrage;
 
@@ -56,3 +51,4 @@ public class UiTest {
 		Thread.sleep(10000);
 	}
 }
+*/

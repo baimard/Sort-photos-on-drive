@@ -9,8 +9,8 @@ public abstract class AbstractSortMethod {
 	
 	public void purge(){
 		//Vider les listes pour relancer un processus
-		
 	}
 	
 	public abstract void trie();
+	
 }

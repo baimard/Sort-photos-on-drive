@@ -164,13 +164,13 @@ public class Fichiers extends ArrayList<Fichier>{
 			}
 		}
 	}
-	
+	/*
 	/***
 	 * Trie des fichiers contenus dans un dossier
 	 * On parcour le dossier sans se soucier de son arborescence
 	 * @param Nwxdossier
 	 * @throws IOException
-	 */
+	 
 	public static void listFichier(File[] listeFichiers) throws IOException {
 		//On parcours tous les fichiers
 		Fichier monfic = null;
@@ -184,6 +184,20 @@ public class Fichiers extends ArrayList<Fichier>{
 			if(!(fic.isHidden()) && fic.isDirectory()){
 				monfic = new Fichier(fic.getPath());
 				//System.out.println("monDoss = " + monfic);
+			} 
+			if (monfic!= null && monfic.isDirectory()){
+				listFichier(monfic.listFiles());
+			}
+		}
+	}
+	*/
+	
+	public static void listFichier(File[] listeFichiers) throws IOException {
+		//On parcours tous les fichiers
+		Fichier monfic = null;
+		for (File fic : listeFichiers) {
+			if(!(fic.isHidden())){
+				monfic = new Fichier(fic.getPath());
 			} 
 			if (monfic!= null && monfic.isDirectory()){
 				listFichier(monfic.listFiles());
