@@ -2,6 +2,7 @@ package juxo.ui;
 
 import javax.swing.JFrame;
 
+import juxo.UiTriePhotoV2.UiPremierDemarrage;
 import juxo.UiTriePhotoV2.UiQuestion;
 import juxo.apiCalendar.Evenements;
 import juxo.triephotoV2.accessFichier.Fichiers;
@@ -16,4 +17,11 @@ public class UiTest {
 	//ew UiQuestion(JFrame parent, String title, boolean modal, Evenements l, Fichiers fs);
 	 
  }
+	
+	 public void testUiPremierDemarrage(){
+			
+			
+			new UiPremierDemarrage();
+			 
+		 }
 }
