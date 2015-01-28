@@ -29,28 +29,20 @@ import juxo.triephotoV2.methode.SortNormal;
  */
 public class AppTest
 {
-	/*public void testChargementFichier() throws IOException{
-		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball");
-		Fichiers.listFichier(f.listFiles());
-		Map<Calendar, Fichiers> listFic = Fichier.listFic;
-	}*/
-	@Ignore
+
+	
 	@Test
 	public void testRenommage() throws IOException, URISyntaxException{
 		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball2");
-		//Fichiers.listFichier(f.listFiles());
-		//System.out.println(f.getGPS());
-		ConnexionGoogle.googleConnexion = new ConnexionGoogle();
-		//System.out.println(c.getAddress(f.getGPS().getLatitude(),f.getGPS().getLongitude()));
-		//ConnexionGoogle.googleConnexion.getAddress(f.getGPS().getLatitude(),f.getGPS().getLongitude());
+		//ConnexionGoogle.googleConnexion = new ConnexionGoogle();
 		Fichiers.listFichier(f.listFiles());
 		java.util.Iterator<Calendar> i = Fichier.listFic.keySet().iterator();
 		while(i.hasNext()){
 			Calendar cal = i.next();
 			Fichiers mesFichiers = Fichier.listFic.get(cal);
 			//mesFichiers.renommerFichiersParLieu();
-			mesFichiers.renommerFichiers("I");
-			
+			mesFichiers.renommerFichiers("C");
+			//mesFichiers.renommerFichiersParDate();		
 		}
 	}
 
@@ -68,7 +60,7 @@ public class AppTest
 			}
 		}
 	}
-	
+	@Ignore
 	@Test
 	public void testTrieFichiersDepuisLaMap() throws IOException, URISyntaxException, InterruptedException{
 		new ConnexionGoogle();

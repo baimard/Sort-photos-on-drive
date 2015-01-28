@@ -83,8 +83,24 @@ public class Fichiers extends ArrayList<Fichier>{
 		int it=1;
 		//On parcours tous les fichiers
 		for (Fichier fichierCourant : this) {
-			if (fichierCourant.isFile()) {
-				fichierCourant.renommerFichierParDate(it++);
+			try{
+				int index = this.indexOf(fichierCourant);
+				if (fichierCourant.isFile()) {
+					if(index+1 < this.size()){
+						if(fichierCourant.getParentFile().compareTo(this.get(index+1).getParentFile()) == 0){
+							fichierCourant.renommerFichierParDate(it++);
+						}
+						else{
+							fichierCourant.renommerFichierParDate(it++);
+							it=1;
+						}
+					}
+					else{
+						fichierCourant.renommerFichierParDate(it++);
+					}
+				}	
+			}catch(IndexOutOfBoundsException e){
+				System.out.println("Fin de la liste");
 			}
 		}
 	}
@@ -97,8 +113,24 @@ public class Fichiers extends ArrayList<Fichier>{
 		int it=1;
 		//On parcours tous les fichiers
 		for (Fichier fichierCourant : this) {
-			if (fichierCourant.isFile()) {
-				fichierCourant.renommerFichierParLieu(it++);
+			try{
+				int index = this.indexOf(fichierCourant);
+				if (fichierCourant.isFile()) {
+					if(index+1 < this.size()){
+						if(fichierCourant.getParentFile().compareTo(this.get(index+1).getParentFile()) == 0){
+							fichierCourant.renommerFichierParLieu(it++);
+						}
+						else{
+							fichierCourant.renommerFichierParLieu(it++);
+							it=1;
+						}
+					}
+					else{
+						fichierCourant.renommerFichierParLieu(it++);
+					}
+				}	
+			}catch(IndexOutOfBoundsException e){
+				System.out.println("Fin de la liste");
 			}
 		}
 	}
@@ -143,13 +175,14 @@ public class Fichiers extends ArrayList<Fichier>{
 		//On parcours tous les fichiers
 		Fichier monfic = null;
 		for (File fic : listeFichiers) {
-			if(!(fic.isHidden()))
+			System.out.println("fic = " + fic);
+			if(!(fic.isHidden())){
 				monfic = new Fichier(fic.getPath());
-			
+				System.out.println("monfic = " + monfic);
+			} 
 			if (monfic!= null && monfic.isDirectory()){
 				listFichier(monfic.listFiles());
 			}
-
 		}
 	}
 }
