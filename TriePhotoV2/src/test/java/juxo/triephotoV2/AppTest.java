@@ -43,8 +43,8 @@ public class AppTest
 		Collections.sort(maCollec, new FichierComparatorDate());
 		Collections.sort(maCollec, new FichierComparatorDirectoryParent());
 		//maCollec.renommerFichiersParLieu();
-		maCollec.renommerFichiers("Lé©¢:\\?");
-		//maCollec.renommerFichiersParDate();
+		//maCollec.renommerFichiers("Lé a");
+		maCollec.renommerFichiersParDate();
 		/*for (Fichier fic : maCollec){
 			System.out.println(fic);
 		}*/
