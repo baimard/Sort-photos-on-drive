@@ -84,8 +84,8 @@ public class MapDateFichiers extends HashMap<Calendar, Fichiers> {
 		}
 	}
 	
-	public ArrayList<Fichier> getAllFichierItem(){
-		ArrayList<Fichier> newList  = new ArrayList<Fichier>();
+	public Fichiers getAllFichierItem(){
+		Fichiers newList  = new Fichiers();
 		for(Fichiers lesFichiers : this.values()){
 			for(Fichier fic : lesFichiers){
 				newList.add(fic);

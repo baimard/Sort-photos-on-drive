@@ -83,25 +83,21 @@ public class Fichiers extends ArrayList<Fichier>{
 		int it=1;
 		//On parcours tous les fichiers
 		for (Fichier fichierCourant : this) {
-			try{
-				int index = this.indexOf(fichierCourant);
-				if (fichierCourant.isFile()) {
-					if(index+1 < this.size()){
-						if(fichierCourant.getParentFile().compareTo(this.get(index+1).getParentFile()) == 0){
-							fichierCourant.renommerFichierParDate(it++);
-						}
-						else{
-							fichierCourant.renommerFichierParDate(it++);
-							it=1;
-						}
+			int index = this.indexOf(fichierCourant);
+			if (fichierCourant.isFile()) {
+				if(index+1 < this.size()){
+					if(fichierCourant.getParentFile().compareTo(this.get(index+1).getParentFile()) == 0){
+						fichierCourant.renommerFichierParDate(it++);
 					}
 					else{
 						fichierCourant.renommerFichierParDate(it++);
+						it=1;
 					}
-				}	
-			}catch(IndexOutOfBoundsException e){
-				System.out.println("Fin de la liste");
-			}
+				}
+				else{
+					fichierCourant.renommerFichierParDate(it++);
+				}
+			}	
 		}
 	}
 	
@@ -113,25 +109,21 @@ public class Fichiers extends ArrayList<Fichier>{
 		int it=1;
 		//On parcours tous les fichiers
 		for (Fichier fichierCourant : this) {
-			try{
-				int index = this.indexOf(fichierCourant);
-				if (fichierCourant.isFile()) {
-					if(index+1 < this.size()){
-						if(fichierCourant.getParentFile().compareTo(this.get(index+1).getParentFile()) == 0){
-							fichierCourant.renommerFichierParLieu(it++);
-						}
-						else{
-							fichierCourant.renommerFichierParLieu(it++);
-							it=1;
-						}
+			int index = this.indexOf(fichierCourant);
+			if (fichierCourant.isFile()) {
+				if(index+1 < this.size()){
+					if(fichierCourant.getParentFile().compareTo(this.get(index+1).getParentFile()) == 0){
+						fichierCourant.renommerFichierParLieu(it);
 					}
 					else{
-						fichierCourant.renommerFichierParLieu(it++);
+						fichierCourant.renommerFichierParLieu(it);
+						it=1;
 					}
-				}	
-			}catch(IndexOutOfBoundsException e){
-				System.out.println("Fin de la liste");
-			}
+				}
+				else{
+					fichierCourant.renommerFichierParLieu(it);
+				}
+			}	
 		}
 	}
 	
@@ -140,10 +132,10 @@ public class Fichiers extends ArrayList<Fichier>{
 	 * @param listeFichiers
 	 * @param nom
 	 */
-	/*public void renommerFichiers(String nom) throws IndexOutOfBoundsException{
+	public void renommerFichiers(String nom){
 		int it=1;
-		for (Fichier fichierCourant : this) {
-			try{
+		if (isThisStringValid(nom)){
+			for (Fichier fichierCourant : this) {
 				int index = this.indexOf(fichierCourant);
 				if (fichierCourant.isFile()) {
 					if(index+1 < this.size()){
@@ -159,20 +151,25 @@ public class Fichiers extends ArrayList<Fichier>{
 						fichierCourant.renommerFichier(nom, it++);
 					}
 				}	
-			}catch(IndexOutOfBoundsException e){
-				System.out.println("Fin de la liste");
-			}
-		}
-	}*/
-	
-	public void renommerFichiers(String nom) throws IndexOutOfBoundsException{
-		int it=1;
-		for (Fichier fichierCourant : this) {
-			if (fichierCourant.isFile()) {
-				fichierCourant.renommerFichier(nom, it++);
-			}	
+			}				
+		}else{
+			System.out.println("Attention, le nom " + nom + " contient un ou plusieurs caractères interdits. Les caractères interdits sont / \\ : * ? \" < > |");
 		}
 	}
+	
+	public boolean isThisStringValid(String s)
+    {
+        for (int i=0 ; i<s.length() ; i++)
+        {
+            if (s.charAt(i) == '/' || s.charAt(i) == '\\' ||
+                s.charAt(i) == ':' || s.charAt(i) == '*' ||
+                s.charAt(i) == '?' || s.charAt(i) == '"' ||
+                s.charAt(i) == '<' || s.charAt(i) == '>' ||
+                s.charAt(i) == '|' || s.length()>254)
+                return false;
+        }
+        return true;
+    }
 
 	/**
 	 * Trie des fichiers contenus dans un dossier
