@@ -53,50 +53,77 @@ public class UiQuestion extends JDialog {
 		listEve = new JList<Evenement>(listEvenement);
 		listEve.setPreferredSize(new Dimension(500, 200));
 		
-		JLabel j1 = new JLabel("Veuillez sÃ©lectionner l'Ã©vÃ©nement correspondant Ã  vos images :");
+		JLabel j1 = new JLabel("Veuillez sélectionner l'événement correspondant à vos images :");
 		listpan.add(j1);
 		listpan.add(listEve);
 		
 
-		JLabel j2 = new JLabel("Des images peuvent ne pas Ãªtre affichÃ©es en raison de leur format :");
+		JLabel j2 = new JLabel("Des images peuvent ne pas être affichées en raison de leur format :");
 		listpan.add(j2);
+
 		
 		if(fs.size()>3){
-		  Random randomGenerator = new Random();
+			Random randomGenerator = new Random();
 		    int nbaleatoire;
-		    for (int idx = 0; idx <= 2; idx++){
-		    	nbaleatoire = randomGenerator.nextInt(fs.size() - 1);
-		    	BufferedImage bimg1 = fs.get(nbaleatoire).getImage(180);
-		  	    //String simg1 = fs.get(nbaleatoire).getName();
-			    JLabel image1 = null;
-			    if(bimg1!=null){
-					image1 = new JLabel(new ImageIcon(bimg1));
-					image1.setMaximumSize(new Dimension(200, 200));
-					//image1.setText(simg1);
-					listpan.add(image1);
-			    }
-		    }
-		}else{
-			BufferedImage bimg1 = fs.get(0).getImage(180);
-	  	    //String simg1 = fs.get(nbaleatoire).getName();
-		    JLabel image1 = null;
-		    if(bimg1!=null){
-				image1 = new JLabel(new ImageIcon(bimg1));
-				image1.setMaximumSize(new Dimension(200, 200));
-				//image1.setText(simg1);
-				listpan.add(image1);
+		    int i = 0;
+		    int sizeListe = fs.size();
+		    int tab_i[] = new int[sizeListe];
+		    
+		    
+		    while(i<sizeListe-1){
+		    	nbaleatoire = randomGenerator.nextInt(sizeListe);
+		    	System.out.println(nbaleatoire);
+		    	if(rechercheTableau(tab_i, nbaleatoire)){
+		    		tab_i[i]= nbaleatoire;
+		    		i++;
+		    		BufferedImage bimg1 = fs.get(nbaleatoire).getImage(180);
+		    		 JLabel image1 = null;
+					    if(bimg1!=null){
+							image1 = new JLabel(new ImageIcon(bimg1));
+							image1.setMaximumSize(new Dimension(200, 200));
+							listpan.add(image1);
+					    }
+		    	}
+		    	
 		    }
 		}
-	
-		JButton valideButton = new JButton("DÃ©placer les images");
-		valideButton.addActionListener(new UiQuestionActionListener(this));
-		this.getContentPane().add(listpan);
-		listpan.add(valideButton);
-	}
+		    
+		  	else{
+					BufferedImage bimg1 = fs.get(0).getImage(180);
+				    JLabel image1 = null;
+				    if(bimg1!=null){
+						image1 = new JLabel(new ImageIcon(bimg1));
+						image1.setMaximumSize(new Dimension(200, 200));
+						listpan.add(image1);
+				    }
+				}
+		    
+				JButton valideButton = new JButton("Déplacer les images");
+				valideButton.addActionListener(new UiQuestionActionListener(this));
+				this.getContentPane().add(listpan);
+				listpan.add(valideButton);
+			}
 
-	public Evenement showUiQuestion(){
-		this.setVisible(true);
-		return listEve.getSelectedValue();
-	}
+			public Evenement showUiQuestion(){
+				this.setVisible(true);
+				return listEve.getSelectedValue();
+			}
+			
+			public static boolean rechercheTableau(int tab[], int i){
+				boolean retour = true;
+				for(int x : tab){
+					System.out.println(x);
+					if(x==i){
+						retour = false;
+						break;
+					}
+				}
+				return retour;
+		    }
+			
+		}	
+				
+		
+
+
 	
-}
