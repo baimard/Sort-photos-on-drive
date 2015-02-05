@@ -26,7 +26,6 @@ public class Parametrage implements Serializable {
 	public Parametrage(String dossierSource, String dossierDestination) {
 		this.dossierSource = dossierSource;
 		this.dossierDestination = dossierDestination;
-		getPathSystem();
 		PARAM = this;
 		
 	}
@@ -59,26 +58,15 @@ public class Parametrage implements Serializable {
 			System.out.println(e);
 		}
 	}
-
-	public String getOperatingSystem() {
-		String strOSName = System.getProperty("os.name");
-		return strOSName.toLowerCase().substring(0, 3);
+	
+	public void addMethodSort(AbstractSortMethod theMethode){
+		methodSort.add(theMethode);
+	}
+	
+	public void delMethodeSort(AbstractSortMethod theMethode){
+		//TODO Créer la méthode
 	}
 
-	public void  getPathSystem (){
-		switch(getOperatingSystem()) {
-			case "win":
-				SEPARATOR="\\";
-			break;
-			case "mac":
-				SEPARATOR="/";
-			break;
-			case "lin":
-				SEPARATOR="/";
-			break;
-		}
-	}	
-	
 	public String getDossierSource() {
 		return dossierSource;
 	}

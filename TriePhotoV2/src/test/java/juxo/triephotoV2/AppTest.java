@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 
 import org.junit.Test;
 import org.junit.Ignore;
@@ -16,13 +17,14 @@ import juxo.apiCalendar.definitionClasse.MediaGroup;
 import juxo.system.Parametrage;
 import juxo.threads.ProcessChargementEvenements;
 import juxo.triephotoV2.accessFichier.Fichier;
+import juxo.triephotoV2.accessFichier.FichierComparatorDate;
+import juxo.triephotoV2.accessFichier.FichierComparatorDirectoryParent;
 import juxo.triephotoV2.accessFichier.Fichiers;
 import juxo.triephotoV2.accessFichier.MapDateFichiers;
 import juxo.triephotoV2.methode.AbstractSortMethod;
 import juxo.triephotoV2.methode.SortByDayDate;
 import juxo.triephotoV2.methode.SortByEvent;
 import juxo.triephotoV2.methode.SortByPlace;
-import juxo.triephotoV2.methode.SortNormal;
 
 /**
  * Unit test for simple App.
@@ -33,33 +35,51 @@ public class AppTest
 	
 	@Test
 	public void testRenommage() throws IOException, URISyntaxException{
-		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball2");
 		ConnexionGoogle.googleConnexion = new ConnexionGoogle();
+		
+		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball2");
 		Fichiers.listFichier(f.listFiles());
-		java.util.Iterator<Calendar> i = Fichier.listFic.keySet().iterator();
-		while(i.hasNext()){
-			Calendar cal = i.next();
-			Fichiers mesFichiers = Fichier.listFic.get(cal);
-			//mesFichiers.renommerFichiersParLieu();
-			mesFichiers.renommerFichiers("D");
-			//mesFichiers.renommerFichiersParDate();		
-		}
+		Fichiers maCollec = Fichier.listFic.getAllFichierItem();
+		Collections.sort(maCollec, new FichierComparatorDate());
+		Collections.sort(maCollec, new FichierComparatorDirectoryParent());
+		//maCollec.renommerFichiersParLieu();
+		//maCollec.renommerFichiers("Lé a");
+		maCollec.renommerFichiersParDate();
+		/*for (Fichier fic : maCollec){
+			System.out.println(fic);
+		}*/
 	}
 
 	@Ignore
 	@Test
 	public void testChargementFichiers() throws IOException{
-		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball2");
+		Fichier f = new Fichier("/Users/Juxo/Pictures/est");
+		
 		Fichiers.listFichier(f.listFiles());
 		java.util.Iterator<Calendar> i = Fichier.listFic.keySet().iterator();
 		while(i.hasNext()){
 			Calendar cal = i.next();
 			Fichiers mesFichiers = Fichier.listFic.get(cal);
+			Collections.sort(mesFichiers, new FichierComparatorDirectoryParent());
 			for (Fichier fic : mesFichiers){
 				System.out.println(fic);
 			}
 		}
 	}
+	
+	@Ignore
+	@Test
+	public void testTrieFichier() throws IOException{
+		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball2");
+		Fichiers.listFichier(f.listFiles());
+		ArrayList<Fichier> maCollec = Fichier.listFic.getAllFichierItem();
+		Collections.sort(maCollec, new FichierComparatorDate());
+		Collections.sort(maCollec, new FichierComparatorDirectoryParent());
+		for (Fichier fic : maCollec){
+			System.out.println(fic);
+		}
+	}
+	
 	@Ignore
 	@Test
 	public void testTrieFichiersDepuisLaMap() throws IOException, URISyntaxException, InterruptedException{

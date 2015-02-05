@@ -6,8 +6,11 @@ import juxo.triephotoV2.accessFichier.Fichier;
 
 public class SortByPlace extends AbstractSortMethod {
 
+	private static SortByPlace mySort;
+	
 	public SortByPlace(int p) {
 		super(p);
+		mySort = this;
 	}
 
 	@Override
@@ -17,4 +20,8 @@ public class SortByPlace extends AbstractSortMethod {
 		}
 	}
 
+	public SortByPlace getInstance(){
+		return mySort;
+	}
+	
 }

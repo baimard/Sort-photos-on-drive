@@ -2,27 +2,14 @@ package juxo.ui;
 
 import java.io.IOException;
 import java.util.Date;
-
 import javax.swing.JFrame;
-
-
-
-
-
-
-
-
 import juxo.UiTriePhotoV2.UiParametre;
-//import juxo.UiTriePhotoV2.UiPremierDemarrage;
-
-
 import juxo.UiTriePhotoV2.UiQuestion;
 import juxo.UiTriePhotoV2.UiUser;
 import juxo.apiCalendar.Evenement;
 import juxo.apiCalendar.Evenements;
 import juxo.triephotoV2.accessFichier.Fichier;
 import juxo.triephotoV2.accessFichier.Fichiers;
-
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -44,7 +31,6 @@ public class UiTest {
 		/*Fichier f6 = new Fichier("C:\\Users\\RAKOTOMALALA\\Documents\\Projet Image Test\\modules-icone.png");
 		Fichier f7 = new Fichier("C:\\Users\\RAKOTOMALALA\\Documents\\Projet Image Test\\parametres-icone.png");
 		Fichier f8 = new Fichier("C:\\Users\\RAKOTOMALALA\\Documents\\Projet Image Test\\pictograms-nps-services-library.png");
-		*/
 		Fichiers fichiers = new Fichiers();
 		fichiers.add(f1);
 		fichiers.add(f2);
@@ -82,3 +68,4 @@ public class UiTest {
 	}
 	
 }
+
