@@ -66,9 +66,7 @@ public class UiTest {
 		UiUser gui = new UiUser();
 		Thread.sleep(10000);
 	}
-<<<<<<< HEAD
-}
-=======
+
 	
 }
 
