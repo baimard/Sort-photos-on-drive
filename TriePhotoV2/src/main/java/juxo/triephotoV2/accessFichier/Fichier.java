@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
-import java.util.ConcurrentModificationException;
 import java.util.Date;
 import java.util.Iterator;
 
@@ -316,6 +315,7 @@ public class Fichier  extends File{
 			String ville = c.getAddress(lat, lon);
 			Fichier destination = new Fichier(this.getParentFile() + SEPARATOR + ville + " - " + iterator + this.getFileExtension());
 			this.renameTo(destination);
+			iterator++;
 		}else {
 			System.out.println("Le fichier " + this.getName() + " ne possède pas de coordonnées GPS.");
 		}	
@@ -325,12 +325,11 @@ public class Fichier  extends File{
 	 * Renomme un fichier avec le choix du nom par l'utilisateur
 	 * @param iterator
 	 */
-	public void renommerFichier(String nom, int iterator) throws ConcurrentModificationException {
+	public void renommerFichier(String nom, int iterator){
 
 		File destination = new File(this.getParentFile() + SEPARATOR + nom + " - " + iterator + this.getFileExtension());
 		if(!(destination.exists())){
 			this.renameTo(destination);
-			System.out.println(destination);
 		}else
 			System.out.println("Le fichier " + this.getName() + " existe déjà.");
 		

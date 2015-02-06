@@ -2,9 +2,9 @@ package juxo.triephotoV2.accessFichier;
 
 import java.util.Comparator;
 
-public class FichierComparator implements Comparator<Fichier>{
+public class FichierComparatorDirectoryParent implements Comparator<Fichier>{
 
-	public FichierComparator(){
+	public FichierComparatorDirectoryParent(){
 		
 	}
 	
