@@ -68,25 +68,30 @@ public class UiQuestion extends JDialog {
 		    int i = 0;
 		    int sizeListe = fs.size();
 		    int tab_i[] = new int[sizeListe];
+	
 		    
 		    
-		    while(i<sizeListe-1){
+		    while(i < sizeListe-1){
 		    	nbaleatoire = randomGenerator.nextInt(sizeListe);
 		    	System.out.println(nbaleatoire);
+		  
 		    	if(rechercheTableau(tab_i, nbaleatoire)){
 		    		tab_i[i]= nbaleatoire;
 		    		i++;
+		    
 		    		BufferedImage bimg1 = fs.get(nbaleatoire).getImage(180);
 		    		 JLabel image1 = null;
 					    if(bimg1!=null){
 							image1 = new JLabel(new ImageIcon(bimg1));
 							image1.setMaximumSize(new Dimension(200, 200));
 							listpan.add(image1);
+					      
 					    }
 		    	}
 		    	
 		    }
 		}
+		
 		    
 		  	else{
 					BufferedImage bimg1 = fs.get(0).getImage(180);
