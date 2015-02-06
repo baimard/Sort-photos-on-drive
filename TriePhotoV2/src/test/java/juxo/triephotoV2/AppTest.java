@@ -17,7 +17,7 @@ import juxo.apiCalendar.definitionClasse.MediaGroup;
 import juxo.system.Parametrage;
 import juxo.threads.ProcessChargementEvenements;
 import juxo.triephotoV2.accessFichier.Fichier;
-import juxo.triephotoV2.accessFichier.FichierComparatorDate;
+//import juxo.triephotoV2.accessFichier.FichierComparatorDate;
 import juxo.triephotoV2.accessFichier.FichierComparatorDirectoryParent;
 import juxo.triephotoV2.accessFichier.Fichiers;
 import juxo.triephotoV2.accessFichier.MapDateFichiers;
@@ -40,7 +40,7 @@ public class AppTest
 		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball2");
 		Fichiers.listFichier(f.listFiles());
 		Fichiers maCollec = Fichier.listFic.getAllFichierItem();
-		Collections.sort(maCollec, new FichierComparatorDate());
+		//Collections.sort(maCollec, new FichierComparatorDate());
 		Collections.sort(maCollec, new FichierComparatorDirectoryParent());
 		//maCollec.renommerFichiersParLieu();
 		//maCollec.renommerFichiers("Lé a");
@@ -73,7 +73,7 @@ public class AppTest
 		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball2");
 		Fichiers.listFichier(f.listFiles());
 		ArrayList<Fichier> maCollec = Fichier.listFic.getAllFichierItem();
-		Collections.sort(maCollec, new FichierComparatorDate());
+	//	Collections.sort(maCollec, new FichierComparatorDate());
 		Collections.sort(maCollec, new FichierComparatorDirectoryParent());
 		for (Fichier fic : maCollec){
 			System.out.println(fic);
