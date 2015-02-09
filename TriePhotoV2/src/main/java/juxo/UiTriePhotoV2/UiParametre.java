@@ -150,13 +150,13 @@ UiParametreActionListener UiParametreListener = new UiParametreActionListener(so
 		label5.setIcon(iconFrequence);
 		panIconFrequence.add(label5);
 		
-		ImageIcon iconAuthent = new ImageIcon(getClass().getResource("Resource\\notification-icone.png"));
+		ImageIcon iconAuthent = new ImageIcon(getClass().getResource("Resource\\icone-cle.png"));
 		JLabel label6 = new JLabel();
 		label6.setIcon(iconAuthent);
 		panIconAuthent.add(label6);
 		
 		
-		ImageIcon iconReInit = new ImageIcon(getClass().getResource("Resource\\notification-icone.png"));
+		ImageIcon iconReInit = new ImageIcon(getClass().getResource("Resource\\rafraichir-icone.png"));
 		JLabel label7 = new JLabel();
 		label7.setIcon(iconReInit);
 		panIconReInit.add(label7);
