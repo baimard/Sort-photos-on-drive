@@ -13,6 +13,7 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JTextField;
 
 import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
+import juxo.system.Parametrage;
 import juxo.system.XMLToolsSerialisation;
 
 public class UiParametreActionListener implements ActionListener {
@@ -119,7 +120,16 @@ public class UiParametreActionListener implements ActionListener {
 			UiParametre.f.getReInitCode().setEnabled(false);
 			UiParametre.f.getCodAuthent().setText("Vous connecter...");
 			break;
+			
+		case "intervalActualisation" :
+			comboElement c = (comboElement) UiParametre.f.getFrequences().getSelectedItem();
+			c.parametreInterval();
+			Parametrage.getInstance().enregistrerObjet();
+		break;
+			
 		}
+		
+
 		
 
 	}

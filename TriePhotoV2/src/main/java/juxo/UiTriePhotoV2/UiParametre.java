@@ -108,7 +108,7 @@ public class UiParametre extends JFrame {
 	private ButtonGroup renomGroupBtn = new ButtonGroup();
 	private ButtonGroup notifGroupBtn = new ButtonGroup();
 
-	private JComboBox frequences;
+	private JComboBox<comboElement> frequences;
 
 	public UiParametre() {
 
@@ -189,12 +189,14 @@ public class UiParametre extends JFrame {
 				"Resource" + Fichier.SEPARATOR + "horloge-icone.png"));
 
 		// ______________________ les objets ______________________
-
-		Object[] elements = new Object[] { "Toutes les minutes",
-				"Tous les 5 minutes", "Tous les 10 minutes",
-				"Tous les 15 minutes", "Tous les 30 min", "Toutes les heures" };
-		frequences = new JComboBox(elements);
-
+		
+		comboElement cE1= new comboElement("Toutes les minutes", 60000);
+		comboElement cE2= new comboElement("Toutes les 5 minutes", 300000);
+		
+		frequences = new JComboBox<comboElement>();
+		frequences.addItem(cE1);
+		frequences.addItem(cE2);
+		
 		JPanel content = new JPanel();
 
 		// JScrollPane pane = new
@@ -337,6 +339,8 @@ public class UiParametre extends JFrame {
 		renomLieu.addActionListener(UiParametreListener);
 		renomNomSpec.setActionCommand("renomNomSpecifie");
 		renomNomSpec.addActionListener(UiParametreListener);
+		frequences.setActionCommand("intervalActualisation");
+		frequences.addActionListener(UiParametreListener);
 
 		
 		codAuthent.setActionCommand("DemandeGoogle");
@@ -505,6 +509,16 @@ public class UiParametre extends JFrame {
 	public void setReInitCode(JButton reInitCode) {
 		this.reInitCode = reInitCode;
 	}
+
+	public JComboBox getFrequences() {
+		return frequences;
+	}
+
+	public void setFrequences(JComboBox frequences) {
+		this.frequences = frequences;
+	}
+	
+	
 	
 	
 }

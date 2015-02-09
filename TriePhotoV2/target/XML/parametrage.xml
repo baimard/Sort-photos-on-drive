@@ -8,7 +8,7 @@
    <string>/Users/Juxo/Pictures/est</string>
   </void>
   <void property="intervalObservation">
-   <int>600000</int>
+   <int>60000</int>
   </void>
  </object>
 </java>
