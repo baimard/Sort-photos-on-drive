@@ -76,7 +76,6 @@ public class ConnexionGoogle {
 	 * @param aPI_KEY2 
 	 */
 	public ConnexionGoogle(String token){
-
 		this.token = new OAuth2Token(token);
 		googleConnexion=this;
 	}
@@ -210,7 +209,6 @@ public class ConnexionGoogle {
     		System.out.println(e);
     	}
     }
-
 
 	public OAuth2Token getToken() {
 		return token;

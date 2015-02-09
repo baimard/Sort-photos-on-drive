@@ -37,12 +37,7 @@ public class UiTest {
 		Fichier f7 = new Fichier("C:\\Users\\RAKOTOMALALA\\Documents\\Projet Image Test\\6.JPG");
 		Fichier f8 = new Fichier("C:\\Users\\RAKOTOMALALA\\Documents\\Projet Image Test\\7.JPG");
 		Fichiers fichiers = new Fichiers();
-
-<<<<<<< Updated upstream
-        
-
-=======
->>>>>>> Stashed changes
+		
 		fichiers.add(f1);
 		fichiers.add(f2);
 		fichiers.add(f3);
@@ -52,16 +47,12 @@ public class UiTest {
 		fichiers.add(f7);
 		fichiers.add(f8);
 		
-		UiQuestion quest = new UiQuestion(null, "Evènement et photos", true, evenements, fichiers);
+		UiQuestion quest = new UiQuestion(null, "Evï¿½nement et photos", true, evenements, fichiers);
 		quest.showUiQuestion();
 		//Thread.sleep(5000);
 	}
 	
 	
-<<<<<<< Updated upstream
-=======
-	@Ignore
->>>>>>> Stashed changes
 	@Test
 	public void testUiParametre() throws InterruptedException  {
 		UiParametre param = new UiParametre();
