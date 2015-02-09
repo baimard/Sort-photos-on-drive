@@ -1,4 +1,4 @@
-package juxo.ui;
+ï»¿package juxo.ui;
 
 import java.io.IOException;
 import java.util.Date;
@@ -38,7 +38,6 @@ public class UiTest {
 		Fichier f8 = new Fichier("C:\\Users\\RAKOTOMALALA\\Documents\\Projet Image Test\\7.JPG");
 		Fichiers fichiers = new Fichiers();
 
-
 		fichiers.add(f1);
 		fichiers.add(f2);
 		fichiers.add(f3);
@@ -48,15 +47,11 @@ public class UiTest {
 		fichiers.add(f7);
 		fichiers.add(f8);
 		
-		UiQuestion quest = new UiQuestion(null, "Evènement et photos", true, evenements, fichiers);
+		UiQuestion quest = new UiQuestion(null, "Evï¿½nement et photos", true, evenements, fichiers);
 		quest.showUiQuestion();
 		//Thread.sleep(5000);
 	}
 	
-	
-
-
-
 	@Test
 	public void testUiParametre() throws InterruptedException  {
 		UiParametre param = new UiParametre();
