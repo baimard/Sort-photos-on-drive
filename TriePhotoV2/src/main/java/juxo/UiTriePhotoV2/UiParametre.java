@@ -94,16 +94,16 @@ public class UiParametre extends JFrame {
 	private JButton codAuthent = new JButton("Obtenir mon code d'authentification");
 	private JButton reInitCode = new JButton("Reinitialiser la connexion google");
 	
-	private JRadioButtonMenuItem  modeDate = new JRadioButtonMenuItem ("Date");
-	private JRadioButtonMenuItem  modeEvenement = new JRadioButtonMenuItem ("Evenement");
-	private JRadioButtonMenuItem  modeLieu = new JRadioButtonMenuItem ("Lieu");
+	private JCheckBox  modeDate = new JCheckBox  ("Date");
+	private JCheckBox  modeEvenement = new JCheckBox ("Evenement");
+	private JCheckBox  modeLieu = new JCheckBox ("Lieu");
 	private JRadioButtonMenuItem  renomDate = new JRadioButtonMenuItem ("Renommer par date de prise de vue");
 	private JRadioButtonMenuItem  renomLieu = new JRadioButtonMenuItem ("Renommer par lieu");
 	private JRadioButtonMenuItem  renomNomSpec = new JRadioButtonMenuItem ("Renommer avec le nom suivant:");
 	private JRadioButtonMenuItem  activer = new JRadioButtonMenuItem ("Notification ativee");
 	private JRadioButtonMenuItem  desactiver = new JRadioButtonMenuItem ("Notification desactivee");
 	
-	private ButtonGroup triGroupBtn = new ButtonGroup();
+	
 	private ButtonGroup renomGroupBtn = new ButtonGroup();
 	private ButtonGroup notifGroupBtn = new ButtonGroup();
 	
@@ -162,21 +162,21 @@ public class UiParametre extends JFrame {
 		label5.setIcon(iconFrequence);
 		panIconFrequence.add(label5);
 		
-<<<<<<< Updated upstream
-		ImageIcon iconAuthent = new ImageIcon(getClass().getResource("Resource\\icone-cle.png"));
-=======
+
+		//ImageIcon iconAuthent = new ImageIcon(getClass().getResource("Resource\\icone-cle.png"));
+
 		ImageIcon iconAuthent = new ImageIcon(getClass().getResource("Resource"+Fichier.SEPARATOR+"notification-icone.png"));
->>>>>>> Stashed changes
+
 		JLabel label6 = new JLabel();
 		label6.setIcon(iconAuthent);
 		panIconAuthent.add(label6);
 		
 		
-<<<<<<< Updated upstream
+
 		ImageIcon iconReInit = new ImageIcon(getClass().getResource("Resource\\rafraichir-icone.png"));
-=======
-		ImageIcon iconReInit = new ImageIcon(getClass().getResource("Resource"+Fichier.SEPARATOR+"notification-icone.png"));
->>>>>>> Stashed changes
+
+		
+
 		JLabel label7 = new JLabel();
 		label7.setIcon(iconReInit);
 		panIconReInit.add(label7);
@@ -350,11 +350,7 @@ public class UiParametre extends JFrame {
 	    pan1.add(pan11);
 	    pan1.add(panChoixDossierS);
 	    pan1.add(panChoixDossierC);
-	    
-	    
-	    triGroupBtn.add(modeDate);
-	    triGroupBtn.add(modeEvenement);
-	    triGroupBtn.add(modeLieu);
+	   
 	    
 	    panModeTri1.add(modeDate);
 	    panModeTri1.add(modeEvenement);

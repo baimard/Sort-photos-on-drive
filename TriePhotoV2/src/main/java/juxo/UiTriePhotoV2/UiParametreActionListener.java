@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 import javax.swing.AbstractButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JRadioButton;
 import javax.swing.JRadioButtonMenuItem;
@@ -16,14 +17,14 @@ public class UiParametreActionListener implements ActionListener {
 	private JTextField dossierAnalyser;
 	private JTextField dossierClassement;
 	private JTextField ficRenom;
-	private JRadioButtonMenuItem triD;
-	private JRadioButtonMenuItem triE;
-	private JRadioButtonMenuItem triL;
+	private JCheckBox triD;
+	private JCheckBox triE;
+	private JCheckBox triL;
 	private JRadioButtonMenuItem renomD;
 	private JRadioButtonMenuItem renomL;
 	private JRadioButtonMenuItem renomNS;
 	
-	public UiParametreActionListener(JTextField dossierSource, JTextField dossierCible, JRadioButtonMenuItem modeDate, JRadioButtonMenuItem modeEvenement, JRadioButtonMenuItem modeLieu, JTextField fichierRenommer, JRadioButtonMenuItem renomDate, JRadioButtonMenuItem renomLieu, JRadioButtonMenuItem renomNomSpec){
+	public UiParametreActionListener(JTextField dossierSource, JTextField dossierCible, JCheckBox modeDate, JCheckBox modeEvenement, JCheckBox modeLieu, JTextField fichierRenommer, JRadioButtonMenuItem renomDate, JRadioButtonMenuItem renomLieu, JRadioButtonMenuItem renomNomSpec){
 		this.dossierAnalyser = dossierSource ;
 		this.dossierClassement = dossierCible;
 		ficRenom = fichierRenommer;
