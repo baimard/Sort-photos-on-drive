@@ -12,6 +12,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -95,28 +96,7 @@ public class UiParametre extends JFrame {
 	private JRadioButtonMenuItem  renomNomSpec = new JRadioButtonMenuItem ("Renommer avec le nom suivant:");
 	private JRadioButtonMenuItem  activer = new JRadioButtonMenuItem ("Notification ativee");
 	private JRadioButtonMenuItem  desactiver = new JRadioButtonMenuItem ("Notification desactivee");
-	
-	
 
-	private JButton codAuthent = new JButton(
-			"Obtenir mon code d'authentification");
-	private JButton reInitCode = new JButton(
-			"Reinitialiser la connexion google");
-
-	private JRadioButtonMenuItem modeDate = new JRadioButtonMenuItem("Date");
-	private JRadioButtonMenuItem modeEvenement = new JRadioButtonMenuItem(
-			"Evenement");
-	private JRadioButtonMenuItem modeLieu = new JRadioButtonMenuItem("Lieu");
-	private JRadioButtonMenuItem renomDate = new JRadioButtonMenuItem(
-			"Renommer par date de prise de vue");
-	private JRadioButtonMenuItem renomLieu = new JRadioButtonMenuItem(
-			"Renommer par lieu");
-	private JRadioButtonMenuItem renomNomSpec = new JRadioButtonMenuItem(
-			"Renommer avec le nom suivant:");
-	private JRadioButtonMenuItem activer = new JRadioButtonMenuItem(
-			"Notification ativee");
-	private JRadioButtonMenuItem desactiver = new JRadioButtonMenuItem(
-			"Notification desactivee");
 
 	private ButtonGroup triGroupBtn = new ButtonGroup();
 
@@ -190,20 +170,6 @@ public class UiParametre extends JFrame {
 
 		ImageIcon iconAuthent = new ImageIcon(getClass().getResource("Resource"+Fichier.SEPARATOR+"notification-icone.png"));
 
-		JLabel label6 = new JLabel();
-		label6.setIcon(iconAuthent);
-		panIconAuthent.add(label6);
-		
-		
-
-		ImageIcon iconReInit = new ImageIcon(getClass().getResource("Resource\\rafraichir-icone.png"));
-
-		
-
-
-
-		ImageIcon iconAuthent = new ImageIcon(getClass().getResource(
-				"Resource" + Fichier.SEPARATOR + "notification-icone.png"));
 		JLabel label6 = new JLabel();
 		label6.setIcon(iconAuthent);
 		panIconAuthent.add(label6);
