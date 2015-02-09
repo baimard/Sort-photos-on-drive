@@ -98,8 +98,6 @@ public class UiParametre extends JFrame {
 	private JRadioButtonMenuItem  desactiver = new JRadioButtonMenuItem ("Notification desactivee");
 
 
-	private ButtonGroup triGroupBtn = new ButtonGroup();
-
 	private ButtonGroup renomGroupBtn = new ButtonGroup();
 	private ButtonGroup notifGroupBtn = new ButtonGroup();
 
@@ -425,10 +423,6 @@ public class UiParametre extends JFrame {
 		pan1.add(pan11);
 		pan1.add(panChoixDossierS);
 		pan1.add(panChoixDossierC);
-
-		triGroupBtn.add(modeDate);
-		triGroupBtn.add(modeEvenement);
-		triGroupBtn.add(modeLieu);
 
 		panModeTri1.add(modeDate);
 		panModeTri1.add(modeEvenement);
