@@ -13,7 +13,6 @@ public class App
 {
 	public static void main( String[] args ) throws IOException
     {
-		//new UiUser();
 
 	try {
 			new AfficherNotification();
@@ -25,10 +24,6 @@ public class App
 				Thread t = new ProcessObservationDossier();
 				t.start();
 			}
-			
-			
-
-
 			
 		} catch (AWTException e) {
 			e.printStackTrace();

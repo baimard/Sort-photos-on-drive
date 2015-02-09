@@ -7,10 +7,10 @@ import org.junit.Test;
 
 public class parametrageTest {
 	
-	@Ignore
 	@Test
 	public void testInstanciationParametrage(){
 		new Parametrage("/Users/Juxo/Pictures/est", "/Users/Juxo");
+		Parametrage.getInstance().enregistrerObjet();
 	}
 	
 	@Ignore
@@ -27,11 +27,10 @@ public class parametrageTest {
 		System.out.println("Dossier source : " + p.getDossierSource() + " Dossier Destination : " + p.getDossierDestination());
 	}
 	
-	
+	@Ignore
 	@Test 
 	public void testOs(){
 		new Parametrage("/Users/Juxo/Pictures/est", "/Users/Juxo");
 		System.out.println(Parametrage.getInstance().SEPARATOR);
-			
 	}
 }

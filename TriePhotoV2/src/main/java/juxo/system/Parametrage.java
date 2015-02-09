@@ -18,6 +18,7 @@ public class Parametrage implements Serializable {
 	private List<AbstractSortMethod> methodSort;
 	private String dossierSource;
 	private String dossierDestination;
+	private int intervalObservation;
 
 	public Parametrage() {
 
@@ -27,6 +28,7 @@ public class Parametrage implements Serializable {
 		this.dossierSource = dossierSource;
 		this.dossierDestination = dossierDestination;
 		PARAM = this;
+		this.intervalObservation=600000;
 		
 	}
 
@@ -82,5 +84,43 @@ public class Parametrage implements Serializable {
 	public void setDossierDestination(String dossierDestination) {
 		this.dossierDestination = dossierDestination;
 	}
+
+	public static String getSEPARATOR() {
+		return SEPARATOR;
+	}
+
+	public static void setSEPARATOR(String sEPARATOR) {
+		SEPARATOR = sEPARATOR;
+	}
+
+	public static Parametrage getPARAM() {
+		return PARAM;
+	}
+
+	public static void setPARAM(Parametrage pARAM) {
+		PARAM = pARAM;
+	}
+
+	public List<AbstractSortMethod> getMethodSort() {
+		return methodSort;
+	}
+
+	public void setMethodSort(List<AbstractSortMethod> methodSort) {
+		this.methodSort = methodSort;
+	}
+
+	public int getIntervalObservation() {
+		return intervalObservation;
+	}
+
+	public void setIntervalObservation(int intervalObservation) {
+		this.intervalObservation = intervalObservation;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	
+	
 
 }

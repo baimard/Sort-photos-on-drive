@@ -8,6 +8,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.File;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -26,8 +27,12 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
-public class UiParametre extends JFrame {
+import com.sun.research.ws.wadl.Param;
 
+import juxo.system.Parametrage;
+import juxo.triephotoV2.accessFichier.Fichier;
+
+public class UiParametre extends JFrame {
 	/**
 	 * 
 	 */
@@ -71,22 +76,23 @@ public class UiParametre extends JFrame {
 	
 	private JLabel dossierSource = new JLabel("Dossier source:");
 	private JLabel dossierCible = new JLabel("Dossier cible:");
-	private JLabel frequenceVerif = new JLabel("Vérification du dossier:");
+	private JLabel frequenceVerif = new JLabel("Verification du dossier:");
 	private JLabel lblAuthentif = new JLabel("<html><p>Veuillez cliquer ci-contre <br> pour obtenir  le code <br> d'authentification google</p></html> ");
-	private JLabel lblReInit = new JLabel("<html><p>Veuillez cliquer ci-contre pour <br> réinitialiser la connexion google</p></html>");
+	private JLabel lblReInit = new JLabel("<html><p>Veuillez cliquer ci-contre pour <br> reinitialiser la connexion google</p></html>");
 	
-	private JTextField source = new JTextField();
-	private JTextField cible = new JTextField();
+	private JTextField source;
+	private JTextField cible;
 	private JTextField selectDossierRenom = new JTextField();
 	private JTextField saisieNom = new JTextField();
 	
+
 	
 	private JButton choixSource = new JButton("Parcourir");
 	private JButton choixCible = new JButton("Parcourir");
 	private JButton fichieRenom = new JButton("Parcourir");
 	private JButton renommer = new JButton("Renommer");
 	private JButton codAuthent = new JButton("Obtenir mon code d'authentification");
-	private JButton reInitCode = new JButton("Réinitialiser la connexion google");
+	private JButton reInitCode = new JButton("Reinitialiser la connexion google");
 	
 	private JRadioButtonMenuItem  modeDate = new JRadioButtonMenuItem ("Date");
 	private JRadioButtonMenuItem  modeEvenement = new JRadioButtonMenuItem ("Evenement");
@@ -94,8 +100,8 @@ public class UiParametre extends JFrame {
 	private JRadioButtonMenuItem  renomDate = new JRadioButtonMenuItem ("Renommer par date de prise de vue");
 	private JRadioButtonMenuItem  renomLieu = new JRadioButtonMenuItem ("Renommer par lieu");
 	private JRadioButtonMenuItem  renomNomSpec = new JRadioButtonMenuItem ("Renommer avec le nom suivant:");
-	private JRadioButtonMenuItem  activer = new JRadioButtonMenuItem ("Notification ativée");
-	private JRadioButtonMenuItem  desactiver = new JRadioButtonMenuItem ("Notification désactivée");
+	private JRadioButtonMenuItem  activer = new JRadioButtonMenuItem ("Notification ativee");
+	private JRadioButtonMenuItem  desactiver = new JRadioButtonMenuItem ("Notification desactivee");
 	
 	private ButtonGroup triGroupBtn = new ButtonGroup();
 	private ButtonGroup renomGroupBtn = new ButtonGroup();
@@ -110,60 +116,74 @@ public class UiParametre extends JFrame {
 		this.setTitle("Parametrage");
 		this.setSize(600, 700);
 		this.setResizable(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-UiParametreActionListener UiParametreListener = new UiParametreActionListener(source, cible, modeDate, modeEvenement, modeLieu, selectDossierRenom, renomDate, renomLieu, renomNomSpec);
+		UiParametreActionListener UiParametreListener = new UiParametreActionListener(source, cible, modeDate, modeEvenement, modeLieu, selectDossierRenom, renomDate, renomLieu, renomNomSpec);
 
+		
+		Parametrage p = Parametrage.getInstance();
+		
+		source = new JTextField(p.getDossierSource());
+		cible = new JTextField(p.getDossierDestination());
+		
+		
 		// ___________________  Les icones ___________________________________________
 		
-		Image icone =   Toolkit.getDefaultToolkit().getImage(getClass().getResource("Resource\\pictograms-nps-services-library.png"));
+		Image icone =   Toolkit.getDefaultToolkit().getImage(getClass().getResource("Resource"+Fichier.SEPARATOR+"pictograms-nps-services-library.png"));
         this.setIconImage(icone);
         
        
-		ImageIcon icon1 = new ImageIcon(getClass().getResource("Resource\\dossier-icone.png"));
+		ImageIcon icon1 = new ImageIcon(getClass().getResource("Resource"+Fichier.SEPARATOR+"dossier-icone.png"));
 		JLabel label1 = new JLabel();
 		label1.setIcon(icon1);
 		pan11.setLayout(new FlowLayout(FlowLayout.LEFT));
 		pan11.add(label1);
 		
-		ImageIcon icon2 = new ImageIcon(getClass().getResource("Resource\\modules-icone.png"));
+		ImageIcon icon2 = new ImageIcon(getClass().getResource("Resource"+Fichier.SEPARATOR+"modules-icone.png"));
 		JLabel label2 = new JLabel();
 		label2.setIcon(icon2);
 		pan21.setLayout(new FlowLayout(FlowLayout.LEFT));
 		pan21.add(label2);
 		
-		ImageIcon icon3 = new ImageIcon(getClass().getResource("Resource\\encre-icone.png"));
+		ImageIcon icon3 = new ImageIcon(getClass().getResource("Resource"+Fichier.SEPARATOR+"encre-icone.png"));
 		JLabel label3 = new JLabel();
 		label3.setIcon(icon3);
 		pan31.setLayout(new FlowLayout(FlowLayout.LEFT));
 		pan31.add(label3);
 		
 		
-		ImageIcon iconNotif = new ImageIcon(getClass().getResource("Resource\\notification-icone.png"));
+		ImageIcon iconNotif = new ImageIcon(getClass().getResource("Resource"+Fichier.SEPARATOR+"notification-icone.png"));
 		JLabel label4 = new JLabel();
 		label4.setIcon(iconNotif);
 		panIconNotif.add(label4);
 		
 		
-		ImageIcon iconFrequence = new ImageIcon(getClass().getResource("Resource\\frequence-icone.png"));
+		ImageIcon iconFrequence = new ImageIcon(getClass().getResource("Resource"+Fichier.SEPARATOR+"frequence-icone.png"));
 		JLabel label5 = new JLabel();
 		label5.setIcon(iconFrequence);
 		panIconFrequence.add(label5);
 		
+<<<<<<< Updated upstream
 		ImageIcon iconAuthent = new ImageIcon(getClass().getResource("Resource\\icone-cle.png"));
+=======
+		ImageIcon iconAuthent = new ImageIcon(getClass().getResource("Resource"+Fichier.SEPARATOR+"notification-icone.png"));
+>>>>>>> Stashed changes
 		JLabel label6 = new JLabel();
 		label6.setIcon(iconAuthent);
 		panIconAuthent.add(label6);
 		
 		
+<<<<<<< Updated upstream
 		ImageIcon iconReInit = new ImageIcon(getClass().getResource("Resource\\rafraichir-icone.png"));
+=======
+		ImageIcon iconReInit = new ImageIcon(getClass().getResource("Resource"+Fichier.SEPARATOR+"notification-icone.png"));
+>>>>>>> Stashed changes
 		JLabel label7 = new JLabel();
 		label7.setIcon(iconReInit);
 		panIconReInit.add(label7);
 		
-		ImageIcon iconOngletTri = new ImageIcon(getClass().getResource("Resource\\parametres-icone.png"));
-		ImageIcon iconConnexionGoogle = new ImageIcon(getClass().getResource("Resource\\google-icone.png"));
-		ImageIcon iconGenerale = new ImageIcon(getClass().getResource("Resource\\horloge-icone.png"));
+		ImageIcon iconOngletTri = new ImageIcon(getClass().getResource("Resource"+Fichier.SEPARATOR+"parametres-icone.png"));
+		ImageIcon iconConnexionGoogle = new ImageIcon(getClass().getResource("Resource"+Fichier.SEPARATOR+"google-icone.png"));
+		ImageIcon iconGenerale = new ImageIcon(getClass().getResource("Resource"+Fichier.SEPARATOR+"horloge-icone.png"));
 		
 		
 		
@@ -372,12 +392,12 @@ UiParametreActionListener UiParametreListener = new UiParametreActionListener(so
 	    pan.add(content);
 	    
         panelOnglet.addTab("Option de tri", iconOngletTri , pan);
-        panelOnglet.addTab("Option générale",iconGenerale ,  panbis);
+        panelOnglet.addTab("Option generale",iconGenerale ,  panbis);
         panelOnglet.addTab("Connexion google",iconConnexionGoogle, panter);
        
         
         
-      //////////////// _____________________________________ Onglet général ________________________
+      //////////////// _____________________________________ Onglet gï¿½nï¿½ral ________________________
         
 
 		//txtDossier.setFont(new java.awt.Font("Dialog", 0, 12));
@@ -390,12 +410,12 @@ UiParametreActionListener UiParametreListener = new UiParametreActionListener(so
 		
 	    
 	    panApp.setPreferredSize(new Dimension(500,120));
-	    TitledBorder bordureOptionApp = (BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(128,128,128),2),"<html><H3>Fréquence</H3></html>"));
+	    TitledBorder bordureOptionApp = (BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(128,128,128),2),"<html><H3>Frï¿½quence</H3></html>"));
 		panApp.setBorder(bordureOptionApp);
 		bordureOptionApp.setTitleColor(new Color(128,128,128));
 		
 	    
-                   //___________ les objets placés dans l'onglet ______________
+                   //___________ les objets placï¿½s dans l'onglet ______________
 		notifGroupBtn.add(activer);
 		notifGroupBtn.add(desactiver);
 		
@@ -422,7 +442,7 @@ UiParametreActionListener UiParametreListener = new UiParametreActionListener(so
 		bordureAuth.setTitleColor(new Color(255,200,0));
 		
 	   
-	    TitledBorder bordureReInit = (BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(255,0,240),2),"<html><H3>Réinitialisation</H3></html>"));
+	    TitledBorder bordureReInit = (BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(255,0,240),2),"<html><H3>Rï¿½initialisation</H3></html>"));
 	    panReInit.setBorder(bordureReInit);
 	    bordureReInit.setTitleColor(new Color(255,0,240));
 		

@@ -38,8 +38,11 @@ public class UiTest {
 		Fichier f8 = new Fichier("C:\\Users\\RAKOTOMALALA\\Documents\\Projet Image Test\\7.JPG");
 		Fichiers fichiers = new Fichiers();
 
+<<<<<<< Updated upstream
         
 
+=======
+>>>>>>> Stashed changes
 		fichiers.add(f1);
 		fichiers.add(f2);
 		fichiers.add(f3);
@@ -55,6 +58,10 @@ public class UiTest {
 	}
 	
 	
+<<<<<<< Updated upstream
+=======
+	@Ignore
+>>>>>>> Stashed changes
 	@Test
 	public void testUiParametre() throws InterruptedException  {
 		UiParametre param = new UiParametre();
