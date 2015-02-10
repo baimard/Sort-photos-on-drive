@@ -6,6 +6,7 @@ import java.util.Date;
 import javax.swing.JFrame;
 
 import juxo.UiTriePhotoV2.UiParametre;
+import juxo.UiTriePhotoV2.UiPremierDemarrage;
 //import juxo.UiTriePhotoV2.UiPremierDemarrage;
 import juxo.UiTriePhotoV2.UiQuestion;
 import juxo.UiTriePhotoV2.UiUser;
@@ -51,17 +52,17 @@ public class UiTest {
 		quest.showUiQuestion();
 		//Thread.sleep(5000);
 	}
-	
+	@Ignore
 	@Test
 	public void testUiParametre() throws InterruptedException  {
 		UiParametre param = new UiParametre();
 		Thread.sleep(50000);
 	}
 	
-	@Ignore
+	
 	@Test
 	public void testUiPremierDemarrage() throws InterruptedException  {
-		//UiPremierDemarrage param = new UiPremierDemarrage();
+		UiPremierDemarrage param = new UiPremierDemarrage();
 		Thread.sleep(50000);
 	}
 	
