@@ -20,7 +20,7 @@ import org.junit.Test;
 public class UiTest {
 	
 
-	@Ignore
+	
 	@Test
     public void testUiQuestion() throws InterruptedException {
 		
@@ -52,6 +52,7 @@ public class UiTest {
 		//Thread.sleep(5000);
 	}
 	
+	@Ignore
 	@Test
 	public void testUiParametre() throws InterruptedException  {
 		UiParametre param = new UiParametre();
