@@ -1,5 +1,6 @@
 package juxo.UiTriePhotoV2;
 
+import java.awt.Frame;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
@@ -8,6 +9,7 @@ import java.net.URISyntaxException;
 
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JTextField;
@@ -63,33 +65,61 @@ public class UiPremierDemarrageActionListener implements ActionListener {
 			if (jfC.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 				File fichierC = jfC.getSelectedFile();
 				dossierClassement.setText(fichierC.getPath());
-				Parametrage.getInstance().setDossierDestination(fichierC.getPath());
+				Parametrage.getInstance().setDossierDestination(
+						fichierC.getPath());
 				Parametrage.getInstance().enregistrerObjet();
 			}
 			break;
 
 		case "trieJourRadio":
-			if(UiPremierDemarrage.f.trieJourRadio.isSelected()){
+			if (UiPremierDemarrage.f.trieJourRadio.isSelected()) {
 				Parametrage.getInstance().addSortByDay();
-			}else{
+			} else {
 				Parametrage.getInstance().delSortByDay();
 			}
 			break;
 
 		case "triEvenement":
 
+			if (ConnexionGoogle.googleConnexion != null) {
+				if (UiPremierDemarrage.f.trieEvenementRadio.isSelected()) {
+					Parametrage.getInstance().addSortByEvent();
+				} else {
+					Parametrage.getInstance().delSortByEvent();
+				}
+			} else {
+				UiPremierDemarrage.f.trieEvenementRadio.setSelected(false);
+				JOptionPane.showMessageDialog(null,
+						"Veuillez vous connecter à Google (Onglet Suivant)");
+			}
+
 			break;
 
 		case "triLieu":
-
+			if (ConnexionGoogle.googleConnexion != null) {
+				if (UiPremierDemarrage.f.trieLieuRadio.isSelected()) {
+					Parametrage.getInstance().addSortByPlace();
+				} else {
+					Parametrage.getInstance().delSortByPlace();
+				}
+			} else {
+				UiPremierDemarrage.f.trieLieuRadio.setSelected(false);
+				JOptionPane.showMessageDialog(null,
+						"Veuillez vous connecter à Google (Onglet Suivant)");
+			}
 			break;
 
 		case "authentification":
 			try {
-				ConnexionGoogle CG = new ConnexionGoogle();
+				new ConnexionGoogle();
+				if (ConnexionGoogle.googleConnexion != null) {
+					UiPremierDemarrage.f.boutonAuthentif.setEnabled(false);
+					UiPremierDemarrage.f.boutonReinitial.setEnabled(true);
+					UiPremierDemarrage.f.boutonAuthentif
+							.setText("Vous êtes connecté");
+				}
 			} catch (IOException | URISyntaxException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				System.out.println(e1);
 			}
 			break;
 

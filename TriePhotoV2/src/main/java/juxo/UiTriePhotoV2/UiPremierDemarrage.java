@@ -41,6 +41,9 @@ public class UiPremierDemarrage extends JFrame {
 	public JRadioButton trieEvenementRadio;
 	public JRadioButton trieLieuRadio;
 
+	public JButton boutonAuthentif;
+	public JButton boutonReinitial;
+	
 	public UiPremierDemarrage() {
 <<<<<<< HEAD
 
@@ -319,9 +322,9 @@ public class UiPremierDemarrage extends JFrame {
 		JLabel TxtGoogle6 = new JLabel(
 				"<html><br>Cliquer pour reinitialiser votre connexion</html>");
 		// JTextField authentification = new JTextField(60);
-		JButton boutonAuthentif = new JButton(
+		boutonAuthentif = new JButton(
 				"Obtenir mon code d'authentification");
-		JButton boutonReinitial = new JButton(
+		boutonReinitial = new JButton(
 				"R�initialiser votre connexion Google");
 
 		Icon iconeCle = new ImageIcon(
@@ -452,6 +455,10 @@ public class UiPremierDemarrage extends JFrame {
 		trieJourRadio.addActionListener(UiPremierDemarrageListener);
 
 		setLocationRelativeTo(this.getParent());
+		
+		
+		//Initialisation
+		boutonReinitial.setEnabled(false);
 
 	}
 
