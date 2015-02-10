@@ -15,7 +15,7 @@ public class SortByDayDate extends AbstractSortMethod{
 		Fichier.listFic.trieFichiersDateJour(Parametrage.getInstance().getDossierDestination());
 	}
 	
-	public SortByDayDate getInstance(){
+	public static SortByDayDate getInstance(){
 		return mySort;
 	}
 	

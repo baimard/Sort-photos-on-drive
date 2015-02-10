@@ -34,13 +34,24 @@ public class UiPremierDemarrage extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	public static UiPremierDemarrage f;
+	
+	public JRadioButton trieJourRadio;
+	public JRadioButton trieEvenementRadio;
+	public JRadioButton trieLieuRadio;
 
 	public UiPremierDemarrage() {
+<<<<<<< HEAD
 
 		this.setTitle("Paramètre");
+=======
+		f = this;
+		
+		this.setTitle("Parametre");
+>>>>>>> FETCH_HEAD
 		this.setSize(790, 770);
 		this.setResizable(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setBackground(Color.WHITE);
 		Image icone = Toolkit.getDefaultToolkit().getImage(
 				UiPremierDemarrage.class.getResource("Resource"
@@ -94,7 +105,7 @@ public class UiPremierDemarrage extends JFrame {
 				"Sélectionner le dossier source contenant vos photos et le dossier de destination pour le stockage de vos photos après le tri");
 		txtDossier.setFont(new java.awt.Font("Dialog", 0, 12)); // non gras!
 		Icon iconeDossier = new ImageIcon(
-				(getClass().getResource("Resource\\dossier-icone.png")));
+				(getClass().getResource("Resource"+Fichier.SEPARATOR+"dossier-icone.png")));
 		txtDossier.setIcon(iconeDossier);
 
 		pan1TxtIcone.add(txtDossier);
@@ -182,28 +193,35 @@ public class UiPremierDemarrage extends JFrame {
 		pan2Color.add(panChoixTri);
 		pan2Color.setLayout(new GridLayout(2, 1));
 
-		JRadioButton Jour = new JRadioButton("Jour");
-		JRadioButton Evenement = new JRadioButton("Evenement");
-		JRadioButton Lieu = new JRadioButton("Lieu");
+		trieJourRadio = new JRadioButton("Jour");
+		trieEvenementRadio = new JRadioButton("Evenement");
+		trieLieuRadio = new JRadioButton("Lieu");
 
-		Jour.setBackground(new Color(255, 134, 28));
-		Evenement.setBackground(new Color(255, 134, 28));
-		Lieu.setBackground(new Color(255, 134, 28));
+		trieJourRadio.setBackground(new Color(255, 134, 28));
+		trieEvenementRadio.setBackground(new Color(255, 134, 28));
+		trieLieuRadio.setBackground(new Color(255, 134, 28));
 
-		Jour.setForeground(Color.WHITE);
-		Evenement.setForeground(Color.WHITE);
-		Lieu.setForeground(Color.WHITE);
+		trieJourRadio.setForeground(Color.WHITE);
+		trieEvenementRadio.setForeground(Color.WHITE);
+		trieLieuRadio.setForeground(Color.WHITE);
 
-		panChoixTri.add(Jour);
-		panChoixTri.add(Evenement);
-		panChoixTri.add(Lieu);
+		panChoixTri.add(trieJourRadio);
+		panChoixTri.add(trieEvenementRadio);
+		panChoixTri.add(trieLieuRadio);
 
 		pan2Color.add(TxtOptionTri2);
 
+<<<<<<< HEAD
 		Jour.setToolTipText("Vos photos seront triees par jour, ainsi une photo prise au 1er janvier 2015 sera placée dans le dossier: ' .../2015/1/1'");
 		Evenement
 				.setToolTipText("<html>Vos photos seront triées par evenement, ainsi une photo prise au 1er janvier 2015 et correspondant à un évènement de votre calendrier à cette date sera placée dans le dossier : ' .../2015/1/'nom de mon evenement' <br> Noter qu'une autorisation de connexion de l'application a Google sera necessaire. Pour plus d'information, voir la partie connexion a Google.</html> ");
 		Lieu.setToolTipText("Vos photos seront triees par Lieu (si ce dernier est disponible), ainsi une photo prise au 1er janvier 2015 a Pessac sera plac� dans le dossier: ' .../2015/1/Pessac'");
+=======
+		trieJourRadio.setToolTipText("Vos photos seront triees par jour, ainsi une photo prise au 1er janvier 2015 sera plac� dans le dossier: ' .../2015/1/1'");
+		trieEvenementRadio
+				.setToolTipText("<html>Vos photos seront triees par evenement, ainsi une photo prise au 1er janvier 2015 et correspondant � un evenement de votre calendrier a cette date sera placee dans le dossier: ' .../2015/1/'nom de mon evenement' <br> Noter qu'une autorisation de connexion de l'application a Google sera necessaire. Pour plus d'information, voir la partie connexion a Google.</html> ");
+		trieLieuRadio.setToolTipText("Vos photos seront triees par Lieu (si ce dernier est disponible), ainsi une photo prise au 1er janvier 2015 a Pessac sera plac� dans le dossier: ' .../2015/1/Pessac'");
+>>>>>>> FETCH_HEAD
 
 		// panel 3 : Renommage
 		JPanel pan3 = new JPanel();
@@ -414,7 +432,7 @@ public class UiPremierDemarrage extends JFrame {
 		this.setVisible(true);
 
 		UiPremierDemarrageActionListener UiPremierDemarrageListener = new UiPremierDemarrageActionListener(
-				SourceField, DestField, Jour, Evenement, Lieu, boutonAuthentif);
+				SourceField, DestField, trieJourRadio, trieEvenementRadio, trieLieuRadio, boutonAuthentif);
 
 		// ______ les commandes________
 		browseSource.setActionCommand("choixSource");
@@ -422,15 +440,16 @@ public class UiPremierDemarrage extends JFrame {
 		browseDest.setActionCommand("choixCible");
 		browseDest.addActionListener(UiPremierDemarrageListener);
 
-		Jour.setActionCommand("triDate");
-		Jour.addActionListener(UiPremierDemarrageListener);
-		Evenement.setActionCommand("triEvenement");
-		Evenement.addActionListener(UiPremierDemarrageListener);
-		Lieu.setActionCommand("triLieu");
-		Lieu.addActionListener(UiPremierDemarrageListener);
+		trieEvenementRadio.setActionCommand("triEvenement");
+		trieEvenementRadio.addActionListener(UiPremierDemarrageListener);
+		trieLieuRadio.setActionCommand("triLieu");
+		trieLieuRadio.addActionListener(UiPremierDemarrageListener);
 
 		boutonAuthentif.setActionCommand("authentification");
 		boutonAuthentif.addActionListener(UiPremierDemarrageListener);
+		
+		trieJourRadio.setActionCommand("trieJourRadio");
+		trieJourRadio.addActionListener(UiPremierDemarrageListener);
 
 		setLocationRelativeTo(this.getParent());
 

@@ -17,7 +17,7 @@ public class SortNormal extends AbstractSortMethod {
 		Fichier.listFic.trieFichiers(Parametrage.getInstance().getDossierDestination());
 	}
 	
-	public SortNormal getInstance(){
+	public static SortNormal getInstance(){
 		return mySort;
 	}
 	

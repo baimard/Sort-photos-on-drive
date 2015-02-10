@@ -20,7 +20,7 @@ public class SortByPlace extends AbstractSortMethod {
 		}
 	}
 
-	public SortByPlace getInstance(){
+	public static SortByPlace getInstance(){
 		return mySort;
 	}
 	

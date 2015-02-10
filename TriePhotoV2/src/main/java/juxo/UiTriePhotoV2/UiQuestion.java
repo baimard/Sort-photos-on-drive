@@ -59,28 +59,43 @@ public class UiQuestion extends JDialog {
 
 	private void initComponent(Fichiers fs) {
 		JPanel listpan = new JPanel();
-		/*JPanel panEvent = new JPanel(); 
+		JPanel panEvent = new JPanel(); 
 		JPanel panEvent11 = new JPanel(); 
 		JPanel panEvent12 = new JPanel(); 
 		JPanel panPhotos = new JPanel(); 
 		JPanel panPhotos11 = new JPanel(); 
 		JPanel panPhotos12 = new JPanel(); 
+<<<<<<< HEAD
 		JPanel panBtn = new JPanel();*/
 		JLabel txtEvent = new JLabel("<html>Voici la liste des Ã©vÃ¨nements de vos calendriers<br>Veuillez sÃ©lectionner l'Ã©vÃ¨nement correspondant Ã  vos images :</html> ");
         JLabel txtPhotos = new JLabel("<html>Attention, des images peuvent ne pas Ãªtre affichÃ©es en raison de leu format</html>");
         JButton valideButton = new JButton("DÃ©placer les images");
+=======
+		JPanel panBtn = new JPanel();
+		JLabel txtEvent = new JLabel("<html>Voici la liste des évènements de vos calendriers<br>Veuillez sélectionner l'événement correspondant à vos images :</html> ");
+        JLabel txtPhotos = new JLabel("<html>Attention, des images peuvent ne pas être affichées en raison de leu format</html>");
+        JButton valideButton = new JButton("Déplacer les images");
+>>>>>>> FETCH_HEAD
 		listEve = new JList<Evenement>(listEvenement);
 	
-		/*panEvent11.setPreferredSize(new Dimension(600, 50));
-		panEvent12.setPreferredSize(new Dimension(600, 220));*/
+		//panEvent11.setPreferredSize(new Dimension(500, 50));
+		//panEvent12.setPreferredSize(new Dimension(500, 220));
+		panEvent11.setBackground(Color.white);
+		panEvent.setBackground(Color.white);
 		
-		//panPhotos11.setPreferredSize(new Dimension(600, 30));
-		//panPhotos12.setPreferredSize(new Dimension(600, 220));
-		//listpan.setLayout(new BoxLayout(listpan, BoxLayout.Y_AXIS));
-		//panEvent.setLayout(new BoxLayout(panEvent, BoxLayout.Y_AXIS));
-		//panPhotos.setLayout(new BoxLayout(panPhotos, BoxLayout.Y_AXIS));
+		panEvent12.setBackground(Color.white);
+		panPhotos.setBackground(Color.white);
+		panPhotos11.setBackground(Color.white);
+		panPhotos12.setBackground(Color.white);
+		
+		
+		//panPhotos11.setPreferredSize(new Dimension(500, 30));
+		//panPhotos12.setPreferredSize(new Dimension(500, 220));
+		listpan.setLayout(new BoxLayout(listpan, BoxLayout.Y_AXIS));
+		panEvent.setLayout(new BoxLayout(panEvent, BoxLayout.Y_AXIS));
+		panPhotos.setLayout(new BoxLayout(panPhotos, BoxLayout.Y_AXIS));
 		listEve.setPreferredSize(new Dimension(500, 200));
-		/*
+		
 		
 		  TitledBorder bordureEvent = (BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(29,158,233),2),"<html><H3>Evenements</H3></html>"));
 		  panEvent.setBorder(bordureEvent);
@@ -92,11 +107,15 @@ public class UiQuestion extends JDialog {
 		  panPhotos.setBorder(bordurePhotos);
 		  bordurePhotos.setTitleColor(new Color(76,153,0));
 			
-			*/
-		listpan.add(txtEvent);
-		listpan.add(listEve);
+			
+		panEvent11.add(txtEvent);
+		panEvent12.add(listEve);
 		
-		listpan.add(txtPhotos);
+		panEvent.add(panEvent11);
+		panEvent.add(panEvent12);
+		
+		
+		panPhotos11.add(txtPhotos);
 
 
 		
@@ -123,7 +142,7 @@ public class UiQuestion extends JDialog {
 					    if(bimg1!=null){
 							image1 = new JLabel(new ImageIcon(bimg1));
 							image1.setMaximumSize(new Dimension(100, 100));
-							listpan.add(image1);
+							panPhotos12.add(image1);
 					      
 					    }
 		    	}
@@ -138,12 +157,17 @@ public class UiQuestion extends JDialog {
 				    if(bimg1!=null){
 						image1 = new JLabel(new ImageIcon(bimg1));
 						image1.setMaximumSize(new Dimension(200, 200));
-						listpan.add(image1);
+						panPhotos12.add(image1);
 				    }
 				}
 		    
-		     listpan.add(valideButton);
-		     
+		   panBtn.add(valideButton);
+		   panPhotos.add(panPhotos11); 
+		   panPhotos.add(panPhotos12); 
+		   listpan.add(panEvent);
+		   listpan.add(panPhotos);
+		   listpan.add(panBtn);
+		   
 				valideButton.addActionListener(new UiQuestionActionListener(this));
 				this.getContentPane().add(listpan);
 		
