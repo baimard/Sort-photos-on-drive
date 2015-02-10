@@ -45,14 +45,10 @@ public class UiPremierDemarrage extends JFrame {
 	public JButton boutonReinitial;
 	
 	public UiPremierDemarrage() {
-<<<<<<< HEAD
-
-		this.setTitle("Paramètre");
-=======
+		
 		f = this;
 		
-		this.setTitle("Parametre");
->>>>>>> FETCH_HEAD
+		this.setTitle("Paramètre");
 		this.setSize(790, 770);
 		this.setResizable(true);
 		this.setBackground(Color.WHITE);
@@ -214,17 +210,11 @@ public class UiPremierDemarrage extends JFrame {
 
 		pan2Color.add(TxtOptionTri2);
 
-<<<<<<< HEAD
-		Jour.setToolTipText("Vos photos seront triees par jour, ainsi une photo prise au 1er janvier 2015 sera placée dans le dossier: ' .../2015/1/1'");
-		Evenement
-				.setToolTipText("<html>Vos photos seront triées par evenement, ainsi une photo prise au 1er janvier 2015 et correspondant à un évènement de votre calendrier à cette date sera placée dans le dossier : ' .../2015/1/'nom de mon evenement' <br> Noter qu'une autorisation de connexion de l'application a Google sera necessaire. Pour plus d'information, voir la partie connexion a Google.</html> ");
-		Lieu.setToolTipText("Vos photos seront triees par Lieu (si ce dernier est disponible), ainsi une photo prise au 1er janvier 2015 a Pessac sera plac� dans le dossier: ' .../2015/1/Pessac'");
-=======
-		trieJourRadio.setToolTipText("Vos photos seront triees par jour, ainsi une photo prise au 1er janvier 2015 sera plac� dans le dossier: ' .../2015/1/1'");
+
+		trieJourRadio.setToolTipText("Vos photos seront triées par jour, ainsi une photo prise au 1er janvier 2015 sera placée dans le dossier: ' .../2015/1/1'");
 		trieEvenementRadio
-				.setToolTipText("<html>Vos photos seront triees par evenement, ainsi une photo prise au 1er janvier 2015 et correspondant � un evenement de votre calendrier a cette date sera placee dans le dossier: ' .../2015/1/'nom de mon evenement' <br> Noter qu'une autorisation de connexion de l'application a Google sera necessaire. Pour plus d'information, voir la partie connexion a Google.</html> ");
-		trieLieuRadio.setToolTipText("Vos photos seront triees par Lieu (si ce dernier est disponible), ainsi une photo prise au 1er janvier 2015 a Pessac sera plac� dans le dossier: ' .../2015/1/Pessac'");
->>>>>>> FETCH_HEAD
+				.setToolTipText("<html>Vos photos seront triées par évènement, ainsi une photo prise au 1er janvier 2015 et correspondant à un evenement de votre calendrier à cette date sera placée dans le dossier : ' .../2015/1/'nom de mon evenement' <br> Noter qu'une autorisation de connexion de l'application a Google sera necessaire. Pour plus d'information, voir la partie connexion a Google.</html> ");
+		trieLieuRadio.setToolTipText("Vos photos seront triées par lieu (si ce dernier est disponible), ainsi une photo prise au 1er janvier 2015 à Pessac sera placée dans le dossier : ' .../2015/1/Pessac'");
 
 		// panel 3 : Renommage
 		JPanel pan3 = new JPanel();
