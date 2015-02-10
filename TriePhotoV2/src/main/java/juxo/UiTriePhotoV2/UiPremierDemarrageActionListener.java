@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 
 import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
 import juxo.system.Parametrage;
+import juxo.system.XMLToolsSerialisation;
 import juxo.triephotoV2.methode.SortByDayDate;
 
 public class UiPremierDemarrageActionListener implements ActionListener {
@@ -123,6 +124,14 @@ public class UiPremierDemarrageActionListener implements ActionListener {
 			}
 			break;
 
+		case "reinitialisation":
+			XMLToolsSerialisation.DeleteFile("token");
+			ConnexionGoogle.googleConnexion=null;
+			UiPremierDemarrage.f.boutonAuthentif.setEnabled(true);
+			UiPremierDemarrage.f.boutonReinitial.setEnabled(false);
+			UiPremierDemarrage.f.boutonAuthentif.setText("Vous connecter...");
+			break;
+		
 		}
 	}
 }

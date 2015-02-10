@@ -441,6 +441,9 @@ public class UiPremierDemarrage extends JFrame {
 		boutonAuthentif.setActionCommand("authentification");
 		boutonAuthentif.addActionListener(UiPremierDemarrageListener);
 		
+		boutonReinitial.setActionCommand("reinitialisation");
+		boutonReinitial.addActionListener(UiPremierDemarrageListener);
+		
 		trieJourRadio.setActionCommand("trieJourRadio");
 		trieJourRadio.addActionListener(UiPremierDemarrageListener);
 
