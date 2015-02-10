@@ -96,8 +96,6 @@ public class UiParametre extends JFrame {
 	private JRadioButtonMenuItem  renomNomSpec = new JRadioButtonMenuItem ("Renommer avec le nom suivant:");
 	private JRadioButtonMenuItem  activer = new JRadioButtonMenuItem ("Notification ativee");
 	private JRadioButtonMenuItem  desactiver = new JRadioButtonMenuItem ("Notification desactivee");
-
-
 	private ButtonGroup renomGroupBtn = new ButtonGroup();
 	private ButtonGroup notifGroupBtn = new ButtonGroup();
 

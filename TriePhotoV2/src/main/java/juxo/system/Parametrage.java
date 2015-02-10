@@ -2,9 +2,12 @@ package juxo.system;
 
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import juxo.triephotoV2.methode.AbstractSortMethod;
+import juxo.triephotoV2.methode.SortByDayDate;
+import juxo.triephotoV2.methode.SortNormal;
 
 public class Parametrage implements Serializable {
 
@@ -14,12 +17,12 @@ public class Parametrage implements Serializable {
 	private static final long serialVersionUID = 4L;
 	public static String SEPARATOR;
 	private static Parametrage PARAM;
-
-	private List<AbstractSortMethod> methodSort;
 	private String dossierSource;
 	private String dossierDestination;
 	private int intervalObservation;
 
+	private List<AbstractSortMethod> tabSortMethod;
+	
 	public Parametrage() {
 
 	}
@@ -29,9 +32,20 @@ public class Parametrage implements Serializable {
 		this.dossierDestination = dossierDestination;
 		PARAM = this;
 		this.intervalObservation=600000;
-		
+		tabSortMethod = new ArrayList<AbstractSortMethod>();
+		tabSortMethod.add(new SortNormal(3));
 	}
 
+	
+	public void addSortByDay(){
+		tabSortMethod.add(new SortByDayDate(2));
+	}
+	
+	public void delSortByDay(){
+		tabSortMethod.remove(SortByDayDate.getInstance());
+	}
+	
+	
 	public static Parametrage getInstance() {
 		return PARAM;
 	}
@@ -59,14 +73,6 @@ public class Parametrage implements Serializable {
 		} catch (IOException e) {
 			System.out.println(e);
 		}
-	}
-	
-	public void addMethodSort(AbstractSortMethod theMethode){
-		methodSort.add(theMethode);
-	}
-	
-	public void delMethodeSort(AbstractSortMethod theMethode){
-		//TODO Créer la méthode
 	}
 
 	public String getDossierSource() {
@@ -101,14 +107,6 @@ public class Parametrage implements Serializable {
 		PARAM = pARAM;
 	}
 
-	public List<AbstractSortMethod> getMethodSort() {
-		return methodSort;
-	}
-
-	public void setMethodSort(List<AbstractSortMethod> methodSort) {
-		this.methodSort = methodSort;
-	}
-
 	public int getIntervalObservation() {
 		return intervalObservation;
 	}
@@ -120,6 +118,15 @@ public class Parametrage implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	public List<AbstractSortMethod> getTabSortMethod() {
+		return tabSortMethod;
+	}
+
+	public void setTabSortMethod(List<AbstractSortMethod> tabSortMethod) {
+		this.tabSortMethod = tabSortMethod;
+	}
+	
 	
 	
 

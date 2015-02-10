@@ -3,6 +3,7 @@
 import java.awt.AWTException;
 import java.io.IOException;
 
+import juxo.UiTriePhotoV2.UiPremierDemarrage;
 import juxo.UiTriePhotoV2.UiUser;
 import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
 import juxo.notification.AfficherNotification;
@@ -20,7 +21,8 @@ public class App
 			Parametrage.chargerObjet();
 			
 			if(Parametrage.getInstance() == null){
-				//Ouvrir ici la fenêtre de premier démarrage et bloque l'écoute du thread d'observation
+				new Parametrage(null,null);
+				new UiPremierDemarrage();
 			}else{
 				Thread t = new ProcessObservationDossier();
 				t.start();
