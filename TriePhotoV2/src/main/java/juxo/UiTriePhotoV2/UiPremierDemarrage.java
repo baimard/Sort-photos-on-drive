@@ -359,6 +359,9 @@ public class UiPremierDemarrage extends JFrame {
 		
 		chxFrequence.setPreferredSize(new Dimension(300,30));
 		txtFrequence2.setAlignmentX( Component.LEFT_ALIGNMENT );
+		txtFrequence2.setForeground(Color.WHITE);
+	//	chxFrequence.setBackground(Color.gray);
+	//	chxFrequence.setForeground(Color.WHITE);
 		
 		Icon iconeFrequence2 = new ImageIcon((getClass().getResource("Resource\\bleu-horloge-icone.png")));
 		txtFrequence.setIcon(iconeFrequence2);
@@ -400,7 +403,7 @@ public class UiPremierDemarrage extends JFrame {
         
         this.setVisible(true); 
   
-        UiPremierDemarrageActionListener UiPremierDemarrageListener = new UiPremierDemarrageActionListener(SourceField, DestField, Jour, Evenement, Lieu);
+        UiPremierDemarrageActionListener UiPremierDemarrageListener = new UiPremierDemarrageActionListener(SourceField, DestField, Jour, Evenement, Lieu,boutonAuthentif);
     
 		//______ les commandes________
         browseSource.setActionCommand("choixSource");
@@ -415,7 +418,10 @@ public class UiPremierDemarrage extends JFrame {
 		Evenement.addActionListener(UiPremierDemarrageListener);
 		Lieu.setActionCommand("triLieu");
 		Lieu.addActionListener(UiPremierDemarrageListener);
-	
+		
+		boutonAuthentif.setActionCommand("authentification");
+		boutonAuthentif.addActionListener(UiPremierDemarrageListener);
+		
 		setLocationRelativeTo(this.getParent()); 
 		
 }

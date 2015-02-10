@@ -39,11 +39,11 @@ public class UiTest {
 		Fichier f8 = new Fichier("C:\\Users\\RAKOTOMALALA\\Documents\\Projet Image Test\\pictograms-nps-services-library.png");
 		Fichiers fichiers = new Fichiers();
 
-		Fichier f6 = new Fichier("C:\\Users\\RAKOTOMALALA\\Documents\\Projet Image Test\\modules-icone.png");
-		Fichier f7 = new Fichier("C:\\Users\\RAKOTOMALALA\\Documents\\Projet Image Test\\parametres-icone.png");
-		Fichier f8 = new Fichier("C:\\Users\\RAKOTOMALALA\\Documents\\Projet Image Test\\pictograms-nps-services-library.png");
+	//	Fichier f6 = new Fichier("C:\\Users\\RAKOTOMALALA\\Documents\\Projet Image Test\\modules-icone.png");
+	//	Fichier f7 = new Fichier("C:\\Users\\RAKOTOMALALA\\Documents\\Projet Image Test\\parametres-icone.png");
+	//	Fichier f8 = new Fichier("C:\\Users\\RAKOTOMALALA\\Documents\\Projet Image Test\\pictograms-nps-services-library.png");
 		
-Fichiers fichiers = new Fichiers();
+//Fichiers fichiers = new Fichiers();
                  
 
 		fichiers.add(f1);

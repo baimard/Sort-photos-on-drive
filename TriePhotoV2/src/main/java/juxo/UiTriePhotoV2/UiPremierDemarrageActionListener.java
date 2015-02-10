@@ -3,11 +3,16 @@ package juxo.UiTriePhotoV2;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
 
+import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JRadioButton;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JTextField;
+
+import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
 
 public class UiPremierDemarrageActionListener implements ActionListener {
 
@@ -18,8 +23,9 @@ public class UiPremierDemarrageActionListener implements ActionListener {
 	private JRadioButton triE;
 	private JRadioButton triL;
 
+	private JButton authenButton;
 	
-	public UiPremierDemarrageActionListener (JTextField dossierSource, JTextField dossierCible, JRadioButton jour, JRadioButton evenement, JRadioButton lieu){
+	public UiPremierDemarrageActionListener (JTextField dossierSource, JTextField dossierCible, JRadioButton jour, JRadioButton evenement, JRadioButton lieu, JButton authentif){
 		
 		this.dossierAnalyser = dossierSource ;
 		this.dossierClassement = dossierCible;
@@ -27,7 +33,9 @@ public class UiPremierDemarrageActionListener implements ActionListener {
 		triD = jour;
 		triE = evenement;
 		triL = lieu;
-
+		
+		authenButton =authentif;
+	
 		
 	}
 
@@ -71,7 +79,14 @@ public class UiPremierDemarrageActionListener implements ActionListener {
 		break;
 		
 		
-		
+		case "authentification":
+			try {
+				ConnexionGoogle CG = new ConnexionGoogle();
+			} catch (IOException | URISyntaxException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		break;
 			
 	}
 	}
