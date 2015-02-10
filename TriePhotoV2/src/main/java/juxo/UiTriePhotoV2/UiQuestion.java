@@ -72,35 +72,39 @@ public class UiQuestion extends JDialog {
         JButton valideButton = new JButton("Déplacer les images");
 
 		listEve = new JList<Evenement>(listEvenement);
-	
-		//panEvent11.setPreferredSize(new Dimension(500, 50));
-		//panEvent12.setPreferredSize(new Dimension(500, 220));
-		panEvent11.setBackground(Color.white);
-		panEvent.setBackground(Color.white);
+	    
 		
-		panEvent12.setBackground(Color.white);
-		panPhotos.setBackground(Color.white);
-		panPhotos11.setBackground(Color.white);
-		panPhotos12.setBackground(Color.white);
-		
-		
-		//panPhotos11.setPreferredSize(new Dimension(500, 30));
-		//panPhotos12.setPreferredSize(new Dimension(500, 220));
-		listpan.setLayout(new BoxLayout(listpan, BoxLayout.Y_AXIS));
-		panEvent.setLayout(new BoxLayout(panEvent, BoxLayout.Y_AXIS));
-		panPhotos.setLayout(new BoxLayout(panPhotos, BoxLayout.Y_AXIS));
-		listEve.setPreferredSize(new Dimension(500, 200));
-		
-		
+
 		  TitledBorder bordureEvent = (BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(29,158,233),2),"<html><H3>Evenements</H3></html>"));
 		  panEvent.setBorder(bordureEvent);
 		  bordureEvent.setTitleColor(new Color(29,158,233));
-		  
 		  
 		
 		  TitledBorder bordurePhotos = (BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(76,153,0),2),"<html><H3>Photos</H3></html>"));
 		  panPhotos.setBorder(bordurePhotos);
 		  bordurePhotos.setTitleColor(new Color(76,153,0));
+		  
+		listpan.setLayout(new BoxLayout(listpan, BoxLayout.Y_AXIS));
+		panEvent.setLayout(new BoxLayout(panEvent, BoxLayout.Y_AXIS));
+		panPhotos.setLayout(new BoxLayout(panPhotos, BoxLayout.Y_AXIS));
+		
+		
+		panEvent11.setPreferredSize(new Dimension(500, 100));
+		panEvent12.setPreferredSize(new Dimension(500, 250));
+		panPhotos11.setPreferredSize(new Dimension(500, 100));
+		panPhotos12.setPreferredSize(new Dimension(500, 250));
+		
+	
+		
+		listEve.setPreferredSize(new Dimension(500, 200));
+		
+		panEvent11.setBackground(Color.blue);
+		panEvent.setBackground(Color.yellow);
+		
+		panEvent12.setBackground(Color.pink);
+		panPhotos.setBackground(Color.cyan);
+		panPhotos11.setBackground(Color.green);
+		panPhotos12.setBackground(Color.magenta);
 			
 			
 		panEvent11.add(txtEvent);

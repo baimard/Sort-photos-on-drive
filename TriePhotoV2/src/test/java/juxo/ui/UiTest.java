@@ -60,7 +60,7 @@ public class UiTest {
 		Thread.sleep(50000);
 	}
 	
-	
+	@Ignore
 	@Test
 	public void testUiPremierDemarrage() throws InterruptedException  {
 		UiPremierDemarrage param = new UiPremierDemarrage();
