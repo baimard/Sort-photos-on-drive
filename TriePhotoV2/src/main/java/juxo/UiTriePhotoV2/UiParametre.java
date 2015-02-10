@@ -96,8 +96,6 @@ public class UiParametre extends JFrame {
 	private JRadioButtonMenuItem  renomNomSpec = new JRadioButtonMenuItem ("Renommer avec le nom suivant:");
 	private JRadioButtonMenuItem  activer = new JRadioButtonMenuItem ("Notification ativee");
 	private JRadioButtonMenuItem  desactiver = new JRadioButtonMenuItem ("Notification desactivee");
-
-
 	private ButtonGroup renomGroupBtn = new ButtonGroup();
 	private ButtonGroup notifGroupBtn = new ButtonGroup();
 
@@ -423,7 +421,11 @@ public class UiParametre extends JFrame {
 		pan1.add(pan11);
 		pan1.add(panChoixDossierS);
 		pan1.add(panChoixDossierC);
+<<<<<<< Updated upstream
 
+=======
+		
+>>>>>>> Stashed changes
 		panModeTri1.add(modeDate);
 		panModeTri1.add(modeEvenement);
 		panModeTri1.add(modeLieu);
