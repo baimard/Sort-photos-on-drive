@@ -21,7 +21,7 @@ import org.junit.Test;
 public class UiTest {
 	
 
-	
+	@Ignore
 	@Test
     public void testUiQuestion() throws InterruptedException {
 		
@@ -60,7 +60,7 @@ public class UiTest {
 		Thread.sleep(50000);
 	}
 	
-	@Ignore
+	
 	@Test
 	public void testUiPremierDemarrage() throws InterruptedException  {
 		UiPremierDemarrage param = new UiPremierDemarrage();
