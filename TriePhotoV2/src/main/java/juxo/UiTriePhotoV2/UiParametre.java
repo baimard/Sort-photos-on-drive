@@ -68,9 +68,9 @@ public class UiParametre extends JFrame {
 
 	JTabbedPane panelOnglet = new JTabbedPane();
 
-	private JLabel dossierSource = new JLabel("Dossier source:");
-	private JLabel dossierCible = new JLabel("Dossier cible:");
-	private JLabel frequenceVerif = new JLabel("Verification du dossier:");
+	private JLabel dossierSource = new JLabel("Dossier source :");
+	private JLabel dossierCible = new JLabel("Dossier cible :");
+	private JLabel frequenceVerif = new JLabel("Vérification du dossier :");
 	private JLabel lblAuthentif = new JLabel(
 			"<html><p>Authentification</p></html> ");
 	private JLabel lblReInit = new JLabel(
@@ -89,13 +89,13 @@ public class UiParametre extends JFrame {
 	private JButton reInitCode = new JButton("Reinitialiser la connexion google");
 	
 	private JCheckBox  modeDate = new JCheckBox  ("Date");
-	private JCheckBox  modeEvenement = new JCheckBox ("Evenement");
+	private JCheckBox  modeEvenement = new JCheckBox ("Evènement");
 	private JCheckBox  modeLieu = new JCheckBox ("Lieu");
 	private JRadioButtonMenuItem  renomDate = new JRadioButtonMenuItem ("Renommer par date de prise de vue");
 	private JRadioButtonMenuItem  renomLieu = new JRadioButtonMenuItem ("Renommer par lieu");
-	private JRadioButtonMenuItem  renomNomSpec = new JRadioButtonMenuItem ("Renommer avec le nom suivant:");
-	private JRadioButtonMenuItem  activer = new JRadioButtonMenuItem ("Notification ativee");
-	private JRadioButtonMenuItem  desactiver = new JRadioButtonMenuItem ("Notification desactivee");
+	private JRadioButtonMenuItem  renomNomSpec = new JRadioButtonMenuItem ("Renommer avec le nom suivant :");
+	private JRadioButtonMenuItem  activer = new JRadioButtonMenuItem ("Notification activée");
+	private JRadioButtonMenuItem  desactiver = new JRadioButtonMenuItem ("Notification desactivée");
 	private ButtonGroup renomGroupBtn = new ButtonGroup();
 	private ButtonGroup notifGroupBtn = new ButtonGroup();
 
@@ -105,7 +105,7 @@ public class UiParametre extends JFrame {
 
 		f = this;
 		
-		this.setTitle("Parametrage");
+		this.setTitle("Paramétrage");
 		this.setSize(600, 700);
 		this.setResizable(true);
 		setLocationRelativeTo(this.getParent());
@@ -421,11 +421,7 @@ public class UiParametre extends JFrame {
 		pan1.add(pan11);
 		pan1.add(panChoixDossierS);
 		pan1.add(panChoixDossierC);
-<<<<<<< Updated upstream
 
-=======
-		
->>>>>>> Stashed changes
 		panModeTri1.add(modeDate);
 		panModeTri1.add(modeEvenement);
 		panModeTri1.add(modeLieu);

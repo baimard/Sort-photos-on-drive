@@ -37,7 +37,7 @@ public class UiPremierDemarrage extends JFrame {
 
 	public UiPremierDemarrage() {
 
-		this.setTitle("Parametre");
+		this.setTitle("Paramètre");
 		this.setSize(790, 770);
 		this.setResizable(true);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -64,7 +64,7 @@ public class UiPremierDemarrage extends JFrame {
 		fenetre.add(panBienv);
 
 		JLabel TxtBienvenue = new JLabel(
-				"<html><H1><u>Bienvenue dans TriePhotoV2</u></H1> Cette premiere fenetre vous permettra de vous familiariser avec l'application<br></html>");
+				"<html><H1><u>Bienvenue dans TriePhotoV2</u></H1> Cette première fenêtre vous permettra de vous familiariser avec l'application<br></html>");
 		TxtBienvenue.setHorizontalAlignment(JLabel.CENTER);
 		TxtBienvenue.setForeground(Color.gray);
 		panBienv.add(TxtBienvenue);
@@ -91,7 +91,7 @@ public class UiPremierDemarrage extends JFrame {
 		pan1.add(pan1TxtIcone);
 
 		JLabel txtDossier = new JLabel(
-				"Selectionner le dossier source contenant vos photos et le dossier de destination pour le stockage de vos photos apres le tri");
+				"Sélectionner le dossier source contenant vos photos et le dossier de destination pour le stockage de vos photos après le tri");
 		txtDossier.setFont(new java.awt.Font("Dialog", 0, 12)); // non gras!
 		Icon iconeDossier = new ImageIcon(
 				(getClass().getResource("Resource\\dossier-icone.png")));
@@ -153,9 +153,9 @@ public class UiPremierDemarrage extends JFrame {
 		panIcone.setBackground(Color.WHITE);
 
 		JLabel TxtOptionTri = new JLabel(
-				"<html>Ci dessous les options disponibles pour le tri de vos photos.<br> De maniere automatique vos photos seront triees par annes et par mois, par exemple une photo prise au 1er janvier 2015<br> sera plac� dans le dossier: ' .../2015/1'. Si vous souhaitez simplement ce mode de tri, cliquer sur trier mes photos.<br>Passer votre souris sur les autre options de tri pour plus d'information </html>");
+				"<html>Ci-dessous les options disponibles pour le tri de vos photos.<br> De manière automatique vos photos seront triées par années et par mois, par exemple une photo prise au 1er janvier 2015<br> sera placée dans le dossier : ' .../2015/1'. Si vous souhaitez simplement ce mode de tri, cliquer sur trier mes photos.<br>Passer votre souris sur les autre options de tri pour plus d'information </html>");
 		JLabel TxtOptionTri2 = new JLabel(
-				"<html><i>Si vous selectionnez plusieurs options, l'application essaiera en priorité de trier vos photos par evenement, puis par lieu, <br>si ces informations ne sont disponible, vos photos seront triees par date </i></html>");
+				"<html><i>Si vous sélectionnez plusieurs options, l'application essaiera en priorité de trier vos photos par évènement, puis par lieu, <br>si ces informations ne sont disponible, vos photos seront triées par date </i></html>");
 
 		TxtOptionTri.setFont(new java.awt.Font("Dialog", 0, 12)); // eneleve
 																	// l'effet
@@ -200,9 +200,9 @@ public class UiPremierDemarrage extends JFrame {
 
 		pan2Color.add(TxtOptionTri2);
 
-		Jour.setToolTipText("Vos photos seront triees par jour, ainsi une photo prise au 1er janvier 2015 sera plac� dans le dossier: ' .../2015/1/1'");
+		Jour.setToolTipText("Vos photos seront triees par jour, ainsi une photo prise au 1er janvier 2015 sera placée dans le dossier: ' .../2015/1/1'");
 		Evenement
-				.setToolTipText("<html>Vos photos seront triees par evenement, ainsi une photo prise au 1er janvier 2015 et correspondant � un evenement de votre calendrier a cette date sera placee dans le dossier: ' .../2015/1/'nom de mon evenement' <br> Noter qu'une autorisation de connexion de l'application a Google sera necessaire. Pour plus d'information, voir la partie connexion a Google.</html> ");
+				.setToolTipText("<html>Vos photos seront triées par evenement, ainsi une photo prise au 1er janvier 2015 et correspondant à un évènement de votre calendrier à cette date sera placée dans le dossier : ' .../2015/1/'nom de mon evenement' <br> Noter qu'une autorisation de connexion de l'application a Google sera necessaire. Pour plus d'information, voir la partie connexion a Google.</html> ");
 		Lieu.setToolTipText("Vos photos seront triees par Lieu (si ce dernier est disponible), ainsi une photo prise au 1er janvier 2015 a Pessac sera plac� dans le dossier: ' .../2015/1/Pessac'");
 
 		// panel 3 : Renommage
@@ -221,9 +221,9 @@ public class UiPremierDemarrage extends JFrame {
 		panTxtRenommageColor.setBackground(new Color(76, 153, 0));
 
 		JLabel TxtRenommage = new JLabel(
-				"<html>Vous avez la possibilit� de renommer selon differentes options les photos d'un dossier de votre choix. </html>");
+				"<html>Vous avez la possibilité de renommer selon différentes options les photos d'un dossier de votre choix. </html>");
 		JLabel TxtRenommage2 = new JLabel(
-				"<html>Ce renommage ne sera pas automatique. <br> A chaque fois que vous souhaitez renommer les photos d'un dossier, vous pouvez passer par les parametres.</html>");
+				"<html>Ce renommage ne sera pas automatique. <br> A chaque fois que vous souhaitez renommer les photos d'un dossier, vous pouvez passer par les paramètres.</html>");
 
 		TxtRenommage.setFont(new java.awt.Font("Dialog", 0, 12));
 		TxtRenommage2.setFont(new java.awt.Font("Dialog", 0, 12));

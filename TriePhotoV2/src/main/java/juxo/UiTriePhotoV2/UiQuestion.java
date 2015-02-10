@@ -66,9 +66,9 @@ public class UiQuestion extends JDialog {
 		JPanel panPhotos11 = new JPanel(); 
 		JPanel panPhotos12 = new JPanel(); 
 		JPanel panBtn = new JPanel();*/
-		JLabel txtEvent = new JLabel("<html>Voici la liste des évènements de vos calendriers<br>Veuillez sélectionner l'événement correspondant à vos images :</html> ");
-        JLabel txtPhotos = new JLabel("<html>Attention, des images peuvent ne pas être affichées en raison de leu format</html>");
-        JButton valideButton = new JButton("Déplacer les images");
+		JLabel txtEvent = new JLabel("<html>Voici la liste des Ã©vÃ¨nements de vos calendriers<br>Veuillez sÃ©lectionner l'Ã©vÃ¨nement correspondant Ã  vos images :</html> ");
+        JLabel txtPhotos = new JLabel("<html>Attention, des images peuvent ne pas Ãªtre affichÃ©es en raison de leu format</html>");
+        JButton valideButton = new JButton("DÃ©placer les images");
 		listEve = new JList<Evenement>(listEvenement);
 	
 		/*panEvent11.setPreferredSize(new Dimension(600, 50));
