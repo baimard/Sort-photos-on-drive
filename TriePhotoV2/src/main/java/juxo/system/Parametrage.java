@@ -7,6 +7,8 @@ import java.util.List;
 
 import juxo.triephotoV2.methode.AbstractSortMethod;
 import juxo.triephotoV2.methode.SortByDayDate;
+import juxo.triephotoV2.methode.SortByEvent;
+import juxo.triephotoV2.methode.SortByPlace;
 import juxo.triephotoV2.methode.SortNormal;
 
 public class Parametrage implements Serializable {
@@ -36,7 +38,6 @@ public class Parametrage implements Serializable {
 		tabSortMethod.add(new SortNormal(3));
 	}
 
-	
 	public void addSortByDay(){
 		tabSortMethod.add(new SortByDayDate(2));
 	}
@@ -45,6 +46,21 @@ public class Parametrage implements Serializable {
 		tabSortMethod.remove(SortByDayDate.getInstance());
 	}
 	
+	public void addSortByPlace(){
+		tabSortMethod.add(new SortByPlace(1));
+	}
+	
+	public void delSortByPlace(){
+		tabSortMethod.remove(SortByPlace.getInstance());
+	}
+	
+	public void addSortByEvent(){
+		tabSortMethod.add(new SortByEvent(1));
+	}
+	
+	public void delSortByEvent(){
+		tabSortMethod.remove(SortByEvent.getInstance());
+	}
 	
 	public static Parametrage getInstance() {
 		return PARAM;
