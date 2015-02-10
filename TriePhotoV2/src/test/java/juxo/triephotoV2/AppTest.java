@@ -32,7 +32,6 @@ import juxo.triephotoV2.methode.SortByPlace;
 public class AppTest
 {
 
-	
 	@Test
 	public void testRenommage() throws IOException, URISyntaxException{
 		ConnexionGoogle.googleConnexion = new ConnexionGoogle();
