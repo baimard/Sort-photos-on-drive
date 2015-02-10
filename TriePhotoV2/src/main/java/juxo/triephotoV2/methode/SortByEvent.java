@@ -20,7 +20,7 @@ public class SortByEvent extends AbstractSortMethod {
 		}
 	}
 
-	public SortByEvent getInstance(){
+	public static SortByEvent getInstance(){
 		return mySort;
 	}
 	

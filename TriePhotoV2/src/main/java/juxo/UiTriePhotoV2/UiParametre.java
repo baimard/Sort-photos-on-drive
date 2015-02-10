@@ -421,11 +421,7 @@ public class UiParametre extends JFrame {
 		pan1.add(pan11);
 		pan1.add(panChoixDossierS);
 		pan1.add(panChoixDossierC);
-<<<<<<< Updated upstream
 
-=======
-		
->>>>>>> Stashed changes
 		panModeTri1.add(modeDate);
 		panModeTri1.add(modeEvenement);
 		panModeTri1.add(modeLieu);
