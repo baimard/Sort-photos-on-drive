@@ -1,6 +1,4 @@
-package juxo.UiTriePhotoV2;
-
-
+ï»¿package juxo.UiTriePhotoV2;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -19,20 +17,23 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 
-public class UiParametre extends JFrame {
+import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
+import juxo.apiCalendar.connexionGoogle.OAuth2Token;
+import juxo.system.Parametrage;
+import juxo.system.XMLToolsSerialisation;
+import juxo.triephotoV2.accessFichier.Fichier;
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+public class UiParametre extends JFrame {
 	
+	public static UiParametre f = null;
+	
+	private static final long serialVersionUID = 1L;
+
 	JPanel panChoixDossierS = new JPanel();
 	JPanel panChoixDossierC = new JPanel();
 	JPanel pan1 = new JPanel();
@@ -64,120 +65,144 @@ public class UiParametre extends JFrame {
 	JPanel panReInit = new JPanel();
 	JPanel panAuthentif1 = new JPanel();
 	JPanel panReInit1 = new JPanel();
-	
-	
+
 	JTabbedPane panelOnglet = new JTabbedPane();
-	
-	
+
 	private JLabel dossierSource = new JLabel("Dossier source:");
 	private JLabel dossierCible = new JLabel("Dossier cible:");
-	private JLabel frequenceVerif = new JLabel("Vérification du dossier:");
-	private JLabel lblAuthentif = new JLabel("<html><p>Veuillez cliquer ci-contre <br> pour obtenir  le code <br> d'authentification google</p></html> ");
-	private JLabel lblReInit = new JLabel("<html><p>Veuillez cliquer ci-contre pour <br> réinitialiser la connexion google</p></html>");
-	
-	private JTextField source = new JTextField();
-	private JTextField cible = new JTextField();
+	private JLabel frequenceVerif = new JLabel("Verification du dossier:");
+	private JLabel lblAuthentif = new JLabel(
+			"<html><p>Authentification</p></html> ");
+	private JLabel lblReInit = new JLabel(
+			"<html><p>RÃ©initialisation</p></html>");
+
+	private JTextField source;
+	private JTextField cible;
 	private JTextField selectDossierRenom = new JTextField();
 	private JTextField saisieNom = new JTextField();
-	
-	
+
 	private JButton choixSource = new JButton("Parcourir");
 	private JButton choixCible = new JButton("Parcourir");
 	private JButton fichieRenom = new JButton("Parcourir");
 	private JButton renommer = new JButton("Renommer");
 	private JButton codAuthent = new JButton("Obtenir mon code d'authentification");
-	private JButton reInitCode = new JButton("Réinitialiser la connexion google");
+	private JButton reInitCode = new JButton("Reinitialiser la connexion google");
 	
-	private JRadioButtonMenuItem  modeDate = new JRadioButtonMenuItem ("Date");
-	private JRadioButtonMenuItem  modeEvenement = new JRadioButtonMenuItem ("Evenement");
-	private JRadioButtonMenuItem  modeLieu = new JRadioButtonMenuItem ("Lieu");
+	private JCheckBox  modeDate = new JCheckBox  ("Date");
+	private JCheckBox  modeEvenement = new JCheckBox ("Evenement");
+	private JCheckBox  modeLieu = new JCheckBox ("Lieu");
 	private JRadioButtonMenuItem  renomDate = new JRadioButtonMenuItem ("Renommer par date de prise de vue");
 	private JRadioButtonMenuItem  renomLieu = new JRadioButtonMenuItem ("Renommer par lieu");
 	private JRadioButtonMenuItem  renomNomSpec = new JRadioButtonMenuItem ("Renommer avec le nom suivant:");
-	private JRadioButtonMenuItem  activer = new JRadioButtonMenuItem ("Notification ativée");
-	private JRadioButtonMenuItem  desactiver = new JRadioButtonMenuItem ("Notification désactivée");
-	
-	private ButtonGroup triGroupBtn = new ButtonGroup();
+	private JRadioButtonMenuItem  activer = new JRadioButtonMenuItem ("Notification ativee");
+	private JRadioButtonMenuItem  desactiver = new JRadioButtonMenuItem ("Notification desactivee");
+
+
 	private ButtonGroup renomGroupBtn = new ButtonGroup();
 	private ButtonGroup notifGroupBtn = new ButtonGroup();
-	
-	 private JComboBox frequences;
 
-	
-	
-	public UiParametre(){
+	private JComboBox<comboElement> frequences;
+
+	public UiParametre() {
+
+		f = this;
 		
 		this.setTitle("Parametrage");
 		this.setSize(600, 700);
 		this.setResizable(true);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(this.getParent());
 		
-UiParametreActionListener UiParametreListener = new UiParametreActionListener(source, cible, modeDate, modeEvenement, modeLieu, selectDossierRenom, renomDate, renomLieu, renomNomSpec);
+		UiParametreActionListener UiParametreListener = new UiParametreActionListener(
+				source, cible, modeDate, modeEvenement, modeLieu,
+				selectDossierRenom, renomDate, renomLieu, renomNomSpec);
 
-		// ___________________  Les icones ___________________________________________
-		
-		Image icone =   Toolkit.getDefaultToolkit().getImage(getClass().getResource("Resource\\pictograms-nps-services-library.png"));
-        this.setIconImage(icone);
-        
-       
-		ImageIcon icon1 = new ImageIcon(getClass().getResource("Resource\\dossier-icone.png"));
+		Parametrage p = Parametrage.getInstance();
+
+		source = new JTextField(p.getDossierSource());
+		cible = new JTextField(p.getDossierDestination());
+
+		// ___________________ Les icones_____________________
+
+		Image icone = Toolkit.getDefaultToolkit().getImage(
+				getClass().getResource(
+						"Resource" + Fichier.SEPARATOR
+								+ "pictograms-nps-services-library.png"));
+		this.setIconImage(icone);
+
+		ImageIcon icon1 = new ImageIcon(getClass().getResource(
+				"Resource" + Fichier.SEPARATOR + "dossier-icone.png"));
 		JLabel label1 = new JLabel();
 		label1.setIcon(icon1);
 		pan11.setLayout(new FlowLayout(FlowLayout.LEFT));
 		pan11.add(label1);
-		
-		ImageIcon icon2 = new ImageIcon(getClass().getResource("Resource\\modules-icone.png"));
+
+		ImageIcon icon2 = new ImageIcon(getClass().getResource(
+				"Resource" + Fichier.SEPARATOR + "modules-icone.png"));
 		JLabel label2 = new JLabel();
 		label2.setIcon(icon2);
 		pan21.setLayout(new FlowLayout(FlowLayout.LEFT));
 		pan21.add(label2);
-		
-		ImageIcon icon3 = new ImageIcon(getClass().getResource("Resource\\encre-icone.png"));
+
+		ImageIcon icon3 = new ImageIcon(getClass().getResource(
+				"Resource" + Fichier.SEPARATOR + "encre-icone.png"));
 		JLabel label3 = new JLabel();
 		label3.setIcon(icon3);
 		pan31.setLayout(new FlowLayout(FlowLayout.LEFT));
 		pan31.add(label3);
-		
-		
-		ImageIcon iconNotif = new ImageIcon(getClass().getResource("Resource\\notification-icone.png"));
+
+		ImageIcon iconNotif = new ImageIcon(getClass().getResource(
+				"Resource" + Fichier.SEPARATOR + "notification-icone.png"));
 		JLabel label4 = new JLabel();
 		label4.setIcon(iconNotif);
 		panIconNotif.add(label4);
-		
-		
-		ImageIcon iconFrequence = new ImageIcon(getClass().getResource("Resource\\frequence-icone.png"));
+
+		ImageIcon iconFrequence = new ImageIcon(getClass().getResource(
+				"Resource" + Fichier.SEPARATOR + "frequence-icone.png"));
 		JLabel label5 = new JLabel();
 		label5.setIcon(iconFrequence);
 		panIconFrequence.add(label5);
+
 		
-		ImageIcon iconAuthent = new ImageIcon(getClass().getResource("Resource\\notification-icone.png"));
+
+		//ImageIcon iconAuthent = new ImageIcon(getClass().getResource("Resource\\icone-cle.png"));
+
+		ImageIcon iconAuthent = new ImageIcon(getClass().getResource("Resource"+Fichier.SEPARATOR+"notification-icone.png"));
+
 		JLabel label6 = new JLabel();
 		label6.setIcon(iconAuthent);
 		panIconAuthent.add(label6);
-		
-		
-		ImageIcon iconReInit = new ImageIcon(getClass().getResource("Resource\\notification-icone.png"));
+
+		ImageIcon iconReInit = new ImageIcon(getClass().getResource(
+				"Resource" + Fichier.SEPARATOR + "notification-icone.png"));
+
 		JLabel label7 = new JLabel();
 		label7.setIcon(iconReInit);
 		panIconReInit.add(label7);
-		
-		ImageIcon iconOngletTri = new ImageIcon(getClass().getResource("Resource\\parametres-icone.png"));
-		ImageIcon iconConnexionGoogle = new ImageIcon(getClass().getResource("Resource\\google-icone.png"));
-		ImageIcon iconGenerale = new ImageIcon(getClass().getResource("Resource\\horloge-icone.png"));
-		
-		
-		
-		//______________________ les objets ______________________
-		
-		Object[] elements = new Object[]{"Toutes les minutes", "Tous les 5 minutes", "Tous les 10 minutes", "Tous les 15 minutes", "Tous les 30 min", "Toutes les heures"};
-	    frequences= new JComboBox(elements);
 
-	    JPanel content = new JPanel();
-	    
-		//JScrollPane pane = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		ImageIcon iconOngletTri = new ImageIcon(getClass().getResource(
+				"Resource" + Fichier.SEPARATOR + "parametres-icone.png"));
+		ImageIcon iconConnexionGoogle = new ImageIcon(getClass().getResource(
+				"Resource" + Fichier.SEPARATOR + "google-icone.png"));
+		ImageIcon iconGenerale = new ImageIcon(getClass().getResource(
+				"Resource" + Fichier.SEPARATOR + "horloge-icone.png"));
+
+		// ______________________ les objets ______________________
 		
-		//______________________ Background color _______________________
+		comboElement cE1= new comboElement("Toutes les minutes", 60000);
+		comboElement cE2= new comboElement("Toutes les 5 minutes", 300000);
 		
+		frequences = new JComboBox<comboElement>();
+		frequences.addItem(cE1);
+		frequences.addItem(cE2);
+		
+		JPanel content = new JPanel();
+
+		// JScrollPane pane = new
+		// JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+		// JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+
+		// ______________________ Background color _______________________
+
 		modeDate.setBackground(Color.WHITE);
 		modeEvenement.setBackground(Color.WHITE);
 		modeLieu.setBackground(Color.WHITE);
@@ -203,13 +228,13 @@ UiParametreActionListener UiParametreListener = new UiParametreActionListener(so
 		pan3.setBackground(Color.WHITE);
 		pan31.setBackground(Color.WHITE);
 		pan.setBackground(Color.WHITE);
-	    content.setBackground(Color.WHITE);
-	    pan.setBackground(Color.WHITE);
-	    panelOnglet.setBackground(Color.WHITE);
-        panbis.setBackground(Color.WHITE);
-	    panNotif.setBackground(Color.WHITE);
-	    activer.setBackground(Color.WHITE);
-	    desactiver.setBackground(Color.WHITE);
+		content.setBackground(Color.WHITE);
+		pan.setBackground(Color.WHITE);
+		panelOnglet.setBackground(Color.WHITE);
+		panbis.setBackground(Color.WHITE);
+		panNotif.setBackground(Color.WHITE);
+		activer.setBackground(Color.WHITE);
+		desactiver.setBackground(Color.WHITE);
 		panApp.setBackground(Color.WHITE);
 		panTemps.setBackground(Color.WHITE);
 		panIconNotif.setBackground(Color.WHITE);
@@ -223,19 +248,19 @@ UiParametreActionListener UiParametreListener = new UiParametreActionListener(so
 		lblReInit.setBackground(Color.WHITE);
 		panAuthentif1.setBackground(Color.WHITE);
 		panReInit1.setBackground(Color.WHITE);
-	    
-       //________________Les panels _________________________________
-	    
-	           //_______Layout_______
-	    
+
+		// ________________Les panels _________________________________
+
+		// _______Layout_______
+
 		panChoixDossierS.setLayout(new FlowLayout());
 		panChoixDossierC.setLayout(new FlowLayout());
 		pan1.setLayout(new BoxLayout(pan1, BoxLayout.Y_AXIS));
-		panModeTri1.setLayout(new GridLayout(1,3));
+		panModeTri1.setLayout(new GridLayout(1, 3));
 		pan2.setLayout(new BoxLayout(pan2, BoxLayout.Y_AXIS));
-	    panRenommage1.setLayout(new FlowLayout());
-	    panRenommage2.setLayout(new GridLayout(1,1));
-		panRenommage3.setLayout(new GridLayout(1,1));
+		panRenommage1.setLayout(new FlowLayout());
+		panRenommage2.setLayout(new GridLayout(1, 1));
+		panRenommage3.setLayout(new GridLayout(1, 1));
 		panRenommage4.setLayout(new BoxLayout(panRenommage4, BoxLayout.X_AXIS));
 		panRenommage5.setLayout(new FlowLayout());
 		pan3.setLayout(new BoxLayout(pan3, BoxLayout.Y_AXIS));
@@ -244,62 +269,62 @@ UiParametreActionListener UiParametreListener = new UiParametreActionListener(so
 		panIconFrequence.setLayout(new FlowLayout(FlowLayout.LEFT));
 		panNotif.setLayout(new FlowLayout(FlowLayout.LEFT));
 		panApp.setLayout(new FlowLayout(FlowLayout.LEFT));
-		panTemps.setLayout(new GridLayout(1,2));
+		panTemps.setLayout(new GridLayout(1, 2));
 		panIconAuthent.setLayout(new FlowLayout(FlowLayout.LEFT));
 		panIconReInit.setLayout(new FlowLayout(FlowLayout.LEFT));
 		panAuthentification.setLayout(new FlowLayout(FlowLayout.LEFT));
 		panReInit.setLayout(new FlowLayout(FlowLayout.LEFT));
-		
-		       //_______ Taille panel_______
+
+		// _______ Taille panel_______
 		content.setPreferredSize(new Dimension(600, 700));
-        pan11.setPreferredSize(new Dimension(500, 50));
-        pan21.setPreferredSize(new Dimension(500, 50));
-        panRenommage1.setPreferredSize(new Dimension(500, 35));
-        panRenommage2.setPreferredSize(new Dimension(250, 30));
-        panRenommage3.setPreferredSize(new Dimension(250, 30));
-        panRenommage4.setPreferredSize(new Dimension(500, 30));
-        panRenommage5.setPreferredSize(new Dimension(500, 40));
-        pan31.setPreferredSize(new Dimension(500,50 ));
-        panNotif.setPreferredSize(new Dimension(500, 120));
-        panTemps.setPreferredSize(new Dimension(300, 45));
-        panAuthentification.setPreferredSize(new Dimension(500, 120));
-        panReInit.setPreferredSize(new Dimension(500,120));
-        
-               // ___________Taille objet ____________
+		pan11.setPreferredSize(new Dimension(500, 50));
+		pan21.setPreferredSize(new Dimension(500, 50));
+		panRenommage1.setPreferredSize(new Dimension(500, 35));
+		panRenommage2.setPreferredSize(new Dimension(250, 30));
+		panRenommage3.setPreferredSize(new Dimension(250, 30));
+		panRenommage4.setPreferredSize(new Dimension(500, 30));
+		panRenommage5.setPreferredSize(new Dimension(500, 40));
+		pan31.setPreferredSize(new Dimension(500, 50));
+		panNotif.setPreferredSize(new Dimension(500, 120));
+		panTemps.setPreferredSize(new Dimension(300, 45));
+		panAuthentification.setPreferredSize(new Dimension(500, 120));
+		panReInit.setPreferredSize(new Dimension(500, 120));
+
+		// ___________Taille objet ____________
 		source.setPreferredSize(new Dimension(300, 25));
 		cible.setPreferredSize(new Dimension(300, 25));
 		selectDossierRenom.setPreferredSize(new Dimension(380, 25));
 		saisieNom.setPreferredSize(new Dimension(284, 25));
 		renommer.setPreferredSize(new Dimension(150, 25));
-		
-		
-    //_____Title Border___________
-        TitledBorder bordureDossier = (BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(29,158,233),2),"<html><H3>Choix des dossiers</H3></html>"));
+
+		// _____Title Border___________
+		TitledBorder bordureDossier = (BorderFactory.createTitledBorder(
+				BorderFactory.createLineBorder(new Color(29, 158, 233), 2),
+				"<html><H3>Choix des dossiers</H3></html>"));
 		pan1.setBorder(bordureDossier);
-		bordureDossier.setTitleColor(new Color(29,158,233));
-		
-	    
-	    
-		TitledBorder bordureTri = (BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(255,134,28),2),"<html><H3>Option de tri</H3></html>"));
+		bordureDossier.setTitleColor(new Color(29, 158, 233));
+
+		TitledBorder bordureTri = (BorderFactory.createTitledBorder(
+				BorderFactory.createLineBorder(new Color(255, 134, 28), 2),
+				"<html><H3>Option de tri</H3></html>"));
 		pan2.setBorder(bordureTri);
-		bordureTri.setTitleColor(new Color(255,134,28));
-		
-		
-		
-		pan3.setBorder(BorderFactory.createTitledBorder("Renommage des fichiers"));
-		TitledBorder bordureRenommage = (BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(76,153,0),2),"<html><H3>Renommage des fichiers</H3></html>"));
+		bordureTri.setTitleColor(new Color(255, 134, 28));
+
+		pan3.setBorder(BorderFactory
+				.createTitledBorder("Renommage des fichiers"));
+		TitledBorder bordureRenommage = (BorderFactory.createTitledBorder(
+				BorderFactory.createLineBorder(new Color(76, 153, 0), 2),
+				"<html><H3>Renommage des fichiers</H3></html>"));
 		pan3.setBorder(bordureRenommage);
-		bordureRenommage.setTitleColor(new Color(76,153,0));
-		
-		
-		
-		//______ les commandes________
+		bordureRenommage.setTitleColor(new Color(76, 153, 0));
+
+		// ______ les commandes________
 		choixSource.setActionCommand("choixSource");
-        choixSource.addActionListener(UiParametreListener);
+		choixSource.addActionListener(UiParametreListener);
 		choixCible.setActionCommand("choixCible");
-        choixCible.addActionListener(UiParametreListener);
+		choixCible.addActionListener(UiParametreListener);
 		fichieRenom.setActionCommand("choixFicRenom");
-        fichieRenom.addActionListener(UiParametreListener);
+		fichieRenom.addActionListener(UiParametreListener);
 		modeDate.setActionCommand("triDate");
 		modeDate.addActionListener(UiParametreListener);
 		modeEvenement.setActionCommand("triEvenement");
@@ -312,12 +337,11 @@ UiParametreActionListener UiParametreListener = new UiParametreActionListener(so
 		renomLieu.addActionListener(UiParametreListener);
 		renomNomSpec.setActionCommand("renomNomSpecifie");
 		renomNomSpec.addActionListener(UiParametreListener);
-		setLocationRelativeTo(this.getParent()); 
-		
-		
+		frequences.setActionCommand("intervalActualisation");
+		frequences.addActionListener(UiParametreListener);
 
- 
-////////////////////_________________________ Onglet tri ___________________________	   
+
+	//_________________________ Onglet tri ___________________________	   
 		
 	    panChoixDossierS.add(dossierSource);
 	    panChoixDossierS.add(source);
@@ -330,11 +354,7 @@ UiParametreActionListener UiParametreListener = new UiParametreActionListener(so
 	    pan1.add(pan11);
 	    pan1.add(panChoixDossierS);
 	    pan1.add(panChoixDossierC);
-	    
-	    
-	    triGroupBtn.add(modeDate);
-	    triGroupBtn.add(modeEvenement);
-	    triGroupBtn.add(modeLieu);
+	   
 	    
 	    panModeTri1.add(modeDate);
 	    panModeTri1.add(modeEvenement);
@@ -372,78 +392,189 @@ UiParametreActionListener UiParametreListener = new UiParametreActionListener(so
 	    pan.add(content);
 	    
         panelOnglet.addTab("Option de tri", iconOngletTri , pan);
-        panelOnglet.addTab("Option générale",iconGenerale ,  panbis);
+        panelOnglet.addTab("Option generale",iconGenerale ,  panbis);
         panelOnglet.addTab("Connexion google",iconConnexionGoogle, panter);
        
         
         
-      //////////////// _____________________________________ Onglet général ________________________
+      //////////////// _____________________________________ Onglet gï¿½nï¿½ral ________________________
         
 
 		//txtDossier.setFont(new java.awt.Font("Dialog", 0, 12));
+
 		
-                /// ___________ Border Title ________________
+		codAuthent.setActionCommand("DemandeGoogle");
+		codAuthent.addActionListener(UiParametreListener);
 		
-	    TitledBorder bordureNotif = (BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(255,184,28),2),"<html><H3>Notification</H3></html>"));
+		reInitCode.setActionCommand("ReinitialisationGoogle");
+		reInitCode.addActionListener(UiParametreListener);
+
+		// //////////////////_________________________ Onglet tri
+		// ___________________________
+
+		panChoixDossierS.add(dossierSource);
+		panChoixDossierS.add(source);
+		panChoixDossierS.add(choixSource);
+
+		panChoixDossierC.add(dossierCible);
+		panChoixDossierC.add(cible);
+		panChoixDossierC.add(choixCible);
+
+		pan1.add(pan11);
+		pan1.add(panChoixDossierS);
+		pan1.add(panChoixDossierC);
+
+		panModeTri1.add(modeDate);
+		panModeTri1.add(modeEvenement);
+		panModeTri1.add(modeLieu);
+
+		pan2.add(pan21);
+		pan2.add(panModeTri1);
+
+		renomGroupBtn.add(renomDate);
+		renomGroupBtn.add(renomLieu);
+		renomGroupBtn.add(renomNomSpec);
+
+		panRenommage1.add(selectDossierRenom);
+		panRenommage1.add(fichieRenom);
+		panRenommage2.add(renomDate);
+		panRenommage3.add(renomLieu);
+		panRenommage4.add(renomNomSpec);
+		panRenommage4.add(saisieNom);
+		panRenommage5.add(renommer);
+
+		pan3.add(pan31);
+		pan3.add(panRenommage1);
+		pan3.add(panRenommage2);
+		pan3.add(panRenommage3);
+		pan3.add(panRenommage4);
+		pan3.add(panRenommage5);
+
+		content.add(pan1);
+		content.add(pan2);
+		content.add(pan3);
+
+		pan.add(content);
+
+		panelOnglet.addTab("Option de tri", iconOngletTri, pan);
+		panelOnglet.addTab("Option generale", iconGenerale, panbis);
+		panelOnglet.addTab("Connexion google", iconConnexionGoogle, panter);
+
+		// ////////////// _____________________________________ Onglet gï¿½nï¿½ral
+		// ________________________
+
+		// txtDossier.setFont(new java.awt.Font("Dialog", 0, 12));
+
+		// / ___________ Border Title ________________
+
+		TitledBorder bordureNotif = (BorderFactory.createTitledBorder(
+				BorderFactory.createLineBorder(new Color(255, 184, 28), 2),
+				"<html><H3>Notification</H3></html>"));
 		panNotif.setBorder(bordureNotif);
-		bordureNotif.setTitleColor(new Color(255,184,28));
-		
-	    
-	    panApp.setPreferredSize(new Dimension(500,120));
-	    TitledBorder bordureOptionApp = (BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(128,128,128),2),"<html><H3>Fréquence</H3></html>"));
+		bordureNotif.setTitleColor(new Color(255, 184, 28));
+
+		panApp.setPreferredSize(new Dimension(500, 120));
+		TitledBorder bordureOptionApp = (BorderFactory.createTitledBorder(
+				BorderFactory.createLineBorder(new Color(128, 128, 128), 2),
+				"<html><H3>Frï¿½quence</H3></html>"));
 		panApp.setBorder(bordureOptionApp);
-		bordureOptionApp.setTitleColor(new Color(128,128,128));
-		
-	    
-                   //___________ les objets placés dans l'onglet ______________
+		bordureOptionApp.setTitleColor(new Color(128, 128, 128));
+
+		// ___________ les objets placï¿½s dans l'onglet ______________
 		notifGroupBtn.add(activer);
 		notifGroupBtn.add(desactiver);
-		
+
 		panNotif.add(panIconNotif);
-        panNotif.add(activer);
-        panNotif.add(desactiver);
-		
+		panNotif.add(activer);
+		panNotif.add(desactiver);
+
 		panApp.add(panIconFrequence);
 		panApp.add(panTemps);
 		panTemps.add(frequenceVerif);
 		panTemps.add(frequences);
-		
-		
+
 		panbis.add(panNotif);
 		panbis.add(panApp);
-        
-		
-	//////////////___________________________________ Onglet Connexion Google __________________________
-		
-		//_______Title Border__________
-		
-	    TitledBorder bordureAuth = (BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(255,200,0),2),"<html><H3>Authentification google</H3></html>"));
-	    panAuthentification.setBorder(bordureAuth);
-		bordureAuth.setTitleColor(new Color(255,200,0));
-		
-	   
-	    TitledBorder bordureReInit = (BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(255,0,240),2),"<html><H3>Réinitialisation</H3></html>"));
-	    panReInit.setBorder(bordureReInit);
-	    bordureReInit.setTitleColor(new Color(255,0,240));
-		
-	    //__________Les objets dans l'onglet ________
-	    panAuthentification.add(panIconAuthent);
-	    panAuthentification.add(panAuthentif1);
-	    
-	    panAuthentif1.add(lblAuthentif);
-	    panAuthentif1.add(codAuthent);
-	    
-	    panReInit.add(panIconReInit);
-	    panReInit.add(panReInit1);
-	    
-	    panReInit1.add(lblReInit);
-	    panReInit1.add(reInitCode);
-	    
-	    panter.add(panAuthentification);
-	    panter.add(panReInit);
-	    
-	    this.add(panelOnglet);
+
+		// ////////////___________________________________ Onglet Connexion
+		// Google __________________________
+
+		// _______Title Border__________
+
+		TitledBorder bordureAuth = (BorderFactory.createTitledBorder(
+				BorderFactory.createLineBorder(new Color(255, 200, 0), 2),
+				"<html><H3>Authentification google</H3></html>"));
+		panAuthentification.setBorder(bordureAuth);
+		bordureAuth.setTitleColor(new Color(255, 200, 0));
+
+		TitledBorder bordureReInit = (BorderFactory.createTitledBorder(
+				BorderFactory.createLineBorder(new Color(255, 0, 240), 2),
+				"<html><H3>Rï¿½initialisation</H3></html>"));
+		panReInit.setBorder(bordureReInit);
+		bordureReInit.setTitleColor(new Color(255, 0, 240));
+
+		// __________Les objets dans l'onglet ________
+		panAuthentification.add(panIconAuthent);
+		panAuthentification.add(panAuthentif1);
+
+		panAuthentif1.add(lblAuthentif);
+		panAuthentif1.add(codAuthent);
+
+		panReInit.add(panIconReInit);
+		panReInit.add(panReInit1);
+
+		panReInit1.add(lblReInit);
+		panReInit1.add(reInitCode);
+
+		panter.add(panAuthentification);
+		panter.add(panReInit);
+
+		this.add(panelOnglet);
 		this.setVisible(true);
+		
+		//TESTO
+		OAuth2Token token=null;
+		try{
+    		token = (OAuth2Token) XMLToolsSerialisation.decodeFromFile("token");
+    	} catch(Exception e){
+    		System.out.println(e);
+    	}
+		
+		
+		if(token!=null){
+			codAuthent.setEnabled(false);
+			reInitCode.setEnabled(true);
+		}else{
+			codAuthent.setEnabled(true);
+			reInitCode.setEnabled(false);
+		}
+	}
+
+	public JButton getCodAuthent() {
+		return codAuthent;
+	}
+
+	public void setCodAuthent(JButton codAuthent) {
+		this.codAuthent = codAuthent;
+	}
+
+	public JButton getReInitCode() {
+		return reInitCode;
+	}
+
+	public void setReInitCode(JButton reInitCode) {
+		this.reInitCode = reInitCode;
+	}
+
+	public JComboBox getFrequences() {
+		return frequences;
+	}
+
+	public void setFrequences(JComboBox frequences) {
+		this.frequences = frequences;
+	}
 	
-}
+	
+	
+	
 }

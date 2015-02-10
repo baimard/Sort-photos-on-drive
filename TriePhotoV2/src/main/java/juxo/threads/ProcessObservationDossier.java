@@ -23,7 +23,7 @@ public class ProcessObservationDossier extends Thread {
 				Fichier.listFic = new MapDateFichiers();
 				Fichiers.generationListe(new Fichier(p.getDossierSource()));
 				AfficherNotification.AfficherMsgNotification(Fichier.listFic.size()+" Fichiers ont été trouvés");
-				sleep(60000);
+				sleep(p.getIntervalObservation());
 			} catch (InterruptedException e) {
 				System.out.println(e);
 			}catch(IOException e){

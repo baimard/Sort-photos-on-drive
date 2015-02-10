@@ -1,10 +1,17 @@
 package juxo.UiTriePhotoV2;
 
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.util.Date;
 import java.util.Random;
 
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,6 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.border.TitledBorder;
 
 import juxo.apiCalendar.Evenement;
 import juxo.apiCalendar.Evenements;
@@ -33,6 +41,8 @@ public class UiQuestion extends JDialog {
 	    this.setLocationRelativeTo(null);
 	    this.setResizable(false);
 	    this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
+	    Image icone =   Toolkit.getDefaultToolkit().getImage(getClass().getResource("Resource\\pictograms-nps-services-library.png"));
+        this.setIconImage(icone);
 	    
 	    listEvenement = new DefaultListModel<Evenement>();
 	    
@@ -49,17 +59,45 @@ public class UiQuestion extends JDialog {
 
 	private void initComponent(Fichiers fs) {
 		JPanel listpan = new JPanel();
-
+		/*JPanel panEvent = new JPanel(); 
+		JPanel panEvent11 = new JPanel(); 
+		JPanel panEvent12 = new JPanel(); 
+		JPanel panPhotos = new JPanel(); 
+		JPanel panPhotos11 = new JPanel(); 
+		JPanel panPhotos12 = new JPanel(); 
+		JPanel panBtn = new JPanel();*/
+		JLabel txtEvent = new JLabel("<html>Voici la liste des évènements de vos calendriers<br>Veuillez sélectionner l'événement correspondant à vos images :</html> ");
+        JLabel txtPhotos = new JLabel("<html>Attention, des images peuvent ne pas être affichées en raison de leu format</html>");
+        JButton valideButton = new JButton("Déplacer les images");
 		listEve = new JList<Evenement>(listEvenement);
-		listEve.setPreferredSize(new Dimension(500, 200));
+	
+		/*panEvent11.setPreferredSize(new Dimension(600, 50));
+		panEvent12.setPreferredSize(new Dimension(600, 220));*/
 		
-		JLabel j1 = new JLabel("Veuillez sélectionner l'événement correspondant à vos images :");
-		listpan.add(j1);
+		//panPhotos11.setPreferredSize(new Dimension(600, 30));
+		//panPhotos12.setPreferredSize(new Dimension(600, 220));
+		//listpan.setLayout(new BoxLayout(listpan, BoxLayout.Y_AXIS));
+		//panEvent.setLayout(new BoxLayout(panEvent, BoxLayout.Y_AXIS));
+		//panPhotos.setLayout(new BoxLayout(panPhotos, BoxLayout.Y_AXIS));
+		listEve.setPreferredSize(new Dimension(500, 200));
+		/*
+		
+		  TitledBorder bordureEvent = (BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(29,158,233),2),"<html><H3>Evenements</H3></html>"));
+		  panEvent.setBorder(bordureEvent);
+		  bordureEvent.setTitleColor(new Color(29,158,233));
+		  
+		  
+		
+		  TitledBorder bordurePhotos = (BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(76,153,0),2),"<html><H3>Photos</H3></html>"));
+		  panPhotos.setBorder(bordurePhotos);
+		  bordurePhotos.setTitleColor(new Color(76,153,0));
+			
+			*/
+		listpan.add(txtEvent);
 		listpan.add(listEve);
 		
+		listpan.add(txtPhotos);
 
-		JLabel j2 = new JLabel("Des images peuvent ne pas être affichées en raison de leur format :");
-		listpan.add(j2);
 
 		
 		if(fs.size()>3){
@@ -67,30 +105,31 @@ public class UiQuestion extends JDialog {
 		    int nbaleatoire;
 		    int i = 0;
 		    int sizeListe = fs.size();
-		    int tab_i[] = new int[sizeListe];
-	
-		    
-		    
-		    while(i < sizeListe-1){
-		    	nbaleatoire = randomGenerator.nextInt(sizeListe);
-		    	System.out.println(nbaleatoire);
-		  
-		    	if(rechercheTableau(tab_i, nbaleatoire)){
-		    		tab_i[i]= nbaleatoire;
-		    		i++;
-		    
-		    		BufferedImage bimg1 = fs.get(nbaleatoire).getImage(180);
+		    int tab_i[] = new int[3];
+
+ while (i < 3 - 1) {
+
+			nbaleatoire = randomGenerator.nextInt(sizeListe);
+			if (rechercheTableau(tab_i, nbaleatoire)) {
+				tab_i[i] = nbaleatoire;
+				i++;
+			}
+		}
+		
+		for (int z : tab_i) {
+                     
+		    		 BufferedImage bimg1 = fs.get(z).getImage(180);
 		    		 JLabel image1 = null;
 					    if(bimg1!=null){
 							image1 = new JLabel(new ImageIcon(bimg1));
-							image1.setMaximumSize(new Dimension(200, 200));
+							image1.setMaximumSize(new Dimension(100, 100));
 							listpan.add(image1);
 					      
 					    }
 		    	}
 		    	
 		    }
-		}
+		
 		
 		    
 		  	else{
@@ -103,10 +142,12 @@ public class UiQuestion extends JDialog {
 				    }
 				}
 		    
-				JButton valideButton = new JButton("Déplacer les images");
+		     listpan.add(valideButton);
+		     
 				valideButton.addActionListener(new UiQuestionActionListener(this));
 				this.getContentPane().add(listpan);
-				listpan.add(valideButton);
+		
+				
 			}
 
 			public Evenement showUiQuestion(){
@@ -117,7 +158,6 @@ public class UiQuestion extends JDialog {
 			public static boolean rechercheTableau(int tab[], int i){
 				boolean retour = true;
 				for(int x : tab){
-					System.out.println(x);
 					if(x==i){
 						retour = false;
 						break;

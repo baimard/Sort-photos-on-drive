@@ -8,10 +8,10 @@
    <int>3600</int>
   </void>
   <void property="refreshToken">
-   <string>1/uzDLwPUZ3NyFffQqCD7Qun-sc1pYH4xZUqwNtVWHb4590RDknAdJa_sgfheVM0XT</string>
+   <string>1/3Y89EZDGLnBiTBpuf3RgrImeDAHh6cCcyWmi8gTHJ4I</string>
   </void>
   <void property="tokenAcess">
-   <string>ya29.AwELF1bwLnhtupU19tPprm3VnY6sDbXMPeGvKBa71UazHnLrwkavvvbeBShlzl2MUd5Ev6xwZN6G9A</string>
+   <string>ya29.FQGhFlIgUjKAvpGplnbDc67k0tQAukg92A9WuPRmEkNkVfTktfiCVkPQPMGGcjapaTFZD2n5cRd8Vg</string>
   </void>
   <void property="type">
    <string>Bearer</string>
