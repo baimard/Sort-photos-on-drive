@@ -24,6 +24,7 @@ import javax.swing.border.TitledBorder;
 
 import juxo.apiCalendar.Evenement;
 import juxo.apiCalendar.Evenements;
+import juxo.triephotoV2.accessFichier.Fichier;
 import juxo.triephotoV2.accessFichier.Fichiers;
 
 public class UiQuestion extends JDialog {
@@ -43,7 +44,7 @@ public class UiQuestion extends JDialog {
 	    this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 	    Image icone =   Toolkit.getDefaultToolkit().getImage(getClass().getResource("Resource\\pictograms-nps-services-library.png"));
         this.setIconImage(icone);
-	    
+        this.setBackground(Color.white);
 	    listEvenement = new DefaultListModel<Evenement>();
 	    
 	    @SuppressWarnings("deprecation")
@@ -59,6 +60,7 @@ public class UiQuestion extends JDialog {
 
 	private void initComponent(Fichiers fs) {
 		JPanel listpan = new JPanel();
+		JPanel panTitre = new JPanel();
 		JPanel panEvent = new JPanel(); 
 		JPanel panEvent11 = new JPanel(); 
 		JPanel panEvent12 = new JPanel(); 
@@ -67,46 +69,61 @@ public class UiQuestion extends JDialog {
 		JPanel panPhotos12 = new JPanel(); 
 
 		JPanel panBtn = new JPanel();
-		JLabel txtEvent = new JLabel("<html>Voici la liste des évènements de vos calendriers<br>Veuillez sélectionner l'évènement correspondant à vos images :</html> ");
-        JLabel txtPhotos = new JLabel("<html>Attention, des images peuvent ne pas être affichées en raison de leu format</html>");
+		JLabel txtTitre = new JLabel("<html><h1><em>Gestion des evenements</em></h1></html> ");
+		JLabel txtEvent = new JLabel("<html><strong>Voici la liste des évènements de vos calendriers. Veuillez sélectionner l'évènement <br> correspondant à vos images :</strong></html> ");
+        JLabel txtPhotos = new JLabel("<html><strong>Attention, des images peuvent ne pas être affichées en raison de leu format</strong></html>");
         JButton valideButton = new JButton("Déplacer les images");
-
+     
 		listEve = new JList<Evenement>(listEvenement);
 	    
 		
-
-		  TitledBorder bordureEvent = (BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(29,158,233),2),"<html><H3>Evenements</H3></html>"));
+		  TitledBorder bordureEvent = (BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(29, 158, 233),3),"<html><H3>Evenements</H3></html>"));
 		  panEvent.setBorder(bordureEvent);
-		  bordureEvent.setTitleColor(new Color(29,158,233));
+		  bordureEvent.setTitleColor(new Color(29, 158, 233));
 		  
 		
-		  TitledBorder bordurePhotos = (BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(76,153,0),2),"<html><H3>Photos</H3></html>"));
+		  TitledBorder bordurePhotos = (BorderFactory.createTitledBorder(BorderFactory.createLineBorder(new Color(255,200,0),3),"<html><H3>Photos</H3></html>"));
 		  panPhotos.setBorder(bordurePhotos);
-		  bordurePhotos.setTitleColor(new Color(76,153,0));
-		  
-		listpan.setLayout(new BoxLayout(listpan, BoxLayout.Y_AXIS));
-		panEvent.setLayout(new BoxLayout(panEvent, BoxLayout.Y_AXIS));
-		panPhotos.setLayout(new BoxLayout(panPhotos, BoxLayout.Y_AXIS));
+		  bordurePhotos.setTitleColor(new Color(255,200,0));
+
+		   ImageIcon iconEvent = new ImageIcon(getClass().getResource("Resource"+Fichier.SEPARATOR+"evenements-icone.png"));
+		   JLabel lbl1 = new JLabel();
+		   lbl1.setIcon(iconEvent);
+		   panEvent11.add(lbl1);
+		   
+		   ImageIcon iconPhotos = new ImageIcon(getClass().getResource("Resource"+Fichier.SEPARATOR+"photos-icone.png"));
+		   JLabel lbl2 = new JLabel();
+		   lbl2.setIcon(iconPhotos);
+		   panPhotos11.add(lbl2);
+		   
 		
-		
-		panEvent11.setPreferredSize(new Dimension(500, 100));
-		panEvent12.setPreferredSize(new Dimension(500, 250));
-		panPhotos11.setPreferredSize(new Dimension(500, 100));
-		panPhotos12.setPreferredSize(new Dimension(500, 250));
-		
+		listpan.setPreferredSize(new Dimension(700, 750));
+		panTitre.setPreferredSize(new Dimension(650, 45));
+		panEvent.setPreferredSize(new Dimension(650, 300));
+		panPhotos.setPreferredSize(new Dimension(650, 270));
+		panBtn.setPreferredSize(new Dimension(600, 40));
+		panEvent11.setPreferredSize(new Dimension(600, 50));
+		panEvent12.setPreferredSize(new Dimension(600, 190));
+		panPhotos11.setPreferredSize(new Dimension(600, 50));
+		panPhotos12.setPreferredSize(new Dimension(600, 150));
+		listEve.setPreferredSize(new Dimension(560, 175));
 	
+	
+		txtEvent.setForeground(Color.white);
+	    txtPhotos.setForeground(Color.white);
+	    txtTitre.setForeground(Color.GRAY);
+		listpan.setBackground(Color.white);
+		panTitre.setBackground(Color.white);
+		panEvent.setBackground(Color.white);
+		panEvent11.setBackground(new Color(29, 158, 233));//153,51,255
+		panEvent12.setBackground(new Color(191,188,192));//29, 158, 233
+		listEve.setBackground(Color.white);
+	    panPhotos.setBackground(Color.white);
+		panPhotos11.setBackground(new Color(255,200,0));
+		panPhotos12.setBackground(Color.white);
+		panBtn.setBackground(Color.white);	
 		
-		listEve.setPreferredSize(new Dimension(500, 200));
-		
-		panEvent11.setBackground(Color.blue);
-		panEvent.setBackground(Color.yellow);
-		
-		panEvent12.setBackground(Color.pink);
-		panPhotos.setBackground(Color.cyan);
-		panPhotos11.setBackground(Color.green);
-		panPhotos12.setBackground(Color.magenta);
-			
-			
+	    panTitre.add(txtTitre);
 		panEvent11.add(txtEvent);
 		panEvent12.add(listEve);
 		
@@ -162,7 +179,8 @@ public class UiQuestion extends JDialog {
 		    
 		   panBtn.add(valideButton);
 		   panPhotos.add(panPhotos11); 
-		   panPhotos.add(panPhotos12); 
+		   panPhotos.add(panPhotos12);
+		   listpan.add(panTitre);
 		   listpan.add(panEvent);
 		   listpan.add(panPhotos);
 		   listpan.add(panBtn);
