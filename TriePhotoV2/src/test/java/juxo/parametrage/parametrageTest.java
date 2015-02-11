@@ -31,6 +31,5 @@ public class parametrageTest {
 	@Test 
 	public void testOs(){
 		new Parametrage("/Users/Juxo/Pictures/est", "/Users/Juxo");
-		System.out.println(Parametrage.getInstance().SEPARATOR);
 	}
 }

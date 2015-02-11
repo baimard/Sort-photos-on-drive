@@ -15,7 +15,6 @@ public class App {
 			new AfficherNotification();
 			AfficherNotification.AfficherMsgNotification("Application Lancée");
 			Parametrage.chargerObjet();
-
 			if (Parametrage.getInstance() == null) {
 				new Parametrage(null, null);
 				new UiPremierDemarrage();
