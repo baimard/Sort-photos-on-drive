@@ -57,13 +57,12 @@ public class UiPremierDemarrage extends JFrame {
 		f = this;
 		
 		this.setTitle("Paramètre");
-		this.setAlwaysOnTop(true);
 		this.setSize(790, 770);
 		this.setResizable(true);
 		this.setBackground(Color.WHITE);
+
 		Image icone = Toolkit.getDefaultToolkit().getImage(
-				UiPremierDemarrage.class.getResource("Resource"
-						+ Fichier.SEPARATOR + "icone-pioupiou.jpg"));
+				UiPremierDemarrage.class.getResource("/icone-pioupiou.jpg"));
 		this.setIconImage(icone);
 
 		JPanel fenetre = new JPanel();
@@ -113,7 +112,7 @@ public class UiPremierDemarrage extends JFrame {
 				"Sélectionner le dossier source contenant vos photos et le dossier de destination pour le stockage de vos photos après le tri");
 		txtDossier.setFont(new java.awt.Font("Dialog", 0, 12)); // non gras!
 		Icon iconeDossier = new ImageIcon(
-				(getClass().getResource("Resource"+Fichier.SEPARATOR+"dossier-icone.png")));
+				(getClass().getResource("/dossier-icone.png")));
 		txtDossier.setIcon(iconeDossier);
 
 		pan1TxtIcone.add(txtDossier);
@@ -184,7 +183,7 @@ public class UiPremierDemarrage extends JFrame {
 		TxtOptionTri2.setForeground(Color.WHITE);
 
 		Icon iconeModule = new ImageIcon(
-				(getClass().getResource("Resource"+Fichier.SEPARATOR+"modules-icone.png")));
+				(getClass().getResource("/modules-icone.png")));
 		TxtOptionTri.setIcon(iconeModule);
 
 		pan2.add(panIcone);
@@ -250,7 +249,7 @@ public class UiPremierDemarrage extends JFrame {
 		TxtRenommage2.setForeground(Color.WHITE);
 
 		Icon iconeEncre = new ImageIcon(
-				(getClass().getResource("Resource"+Fichier.SEPARATOR+"encre-icone.png")));
+				(getClass().getResource("/encre-icone.png")));
 		TxtRenommage.setIcon(iconeEncre);
 
 		pan3.add(TxtRenommage);
@@ -327,10 +326,10 @@ public class UiPremierDemarrage extends JFrame {
 				"R�initialiser votre connexion Google");
 
 		Icon iconeCle = new ImageIcon(
-				(getClass().getResource("Resource"+Fichier.SEPARATOR+"icone-cle.png")));
+				(getClass().getResource("/icone-cle.png")));
 		TxtGoogle.setIcon(iconeCle);
 		Icon iconeRefresh = new ImageIcon(
-				(getClass().getResource("Resource"+Fichier.SEPARATOR+"rafraichir-icone.png")));
+				(getClass().getResource("/rafraichir-icone.png")));
 		TxtGoogle5.setIcon(iconeRefresh);
 
 		TxtGoogle4.setFont(new java.awt.Font("Dialog", 0, 12)); // eneleve
@@ -402,7 +401,7 @@ public class UiPremierDemarrage extends JFrame {
 		// chxFrequence.setForeground(Color.WHITE);
 
 		Icon iconeFrequence2 = new ImageIcon(
-				(getClass().getResource("Resource"+Fichier.SEPARATOR+"bleu-horloge-icone.png")));
+				(getClass().getResource("/bleu-horloge-icone.png")));
 		txtFrequence.setIcon(iconeFrequence2);
 
 		panFrequence.add(txtFrequence);
@@ -424,11 +423,11 @@ public class UiPremierDemarrage extends JFrame {
 		UIManager.put("TabbedPane.contentAreaColor", Color.white);
 
 		Icon iconeParametre = new ImageIcon(
-				(getClass().getResource("Resource"+Fichier.SEPARATOR+"parametres-icone.png")));
+				(getClass().getResource("/parametres-icone.png")));
 		Icon iconeGoogle = new ImageIcon(
-				(getClass().getResource("Resource"+Fichier.SEPARATOR+"google-icone.png")));
+				(getClass().getResource("/google-icone.png")));
 		Icon iconeFrequence = new ImageIcon(
-				(getClass().getResource("Resource"+Fichier.SEPARATOR+"horloge-icone.png")));
+				(getClass().getResource("/horloge-icone.png")));
 
 		Onglets.addTab("<html><H4>Parametre de tri</H4></html>",
 				iconeParametre, onglet1,
@@ -444,7 +443,7 @@ public class UiPremierDemarrage extends JFrame {
 		fenetre.add(Onglets);
 		Onglets.setPreferredSize(new Dimension(0, 580));
 
-		this.setVisible(true);
+
 
 		UiPremierDemarrageActionListener UiPremierDemarrageListener = new UiPremierDemarrageActionListener();
 
@@ -475,7 +474,7 @@ public class UiPremierDemarrage extends JFrame {
 		triDemarrage.addActionListener(UiPremierDemarrageListener);
 
 		setLocationRelativeTo(this.getParent());
-		
+		this.setVisible(true);
 		//Initialisation
 		boutonReinitial.setEnabled(false);
 
