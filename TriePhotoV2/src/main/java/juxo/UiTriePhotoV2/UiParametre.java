@@ -53,7 +53,9 @@ public class UiParametre extends JFrame {
 	JPanel panter = new JPanel();
 	JPanel panNotif = new JPanel();
 	JPanel panApp = new JPanel();
+	JPanel panApp1 = new JPanel();
 	JPanel panTemps = new JPanel();
+	JPanel panOptionDem = new JPanel();
 	JPanel panIconNotif = new JPanel();
 	JPanel panIconFrequence = new JPanel();
 	JPanel panRadioBtnAD = new JPanel();
@@ -89,6 +91,7 @@ public class UiParametre extends JFrame {
 	private JCheckBox  modeDate = new JCheckBox  ("Date");
 	private JCheckBox  modeEvenement = new JCheckBox ("Evènement");
 	private JCheckBox  modeLieu = new JCheckBox ("Lieu");
+	private JCheckBox verifDossierDem = new JCheckBox ("Verifier si des photos sont présentes dans votre dossier au démarrage");
 	private JRadioButtonMenuItem  renomDate = new JRadioButtonMenuItem ("Renommer par date de prise de vue");
 	private JRadioButtonMenuItem  renomLieu = new JRadioButtonMenuItem ("Renommer par lieu");
 	private JRadioButtonMenuItem  renomNomSpec = new JRadioButtonMenuItem ("Renommer avec le nom suivant :");
@@ -102,7 +105,7 @@ public class UiParametre extends JFrame {
 	public UiParametre() {
 
 		f = this;
-		this.setAlwaysOnTop(true);
+		f.setAlwaysOnTop(true);
 		
 		this.setTitle("Paramétrage");
 		this.setSize(600, 700);
@@ -119,7 +122,7 @@ public class UiParametre extends JFrame {
 		// ___________________ Les icones_____________________
 
 		Image icone = Toolkit.getDefaultToolkit().getImage(
-				getClass().getResource("/pictograms-nps-services-library.png"));
+				getClass().getResource("/icone-pioupiou.jpg"));
 		this.setIconImage(icone);
 
 		ImageIcon icon1 = new ImageIcon(getClass().getResource("/dossier-icone.png"));
@@ -150,13 +153,13 @@ public class UiParametre extends JFrame {
 		label5.setIcon(iconFrequence);
 		panIconFrequence.add(label5);
 		
-		ImageIcon iconAuthent = new ImageIcon(getClass().getResource("/notification-icone.png"));
+		ImageIcon iconAuthent = new ImageIcon(getClass().getResource("/icone-cle.png"));
 
 		JLabel label6 = new JLabel();
 		label6.setIcon(iconAuthent);
 		panIconAuthent.add(label6);
 
-		ImageIcon iconReInit = new ImageIcon(getClass().getResource("/notification-icone.png"));
+		ImageIcon iconReInit = new ImageIcon(getClass().getResource("/rafraichir-icone.png"));
 
 		JLabel label7 = new JLabel();
 		label7.setIcon(iconReInit);
@@ -215,8 +218,12 @@ public class UiParametre extends JFrame {
 		panNotif.setBackground(Color.WHITE);
 		activer.setBackground(Color.WHITE);
 		desactiver.setBackground(Color.WHITE);
-		panApp.setBackground(Color.WHITE);
-		panTemps.setBackground(Color.WHITE);
+		verifDossierDem.setBackground(Color.WHITE);
+		panApp.setBackground(Color.white);
+		panTemps.setBackground(Color.white);
+		panApp1.setBackground(Color.white);
+		panOptionDem.setBackground(Color.white);
+		
 		panIconNotif.setBackground(Color.WHITE);
 		panIconFrequence.setBackground(Color.WHITE);
 		panter.setBackground(Color.WHITE);
@@ -228,6 +235,8 @@ public class UiParametre extends JFrame {
 		lblReInit.setBackground(Color.WHITE);
 		panAuthentif1.setBackground(Color.WHITE);
 		panReInit1.setBackground(Color.WHITE);
+		
+	
 
 		// ________________Les panels _________________________________
 
@@ -248,7 +257,8 @@ public class UiParametre extends JFrame {
 		panIconNotif.setLayout(new FlowLayout(FlowLayout.LEFT));
 		panIconFrequence.setLayout(new FlowLayout(FlowLayout.LEFT));
 		panNotif.setLayout(new FlowLayout(FlowLayout.LEFT));
-		panApp.setLayout(new FlowLayout(FlowLayout.LEFT));
+		panApp.setLayout(new BoxLayout(panApp, BoxLayout.Y_AXIS));
+		panApp1.setLayout(new FlowLayout(FlowLayout.LEFT));
 		panTemps.setLayout(new GridLayout(1, 2));
 		panIconAuthent.setLayout(new FlowLayout(FlowLayout.LEFT));
 		panIconReInit.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -265,8 +275,9 @@ public class UiParametre extends JFrame {
 		panRenommage4.setPreferredSize(new Dimension(500, 30));
 		panRenommage5.setPreferredSize(new Dimension(500, 40));
 		pan31.setPreferredSize(new Dimension(500, 50));
+		panApp.setPreferredSize(new Dimension(500, 150));
 		panNotif.setPreferredSize(new Dimension(500, 120));
-		panTemps.setPreferredSize(new Dimension(300, 45));
+		panTemps.setPreferredSize(new Dimension(300,30));
 		panAuthentification.setPreferredSize(new Dimension(500, 120));
 		panReInit.setPreferredSize(new Dimension(500, 120));
 
@@ -453,7 +464,7 @@ public class UiParametre extends JFrame {
 		panNotif.setBorder(bordureNotif);
 		bordureNotif.setTitleColor(new Color(255, 184, 28));
 
-		panApp.setPreferredSize(new Dimension(500, 120));
+		
 		TitledBorder bordureOptionApp = (BorderFactory.createTitledBorder(
 				BorderFactory.createLineBorder(new Color(128, 128, 128), 2),
 				"<html><H3>Fr�quence</H3></html>"));
@@ -468,10 +479,14 @@ public class UiParametre extends JFrame {
 		panNotif.add(activer);
 		panNotif.add(desactiver);
 
-		panApp.add(panIconFrequence);
-		panApp.add(panTemps);
+		
+		panApp1.add(panIconFrequence);
+		panApp1.add(panTemps);
+		panOptionDem.add(verifDossierDem);
 		panTemps.add(frequenceVerif);
 		panTemps.add(frequences);
+		panApp.add(panApp1);
+		panApp.add(panOptionDem);
 
 		panbis.add(panNotif);
 		panbis.add(panApp);
@@ -511,6 +526,7 @@ public class UiParametre extends JFrame {
 
 		this.add(panelOnglet);
 		this.setVisible(true);
+		
 		
 		//TESTO
 		OAuth2Token token=null;
