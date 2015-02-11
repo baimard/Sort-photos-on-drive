@@ -49,14 +49,16 @@ public class UiPremierDemarrage extends JFrame {
 	public JButton boutonAuthentif;
 	public JButton boutonReinitial;
 	public JComboBox<comboElement> chxFrequence;
-	public JTextField SourceField;
-	public JTextField DestField;
+
+	
+	public JCheckBox triDemarrage;
 	
 	public UiPremierDemarrage() {
 		
 		f = this;
 		
 		this.setTitle("Paramètre");
+		this.setAlwaysOnTop(true);
 		this.setSize(790, 770);
 		this.setResizable(true);
 		this.setBackground(Color.WHITE);
@@ -377,7 +379,7 @@ public class UiPremierDemarrage extends JFrame {
 				"<html><br>Choisissez ici la frequence � laquelle l'application verifie si votre dossier source contient des photos: </html>");
 		JLabel txtFrequence2 = new JLabel(
 				"<html><br>Verifier mon dossier: </html>");
-		JCheckBox demarrage =new JCheckBox("Cocher si vous souhaiter que le logiciel vérifie si des photos sont présentes dans votre dossier source au démarrage",true);
+		triDemarrage =new JCheckBox("Cocher si vous souhaiter que le logiciel vérifie si des photos sont présentes dans votre dossier source au démarrage",true);
 		
 		comboElement cE1= new comboElement("Toutes les minutes", 60000);
 		comboElement cE2= new comboElement("Toutes les 5 minutes", 300000);
@@ -395,8 +397,8 @@ public class UiPremierDemarrage extends JFrame {
 		chxFrequence.setPreferredSize(new Dimension(300, 30));
 		txtFrequence2.setAlignmentX(Component.LEFT_ALIGNMENT);
 		txtFrequence2.setForeground(Color.WHITE);
-		demarrage.setBackground(new Color(29, 158, 233));
-		demarrage.setForeground(Color.WHITE);
+		triDemarrage.setBackground(new Color(29, 158, 233));
+		triDemarrage.setForeground(Color.WHITE);
 		// chxFrequence.setBackground(Color.gray);
 		// chxFrequence.setForeground(Color.WHITE);
 
@@ -408,7 +410,7 @@ public class UiPremierDemarrage extends JFrame {
 		panFrequence.add(panFrequenceColor);
 		panFrequenceColor.add(txtFrequence2);
 		panFrequenceColor.add(chxFrequence);
-		panFrequenceColor.add(demarrage);
+		panFrequenceColor.add(triDemarrage);
 
 		onglet3.add(Box.createRigidArea(new Dimension(0, 500))); // un espace
 
@@ -470,8 +472,8 @@ public class UiPremierDemarrage extends JFrame {
 		chxFrequence.setActionCommand("intervalTime");
 		chxFrequence.addActionListener(UiPremierDemarrageListener);
 		
-		demarrage.setActionCommand("demarrage");
-		demarrage.addActionListener(UiPremierDemarrageListener);
+		triDemarrage.setActionCommand("demarrage");
+		triDemarrage.addActionListener(UiPremierDemarrageListener);
 
 		setLocationRelativeTo(this.getParent());
 		
