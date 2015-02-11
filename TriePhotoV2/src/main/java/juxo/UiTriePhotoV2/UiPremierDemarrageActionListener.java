@@ -35,6 +35,7 @@ public class UiPremierDemarrageActionListener implements ActionListener {
 				UiPremierDemarrage.f.SourceField.setText(fichierS.getPath());
 				Parametrage.getInstance().setDossierSource(fichierS.getPath());
 				Parametrage.getInstance().enregistrerObjet();
+				
 			}
 			break;
 
@@ -120,7 +121,11 @@ public class UiPremierDemarrageActionListener implements ActionListener {
 			p.setIntervalObservation(c.interval);
 			p.enregistrerObjet();
 			break;
-		
+	
+			
+		case "demarrage":
+			Parametrage pp = Parametrage.getInstance();	
+		break;	
 		}
 	}
 }
