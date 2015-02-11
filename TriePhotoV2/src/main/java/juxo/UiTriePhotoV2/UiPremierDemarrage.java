@@ -60,7 +60,7 @@ public class UiPremierDemarrage extends JFrame {
 		this.setBackground(Color.WHITE);
 
 		Image icone = Toolkit.getDefaultToolkit().getImage(
-				UiPremierDemarrage.class.getResource("/icone-pioupiou.jpg"));
+				UiPremierDemarrage.class.getResource("/icone-principale.png"));
 		this.setIconImage(icone);
 
 		JPanel fenetre = new JPanel();
