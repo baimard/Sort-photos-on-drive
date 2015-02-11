@@ -21,7 +21,6 @@ import javax.swing.border.TitledBorder;
 
 import juxo.apiCalendar.Evenement;
 import juxo.apiCalendar.Evenements;
-import juxo.triephotoV2.accessFichier.Fichier;
 import juxo.triephotoV2.accessFichier.Fichiers;
 
 public class UiQuestion extends JDialog {
