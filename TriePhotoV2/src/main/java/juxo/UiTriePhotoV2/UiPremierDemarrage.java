@@ -354,7 +354,6 @@ public class UiPremierDemarrage extends JFrame {
 
 		JPanel panFrequence = new JPanel();
 		panFrequence.setLayout(new GridLayout(0, 1));
-		// panFrequence.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.BLACK),"<html><H3>Frequence</H3></html>"));
 		TitledBorder bordureFrequence = (BorderFactory.createTitledBorder(
 				BorderFactory.createLineBorder(new Color(29, 158, 233), 2),
 				"<html><H3>Frequence</H3></html>"));
