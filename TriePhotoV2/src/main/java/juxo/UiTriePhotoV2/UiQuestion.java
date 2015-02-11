@@ -67,7 +67,7 @@ public class UiQuestion extends JDialog {
 		JPanel panPhotos12 = new JPanel(); 
 
 		JPanel panBtn = new JPanel();
-		JLabel txtTitre = new JLabel("<html><h1><em>Gestion des evenements</em></h1></html> ");
+		JLabel txtTitre = new JLabel("<html><h1><u><em>Gestion des evenements</em></u></h1></html> ");
 		JLabel txtEvent = new JLabel("<html><strong>Voici la liste des évènements de vos calendriers. Veuillez sélectionner l'évènement <br> correspondant à vos images :</strong></html> ");
         JLabel txtPhotos = new JLabel("<html><strong>Attention, des images peuvent ne pas être affichées en raison de leu format</strong></html>");
         JButton valideButton = new JButton("Déplacer les images");
@@ -113,8 +113,8 @@ public class UiQuestion extends JDialog {
 		listpan.setBackground(Color.white);
 		panTitre.setBackground(Color.white);
 		panEvent.setBackground(Color.white);
-		panEvent11.setBackground(new Color(29, 158, 233));//153,51,255
-		panEvent12.setBackground(new Color(191,188,192));//29, 158, 233
+		panEvent11.setBackground(new Color(29, 158, 233));
+		panEvent12.setBackground(new Color(255,200,0 ));//191,188,192
 		listEve.setBackground(Color.white);
 	    panPhotos.setBackground(Color.white);
 		panPhotos11.setBackground(new Color(255,200,0));

@@ -18,9 +18,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
+
 import juxo.apiCalendar.connexionGoogle.OAuth2Token;
 import juxo.system.Parametrage;
 import juxo.system.XMLToolsSerialisation;
@@ -103,13 +105,13 @@ public class UiParametre extends JFrame {
 	private JComboBox<comboElement> frequences;
 
 	public UiParametre() {
-
+	
+	 
 		f = this;
-		f.setAlwaysOnTop(true);
 		
 		this.setTitle("Paramétrage");
 		this.setSize(600, 700);
-		this.setResizable(true);
+		this.setResizable(false);
 		setLocationRelativeTo(this.getParent());
 		
 		UiParametreActionListener UiParametreListener = new UiParametreActionListener();
@@ -180,9 +182,8 @@ public class UiParametre extends JFrame {
 		
 		JPanel content = new JPanel();
 
-		// JScrollPane pane = new
-		// JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-		// JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+JScrollPane pane = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+this.add(pane);
 
 		// ______________________ Background color _______________________
 
