@@ -42,7 +42,8 @@ public class UiQuestion extends JDialog {
 	    this.setLocationRelativeTo(null);
 	    this.setResizable(false);
 	    this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
-	    Image icone =   Toolkit.getDefaultToolkit().getImage(getClass().getResource("Resource\\pictograms-nps-services-library.png"));
+	    Image icone =   Toolkit.getDefaultToolkit().getImage(getClass().getResource("Resource"+Fichier.SEPARATOR
+								+"pictograms-nps-services-library.png"));
         this.setIconImage(icone);
         this.setBackground(Color.white);
 	    listEvenement = new DefaultListModel<Evenement>();
