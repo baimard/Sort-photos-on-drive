@@ -49,8 +49,7 @@ public class UiPremierDemarrage extends JFrame {
 	public JButton boutonAuthentif;
 	public JButton boutonReinitial;
 	public JComboBox<comboElement> chxFrequence;
-	public JTextField SourceField;
-	public JTextField DestField;
+
 	
 	public JCheckBox triDemarrage;
 	
