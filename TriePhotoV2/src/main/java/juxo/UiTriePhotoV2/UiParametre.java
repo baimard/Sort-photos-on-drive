@@ -102,7 +102,7 @@ public class UiParametre extends JFrame {
 	public UiParametre() {
 
 		f = this;
-		f.setAlwaysOnTop(true);
+		this.setAlwaysOnTop(true);
 		
 		this.setTitle("Paramétrage");
 		this.setSize(600, 700);
