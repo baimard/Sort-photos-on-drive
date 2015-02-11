@@ -21,6 +21,15 @@ public class Parametrage implements Serializable {
 	private String dossierSource;
 	private String dossierDestination;
 	private int intervalObservation;
+	private boolean triDemarrage;
+
+	public boolean isTriDemarrage() {
+		return triDemarrage;
+	}
+
+	public void setTriDemarrage(boolean triDemarrage) {
+		this.triDemarrage = triDemarrage;
+	}
 
 	private ArrayList<AbstractSortMethod> tabSortMethod;
 	
