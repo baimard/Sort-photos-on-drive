@@ -11,6 +11,12 @@ import juxo.apiCalendar.Calendrier;
 import juxo.apiCalendar.Calendriers;
 import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
 
+
+/**
+ * Déprecié
+ * @author Juxo
+ *
+ */
 public class ProcessChargementCalendriers extends Thread{
 		
 	private JList<String> jlab;

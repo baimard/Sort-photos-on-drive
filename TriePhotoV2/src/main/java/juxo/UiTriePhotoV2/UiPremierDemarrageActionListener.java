@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Collections;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -13,15 +14,12 @@ import javax.swing.JTextField;
 import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
 import juxo.system.Parametrage;
 import juxo.system.XMLToolsSerialisation;
+import juxo.triephotoV2.methode.ComparatorSortMethod;
 import juxo.triephotoV2.methode.SortByDayDate;
 import juxo.triephotoV2.methode.SortByEvent;
 import juxo.triephotoV2.methode.SortByPlace;
 
 public class UiPremierDemarrageActionListener implements ActionListener {
-
-	private JTextField dossierAnalyser;
-	private JTextField dossierClassement;
-
 
 	public UiPremierDemarrageActionListener() {}
 
@@ -34,7 +32,7 @@ public class UiPremierDemarrageActionListener implements ActionListener {
 			jfS.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 			if (jfS.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 				File fichierS = jfS.getSelectedFile();
-				dossierAnalyser.setText(fichierS.getPath());
+				UiPremierDemarrage.f.SourceField.setText(fichierS.getPath());
 				Parametrage.getInstance().setDossierSource(fichierS.getPath());
 				Parametrage.getInstance().enregistrerObjet();
 			}
@@ -45,7 +43,7 @@ public class UiPremierDemarrageActionListener implements ActionListener {
 			jfC.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 			if (jfC.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 				File fichierC = jfC.getSelectedFile();
-				dossierClassement.setText(fichierC.getPath());
+				UiPremierDemarrage.f.DestField.setText(fichierC.getPath());
 				Parametrage.getInstance().setDossierDestination(
 						fichierC.getPath());
 				Parametrage.getInstance().enregistrerObjet();
@@ -84,6 +82,8 @@ public class UiPremierDemarrageActionListener implements ActionListener {
 				} else {
 					Parametrage.getInstance().getTabSortMethod().remove(SortByPlace.getInstance());
 				}
+				Parametrage p = Parametrage.getInstance();
+				Collections.sort(p.getTabSortMethod(), new ComparatorSortMethod());
 				Parametrage.getInstance().enregistrerObjet();
 			} else {
 				UiPremierDemarrage.f.trieLieuRadio.setSelected(false);

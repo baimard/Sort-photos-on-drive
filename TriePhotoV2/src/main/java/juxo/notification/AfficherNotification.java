@@ -9,19 +9,16 @@ public class AfficherNotification {
 	
 	
 	public static TrayIcon trayIcon1;
-	
-//	public NotificationListener(TrayIcon i){
-	//	trayIcon1=i;
-//	}
-	
-	  //Cr�ation de Listener
-    NotificationListener nL = new NotificationListener();
-    
-    //private MenuItem defaultItem;
+    public NotificationListener nL = new NotificationListener();
+    public MenuItem menu2;
     private PopupMenu popup = new PopupMenu();
     private SystemTray tray = SystemTray.getSystemTray();
+    
+    
+    public static AfficherNotification myNotif;
 	
 		public  AfficherNotification() throws IOException, AWTException {
+			myNotif=this;
 			
 			if (SystemTray.isSupported()) {
 				
@@ -29,7 +26,7 @@ public class AfficherNotification {
 				 MenuItem menu1 = new MenuItem("Quitter");
 				 menu1.setActionCommand("Quitter");
 				 
-				 MenuItem menu2 = new MenuItem("Stoper Obersion Dossier");
+				 menu2 = new MenuItem("Lancer observation du dossier");
 				 menu2.setActionCommand("StoperThread");
 				 
 				 MenuItem menu3 = new MenuItem("Paramètre");

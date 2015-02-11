@@ -14,7 +14,11 @@ import juxo.apiCalendar.Evenements;
 import juxo.apiCalendar.clefMap;
 import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
 import juxo.apiCalendar.definitionClasse.MediaGroup;
-
+/**
+ * Déprécié
+ * @author Juxo
+ *
+ */
 public class ProcessChargementEvenements extends Thread{
 		
 	private JList<String> jlab;

@@ -76,9 +76,9 @@ public class UiParametre extends JFrame {
 	private JLabel lblReInit = new JLabel(
 			"<html><p>Réinitialisation</p></html>");
 
-	private JTextField source;
-	private JTextField cible;
-	private JTextField selectDossierRenom = new JTextField();
+	public JTextField source;
+	public JTextField cible;
+	public JTextField selectDossierRenom = new JTextField();
 	private JTextField saisieNom = new JTextField();
 
 	private JButton choixSource = new JButton("Parcourir");
@@ -110,9 +110,7 @@ public class UiParametre extends JFrame {
 		this.setResizable(true);
 		setLocationRelativeTo(this.getParent());
 		
-		UiParametreActionListener UiParametreListener = new UiParametreActionListener(
-				source, cible, modeDate, modeEvenement, modeLieu,
-				selectDossierRenom, renomDate, renomLieu, renomNomSpec);
+		UiParametreActionListener UiParametreListener = new UiParametreActionListener();
 
 		Parametrage p = Parametrage.getInstance();
 

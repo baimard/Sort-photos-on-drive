@@ -44,6 +44,8 @@ public class UiPremierDemarrage extends JFrame {
 	public JButton boutonAuthentif;
 	public JButton boutonReinitial;
 	public JComboBox<comboElement> chxFrequence;
+	public JTextField SourceField;
+	public JTextField DestField;
 	
 	public UiPremierDemarrage() {
 		
@@ -121,7 +123,7 @@ public class UiPremierDemarrage extends JFrame {
 		pan1Color.add(panSource);
 
 		JLabel txtSource = new JLabel("Dossier source:");
-		JTextField SourceField = new JTextField(20);
+		SourceField = new JTextField(20);
 		JButton browseSource = new JButton("Parcourir");
 
 		txtSource.setForeground(Color.WHITE);
@@ -137,7 +139,7 @@ public class UiPremierDemarrage extends JFrame {
 		pan1Color.add(panDest);
 
 		JLabel txtDest = new JLabel("Dossier Destination:");
-		JTextField DestField = new JTextField(20);
+		DestField = new JTextField(20);
 		JButton browseDest = new JButton("Parcourir");
 
 		txtDest.setForeground(Color.WHITE);

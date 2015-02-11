@@ -1,5 +1,8 @@
 package juxo.triephotoV2.methode;
 
+import java.io.IOException;
+import java.net.URISyntaxException;
+
 import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
 import juxo.system.Parametrage;
 import juxo.triephotoV2.accessFichier.Fichier;
@@ -19,6 +22,12 @@ public class SortByPlace extends AbstractSortMethod {
 
 	@Override
 	public void trie() {
+		try {
+			new ConnexionGoogle();
+		} catch (IOException | URISyntaxException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		if(ConnexionGoogle.googleConnexion!=null){
 			Fichier.listFic.trieFichiersParLieu(Parametrage.getInstance().getDossierDestination());
 		}
