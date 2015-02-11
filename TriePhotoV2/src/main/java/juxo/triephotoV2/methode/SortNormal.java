@@ -7,6 +7,10 @@ public class SortNormal extends AbstractSortMethod {
 
 	private static SortNormal mySort;
 	
+	public SortNormal(){
+		
+	}
+	
 	public SortNormal(int p) {
 		super(p);
 		mySort = this;

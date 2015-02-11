@@ -8,6 +8,10 @@ public class SortByPlace extends AbstractSortMethod {
 
 	private static SortByPlace mySort;
 	
+	public SortByPlace(){
+		
+	}
+	
 	public SortByPlace(int p) {
 		super(p);
 		mySort = this;

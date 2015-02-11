@@ -7,6 +7,10 @@ public class SortByDayDate extends AbstractSortMethod{
 	
 	private static SortByDayDate mySort;
 	
+	public SortByDayDate(){
+		
+	}
+	
 	public SortByDayDate(int p){
 			super(p);
 			mySort = this;

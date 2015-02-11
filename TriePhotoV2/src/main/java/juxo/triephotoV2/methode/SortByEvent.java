@@ -8,6 +8,10 @@ public class SortByEvent extends AbstractSortMethod {
 
 	private static SortByEvent mySort;
 	
+	public SortByEvent(){
+		
+	}
+	
 	public SortByEvent(int p) {
 		super(p);
 		mySort = this;

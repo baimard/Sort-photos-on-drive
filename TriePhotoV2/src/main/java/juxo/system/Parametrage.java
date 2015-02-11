@@ -3,7 +3,6 @@ package juxo.system;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 import juxo.triephotoV2.methode.AbstractSortMethod;
 import juxo.triephotoV2.methode.SortByDayDate;
@@ -23,7 +22,7 @@ public class Parametrage implements Serializable {
 	private String dossierDestination;
 	private int intervalObservation;
 
-	private List<AbstractSortMethod> tabSortMethod;
+	private ArrayList<AbstractSortMethod> tabSortMethod;
 	
 	public Parametrage() {
 
@@ -35,31 +34,7 @@ public class Parametrage implements Serializable {
 		PARAM = this;
 		this.intervalObservation=600000;
 		tabSortMethod = new ArrayList<AbstractSortMethod>();
-		tabSortMethod.add(new SortNormal(3));
-	}
-
-	public void addSortByDay(){
-		tabSortMethod.add(new SortByDayDate(2));
-	}
-	
-	public void delSortByDay(){
-		tabSortMethod.remove(SortByDayDate.getInstance());
-	}
-	
-	public void addSortByPlace(){
-		tabSortMethod.add(new SortByPlace(1));
-	}
-	
-	public void delSortByPlace(){
-		tabSortMethod.remove(SortByPlace.getInstance());
-	}
-	
-	public void addSortByEvent(){
-		tabSortMethod.add(new SortByEvent(1));
-	}
-	
-	public void delSortByEvent(){
-		tabSortMethod.remove(SortByEvent.getInstance());
+		tabSortMethod.add(new SortNormal(4));
 	}
 	
 	public static Parametrage getInstance() {
@@ -135,11 +110,11 @@ public class Parametrage implements Serializable {
 		return serialVersionUID;
 	}
 
-	public List<AbstractSortMethod> getTabSortMethod() {
+	public ArrayList<AbstractSortMethod> getTabSortMethod() {
 		return tabSortMethod;
 	}
 
-	public void setTabSortMethod(List<AbstractSortMethod> tabSortMethod) {
+	public void setTabSortMethod(ArrayList<AbstractSortMethod> tabSortMethod) {
 		this.tabSortMethod = tabSortMethod;
 	}
 	

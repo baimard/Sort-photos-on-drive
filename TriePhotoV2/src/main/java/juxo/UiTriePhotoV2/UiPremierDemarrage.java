@@ -43,6 +43,7 @@ public class UiPremierDemarrage extends JFrame {
 
 	public JButton boutonAuthentif;
 	public JButton boutonReinitial;
+	public JComboBox<comboElement> chxFrequence;
 	
 	public UiPremierDemarrage() {
 		
@@ -370,10 +371,21 @@ public class UiPremierDemarrage extends JFrame {
 				"<html><br>Choisissez ici la frequence � laquelle l'application verifie si votre dossier source contient des photos: </html>");
 		JLabel txtFrequence2 = new JLabel(
 				"<html><br>Verifier mon dossier: </html>");
-		String labels[] = { "Toutes les 30 minutes ", "Toutes les heures",
-				"1 fois par semaine", "1 fois par mois", "1 fois par an" };
-		JComboBox chxFrequence = new JComboBox(labels);
-
+		
+		
+		comboElement cE1= new comboElement("Toutes les minutes", 60000);
+		comboElement cE2= new comboElement("Toutes les 5 minutes", 300000);
+		comboElement cE3= new comboElement("Toutes les 15 minutes", 900000);
+		comboElement cE4= new comboElement("Toutes les 30 minutes", 1800000);
+		comboElement cE5= new comboElement("Toutes les 1 heure", 3600000);
+		
+		chxFrequence = new JComboBox<comboElement>();
+		chxFrequence.addItem(cE1);
+		chxFrequence.addItem(cE2);
+		chxFrequence.addItem(cE3);
+		chxFrequence.addItem(cE4);
+		chxFrequence.addItem(cE5);
+		
 		chxFrequence.setPreferredSize(new Dimension(300, 30));
 		txtFrequence2.setAlignmentX(Component.LEFT_ALIGNMENT);
 		txtFrequence2.setForeground(Color.WHITE);
@@ -424,8 +436,7 @@ public class UiPremierDemarrage extends JFrame {
 
 		this.setVisible(true);
 
-		UiPremierDemarrageActionListener UiPremierDemarrageListener = new UiPremierDemarrageActionListener(
-				SourceField, DestField, trieJourRadio, trieEvenementRadio, trieLieuRadio, boutonAuthentif);
+		UiPremierDemarrageActionListener UiPremierDemarrageListener = new UiPremierDemarrageActionListener();
 
 		// ______ les commandes________
 		browseSource.setActionCommand("choixSource");
@@ -446,9 +457,11 @@ public class UiPremierDemarrage extends JFrame {
 		
 		trieJourRadio.setActionCommand("trieJourRadio");
 		trieJourRadio.addActionListener(UiPremierDemarrageListener);
+		
+		chxFrequence.setActionCommand("intervalTime");
+		chxFrequence.addActionListener(UiPremierDemarrageListener);
 
 		setLocationRelativeTo(this.getParent());
-		
 		
 		//Initialisation
 		boutonReinitial.setEnabled(false);
