@@ -32,6 +32,7 @@ public class UiParametreActionListener implements ActionListener {
 				File fichierS = jfS.getSelectedFile();
 				UiParametre.f.source.setText(fichierS.getPath());
 				Parametrage.getInstance().setDossierSource(fichierS.getPath());
+				Parametrage.getInstance().enregistrerObjet();
 			}
 			break;
 
@@ -43,6 +44,7 @@ public class UiParametreActionListener implements ActionListener {
 				UiParametre.f.cible.setText(fichierC.getPath());
 				Parametrage.getInstance().setDossierDestination(
 						fichierC.getPath());
+				Parametrage.getInstance().enregistrerObjet();
 			}
 			break;
 

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <java version="1.7.0_65" class="java.beans.XMLDecoder">
  <object class="juxo.system.Parametrage">
   <void property="dossierDestination">
    <string>/Users/Juxo/Pictures/est/test</string>
   </void>
   <void property="dossierSource">
-   <string>/Users/Juxo/Pictures/est</string>
+   <string>/Users/Juxo/Pictures/test</string>
   </void>
   <void property="intervalObservation">
    <int>60000</int>
