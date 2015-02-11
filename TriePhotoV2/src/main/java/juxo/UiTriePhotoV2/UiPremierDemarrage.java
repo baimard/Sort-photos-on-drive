@@ -57,7 +57,7 @@ public class UiPremierDemarrage extends JFrame {
 		f = this;
 		
 		this.setTitle("Paramètre");
-		this.setAlwaysOnTop(true);
+		//this.setAlwaysOnTop(true);
 		this.setSize(790, 770);
 		this.setResizable(true);
 		this.setBackground(Color.WHITE);
