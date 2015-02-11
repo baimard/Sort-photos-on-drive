@@ -21,8 +21,6 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
-
-import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
 import juxo.apiCalendar.connexionGoogle.OAuth2Token;
 import juxo.system.Parametrage;
 import juxo.system.XMLToolsSerialisation;
@@ -563,11 +561,11 @@ public class UiParametre extends JFrame {
 		this.reInitCode = reInitCode;
 	}
 
-	public JComboBox getFrequences() {
+	public JComboBox<comboElement> getFrequences() {
 		return frequences;
 	}
 
-	public void setFrequences(JComboBox frequences) {
+	public void setFrequences(JComboBox<comboElement> frequences) {
 		this.frequences = frequences;
 	}
 	

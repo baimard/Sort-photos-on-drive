@@ -1,10 +1,7 @@
 package juxo.apiCalendar.connexionGoogle;
 
 import java.io.Serializable;
-import java.lang.reflect.InvocationTargetException;
-
 import javax.ws.rs.ProcessingException;
-
 import org.glassfish.jersey.client.oauth2.ClientIdentifier;
 import org.glassfish.jersey.client.oauth2.OAuth2ClientSupport;
 import org.glassfish.jersey.client.oauth2.OAuth2CodeGrantFlow;

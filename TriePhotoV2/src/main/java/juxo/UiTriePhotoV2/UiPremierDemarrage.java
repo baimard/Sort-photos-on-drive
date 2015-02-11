@@ -1,6 +1,5 @@
 package juxo.UiTriePhotoV2;
 
-import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;

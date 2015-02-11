@@ -5,10 +5,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
-
-import javax.swing.DefaultListModel;
-import javax.swing.JList;
-
 import juxo.apiCalendar.Evenement;
 import juxo.apiCalendar.Evenements;
 import juxo.apiCalendar.clefMap;
@@ -21,7 +17,6 @@ import juxo.apiCalendar.definitionClasse.MediaGroup;
  */
 public class ProcessChargementEvenements extends Thread{
 		
-	private JList<String> jlab;
 	private ArrayList<String> mesIdCalendrier;
 	
 	public ProcessChargementEvenements(ArrayList<String> l){

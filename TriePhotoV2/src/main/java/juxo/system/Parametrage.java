@@ -3,18 +3,11 @@ package juxo.system;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
-
 import juxo.triephotoV2.methode.AbstractSortMethod;
-import juxo.triephotoV2.methode.SortByDayDate;
-import juxo.triephotoV2.methode.SortByEvent;
-import juxo.triephotoV2.methode.SortByPlace;
 import juxo.triephotoV2.methode.SortNormal;
 
 public class Parametrage implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4L;
 	public static String SEPARATOR;
 	private static Parametrage PARAM;

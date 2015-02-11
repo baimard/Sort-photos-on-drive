@@ -1,8 +1,6 @@
 package juxo.threads;
 
 import java.util.ArrayList;
-
-import javax.swing.DefaultListModel;
 import javax.swing.JList;
 
 /**
@@ -14,12 +12,10 @@ public class ProcessGlobal extends Thread{
 		
 	private ArrayList<String> listeCalendrier;
 	private String destinationDossier;
-	private String sourceDossier;
 	
 	public ProcessGlobal(ArrayList<String> l, JList<String> logueur, String dossierAnalyse, String destinationDossier){
 		this.listeCalendrier =  l;
 		this.destinationDossier=destinationDossier;
-		sourceDossier = dossierAnalyse;
 	}
 	
 	public void run() {
