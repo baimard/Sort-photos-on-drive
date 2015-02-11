@@ -26,7 +26,6 @@ import javax.swing.border.TitledBorder;
 import juxo.apiCalendar.connexionGoogle.OAuth2Token;
 import juxo.system.Parametrage;
 import juxo.system.XMLToolsSerialisation;
-import juxo.triephotoV2.accessFichier.Fichier;
 
 public class UiParametre extends JFrame {
 	

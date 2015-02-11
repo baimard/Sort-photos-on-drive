@@ -125,9 +125,7 @@ public class UiPremierDemarrageActionListener implements ActionListener {
 		case "demarrage":
 			if (UiPremierDemarrage.f.triDemarrage.isSelected()) {
 				Parametrage.getInstance().setTriDemarrage(true);
-		
 			} else {
-				//UiPremierDemarrage.f.triDemarrage.setSelected(false);
 				Parametrage.getInstance().setTriDemarrage(false);
 				System.out.println("non");
 			}

@@ -27,8 +27,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
-import juxo.triephotoV2.accessFichier.Fichier;
-
 public class UiPremierDemarrage extends JFrame {
 
 	/**
@@ -55,14 +53,14 @@ public class UiPremierDemarrage extends JFrame {
 	public UiPremierDemarrage() {
 		
 		f = this;
-		
+	
 		this.setTitle("Paramètre");
 		this.setSize(790, 770);
 		this.setResizable(true);
 		this.setBackground(Color.WHITE);
 
 		Image icone = Toolkit.getDefaultToolkit().getImage(
-				UiPremierDemarrage.class.getResource("/icone-pioupiou.jpg"));
+				UiPremierDemarrage.class.getResource("/icone-principale.png"));
 		this.setIconImage(icone);
 
 		JPanel fenetre = new JPanel();
@@ -82,7 +80,7 @@ public class UiPremierDemarrage extends JFrame {
 		fenetre.add(panBienv);
 
 		JLabel TxtBienvenue = new JLabel(
-				"<html><H1><u>Bienvenue dans TriePhotoV2</u></H1> Cette première fenêtre vous permettra de vous familiariser avec l'application<br></html>");
+				"<html><H1><u>Bienvenue dans TriePhotoV2</u></H1> Cette premi&egrave;re fen&ecirc;tre vous permettra de vous familiariser avec l'application<br></html>");
 		TxtBienvenue.setHorizontalAlignment(JLabel.CENTER);
 		TxtBienvenue.setForeground(Color.gray);
 		panBienv.add(TxtBienvenue);
@@ -109,7 +107,7 @@ public class UiPremierDemarrage extends JFrame {
 		pan1.add(pan1TxtIcone);
 
 		JLabel txtDossier = new JLabel(
-				"Sélectionner le dossier source contenant vos photos et le dossier de destination pour le stockage de vos photos après le tri");
+				"<html>S&eacute;lectionner le dossier source contenant vos photos et le dossier de destination pour le stockage de vos photos apr&egrave;s le tri</html>");
 		txtDossier.setFont(new java.awt.Font("Dialog", 0, 12)); // non gras!
 		Icon iconeDossier = new ImageIcon(
 				(getClass().getResource("/dossier-icone.png")));
@@ -171,9 +169,9 @@ public class UiPremierDemarrage extends JFrame {
 		panIcone.setBackground(Color.WHITE);
 
 		JLabel TxtOptionTri = new JLabel(
-				"<html>Ci-dessous les options disponibles pour le tri de vos photos.<br> De manière automatique vos photos seront triées par années et par mois, par exemple une photo prise au 1er janvier 2015<br> sera placée dans le dossier : ' .../2015/1'. Si vous souhaitez simplement ce mode de tri, cliquer sur trier mes photos.<br>Passer votre souris sur les autre options de tri pour plus d'information </html>");
+				"<html>Ci-dessous les options disponibles pour le tri de vos photos.<br> De mani&egrave;re automatique vos photos seront tri&eacute;es par ann&eacute;es et par mois, par exemple une photo prise au 1er janvier 2015<br> sera plac&eacute;e dans le dossier : ' .../2015/1'. Si vous souhaitez simplement ce mode de tri, cliquez sur trier mes photos.<br>Passez votre souris sur les autres options de tri pour plus d'informations </html>");
 		JLabel TxtOptionTri2 = new JLabel(
-				"<html><i>Si vous sélectionnez plusieurs options, l'application essaiera en priorité de trier vos photos par évènement, puis par lieu, <br>si ces informations ne sont disponible, vos photos seront triées par date </i></html>");
+				"<html><i>Si vous s&eacute;lectionnez plusieurs options, l'application essaiera en priorit&eacute; de trier vos photos par &eacute;v&egrave;nement, puis par lieu, <br>si ces informations ne sont pas disponibles, vos photos seront tri&eacute;es par date </i></html>");
 
 		TxtOptionTri.setFont(new java.awt.Font("Dialog", 0, 12)); // eneleve
 																	// l'effet
@@ -219,10 +217,10 @@ public class UiPremierDemarrage extends JFrame {
 		pan2Color.add(TxtOptionTri2);
 
 
-		trieJourRadio.setToolTipText("Vos photos seront triées par jour, ainsi une photo prise au 1er janvier 2015 sera placée dans le dossier: ' .../2015/1/1'");
+		trieJourRadio.setToolTipText("Vos photos seront tri&eacute;es par jour, ainsi une photo prise au 1er janvier 2015 sera plac&eacute;e dans le dossier: ' .../2015/1/1'");
 		trieEvenementRadio
-				.setToolTipText("<html>Vos photos seront triées par évènement, ainsi une photo prise au 1er janvier 2015 et correspondant à un evenement de votre calendrier à cette date sera placée dans le dossier : ' .../2015/1/'nom de mon evenement' <br> Noter qu'une autorisation de connexion de l'application a Google sera necessaire. Pour plus d'information, voir la partie connexion a Google.</html> ");
-		trieLieuRadio.setToolTipText("Vos photos seront triées par lieu (si ce dernier est disponible), ainsi une photo prise au 1er janvier 2015 à Pessac sera placée dans le dossier : ' .../2015/1/Pessac'");
+				.setToolTipText("<html>Vos photos seront tri&eacute;es par &eacute;v&egrave;nement, ainsi une photo prise au 1er janvier 2015 et correspondant &agrave; un &eacute;v&egrave;nement de votre calendrier &agrave; cette date sera plac&eacute;e dans le dossier : ' .../2015/1/'nom de mon &eacute;v&egrave;nement' <br> Noter qu'une autorisation de connexion de l'application &agrave; Google sera necessaire. Pour plus d'informations, voir l'onglet connexion  Google.</html> ");
+		trieLieuRadio.setToolTipText("Vos photos seront tri&eacute;es par lieu (si ce dernier est disponible), ainsi une photo prise au 1er janvier 2015 &agrave; Pessac sera plac&eacute;e dans le dossier : ' .../2015/1/Pessac'");
 
 		// panel 3 : Renommage
 		JPanel pan3 = new JPanel();
@@ -240,9 +238,9 @@ public class UiPremierDemarrage extends JFrame {
 		panTxtRenommageColor.setBackground(new Color(76, 153, 0));
 
 		JLabel TxtRenommage = new JLabel(
-				"<html>Vous avez la possibilité de renommer selon différentes options les photos d'un dossier de votre choix. </html>");
+				"<html>Vous avez la possibilit&eacute; de renommer selon diff&eacute;rentes options les photos d'un dossier de votre choix. </html>");
 		JLabel TxtRenommage2 = new JLabel(
-				"<html>Ce renommage ne sera pas automatique. <br> A chaque fois que vous souhaitez renommer les photos d'un dossier, vous pouvez passer par les paramètres.</html>");
+				"<html>Ce renommage ne sera pas automatique. <br> &Agrave; chaque fois que vous souhaitez renommer les photos d'un dossier, vous pouvez passer par les param&egrave;tres.</html>");
 
 		TxtRenommage.setFont(new java.awt.Font("Dialog", 0, 12));
 		TxtRenommage2.setFont(new java.awt.Font("Dialog", 0, 12));
@@ -296,7 +294,7 @@ public class UiPremierDemarrage extends JFrame {
 
 		TitledBorder bordureReinitial = (BorderFactory.createTitledBorder(
 				BorderFactory.createLineBorder(new Color(153, 51, 255), 2),
-				"<html><H3>Reinitialisation</H3></html>"));
+				"<html><H3>R&eacute;initialisation</H3></html>"));
 		panReinitial.setBorder(bordureReinitial);
 		bordureReinitial.setTitleColor(new Color(153, 51, 255));
 
@@ -308,22 +306,22 @@ public class UiPremierDemarrage extends JFrame {
 		panReinitialColore.setBackground(new Color(153, 51, 255));
 
 		JLabel TxtGoogle = new JLabel(
-				"<html><br>Vous avez la possibilit� de trier vos photos en fonction de vos calenderiers d'evenements. <br> Pour se faire, une connexion a Google est necessaire afin d'acceder � vos calendriers.<br> Pour plus de s�curit� un code d'authentification vous sera envoyer afin d'autoriser la connexion.</html>");
+				"<html><br>Vous avez la possibilit&eacute; de trier vos photos en fonction de vos calenderiers d'&eacute;v&egrave;nements. <br> Pour se faire, une connexion &agrave; Google est necessaire afin d'acc&eacute;der &agrave; vos calendriers.<br> Pour plus de s&eacute;curit&eacute; un code d'authentification vous sera envoy&eacute; afin d'autoriser la connexion.</html>");
 		JLabel TxtGoogle2 = new JLabel(
-				"<html><br><br>Veuillez cliquez pour obtenir ce code :</html>");
+				"<html><br><br>Veuillez cliquer pour obtenir ce code :</html>");
 		// JLabel TxtGoogle3 = new
 		// JLabel("<html><br>Veuillez entrer ce code ci dessous:<html>");
 		JLabel TxtGoogle4 = new JLabel(
-				"<html><i>Ce code ne devrait vous etre demander q'une seule fois. <br>Si toutrefois vous devriez avoir � le fournir a nouveau, il vous sera possible de le faire a partir des parametres.</i><html>");
+				"<html><i>Ce code ne devrait vous &ecirc;tre demand&eacute; q'une seule fois. <br>Si toutefois vous deviez avoir &agrave; le fournir &agrave; nouveau, il vous sera possible de le faire &agrave; partir des param&egrave;tres.</i><html>");
 		JLabel TxtGoogle5 = new JLabel(
-				"<html><br>Vous pouvez reinitialiser votre connexion</html>");
+				"<html><br>Vous pouvez r&eacute;initialiser votre connexion</html>");
 		JLabel TxtGoogle6 = new JLabel(
-				"<html><br>Cliquer pour reinitialiser votre connexion</html>");
+				"<html><br>Cliquez pour r&eacute;initialiser votre connexion</html>");
 		// JTextField authentification = new JTextField(60);
 		boutonAuthentif = new JButton(
 				"Obtenir mon code d'authentification");
 		boutonReinitial = new JButton(
-				"R�initialiser votre connexion Google");
+				"<html>R&eacute;initialiser votre connexion Google</html>");
 
 		Icon iconeCle = new ImageIcon(
 				(getClass().getResource("/icone-cle.png")));
@@ -363,7 +361,7 @@ public class UiPremierDemarrage extends JFrame {
 		panFrequence.setLayout(new GridLayout(0, 1));
 		TitledBorder bordureFrequence = (BorderFactory.createTitledBorder(
 				BorderFactory.createLineBorder(new Color(29, 158, 233), 2),
-				"<html><H3>Frequence</H3></html>"));
+				"<html><H3>Fr&eacute;quence</H3></html>"));
 		panFrequence.setBorder(bordureFrequence);
 		bordureFrequence.setTitleColor(new Color(29, 158, 233));
 		panFrequence.setBackground(Color.WHITE);
@@ -374,10 +372,10 @@ public class UiPremierDemarrage extends JFrame {
 		panFrequenceColor.setBackground(new Color(29, 158, 233));
 
 		JLabel txtFrequence = new JLabel(
-				"<html><br>Choisissez ici la frequence � laquelle l'application verifie si votre dossier source contient des photos: </html>");
+				"<html><br>Choisissez ici la fr&eacute;quence &agrave; laquelle l'application v&eacute;rifie si votre dossier source contient des photos: </html>");
 		JLabel txtFrequence2 = new JLabel(
-				"<html><br>Verifier mon dossier: </html>");
-		triDemarrage =new JCheckBox("Cocher si vous souhaiter que le logiciel vérifie si des photos sont présentes dans votre dossier source au démarrage",true);
+				"<html><br>V&eacute;rifier mon dossier: </html>");
+		triDemarrage =new JCheckBox("<html>Cocher si vous souhaitez que le logiciel v&eacute;rifie si des photos sont pr&eacute;sentes dans votre dossier source au d&eacute;marrage</html>");
 		
 		comboElement cE1= new comboElement("Toutes les minutes", 60000);
 		comboElement cE2= new comboElement("Toutes les 5 minutes", 300000);
@@ -429,16 +427,16 @@ public class UiPremierDemarrage extends JFrame {
 		Icon iconeFrequence = new ImageIcon(
 				(getClass().getResource("/horloge-icone.png")));
 
-		Onglets.addTab("<html><H4>Parametre de tri</H4></html>",
+		Onglets.addTab("<html><H4>Param&egrave;tres de tri</H4></html>",
 				iconeParametre, onglet1,
-				"Parametres generaux du tri de vos photos"); //
+				"Param&egrave;tres g&eacute;neraux du tri de vos photos"); //
 		Onglets.addTab("<html><H4>Connexion Google</H4></html>", iconeGoogle,
-				onglet2, "Connexion � vos calendriers");
+				onglet2, "Connexion &agrave; vos calendriers");
 		Onglets.addTab(
-				"<html><H4>Frequence de v�rification</H4></html>",
+				"<html><H4>Fr&eacute;quence de v&eacute;rification</H4></html>",
 				iconeFrequence,
 				onglet3,
-				"Choisissez � quelle frequence l'application trie les photos de votre dossier source ");
+				"Choisissez &agrave; quelle fr&eacute;quence l'application trie les photos de votre dossier source ");
 
 		fenetre.add(Onglets);
 		Onglets.setPreferredSize(new Dimension(0, 580));

@@ -9,22 +9,13 @@ import juxo.triephotoV2.methode.SortNormal;
 public class Parametrage implements Serializable {
 
 	private static final long serialVersionUID = 4L;
-	public static String SEPARATOR;
 	private static Parametrage PARAM;
 	private String dossierSource;
 	private String dossierDestination;
 	private int intervalObservation;
 	private boolean triDemarrage;
-
-	public boolean isTriDemarrage() {
-		return triDemarrage;
-	}
-
-	public void setTriDemarrage(boolean triDemarrage) {
-		this.triDemarrage = triDemarrage;
-	}
-
 	private ArrayList<AbstractSortMethod> tabSortMethod;
+	
 	
 	public Parametrage() {
 
@@ -84,14 +75,6 @@ public class Parametrage implements Serializable {
 		this.dossierDestination = dossierDestination;
 	}
 
-	public static String getSEPARATOR() {
-		return SEPARATOR;
-	}
-
-	public static void setSEPARATOR(String sEPARATOR) {
-		SEPARATOR = sEPARATOR;
-	}
-
 	public static Parametrage getPARAM() {
 		return PARAM;
 	}
@@ -120,7 +103,14 @@ public class Parametrage implements Serializable {
 		this.tabSortMethod = tabSortMethod;
 	}
 	
-	
+	public boolean getTriDemarrage() {
+		return triDemarrage;
+	}
+
+	public void setTriDemarrage(boolean triDemarrage) {
+		this.triDemarrage = triDemarrage;
+	}
+
 	
 
 }

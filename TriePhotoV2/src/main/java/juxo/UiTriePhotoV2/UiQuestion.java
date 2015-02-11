@@ -21,7 +21,6 @@ import javax.swing.border.TitledBorder;
 
 import juxo.apiCalendar.Evenement;
 import juxo.apiCalendar.Evenements;
-import juxo.triephotoV2.accessFichier.Fichier;
 import juxo.triephotoV2.accessFichier.Fichiers;
 
 public class UiQuestion extends JDialog {
@@ -39,8 +38,7 @@ public class UiQuestion extends JDialog {
 	    this.setLocationRelativeTo(null);
 	    this.setResizable(false);
 	    this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
-	    Image icone =   Toolkit.getDefaultToolkit().getImage(getClass().getResource("Resource"+Fichier.SEPARATOR
-								+"pictograms-nps-services-library.png"));
+	    Image icone =   Toolkit.getDefaultToolkit().getImage(getClass().getResource("/pictograms-nps-services-library.png"));
         this.setIconImage(icone);
         this.setBackground(Color.white);
 	    listEvenement = new DefaultListModel<Evenement>();
@@ -84,12 +82,12 @@ public class UiQuestion extends JDialog {
 		  panPhotos.setBorder(bordurePhotos);
 		  bordurePhotos.setTitleColor(new Color(255,200,0));
 
-		   ImageIcon iconEvent = new ImageIcon(getClass().getResource("Resource"+Fichier.SEPARATOR+"evenements-icone.png"));
+		   ImageIcon iconEvent = new ImageIcon(getClass().getResource("/evenements-icone.png"));
 		   JLabel lbl1 = new JLabel();
 		   lbl1.setIcon(iconEvent);
 		   panEvent11.add(lbl1);
 		   
-		   ImageIcon iconPhotos = new ImageIcon(getClass().getResource("Resource"+Fichier.SEPARATOR+"photos-icone.png"));
+		   ImageIcon iconPhotos = new ImageIcon(getClass().getResource("/photos-icone.png"));
 		   JLabel lbl2 = new JLabel();
 		   lbl2.setIcon(iconPhotos);
 		   panPhotos11.add(lbl2);
