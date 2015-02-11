@@ -48,7 +48,7 @@ public class UiTest {
 		fichiers.add(f7);
 		fichiers.add(f8);
 		
-		UiQuestion quest = new UiQuestion(null, "Ev�nement et photos", true, evenements, fichiers);
+		UiQuestion quest = new UiQuestion(null, "Evenement et photos", true, evenements, fichiers);
 		quest.showUiQuestion();
 		//Thread.sleep(5000);
 	}
