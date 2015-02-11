@@ -119,67 +119,52 @@ public class UiParametre extends JFrame {
 		// ___________________ Les icones_____________________
 
 		Image icone = Toolkit.getDefaultToolkit().getImage(
-				getClass().getResource(
-						"Resource" + Fichier.SEPARATOR
-								+ "pictograms-nps-services-library.png"));
+				getClass().getResource("/pictograms-nps-services-library.png"));
 		this.setIconImage(icone);
 
-		ImageIcon icon1 = new ImageIcon(getClass().getResource(
-				"Resource" + Fichier.SEPARATOR + "dossier-icone.png"));
+		ImageIcon icon1 = new ImageIcon(getClass().getResource("/dossier-icone.png"));
 		JLabel label1 = new JLabel();
 		label1.setIcon(icon1);
 		pan11.setLayout(new FlowLayout(FlowLayout.LEFT));
 		pan11.add(label1);
 
-		ImageIcon icon2 = new ImageIcon(getClass().getResource(
-				"Resource" + Fichier.SEPARATOR + "modules-icone.png"));
+		ImageIcon icon2 = new ImageIcon(getClass().getResource("/modules-icone.png"));
 		JLabel label2 = new JLabel();
 		label2.setIcon(icon2);
 		pan21.setLayout(new FlowLayout(FlowLayout.LEFT));
 		pan21.add(label2);
 
-		ImageIcon icon3 = new ImageIcon(getClass().getResource(
-				"Resource" + Fichier.SEPARATOR + "encre-icone.png"));
+		ImageIcon icon3 = new ImageIcon(getClass().getResource("/encre-icone.png"));
 		JLabel label3 = new JLabel();
 		label3.setIcon(icon3);
 		pan31.setLayout(new FlowLayout(FlowLayout.LEFT));
 		pan31.add(label3);
 
-		ImageIcon iconNotif = new ImageIcon(getClass().getResource(
-				"Resource" + Fichier.SEPARATOR + "notification-icone.png"));
+		ImageIcon iconNotif = new ImageIcon(getClass().getResource("/notification-icone.png"));
 		JLabel label4 = new JLabel();
 		label4.setIcon(iconNotif);
 		panIconNotif.add(label4);
 
-		ImageIcon iconFrequence = new ImageIcon(getClass().getResource(
-				"Resource" + Fichier.SEPARATOR + "frequence-icone.png"));
+		ImageIcon iconFrequence = new ImageIcon(getClass().getResource("/frequence-icone.png"));
 		JLabel label5 = new JLabel();
 		label5.setIcon(iconFrequence);
 		panIconFrequence.add(label5);
-
 		
-
-		//ImageIcon iconAuthent = new ImageIcon(getClass().getResource("Resource\\icone-cle.png"));
-
-		ImageIcon iconAuthent = new ImageIcon(getClass().getResource("Resource"+Fichier.SEPARATOR+"notification-icone.png"));
+		ImageIcon iconAuthent = new ImageIcon(getClass().getResource("/notification-icone.png"));
 
 		JLabel label6 = new JLabel();
 		label6.setIcon(iconAuthent);
 		panIconAuthent.add(label6);
 
-		ImageIcon iconReInit = new ImageIcon(getClass().getResource(
-				"Resource" + Fichier.SEPARATOR + "notification-icone.png"));
+		ImageIcon iconReInit = new ImageIcon(getClass().getResource("/notification-icone.png"));
 
 		JLabel label7 = new JLabel();
 		label7.setIcon(iconReInit);
 		panIconReInit.add(label7);
 
-		ImageIcon iconOngletTri = new ImageIcon(getClass().getResource(
-				"Resource" + Fichier.SEPARATOR + "parametres-icone.png"));
-		ImageIcon iconConnexionGoogle = new ImageIcon(getClass().getResource(
-				"Resource" + Fichier.SEPARATOR + "google-icone.png"));
-		ImageIcon iconGenerale = new ImageIcon(getClass().getResource(
-				"Resource" + Fichier.SEPARATOR + "horloge-icone.png"));
+		ImageIcon iconOngletTri = new ImageIcon(getClass().getResource("/parametres-icone.png"));
+		ImageIcon iconConnexionGoogle = new ImageIcon(getClass().getResource("/google-icone.png"));
+		ImageIcon iconGenerale = new ImageIcon(getClass().getResource("/horloge-icone.png"));
 
 		// ______________________ les objets ______________________
 		
