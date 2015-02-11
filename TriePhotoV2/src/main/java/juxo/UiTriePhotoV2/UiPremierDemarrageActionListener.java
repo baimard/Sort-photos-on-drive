@@ -19,11 +19,11 @@ import juxo.triephotoV2.methode.SortByPlace;
 
 public class UiPremierDemarrageActionListener implements ActionListener {
 
-	private JTextField dossierAnalyser;
-	private JTextField dossierClassement;
 
 
-	public UiPremierDemarrageActionListener() {}
+
+	public UiPremierDemarrageActionListener() {
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -34,9 +34,10 @@ public class UiPremierDemarrageActionListener implements ActionListener {
 			jfS.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 			if (jfS.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 				File fichierS = jfS.getSelectedFile();
-				dossierAnalyser.setText(fichierS.getPath());
+				UiPremierDemarrage.f.SourceField.setText(fichierS.getPath());
 				Parametrage.getInstance().setDossierSource(fichierS.getPath());
 				Parametrage.getInstance().enregistrerObjet();
+				
 			}
 			break;
 
@@ -45,7 +46,7 @@ public class UiPremierDemarrageActionListener implements ActionListener {
 			jfC.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 			if (jfC.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 				File fichierC = jfC.getSelectedFile();
-				dossierClassement.setText(fichierC.getPath());
+				UiPremierDemarrage.f.DestField.setText(fichierC.getPath());
 				Parametrage.getInstance().setDossierDestination(
 						fichierC.getPath());
 				Parametrage.getInstance().enregistrerObjet();
@@ -120,7 +121,11 @@ public class UiPremierDemarrageActionListener implements ActionListener {
 			p.setIntervalObservation(c.interval);
 			p.enregistrerObjet();
 			break;
-		
+	
+			
+		case "demarrage":
+			Parametrage pp = Parametrage.getInstance();	
+		break;	
 		}
 	}
 }
