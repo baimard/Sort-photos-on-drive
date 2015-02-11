@@ -104,18 +104,12 @@ public class AppTest
 		new Parametrage("/Users/Juxo/Pictures/est", "/Users/Juxo/Pictures/est/trie");
 		Fichiers.listFichier(new File(Parametrage.getInstance().getDossierSource()).listFiles());
 		
-		MapDateFichiers map = Fichier.listFic;
-		
 		AbstractSortMethod sortEvent = new SortByEvent(1);
 		sortEvent.trie();
-		
-		map = Fichier.listFic;
-		
+				
 		AbstractSortMethod sort = new SortByPlace(1);
 		sort.trie();
-		
-		map = Fichier.listFic;
-		
+
 		AbstractSortMethod sortNormal = new SortByDayDate(1);
 		sortNormal.trie();
 		

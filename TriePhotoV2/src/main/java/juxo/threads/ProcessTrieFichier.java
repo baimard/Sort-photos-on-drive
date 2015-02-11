@@ -8,7 +8,11 @@ import juxo.apiCalendar.Evenement;
 import juxo.apiCalendar.Evenements;
 import juxo.triephotoV2.accessFichier.Fichier;
 import juxo.triephotoV2.accessFichier.Fichiers;
-
+/**
+ * Déprécié
+ * @author Juxo
+ *
+ */
 public class ProcessTrieFichier extends Thread{
 	private String Nwxdossier;
 	private Evenements listEv = null;

@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Collections;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -13,17 +14,14 @@ import javax.swing.JTextField;
 import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
 import juxo.system.Parametrage;
 import juxo.system.XMLToolsSerialisation;
+import juxo.triephotoV2.methode.ComparatorSortMethod;
 import juxo.triephotoV2.methode.SortByDayDate;
 import juxo.triephotoV2.methode.SortByEvent;
 import juxo.triephotoV2.methode.SortByPlace;
 
 public class UiPremierDemarrageActionListener implements ActionListener {
 
-
-
-
-	public UiPremierDemarrageActionListener() {
-	}
+	public UiPremierDemarrageActionListener() {}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -85,6 +83,8 @@ public class UiPremierDemarrageActionListener implements ActionListener {
 				} else {
 					Parametrage.getInstance().getTabSortMethod().remove(SortByPlace.getInstance());
 				}
+				Parametrage p = Parametrage.getInstance();
+				Collections.sort(p.getTabSortMethod(), new ComparatorSortMethod());
 				Parametrage.getInstance().enregistrerObjet();
 			} else {
 				UiPremierDemarrage.f.trieLieuRadio.setSelected(false);

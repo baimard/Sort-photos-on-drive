@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 
-
+/**
+ * Déprécié
+ * @author Juxo
+ *
+ */
 public class ProcessGlobal extends Thread{
 		
 	private ArrayList<String> listeCalendrier;

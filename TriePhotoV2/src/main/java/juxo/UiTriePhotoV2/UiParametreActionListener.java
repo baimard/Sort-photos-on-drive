@@ -19,28 +19,7 @@ import juxo.system.XMLToolsSerialisation;
 
 public class UiParametreActionListener implements ActionListener {
 
-	private JTextField dossierAnalyser;
-	private JTextField dossierClassement;
-	private JTextField ficRenom;
-	private JCheckBox triD;
-	private JCheckBox triE;
-	private JCheckBox triL;
-	private JRadioButtonMenuItem renomD;
-	private JRadioButtonMenuItem renomL;
-	private JRadioButtonMenuItem renomNS;
-
-
-	public UiParametreActionListener(JTextField dossierSource, JTextField dossierCible, JCheckBox modeDate, JCheckBox modeEvenement, JCheckBox modeLieu, JTextField fichierRenommer, JRadioButtonMenuItem renomDate, JRadioButtonMenuItem renomLieu, JRadioButtonMenuItem renomNomSpec){
-		this.dossierAnalyser = dossierSource ;
-		this.dossierClassement = dossierCible;
-		ficRenom = fichierRenommer;
-		triD = modeDate;
-		triE = modeEvenement;
-		triL = modeLieu;
-		renomD = renomDate;
-		renomL = renomLieu;
-		renomNS = renomNomSpec;
-
+	public UiParametreActionListener() {
 	}
 
 	@Override
@@ -51,7 +30,8 @@ public class UiParametreActionListener implements ActionListener {
 			jfS.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 			if (jfS.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 				File fichierS = jfS.getSelectedFile();
-				dossierAnalyser.setText(fichierS.getPath());
+				UiParametre.f.source.setText(fichierS.getPath());
+				Parametrage.getInstance().setDossierSource(fichierS.getPath());
 			}
 			break;
 
@@ -60,7 +40,9 @@ public class UiParametreActionListener implements ActionListener {
 			jfC.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 			if (jfC.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 				File fichierC = jfC.getSelectedFile();
-				dossierClassement.setText(fichierC.getPath());
+				UiParametre.f.cible.setText(fichierC.getPath());
+				Parametrage.getInstance().setDossierDestination(
+						fichierC.getPath());
 			}
 			break;
 
@@ -81,7 +63,7 @@ public class UiParametreActionListener implements ActionListener {
 			jfR.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 			if (jfR.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
 				File fichierR = jfR.getSelectedFile();
-				dossierClassement.setText(fichierR.getPath());
+				UiParametre.f.selectDossierRenom.setText(fichierR.getPath());
 			}
 			break;
 
@@ -100,7 +82,7 @@ public class UiParametreActionListener implements ActionListener {
 		case "DemandeGoogle":
 			try {
 				new ConnexionGoogle();
-				if(ConnexionGoogle.googleConnexion!=null){
+				if (ConnexionGoogle.googleConnexion != null) {
 					UiParametre.f.getCodAuthent().setEnabled(false);
 					UiParametre.f.getReInitCode().setEnabled(true);
 					UiParametre.f.getCodAuthent().setText("Vous êtes connecté");
@@ -110,26 +92,22 @@ public class UiParametreActionListener implements ActionListener {
 				e1.printStackTrace();
 			}
 			break;
-			
-		case "ReinitialisationGoogle" :
+
+		case "ReinitialisationGoogle":
 			XMLToolsSerialisation.DeleteFile("token");
-			ConnexionGoogle.googleConnexion=null;
+			ConnexionGoogle.googleConnexion = null;
 			UiParametre.f.getCodAuthent().setEnabled(true);
 			UiParametre.f.getReInitCode().setEnabled(false);
 			UiParametre.f.getCodAuthent().setText("Vous connecter...");
 			break;
-			
-		case "intervalActualisation" :
-			comboElement c = (comboElement) UiParametre.f.getFrequences().getSelectedItem();
+
+		case "intervalActualisation":
+			comboElement c = (comboElement) UiParametre.f.getFrequences()
+					.getSelectedItem();
 			c.parametreInterval();
 			Parametrage.getInstance().enregistrerObjet();
-		break;
-			
+			break;
 		}
-		
-
-		
-
 	}
 
 }
