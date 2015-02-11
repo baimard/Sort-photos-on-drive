@@ -21,7 +21,6 @@ import org.junit.Test;
 public class UiTest {
 	
 
-	@Ignore
 	@Test
     public void testUiQuestion() throws InterruptedException {
 		
@@ -29,14 +28,14 @@ public class UiTest {
 		Evenements evenements = new Evenements();
 		evenements.add(e1);
 		
-		Fichier f1 = new Fichier("C:\\Users\\RAKOTOMALALA\\Documents\\Projet Image Test\\2.jpg");
-		Fichier f2 = new Fichier("C:\\Users\\RAKOTOMALALA\\Documents\\Projet Image Test\\3.jpg");
-		Fichier f3 = new Fichier("C:\\Users\\RAKOTOMALALA\\Documents\\Projet Image Test\\10.jpg");
-		Fichier f4 = new Fichier("C:\\Users\\RAKOTOMALALA\\Documents\\Projet Image Test\\parametres-icone.png");
-		Fichier f5 = new Fichier("C:\\Users\\RAKOTOMALALA\\Documents\\Projet Image Test\\4.JPG");
-		Fichier f6= new Fichier("C:\\Users\\RAKOTOMALALA\\Documents\\Projet Image Test\\5.JPG");
-		Fichier f7 = new Fichier("C:\\Users\\RAKOTOMALALA\\Documents\\Projet Image Test\\6.JPG");
-		Fichier f8 = new Fichier("C:\\Users\\RAKOTOMALALA\\Documents\\Projet Image Test\\7.JPG");
+		Fichier f1 = new Fichier("/Users/Juxo/Pictures/test/2014/10/18/IMG_6769.JPG");
+		Fichier f2 = new Fichier("/Users/Juxo/Pictures/test/2014/10/18/IMG_6769.JPG");
+		Fichier f3 = new Fichier("/Users/Juxo/Pictures/test/2014/10/18/IMG_6769.JPG");
+		Fichier f4 = new Fichier("/Users/Juxo/Pictures/test/2014/10/18/IMG_6769.JPG");
+		Fichier f5 = new Fichier("/Users/Juxo/Pictures/test/2014/10/18/IMG_6769.JPG");
+		Fichier f6 = new Fichier("/Users/Juxo/Pictures/test/2014/10/18/IMG_6769.JPG");
+		Fichier f7 = new Fichier("/Users/Juxo/Pictures/test/2014/10/18/IMG_6769.JPG");
+		Fichier f8 = new Fichier("/Users/Juxo/Pictures/test/2014/10/18/IMG_6769.JPG");
 		Fichiers fichiers = new Fichiers();
 
 		fichiers.add(f1);
@@ -60,7 +59,7 @@ public class UiTest {
 		Thread.sleep(50000);
 	}
 	
-	
+	@Ignore
 	@Test
 	public void testUiPremierDemarrage() throws InterruptedException  {
 		UiPremierDemarrage param = new UiPremierDemarrage();

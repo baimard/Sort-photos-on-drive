@@ -27,8 +27,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
-import juxo.triephotoV2.accessFichier.Fichier;
-
 public class UiPremierDemarrage extends JFrame {
 
 	/**
