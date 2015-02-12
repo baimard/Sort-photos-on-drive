@@ -11,9 +11,14 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
+import juxo.notification.AfficherNotification;
 import juxo.system.Parametrage;
 import juxo.system.XMLToolsSerialisation;
 import juxo.threads.ProcessObservationDossier;
+import juxo.triephotoV2.accessFichier.Fichier;
+import juxo.triephotoV2.accessFichier.FichierComparatorDirectoryParent;
+import juxo.triephotoV2.accessFichier.Fichiers;
+import juxo.triephotoV2.accessFichier.MapDateFichiers;
 import juxo.triephotoV2.methode.ComparatorSortMethod;
 import juxo.triephotoV2.methode.SortByDayDate;
 import juxo.triephotoV2.methode.SortByEvent;
@@ -107,17 +112,34 @@ public class UiParametreActionListener implements ActionListener {
 			}
 			break;
 
-		case "renomParDate":
-
+		case "BoutonRenommer":
+			String dossierCourant = UiParametre.f.selectDossierRenom.getText();
+			Fichier.listFic = new MapDateFichiers();
+			if (dossierCourant != null && dossierCourant.isEmpty() || dossierCourant.trim().length() <= 0){
+				AfficherNotification.AfficherMsgNotification("Veuillez choisir le dossier source pour renommer les fichiers");
+			} else{
+				try {
+					Fichiers.generationListe(new Fichier(UiParametre.f.selectDossierRenom.getText()));
+				} catch (IOException e2) {
+					e2.printStackTrace();
+				}
+				Fichiers maCollec = Fichier.listFic.getAllFichierItem();
+				Collections.sort(maCollec, new FichierComparatorDirectoryParent());
+				if (UiParametre.f.renomDate.isSelected()){
+					maCollec.renommerFichiersParDate();
+				}
+				else if (UiParametre.f.renomLieu.isSelected()){
+					maCollec.renommerFichiersParLieu();
+				}
+				else if (UiParametre.f.renomNomSpec.isSelected()){
+					maCollec.renommerFichiers(UiParametre.f.saisieNom.getText());
+				}
+				else{
+					AfficherNotification.AfficherMsgNotification("Veuillez sélectionner un des trois modes de renommage.");
+				}
+			}
 			break;
 
-		case "renomParLieu":
-
-			break;
-
-		case "renomNomSpecifie":
-
-			break;
 
 		case "DemandeGoogle":
 			try {

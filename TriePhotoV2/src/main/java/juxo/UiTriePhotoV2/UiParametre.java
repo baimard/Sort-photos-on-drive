@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.Toolkit;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -17,11 +15,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
-
 import juxo.apiCalendar.connexionGoogle.OAuth2Token;
 import juxo.system.Parametrage;
 import juxo.system.XMLToolsSerialisation;
@@ -82,7 +78,7 @@ public class UiParametre extends JFrame {
 	public JTextField source;
 	public JTextField cible;
 	public JTextField selectDossierRenom = new JTextField();
-	private JTextField saisieNom = new JTextField();
+	public JTextField saisieNom = new JTextField();
 
 	private JButton choixSource = new JButton("Parcourir");
 	private JButton choixCible = new JButton("Parcourir");
@@ -97,9 +93,9 @@ public class UiParametre extends JFrame {
 	public JCheckBox  modeLieu = new JCheckBox ("Lieu");
 	public JCheckBox verifDossierDem = new JCheckBox ("Verifier si des photos sont présentes dans votre dossier au démarrage");
 
-	private JRadioButtonMenuItem  renomDate = new JRadioButtonMenuItem ("Renommer par date de prise de vue");
-	private JRadioButtonMenuItem  renomLieu = new JRadioButtonMenuItem ("Renommer par lieu");
-	private JRadioButtonMenuItem  renomNomSpec = new JRadioButtonMenuItem ("Renommer avec le nom suivant :");
+	public JRadioButtonMenuItem  renomDate = new JRadioButtonMenuItem ("Renommer par date de prise de vue");
+	public JRadioButtonMenuItem  renomLieu = new JRadioButtonMenuItem ("Renommer par lieu");
+	public JRadioButtonMenuItem  renomNomSpec = new JRadioButtonMenuItem ("Renommer avec le nom suivant :");
 	public JRadioButtonMenuItem  activer = new JRadioButtonMenuItem ("Notification activée");
 	public JRadioButtonMenuItem  desactiver = new JRadioButtonMenuItem ("Notification desactivée");
 	private ButtonGroup renomGroupBtn = new ButtonGroup();
@@ -155,6 +151,8 @@ public class UiParametre extends JFrame {
 		Image icone = Toolkit.getDefaultToolkit().getImage(
 				getClass().getResource("/load.png"));
 		this.setIconImage(icone);
+
+		
 
 		ImageIcon icon1 = new ImageIcon(getClass().getResource("/dossier-icone.png"));
 		JLabel label1 = new JLabel();
@@ -367,6 +365,8 @@ public class UiParametre extends JFrame {
 		renomLieu.addActionListener(UiParametreListener);
 		renomNomSpec.setActionCommand("renomNomSpecifie");
 		renomNomSpec.addActionListener(UiParametreListener);
+		renommer.setActionCommand("BoutonRenommer");
+		renommer.addActionListener(UiParametreListener);
 		frequences.setActionCommand("intervalActualisation");
 		frequences.addActionListener(UiParametreListener);
 		activer.setActionCommand("activeNotification");

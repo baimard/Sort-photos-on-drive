@@ -35,7 +35,6 @@ public class AppTest
 		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball2");
 		Fichiers.listFichier(f.listFiles());
 		Fichiers maCollec = Fichier.listFic.getAllFichierItem();
-		//Collections.sort(maCollec, new FichierComparatorDate());
 		Collections.sort(maCollec, new FichierComparatorDirectoryParent());
 		//maCollec.renommerFichiersParLieu();
 		//maCollec.renommerFichiers("Lé a");

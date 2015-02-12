@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import juxo.notification.AfficherNotification;
+
 public class Fichiers extends ArrayList<Fichier>{
 
 	/**
@@ -134,7 +136,10 @@ public class Fichiers extends ArrayList<Fichier>{
 	 */
 	public void renommerFichiers(String nom){
 		int it=1;
-		if (isThisStringValid(nom)){
+		if(nom != null && nom.isEmpty() || nom.trim().length() <= 0){
+			AfficherNotification.AfficherMsgNotification("Attention, le nom de vos fichiers ne doit pas être nul");
+		}
+		else if (isThisStringValid(nom)){
 			for (Fichier fichierCourant : this) {
 				int index = this.indexOf(fichierCourant);
 				if (fichierCourant.isFile()) {
@@ -153,7 +158,7 @@ public class Fichiers extends ArrayList<Fichier>{
 				}	
 			}				
 		}else{
-			System.out.println("Attention, le nom " + nom + " contient un ou plusieurs caractères interdits. Les caractères interdits sont / \\ : * ? \" < > |");
+			AfficherNotification.AfficherMsgNotification("Attention, le nom " + nom + " contient un ou plusieurs caractères interdits. Les caractères interdits sont / \\ : * ? \" < > |");
 		}
 	}
 	
