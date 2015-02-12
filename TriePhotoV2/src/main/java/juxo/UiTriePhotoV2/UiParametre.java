@@ -82,7 +82,7 @@ public class UiParametre extends JFrame {
 	public JTextField source;
 	public JTextField cible;
 	public JTextField selectDossierRenom = new JTextField();
-	private JTextField saisieNom = new JTextField();
+	public JTextField saisieNom = new JTextField();
 
 	private JButton choixSource = new JButton("Parcourir");
 	private JButton choixCible = new JButton("Parcourir");
@@ -97,9 +97,9 @@ public class UiParametre extends JFrame {
 	public JCheckBox  modeLieu = new JCheckBox ("Lieu");
 	public JCheckBox verifDossierDem = new JCheckBox ("Verifier si des photos sont présentes dans votre dossier au démarrage");
 
-	private JRadioButtonMenuItem  renomDate = new JRadioButtonMenuItem ("Renommer par date de prise de vue");
-	private JRadioButtonMenuItem  renomLieu = new JRadioButtonMenuItem ("Renommer par lieu");
-	private JRadioButtonMenuItem  renomNomSpec = new JRadioButtonMenuItem ("Renommer avec le nom suivant :");
+	public JRadioButtonMenuItem  renomDate = new JRadioButtonMenuItem ("Renommer par date de prise de vue");
+	public JRadioButtonMenuItem  renomLieu = new JRadioButtonMenuItem ("Renommer par lieu");
+	public JRadioButtonMenuItem  renomNomSpec = new JRadioButtonMenuItem ("Renommer avec le nom suivant :");
 	public JRadioButtonMenuItem  activer = new JRadioButtonMenuItem ("Notification activée");
 	public JRadioButtonMenuItem  desactiver = new JRadioButtonMenuItem ("Notification desactivée");
 	private ButtonGroup renomGroupBtn = new ButtonGroup();
@@ -144,9 +144,9 @@ public class UiParametre extends JFrame {
 
 		// ___________________ Les icones_____________________
 
-		Image icone = Toolkit.getDefaultToolkit().getImage(
+		/*Image icone = Toolkit.getDefaultToolkit().getImage(
 				getClass().getResource("/icone-pioupiou.jpg"));
-		this.setIconImage(icone);
+		this.setIconImage(icone);*/
 
 		ImageIcon icon1 = new ImageIcon(getClass().getResource("/dossier-icone.png"));
 		JLabel label1 = new JLabel();
@@ -359,6 +359,8 @@ public class UiParametre extends JFrame {
 		renomLieu.addActionListener(UiParametreListener);
 		renomNomSpec.setActionCommand("renomNomSpecifie");
 		renomNomSpec.addActionListener(UiParametreListener);
+		renommer.setActionCommand("BoutonRenommer");
+		renommer.addActionListener(UiParametreListener);
 		frequences.setActionCommand("intervalActualisation");
 		frequences.addActionListener(UiParametreListener);
 		activer.setActionCommand("activeNotification");
