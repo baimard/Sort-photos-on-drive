@@ -169,6 +169,8 @@ public class ConnexionGoogle {
 			ville = g.getResult().get(0).getVille();
 		}catch(javax.ws.rs.NotFoundException e){
 			System.out.println(e);
+		}catch(NullPointerException e){
+			System.out.println("Pas de ville ou erreur de connexion");
 		}
 		return ville;
 	}

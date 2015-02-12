@@ -24,7 +24,7 @@ public class ProcessObservationDossier extends Thread {
 	}
 	
 	public void run(){
-		AfficherNotification.myNotif.menu2.setLabel("Arreter Observation");
+		AfficherNotification.AfficheNotif.menu2.setLabel("Arreter Observation");
 		while (execution){
 			try {
 				AfficherNotification.AfficheNotif.TrayIconLoad();
@@ -54,7 +54,7 @@ public class ProcessObservationDossier extends Thread {
 		
 		AfficherNotification.AfficherMsgNotification("Écoute du dossier stoppée");
 		threadObservation=null;
-		AfficherNotification.myNotif.menu2.setLabel("Lancer Observation");
+		AfficherNotification.AfficheNotif.menu2.setLabel("Lancer Observation");
 	}
 	
 	public static void stopExecution(){
