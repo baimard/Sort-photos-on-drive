@@ -20,6 +20,7 @@ public class AfficherNotification {
 		public  AfficherNotification() throws IOException, AWTException {
 			myNotif=this;
 			
+			
 			if (SystemTray.isSupported()) {
 				
 				 //Ajout d'un menu � la trayIcon
@@ -37,6 +38,7 @@ public class AfficherNotification {
 				int trayIconWidth = new TrayIcon(imageBuffered).getSize().width;
 
 				//Cr�ation de l'icone de notification
+				
 				trayIcon1 = new TrayIcon(imageBuffered.getScaledInstance(trayIconWidth, -1, Image.SCALE_SMOOTH), "Trie Photo", popup);
 			    trayIcon1.setActionCommand("message");
 			    trayIcon1.setImageAutoSize(true);
