@@ -5,8 +5,6 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.Toolkit;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -28,10 +26,7 @@ import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 
 public class UiPremierDemarrage extends JFrame {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	
 	public static UiPremierDemarrage f;
@@ -45,7 +40,7 @@ public class UiPremierDemarrage extends JFrame {
 
 	public JButton boutonAuthentif;
 	public JButton boutonReinitial;
-	public JComboBox<comboElement> chxFrequence;
+	public JComboBox<ComboIntervalTemps> chxFrequence;
 
 	
 	public JCheckBox triDemarrage;
@@ -59,9 +54,9 @@ public class UiPremierDemarrage extends JFrame {
 		this.setResizable(true);
 		this.setBackground(Color.WHITE);
 
-		Image icone = Toolkit.getDefaultToolkit().getImage(
-				UiPremierDemarrage.class.getResource("/icone-principale.png"));
-		this.setIconImage(icone);
+		//Image icone = Toolkit.getDefaultToolkit().getImage(
+				//UiPremierDemarrage.class.getResource("/icone-principale.png"));
+		//this.setIconImage(icone);
 
 		JPanel fenetre = new JPanel();
 		fenetre.setLayout(new BoxLayout(fenetre, BoxLayout.Y_AXIS));
@@ -377,13 +372,13 @@ public class UiPremierDemarrage extends JFrame {
 				"<html><br>V&eacute;rifier mon dossier: </html>");
 		triDemarrage =new JCheckBox("<html>Cocher si vous souhaitez que le logiciel v&eacute;rifie si des photos sont pr&eacute;sentes dans votre dossier source au d&eacute;marrage</html>");
 		
-		comboElement cE1= new comboElement("Toutes les minutes", 60000);
-		comboElement cE2= new comboElement("Toutes les 5 minutes", 300000);
-		comboElement cE3= new comboElement("Toutes les 15 minutes", 900000);
-		comboElement cE4= new comboElement("Toutes les 30 minutes", 1800000);
-		comboElement cE5= new comboElement("Toutes les 1 heure", 3600000);
+		ComboIntervalTemps cE1= new ComboIntervalTemps("Toutes les minutes", 60000);
+		ComboIntervalTemps cE2= new ComboIntervalTemps("Toutes les 5 minutes", 300000);
+		ComboIntervalTemps cE3= new ComboIntervalTemps("Toutes les 15 minutes", 900000);
+		ComboIntervalTemps cE4= new ComboIntervalTemps("Toutes les 30 minutes", 1800000);
+		ComboIntervalTemps cE5= new ComboIntervalTemps("Toutes les 1 heure", 3600000);
 		
-		chxFrequence = new JComboBox<comboElement>();
+		chxFrequence = new JComboBox<ComboIntervalTemps>();
 		chxFrequence.addItem(cE1);
 		chxFrequence.addItem(cE2);
 		chxFrequence.addItem(cE3);

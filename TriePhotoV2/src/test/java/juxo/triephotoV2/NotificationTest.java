@@ -11,7 +11,7 @@ import juxo.notification.AfficherNotification;
 public class NotificationTest extends TestCase {
 	@Test
 	public void testNotif() throws IOException, AWTException{
-		AfficherNotification testnotification =  new AfficherNotification();
+		new AfficherNotification();
 	}
 	//test
 }

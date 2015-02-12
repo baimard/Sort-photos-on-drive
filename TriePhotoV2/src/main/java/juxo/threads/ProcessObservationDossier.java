@@ -1,5 +1,6 @@
 package juxo.threads;
 
+import java.awt.AWTException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,6 +27,7 @@ public class ProcessObservationDossier extends Thread {
 		AfficherNotification.myNotif.menu2.setLabel("Arreter Observation");
 		while (execution){
 			try {
+				AfficherNotification.AfficheNotif.TrayIconLoad();
 				Parametrage p = Parametrage.getInstance();
 				Fichier.listFic = new MapDateFichiers();
 				Fichiers.generationListe(new Fichier(p.getDossierSource()));
@@ -38,11 +40,15 @@ public class ProcessObservationDossier extends Thread {
 						s.trie();
 					}
 				}
+				AfficherNotification.AfficheNotif.TrayIconNormal();
 				sleep(p.getIntervalObservation());
 			} catch (InterruptedException e) {
 				System.out.println(e);
 			}catch(IOException e){
 				System.out.println(e);
+			} catch (AWTException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 		

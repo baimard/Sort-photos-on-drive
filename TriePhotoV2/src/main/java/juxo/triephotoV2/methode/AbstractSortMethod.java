@@ -12,5 +12,5 @@ public abstract class AbstractSortMethod {
 	}
 	
 	public abstract void trie();
-	
+	public abstract void loadMe();
 }

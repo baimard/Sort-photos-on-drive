@@ -20,6 +20,7 @@ public class NotificationListener implements ActionListener{
 	   		case "StoperThread" :
 	   			if(ProcessObservationDossier.getInstance()!=null){
 	   				ProcessObservationDossier.stopExecution();
+	   				ProcessObservationDossier.getInstance().interrupt();
 	   			}else{
 					Thread t = new ProcessObservationDossier();
 					t.start();

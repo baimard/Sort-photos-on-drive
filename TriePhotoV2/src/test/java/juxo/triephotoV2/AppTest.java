@@ -6,10 +6,8 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-
 import org.junit.Test;
 import org.junit.Ignore;
-
 import juxo.apiCalendar.Calendrier;
 import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
 import juxo.apiCalendar.definitionClasse.Items;
@@ -17,10 +15,8 @@ import juxo.apiCalendar.definitionClasse.MediaGroup;
 import juxo.system.Parametrage;
 import juxo.threads.ProcessChargementEvenements;
 import juxo.triephotoV2.accessFichier.Fichier;
-//import juxo.triephotoV2.accessFichier.FichierComparatorDate;
 import juxo.triephotoV2.accessFichier.FichierComparatorDirectoryParent;
 import juxo.triephotoV2.accessFichier.Fichiers;
-import juxo.triephotoV2.accessFichier.MapDateFichiers;
 import juxo.triephotoV2.methode.AbstractSortMethod;
 import juxo.triephotoV2.methode.SortByDayDate;
 import juxo.triephotoV2.methode.SortByEvent;

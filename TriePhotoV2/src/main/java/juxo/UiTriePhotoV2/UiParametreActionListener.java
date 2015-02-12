@@ -5,10 +5,19 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.Collections;
+
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
 import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
 import juxo.system.Parametrage;
 import juxo.system.XMLToolsSerialisation;
+import juxo.threads.ProcessObservationDossier;
+import juxo.triephotoV2.methode.ComparatorSortMethod;
+import juxo.triephotoV2.methode.SortByDayDate;
+import juxo.triephotoV2.methode.SortByEvent;
+import juxo.triephotoV2.methode.SortByPlace;
 
 public class UiParametreActionListener implements ActionListener {
 
@@ -42,15 +51,51 @@ public class UiParametreActionListener implements ActionListener {
 			break;
 
 		case "triDate":
-
+			if (UiParametre.f.modeDate.isSelected()) {
+				Parametrage.getInstance().getTabSortMethod()
+						.add(new SortByDayDate(3));
+			} else {
+				Parametrage.getInstance().getTabSortMethod()
+						.remove(SortByDayDate.getInstance());
+			}
+			Parametrage.getInstance().enregistrerObjet();
 			break;
 
 		case "triEvenement":
-
+			if (ConnexionGoogle.googleConnexion != null) {
+				if (UiParametre.f.modeEvenement.isSelected()) {
+					Parametrage.getInstance().getTabSortMethod()
+							.add(new SortByEvent(1));
+				} else {
+					Parametrage.getInstance().getTabSortMethod()
+							.remove(SortByEvent.getInstance());
+				}
+				Parametrage.getInstance().enregistrerObjet();
+			} else {
+				UiParametre.f.modeEvenement.setSelected(false);
+				JOptionPane.showMessageDialog(null,
+						"Veuillez vous connecter à Google (Onglet Suivant)");
+			}
 			break;
 
 		case "triLieu":
-
+			if (ConnexionGoogle.googleConnexion != null) {
+				if (UiParametre.f.modeLieu.isSelected()) {
+					Parametrage.getInstance().getTabSortMethod()
+							.add(new SortByPlace(2));
+				} else {
+					Parametrage.getInstance().getTabSortMethod()
+							.remove(SortByPlace.getInstance());
+				}
+				Parametrage p = Parametrage.getInstance();
+				Collections.sort(p.getTabSortMethod(),
+						new ComparatorSortMethod());
+				Parametrage.getInstance().enregistrerObjet();
+			} else {
+				UiParametre.f.modeLieu.setSelected(false);
+				JOptionPane.showMessageDialog(null,
+						"Veuillez vous connecter à Google (Onglet Suivant)");
+			}
 			break;
 
 		case "choixFicRenom":
@@ -97,10 +142,27 @@ public class UiParametreActionListener implements ActionListener {
 			break;
 
 		case "intervalActualisation":
-			comboElement c = (comboElement) UiParametre.f.getFrequences()
-					.getSelectedItem();
+			ComboIntervalTemps c = (ComboIntervalTemps) UiParametre.f
+					.getFrequences().getSelectedItem();
 			c.parametreInterval();
 			Parametrage.getInstance().enregistrerObjet();
+			ProcessObservationDossier.getInstance().interrupt();
+			Thread t = new ProcessObservationDossier();
+			t.start();
+			break;
+
+		case "activeNotification":
+			Parametrage.getInstance().setSeeNotification(true);
+			Parametrage.getInstance().enregistrerObjet();
+			UiParametre.f.activer.setSelected(true);
+			UiParametre.f.desactiver.setSelected(false);
+			break;
+			
+		case "desactiverNotication":
+			Parametrage.getInstance().setSeeNotification(false);
+			Parametrage.getInstance().enregistrerObjet();
+			UiParametre.f.activer.setSelected(false);
+			UiParametre.f.desactiver.setSelected(true);
 			break;
 		}
 	}

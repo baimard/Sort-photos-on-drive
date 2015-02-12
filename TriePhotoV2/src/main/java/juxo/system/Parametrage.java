@@ -14,11 +14,12 @@ public class Parametrage implements Serializable {
 	private String dossierDestination;
 	private int intervalObservation;
 	private boolean triDemarrage;
+	private boolean seeNotification;
 	private ArrayList<AbstractSortMethod> tabSortMethod;
 	
 	
 	public Parametrage() {
-
+		
 	}
 
 	public Parametrage(String dossierSource, String dossierDestination) {
@@ -28,8 +29,9 @@ public class Parametrage implements Serializable {
 		this.intervalObservation=600000;
 		tabSortMethod = new ArrayList<AbstractSortMethod>();
 		tabSortMethod.add(new SortNormal(4));
+		seeNotification=true;
 	}
-	
+
 	public static Parametrage getInstance() {
 		return PARAM;
 	}
@@ -54,6 +56,12 @@ public class Parametrage implements Serializable {
 			p = (Parametrage) XMLToolsSerialisation
 					.decodeFromFile("parametrage");
 			Parametrage.setInstance(p);
+			if(p!=null){
+				//Réinstantiation des singleton
+				for(AbstractSortMethod a : p.tabSortMethod){
+					a.loadMe();
+				}
+			}
 		} catch (IOException e) {
 			System.out.println(e);
 		}
@@ -111,6 +119,12 @@ public class Parametrage implements Serializable {
 		this.triDemarrage = triDemarrage;
 	}
 
-	
+	public boolean isSeeNotification() {
+		return seeNotification;
+	}
+
+	public void setSeeNotification(boolean seeNotification) {
+		this.seeNotification = seeNotification;
+	}
 
 }

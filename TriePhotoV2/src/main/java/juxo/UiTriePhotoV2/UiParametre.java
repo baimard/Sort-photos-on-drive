@@ -6,7 +6,6 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
-
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -24,6 +23,9 @@ import javax.swing.border.TitledBorder;
 import juxo.apiCalendar.connexionGoogle.OAuth2Token;
 import juxo.system.Parametrage;
 import juxo.system.XMLToolsSerialisation;
+import juxo.triephotoV2.methode.SortByDayDate;
+import juxo.triephotoV2.methode.SortByEvent;
+import juxo.triephotoV2.methode.SortByPlace;
 
 public class UiParametre extends JFrame {
 	
@@ -85,18 +87,18 @@ public class UiParametre extends JFrame {
 	private JButton codAuthent = new JButton("Obtenir mon code d'authentification");
 	private JButton reInitCode = new JButton("Reinitialiser la connexion google");
 	
-	private JCheckBox  modeDate = new JCheckBox  ("Date");
-	private JCheckBox  modeEvenement = new JCheckBox ("Evènement");
-	private JCheckBox  modeLieu = new JCheckBox ("Lieu");
+	public JCheckBox  modeDate = new JCheckBox  ("Date");
+	public JCheckBox  modeEvenement = new JCheckBox ("Evènement");
+	public JCheckBox  modeLieu = new JCheckBox ("Lieu");
 	private JRadioButtonMenuItem  renomDate = new JRadioButtonMenuItem ("Renommer par date de prise de vue");
 	private JRadioButtonMenuItem  renomLieu = new JRadioButtonMenuItem ("Renommer par lieu");
 	private JRadioButtonMenuItem  renomNomSpec = new JRadioButtonMenuItem ("Renommer avec le nom suivant :");
-	private JRadioButtonMenuItem  activer = new JRadioButtonMenuItem ("Notification activée");
-	private JRadioButtonMenuItem  desactiver = new JRadioButtonMenuItem ("Notification desactivée");
+	public JRadioButtonMenuItem  activer = new JRadioButtonMenuItem ("Notification activée");
+	public JRadioButtonMenuItem  desactiver = new JRadioButtonMenuItem ("Notification desactivée");
 	private ButtonGroup renomGroupBtn = new ButtonGroup();
 	private ButtonGroup notifGroupBtn = new ButtonGroup();
 
-	private JComboBox<comboElement> frequences;
+	private JComboBox<ComboIntervalTemps> frequences;
 
 	public UiParametre() {
 
@@ -110,10 +112,28 @@ public class UiParametre extends JFrame {
 		
 		UiParametreActionListener UiParametreListener = new UiParametreActionListener();
 
+		
+		//Recherche des paramètres dans paramètrages
 		Parametrage p = Parametrage.getInstance();
 
 		source = new JTextField(p.getDossierSource());
 		cible = new JTextField(p.getDossierDestination());
+		if(p.getTabSortMethod().contains(SortByDayDate.getInstance())){
+			modeDate.setSelected(true);
+		}
+		if(p.getTabSortMethod().contains(SortByEvent.getInstance())){
+			modeEvenement.setSelected(true);
+		}
+		if(p.getTabSortMethod().contains(SortByPlace.getInstance())){
+			modeLieu.setSelected(true);
+		}
+		if(p.isSeeNotification()){
+			activer.setSelected(true);
+		}else{
+			desactiver.setSelected(true);
+		}
+			
+		
 
 		// ___________________ Les icones_____________________
 
@@ -167,18 +187,27 @@ public class UiParametre extends JFrame {
 
 		// ______________________ les objets ______________________
 		
-		comboElement cE1= new comboElement("Toutes les minutes", 60000);
-		comboElement cE2= new comboElement("Toutes les 5 minutes", 300000);
+		ComboIntervalTemps cE1= new ComboIntervalTemps("Toutes les minutes", 60000);
+		ComboIntervalTemps cE2= new ComboIntervalTemps("Toutes les 5 minutes", 300000);
+		ComboIntervalTemps cE3= new ComboIntervalTemps("Toutes les 15 minutes", 900000);
+		ComboIntervalTemps cE4= new ComboIntervalTemps("Toutes les 30 minutes", 1800000);
+		ComboIntervalTemps cE5= new ComboIntervalTemps("Toutes les 1 heure", 3600000);
 		
-		frequences = new JComboBox<comboElement>();
+		frequences = new JComboBox<ComboIntervalTemps>();
 		frequences.addItem(cE1);
 		frequences.addItem(cE2);
+		frequences.addItem(cE3);
+		frequences.addItem(cE4);
+		frequences.addItem(cE5);
+		
+		for(int i=0; i<frequences.getItemCount();i++){
+			if(frequences.getItemAt(i).interval==p.getIntervalObservation()){
+				frequences.setSelectedItem(frequences.getItemAt(i));
+			}
+		}
 		
 		JPanel content = new JPanel();
 
-		// JScrollPane pane = new
-		// JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-		// JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
 		// ______________________ Background color _______________________
 
@@ -318,6 +347,10 @@ public class UiParametre extends JFrame {
 		renomNomSpec.addActionListener(UiParametreListener);
 		frequences.setActionCommand("intervalActualisation");
 		frequences.addActionListener(UiParametreListener);
+		activer.setActionCommand("activeNotification");
+		activer.addActionListener(UiParametreListener);
+		desactiver.setActionCommand("desactiverNotication");
+		desactiver.addActionListener(UiParametreListener);
 
 
 	//_________________________ Onglet tri ___________________________	   
@@ -511,7 +544,7 @@ public class UiParametre extends JFrame {
 		this.add(panelOnglet);
 		this.setVisible(true);
 		
-		//TESTO
+		//TESTE
 		OAuth2Token token=null;
 		try{
     		token = (OAuth2Token) XMLToolsSerialisation.decodeFromFile("token");
@@ -545,11 +578,11 @@ public class UiParametre extends JFrame {
 		this.reInitCode = reInitCode;
 	}
 
-	public JComboBox<comboElement> getFrequences() {
+	public JComboBox<ComboIntervalTemps> getFrequences() {
 		return frequences;
 	}
 
-	public void setFrequences(JComboBox<comboElement> frequences) {
+	public void setFrequences(JComboBox<ComboIntervalTemps> frequences) {
 		this.frequences = frequences;
 	}
 	

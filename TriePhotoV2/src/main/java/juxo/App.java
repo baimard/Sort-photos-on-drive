@@ -2,19 +2,29 @@
 
 import java.awt.AWTException;
 import java.io.IOException;
+import java.net.URISyntaxException;
 
 import juxo.UiTriePhotoV2.UiPremierDemarrage;
+import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
+import juxo.apiCalendar.connexionGoogle.OAuth2Token;
 import juxo.notification.AfficherNotification;
 import juxo.system.Parametrage;
+import juxo.system.XMLToolsSerialisation;
 import juxo.threads.ProcessObservationDossier;
 
 public class App {
 	public static void main(String[] args) throws IOException {
-		
+
 		try {
 			new AfficherNotification();
-			AfficherNotification.AfficherMsgNotification("Application Lancée");
 			Parametrage.chargerObjet();
+			//Connexion Google
+			OAuth2Token token = (OAuth2Token) XMLToolsSerialisation
+					.decodeFromFile("token");
+			if (token != null) {
+				new ConnexionGoogle();
+			}
+			
 			if (Parametrage.getInstance() == null) {
 				new Parametrage(null, null);
 				new UiPremierDemarrage();
@@ -23,7 +33,7 @@ public class App {
 				t.start();
 			}
 
-		} catch (AWTException e) {
+		} catch (AWTException | URISyntaxException e) {
 			e.printStackTrace();
 		}
 	}
