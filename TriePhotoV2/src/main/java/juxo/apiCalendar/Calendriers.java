@@ -6,6 +6,11 @@ import java.util.ArrayList;
 
 import juxo.system.XMLToolsSerialisation;
 
+/**
+ * Objets de type liste surchargeant une ArrayList et qui est sérializable
+ * @author Juxo
+ *
+ */
 public class Calendriers extends ArrayList<Calendrier> implements Serializable  {
 	/**
 	 * 

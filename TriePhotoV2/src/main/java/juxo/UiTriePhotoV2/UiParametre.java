@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.awt.Image;
-import java.awt.Toolkit;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -17,11 +15,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
-
 import juxo.apiCalendar.connexionGoogle.OAuth2Token;
 import juxo.system.Parametrage;
 import juxo.system.XMLToolsSerialisation;
@@ -144,9 +140,9 @@ public class UiParametre extends JFrame {
 
 		// ___________________ Les icones_____________________
 
-		Image icone = Toolkit.getDefaultToolkit().getImage(
-				getClass().getResource("/icone-pioupiou.jpg"));
-		this.setIconImage(icone);
+		//Image icone = Toolkit.getDefaultToolkit().getImage(
+		//		getClass().getResource("/icone-pioupiou.jpg"));
+		//this.setIconImage(icone);
 
 		ImageIcon icon1 = new ImageIcon(getClass().getResource("/dossier-icone.png"));
 		JLabel label1 = new JLabel();
