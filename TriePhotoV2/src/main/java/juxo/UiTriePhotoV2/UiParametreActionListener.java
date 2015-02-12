@@ -164,6 +164,17 @@ public class UiParametreActionListener implements ActionListener {
 			UiParametre.f.activer.setSelected(false);
 			UiParametre.f.desactiver.setSelected(true);
 			break;
+		
+		case"demarrage":
+			if (UiParametre.f.verifDossierDem.isSelected()){
+				Parametrage.getInstance().setTriDemarrage(true);
+			}
+			else
+			{
+				Parametrage.getInstance().setTriDemarrage(false);
+			}
+			Parametrage.getInstance().enregistrerObjet();
+			break;
 		}
 	}
 

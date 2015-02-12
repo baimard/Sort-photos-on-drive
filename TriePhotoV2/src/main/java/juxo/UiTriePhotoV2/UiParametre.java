@@ -139,13 +139,21 @@ public class UiParametre extends JFrame {
 		}else{
 			desactiver.setSelected(true);
 		}
-			
-		
+		if(p.getTriDemarrage()){
+			verifDossierDem.setSelected(true);
+		}
+		else{
+			verifDossierDem.setSelected(false);
+		}
+	/*	JScrollPane barreDefilement = new JScrollPane(f,
+				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		this.add(barreDefilement);*/
 
 		// ___________________ Les icones_____________________
 
 		Image icone = Toolkit.getDefaultToolkit().getImage(
-				getClass().getResource("/icone-pioupiou.jpg"));
+				getClass().getResource("/load.png"));
 		this.setIconImage(icone);
 
 		ImageIcon icon1 = new ImageIcon(getClass().getResource("/dossier-icone.png"));
@@ -365,7 +373,8 @@ public class UiParametre extends JFrame {
 		activer.addActionListener(UiParametreListener);
 		desactiver.setActionCommand("desactiverNotication");
 		desactiver.addActionListener(UiParametreListener);
-
+		verifDossierDem.setActionCommand("demarrage");
+		verifDossierDem.addActionListener(UiParametreListener);
 
 	//_________________________ Onglet tri ___________________________	   
 		

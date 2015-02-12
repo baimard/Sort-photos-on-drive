@@ -112,7 +112,7 @@ public class UiQuestion extends JDialog {
 		panTitre.setBackground(Color.white);
 		panEvent.setBackground(Color.white);
 		panEvent11.setBackground(new Color(29, 158, 233));
-		panEvent12.setBackground(new Color(255,200,0 ));//191,188,192
+		panEvent12.setBackground(new Color(191,188,192 ));
 		listEve.setBackground(Color.white);
 	    panPhotos.setBackground(Color.white);
 		panPhotos11.setBackground(new Color(255,200,0));
