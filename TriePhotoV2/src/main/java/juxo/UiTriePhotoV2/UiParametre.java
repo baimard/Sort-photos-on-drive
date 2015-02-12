@@ -4,6 +4,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
+
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -18,6 +21,7 @@ import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
+
 import juxo.apiCalendar.connexionGoogle.OAuth2Token;
 import juxo.system.Parametrage;
 import juxo.system.XMLToolsSerialisation;
@@ -113,6 +117,10 @@ public class UiParametre extends JFrame {
 		this.setResizable(false);
 		setLocationRelativeTo(this.getParent());
 		
+
+		/*Image icone = Toolkit.getDefaultToolkit().getImage("/Resource/load.png");
+		this.setIconImage(icone);*/
+		
 		UiParametreActionListener UiParametreListener = new UiParametreActionListener();
 
 		
@@ -147,10 +155,6 @@ public class UiParametre extends JFrame {
 		this.add(barreDefilement);*/
 
 		// ___________________ Les icones_____________________
-
-		Image icone = Toolkit.getDefaultToolkit().getImage(
-				getClass().getResource("/load.png"));
-		this.setIconImage(icone);
 
 		
 
