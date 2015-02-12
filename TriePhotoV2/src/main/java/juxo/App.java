@@ -6,10 +6,8 @@ import java.net.URISyntaxException;
 
 import juxo.UiTriePhotoV2.UiPremierDemarrage;
 import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
-import juxo.apiCalendar.connexionGoogle.OAuth2Token;
 import juxo.notification.AfficherNotification;
 import juxo.system.Parametrage;
-import juxo.system.XMLToolsSerialisation;
 import juxo.threads.ProcessObservationDossier;
 
 public class App {
@@ -19,9 +17,8 @@ public class App {
 			new AfficherNotification();
 			Parametrage.chargerObjet();
 			//Connexion Google
-			OAuth2Token token = (OAuth2Token) XMLToolsSerialisation
-					.decodeFromFile("token");
-			if (token != null) {
+			ConnexionGoogle.chargerToken();
+			if (ConnexionGoogle.token != null) {
 				new ConnexionGoogle();
 			}
 			

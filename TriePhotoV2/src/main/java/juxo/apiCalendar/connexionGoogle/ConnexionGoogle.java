@@ -33,7 +33,7 @@ public class ConnexionGoogle {
 	public static ConnexionGoogle googleConnexion = null;
 	public static OAuth2CodeGrantFlow flow;
 	private String CALENDAR_SCOPE = "https://www.googleapis.com/auth/calendar";
-	private OAuth2Token token;
+	public static OAuth2Token token;
 	private final String API_KEY = "125768752842-8kgilik6k7ucmbhph49kqoia3bum3pqr.apps.googleusercontent.com";
 	private final String API_SECRET ="oKcIMqOmQKDIuT8_Xhw9SKBE";
 	private final ClientIdentifier clientId = new ClientIdentifier(API_KEY, API_SECRET);
@@ -76,7 +76,7 @@ public class ConnexionGoogle {
 	 * @param aPI_KEY2 
 	 */
 	public ConnexionGoogle(String token){
-		this.token = new OAuth2Token(token);
+		ConnexionGoogle.token = new OAuth2Token(token);
 		googleConnexion=this;
 	}
 	
@@ -88,7 +88,7 @@ public class ConnexionGoogle {
 	 * @return
 	 */
 	public void buildRequestToken() {
-		token = new OAuth2Token(clientId, CALENDAR_SCOPE);
+		ConnexionGoogle.token = new OAuth2Token(clientId, CALENDAR_SCOPE);
 	}
 	
 	
@@ -196,15 +196,15 @@ public class ConnexionGoogle {
 	
     public void enregistrerObjet(){
     	try{
-    		XMLToolsSerialisation.encodeToFile(this.token, "token");
+    		XMLToolsSerialisation.encodeToFile(ConnexionGoogle.token, "token");
     	} catch(Exception e){
     		System.out.println(e);
     	}
     }
 
-    public void chargerToken(){
+    public static void chargerToken(){
     	try{
-    		token = (OAuth2Token) XMLToolsSerialisation.decodeFromFile("token");
+    		ConnexionGoogle.token = (OAuth2Token) XMLToolsSerialisation.decodeFromFile("token");
     	} catch(Exception e){
     		System.out.println(e);
     	}
@@ -215,7 +215,7 @@ public class ConnexionGoogle {
 	}
 
 	public void setToken(OAuth2Token token) {
-		this.token = token;
+		ConnexionGoogle.token = token;
 	}
 
 	public static ConnexionGoogle getGoogleConnexion() {
