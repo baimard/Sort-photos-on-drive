@@ -85,4 +85,7 @@ public class SortByEvent extends AbstractSortMethod {
     	}
 	}
 	
+	public void loadMe() {
+		mySort = this;
+	}
 }

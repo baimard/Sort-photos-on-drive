@@ -25,4 +25,8 @@ public class SortNormal extends AbstractSortMethod {
 		return mySort;
 	}
 	
+	public void loadMe() {
+		mySort = this;
+	}
+	
 }

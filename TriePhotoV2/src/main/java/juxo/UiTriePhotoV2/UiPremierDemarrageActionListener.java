@@ -116,7 +116,7 @@ public class UiPremierDemarrageActionListener implements ActionListener {
 			
 		case "intervalTime":
 			Parametrage p = Parametrage.getInstance();
-			comboElement c = (comboElement) UiPremierDemarrage.f.chxFrequence.getSelectedItem();
+			ComboIntervalTemps c = (ComboIntervalTemps) UiPremierDemarrage.f.chxFrequence.getSelectedItem();
 			p.setIntervalObservation(c.interval);
 			p.enregistrerObjet();
 			break;

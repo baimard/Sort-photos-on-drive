@@ -22,5 +22,10 @@ public class SortByDayDate extends AbstractSortMethod{
 	public static SortByDayDate getInstance(){
 		return mySort;
 	}
+
+	
+	public void loadMe() {
+		mySort = this;
+	}
 	
 }

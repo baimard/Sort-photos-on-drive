@@ -36,5 +36,8 @@ public class SortByPlace extends AbstractSortMethod {
 	public static SortByPlace getInstance(){
 		return mySort;
 	}
+	public void loadMe() {
+		mySort = this;
+	}
 	
 }
