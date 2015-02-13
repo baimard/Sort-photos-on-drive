@@ -5,6 +5,8 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -54,9 +56,7 @@ public class UiPremierDemarrage extends JFrame {
 		this.setResizable(true);
 		this.setBackground(Color.WHITE);
 
-		//Image icone = Toolkit.getDefaultToolkit().getImage(
-				//UiPremierDemarrage.class.getResource("/icone-principale.png"));
-		//this.setIconImage(icone);
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icone-principale.png")));
 
 		JPanel fenetre = new JPanel();
 		fenetre.setLayout(new BoxLayout(fenetre, BoxLayout.Y_AXIS));
@@ -212,10 +212,10 @@ public class UiPremierDemarrage extends JFrame {
 		pan2Color.add(TxtOptionTri2);
 
 
-		trieJourRadio.setToolTipText("Vos photos seront tri&eacute;es par jour, ainsi une photo prise au 1er janvier 2015 sera plac&eacute;e dans le dossier: ' .../2015/1/1'");
+		trieJourRadio.setToolTipText("<html>Vos photos seront tri&eacute;es par jour, ainsi une photo prise au 1er janvier 2015 sera plac&eacute;e dans le dossier: ' .../2015/1/1'</html>");
 		trieEvenementRadio
 				.setToolTipText("<html>Vos photos seront tri&eacute;es par &eacute;v&egrave;nement, ainsi une photo prise au 1er janvier 2015 et correspondant &agrave; un &eacute;v&egrave;nement de votre calendrier &agrave; cette date sera plac&eacute;e dans le dossier : ' .../2015/1/'nom de mon &eacute;v&egrave;nement' <br> Noter qu'une autorisation de connexion de l'application &agrave; Google sera necessaire. Pour plus d'informations, voir l'onglet connexion  Google.</html> ");
-		trieLieuRadio.setToolTipText("Vos photos seront tri&eacute;es par lieu (si ce dernier est disponible), ainsi une photo prise au 1er janvier 2015 &agrave; Pessac sera plac&eacute;e dans le dossier : ' .../2015/1/Pessac'");
+		trieLieuRadio.setToolTipText("<html>Vos photos seront tri&eacute;es par lieu (si ce dernier est disponible), ainsi une photo prise au 1er janvier 2015 &agrave; Pessac sera plac&eacute;e dans le dossier : ' .../2015/1/Pessac'</html>");
 
 		// panel 3 : Renommage
 		JPanel pan3 = new JPanel();

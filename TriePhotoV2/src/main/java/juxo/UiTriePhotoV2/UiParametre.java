@@ -18,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButtonMenuItem;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
@@ -51,9 +52,12 @@ public class UiParametre extends JFrame {
 	JPanel panRenommage3 = new JPanel();
 	JPanel panRenommage4 = new JPanel();
 	JPanel panRenommage5 = new JPanel();
+	JPanel panPrincipal = new JPanel();
 	JPanel pan = new JPanel();
 	JPanel panbis = new JPanel();
+	JPanel panbisContent = new JPanel();
 	JPanel panter = new JPanel();
+	JPanel panterContent = new JPanel();
 	JPanel panNotif = new JPanel();
 	JPanel panApp = new JPanel();
 	JPanel panApp1 = new JPanel();
@@ -73,11 +77,11 @@ public class UiParametre extends JFrame {
 
 	private JLabel dossierSource = new JLabel("Dossier source :");
 	private JLabel dossierCible = new JLabel("Dossier cible :");
-	private JLabel frequenceVerif = new JLabel("Vérification du dossier :");
+	private JLabel frequenceVerif = new JLabel("<html><p>V&eacute;rification du dossier :</p></html>");
 	private JLabel lblAuthentif = new JLabel(
 			"<html><p>Authentification</p></html> ");
 	private JLabel lblReInit = new JLabel(
-			"<html><p>Réinitialisation</p></html>");
+			"<html><p>R&eacute;initialisation</p></html>");
 
 	public JTextField source;
 	public JTextField cible;
@@ -88,20 +92,21 @@ public class UiParametre extends JFrame {
 	private JButton choixCible = new JButton("Parcourir");
 	private JButton fichieRenom = new JButton("Parcourir");
 	private JButton renommer = new JButton("Renommer");
+	
 	private JButton codAuthent = new JButton("Obtenir mon code d'authentification");
-	private JButton reInitCode = new JButton("Reinitialiser la connexion google");
+	private JButton reInitCode = new JButton("<html><p>R&eacute;initialiser la connexion google</p></html>");
 	
 
 	public JCheckBox  modeDate = new JCheckBox  ("Date");
 	public JCheckBox  modeEvenement = new JCheckBox ("Evènement");
 	public JCheckBox  modeLieu = new JCheckBox ("Lieu");
-	public JCheckBox verifDossierDem = new JCheckBox ("Verifier si des photos sont présentes dans votre dossier au démarrage");
+	public JCheckBox verifDossierDem = new JCheckBox ("<html>V&eacute;rifier si des photos sont présentes dans votre dossier au démarrage</html>");
 
 	public JRadioButtonMenuItem  renomDate = new JRadioButtonMenuItem ("Renommer par date de prise de vue");
 	public JRadioButtonMenuItem  renomLieu = new JRadioButtonMenuItem ("Renommer par lieu");
 	public JRadioButtonMenuItem  renomNomSpec = new JRadioButtonMenuItem ("Renommer avec le nom suivant :");
-	public JRadioButtonMenuItem  activer = new JRadioButtonMenuItem ("Notification activée");
-	public JRadioButtonMenuItem  desactiver = new JRadioButtonMenuItem ("Notification desactivée");
+	public JRadioButtonMenuItem  activer = new JRadioButtonMenuItem ("<html><p>Notification activ&eacute;e</p></html>");
+	public JRadioButtonMenuItem  desactiver = new JRadioButtonMenuItem ("<html><p>Notification desactiv&eacute;e</p></html>");
 	private ButtonGroup renomGroupBtn = new ButtonGroup();
 	private ButtonGroup notifGroupBtn = new ButtonGroup();
 
@@ -114,12 +119,11 @@ public class UiParametre extends JFrame {
 		
 		this.setTitle("Paramétrage");
 		this.setSize(600, 700);
-		this.setResizable(false);
+		this.setResizable(true);
 		setLocationRelativeTo(this.getParent());
 		
 
-		/*Image icone = Toolkit.getDefaultToolkit().getImage("/Resource/load.png");
-		this.setIconImage(icone);*/
+		this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icone-principale.png")));
 		
 		UiParametreActionListener UiParametreListener = new UiParametreActionListener();
 
@@ -149,10 +153,9 @@ public class UiParametre extends JFrame {
 		else{
 			verifDossierDem.setSelected(false);
 		}
-	/*	JScrollPane barreDefilement = new JScrollPane(f,
-				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-		this.add(barreDefilement);*/
+	
+		
+
 
 		// ___________________ Les icones_____________________
 
@@ -227,6 +230,8 @@ public class UiParametre extends JFrame {
 
 		// ______________________ Background color _______________________
 
+		panbisContent.setBackground(Color.WHITE);
+		panterContent.setBackground(Color.WHITE);
 		modeDate.setBackground(Color.WHITE);
 		modeEvenement.setBackground(Color.WHITE);
 		modeLieu.setBackground(Color.WHITE);
@@ -264,7 +269,6 @@ public class UiParametre extends JFrame {
 		panTemps.setBackground(Color.white);
 		panApp1.setBackground(Color.white);
 		panOptionDem.setBackground(Color.white);
-		
 		panIconNotif.setBackground(Color.WHITE);
 		panIconFrequence.setBackground(Color.WHITE);
 		panter.setBackground(Color.WHITE);
@@ -294,20 +298,19 @@ public class UiParametre extends JFrame {
 		panRenommage4.setLayout(new BoxLayout(panRenommage4, BoxLayout.X_AXIS));
 		panRenommage5.setLayout(new FlowLayout());
 		pan3.setLayout(new BoxLayout(pan3, BoxLayout.Y_AXIS));
-		pan.setLayout(new FlowLayout());
 		panIconNotif.setLayout(new FlowLayout(FlowLayout.LEFT));
 		panIconFrequence.setLayout(new FlowLayout(FlowLayout.LEFT));
+		panNotif.setLayout(new BoxLayout(panNotif, BoxLayout.Y_AXIS));
 		panNotif.setLayout(new FlowLayout(FlowLayout.LEFT));
 		panApp.setLayout(new BoxLayout(panApp, BoxLayout.Y_AXIS));
 		panApp1.setLayout(new FlowLayout(FlowLayout.LEFT));
 		panTemps.setLayout(new GridLayout(1, 2));
-		panIconAuthent.setLayout(new FlowLayout(FlowLayout.LEFT));
-		panIconReInit.setLayout(new FlowLayout(FlowLayout.LEFT));
-		panAuthentification.setLayout(new FlowLayout(FlowLayout.LEFT));
-		panReInit.setLayout(new FlowLayout(FlowLayout.LEFT));
+	
 
 		// _______ Taille panel_______
 		content.setPreferredSize(new Dimension(600, 700));
+		panbisContent.setPreferredSize(new Dimension(600, 700));
+		panterContent.setPreferredSize(new Dimension(600, 700));
 		pan11.setPreferredSize(new Dimension(500, 50));
 		pan21.setPreferredSize(new Dimension(500, 50));
 		panRenommage1.setPreferredSize(new Dimension(500, 35));
@@ -321,7 +324,7 @@ public class UiParametre extends JFrame {
 		panTemps.setPreferredSize(new Dimension(300,30));
 		panAuthentification.setPreferredSize(new Dimension(500, 120));
 		panReInit.setPreferredSize(new Dimension(500, 120));
-
+		
 		// ___________Taille objet ____________
 		source.setPreferredSize(new Dimension(300, 25));
 		cible.setPreferredSize(new Dimension(300, 25));
@@ -338,7 +341,7 @@ public class UiParametre extends JFrame {
 
 		TitledBorder bordureTri = (BorderFactory.createTitledBorder(
 				BorderFactory.createLineBorder(new Color(255, 134, 28), 2),
-				"<html><H3>Option de tri</H3></html>"));
+				"<html><H3>Options de tri</H3></html>"));
 		pan2.setBorder(bordureTri);
 		bordureTri.setTitleColor(new Color(255, 134, 28));
 
@@ -430,9 +433,9 @@ public class UiParametre extends JFrame {
 	    
 	    pan.add(content);
 	    
-        panelOnglet.addTab("Option de tri", iconOngletTri , pan);
-        panelOnglet.addTab("Option generale",iconGenerale ,  panbis);
-        panelOnglet.addTab("Connexion google",iconConnexionGoogle, panter);
+      /*  panelOnglet.addTab("Options de tri", iconOngletTri , pan);
+        panelOnglet.addTab("<htmlOptions generale",iconGenerale ,  panbis);
+        panelOnglet.addTab("Connexion google",iconConnexionGoogle, panter);*/
        
         
         
@@ -495,8 +498,8 @@ public class UiParametre extends JFrame {
 
 		pan.add(content);
 
-		panelOnglet.addTab("Option de tri", iconOngletTri, pan);
-		panelOnglet.addTab("Option generale", iconGenerale, panbis);
+		panelOnglet.addTab("Options de tri", iconOngletTri, pan);
+		panelOnglet.addTab("<html>Options g&eacute;n&eacute;rale</html>", iconGenerale, panbis);
 		panelOnglet.addTab("Connexion google", iconConnexionGoogle, panter);
 
 		// ////////////// _____________________________________ Onglet g�n�ral
@@ -515,7 +518,7 @@ public class UiParametre extends JFrame {
 		
 		TitledBorder bordureOptionApp = (BorderFactory.createTitledBorder(
 				BorderFactory.createLineBorder(new Color(128, 128, 128), 2),
-				"<html><H3>Fr�quence</H3></html>"));
+				"<html><H3>Fr&eacute;quence</H3></html>"));
 		panApp.setBorder(bordureOptionApp);
 		bordureOptionApp.setTitleColor(new Color(128, 128, 128));
 
@@ -536,8 +539,10 @@ public class UiParametre extends JFrame {
 		panApp.add(panApp1);
 		panApp.add(panOptionDem);
 
-		panbis.add(panNotif);
-		panbis.add(panApp);
+		panbisContent.add(panNotif);
+		panbisContent.add(panApp);
+		
+		panbis.add(panbisContent);
 
 		// ////////////___________________________________ Onglet Connexion
 		// Google __________________________
@@ -552,7 +557,7 @@ public class UiParametre extends JFrame {
 
 		TitledBorder bordureReInit = (BorderFactory.createTitledBorder(
 				BorderFactory.createLineBorder(new Color(255, 0, 240), 2),
-				"<html><H3>R�initialisation</H3></html>"));
+				"<html><H3>R&eacute;initialisation</H3></html>"));
 		panReInit.setBorder(bordureReInit);
 		bordureReInit.setTitleColor(new Color(255, 0, 240));
 
@@ -569,10 +574,20 @@ public class UiParametre extends JFrame {
 		panReInit1.add(lblReInit);
 		panReInit1.add(reInitCode);
 
-		panter.add(panAuthentification);
-		panter.add(panReInit);
-
-		this.add(panelOnglet);
+		panterContent.add(panAuthentification);
+		panterContent.add(panReInit);
+		
+		panter.add(panterContent);
+		
+		panPrincipal.add(panelOnglet);
+		panPrincipal.setLayout(new BoxLayout(panPrincipal, BoxLayout.Y_AXIS));
+		this.add(panPrincipal);
+		
+		JScrollPane barreDefilement = new JScrollPane(panPrincipal,
+				JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+				JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+		this.add(barreDefilement);
+		
 		this.setVisible(true);
 		
 		//TESTE
