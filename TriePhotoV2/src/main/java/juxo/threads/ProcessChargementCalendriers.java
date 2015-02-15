@@ -13,7 +13,7 @@ import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
 
 
 /**
- * Déprecié
+ * N'est plus utilisé dans le projet courant
  * @author Juxo
  *
  */

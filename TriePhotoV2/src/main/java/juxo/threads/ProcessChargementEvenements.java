@@ -11,7 +11,7 @@ import juxo.apiCalendar.clefMap;
 import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
 import juxo.apiCalendar.definitionClasse.MediaGroup;
 /**
- * Déprécié
+ * N'est plus utilisé dans le projet courant
  * @author Juxo
  *
  */

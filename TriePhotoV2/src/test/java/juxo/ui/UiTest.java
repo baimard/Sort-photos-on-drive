@@ -18,6 +18,7 @@ import org.junit.Test;
 public class UiTest {
 	
 
+	@SuppressWarnings("deprecation")
 	@Ignore
 	@Test
     public void testUiQuestion() throws InterruptedException {
@@ -53,21 +54,21 @@ public class UiTest {
 	
 	@Test
 	public void testUiParametre() throws InterruptedException  {
-		UiParametre param = new UiParametre();
+		new UiParametre();
 		Thread.sleep(50000);
 	}
 	
 	@Ignore
 	@Test
 	public void testUiPremierDemarrage() throws InterruptedException  {
-		UiPremierDemarrage param = new UiPremierDemarrage();
+		new UiPremierDemarrage();
 		Thread.sleep(50000);
 	}
 	
 	@Ignore
 	@Test
 	public void testUiUser() throws InterruptedException {
-		UiUser gui = new UiUser();
+		new UiUser();
 		Thread.sleep(10000);
 	
 }

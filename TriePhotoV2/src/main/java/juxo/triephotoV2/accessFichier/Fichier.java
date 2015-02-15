@@ -46,6 +46,7 @@ public class Fichier extends File{
 		//On initialise les variables de travail
 		deplacable = true;
 		ladatefic = Calendar.getInstance();
+		
 		//Recherche si le fichier à une date de prise de vue
 		if (this.getPriseVue() != null){
 			ladatefic.setTime(this.getPriseVue());
@@ -56,6 +57,7 @@ public class Fichier extends File{
 		}else
 			ladatefic.set(1960, 1, 1);
 		
+		//Recherche si le fichier à des coordonnées GPS
 		if(getGPS()!=null){
 			lat = this.getGPS().getLatitude();
 			lon = this.getGPS().getLongitude();
@@ -65,11 +67,14 @@ public class Fichier extends File{
 
 	}
 	
+	/**
+	 *Ajout d'un fichier à la liste de fichiers en cours de traitement 
+	 */
 	public void ajoutList(){
 		Fichiers l = null;
 		//Séparation des dossiers et des fichiers
 		if(this.isFile()){
-			l = searchExistDate(ladatefic);
+			l = listFic.searchExistDate(ladatefic);
 			if(l!=null)
 				l.add(this);
 			else{
@@ -79,22 +84,6 @@ public class Fichier extends File{
 			}
 				
 		}
-	}
-	
-	public Fichiers searchExistDate(Calendar d){
-		Iterator<Calendar> it = listFic.keySet().iterator();
-		boolean trouve = false;
-		Fichiers ficList = null;
-		while(it.hasNext() && !trouve){
-			Calendar key = it.next();
-			if(		d.get(Calendar.DAY_OF_MONTH) == key.get(Calendar.DAY_OF_MONTH) &&
-					d.get(Calendar.MONTH) == key.get(Calendar.MONTH) &&
-					d.get(Calendar.YEAR) == key.get(Calendar.YEAR)){
-				trouve = true;
-				ficList = listFic.get(key);
-			}
-		}
-		return ficList;
 	}
 
 	/***
@@ -122,20 +111,20 @@ public class Fichier extends File{
 		return date;
 	}
 	
+	/**
+	 * Recherche des coordonnées GPS de notre fichier à partir d'une librairie externe
+	 * retourne null si pas de coordonnées GPS ou s'il y a une erreur
+	 * @return
+	 */
 	public GeoLocation getGPS() {
-		//Initialisation de la variable coordinates
 		GeoLocation coordinates = null;
-		//On vérifie qu'on est pas à faire à un dossier
 		if (this.isFile()) {
 			try {
-				//On lit les meta
 				Metadata mesexifs = ImageMetadataReader.readMetadata(this);
-				//Recherche dans l'arborescence du dossier contenant les coordonnées de la photo
 				GpsDirectory directory = mesexifs.getDirectory(GpsDirectory.class);
 				if (directory != null) {
 					coordinates = directory.getGeoLocation();
 				}
-				//Si erreur on ne déplace pas le fichier
 			} catch (ImageProcessingException e) {
 				deplacable = false;
 				System.out.println(e);
@@ -184,6 +173,11 @@ public class Fichier extends File{
 		}
 	}
 	
+	/**
+	 * Déplace un fichier en fonction de ses coordonées GPS.
+	 * @param Nwxdossier
+	 * @return
+	 */
 	public boolean DeplacerParLieu(String Nwxdossier){
 		String laVille = null;
 		if(getGPS() != null)

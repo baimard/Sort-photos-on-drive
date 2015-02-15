@@ -9,7 +9,7 @@ import juxo.apiCalendar.Evenements;
 import juxo.triephotoV2.accessFichier.Fichier;
 import juxo.triephotoV2.accessFichier.Fichiers;
 /**
- * Déprécié
+ * N'est plus utilisé dans le projet courant
  * @author Juxo
  *
  */

@@ -94,4 +94,25 @@ public class MapDateFichiers extends HashMap<Calendar, Fichiers> {
 		return newList;
 	}
 	
+	/**
+	 * Permet de renvoyer la liste de fichier concernant une date
+	 * @param d
+	 * @return
+	 */
+	public Fichiers searchExistDate(Calendar d){
+		Iterator<Calendar> it = this.keySet().iterator();
+		boolean trouve = false;
+		Fichiers ficList = null;
+		while(it.hasNext() && !trouve){
+			Calendar key = it.next();
+			if(		d.get(Calendar.DAY_OF_MONTH) == key.get(Calendar.DAY_OF_MONTH) &&
+					d.get(Calendar.MONTH) == key.get(Calendar.MONTH) &&
+					d.get(Calendar.YEAR) == key.get(Calendar.YEAR)){
+				trouve = true;
+				ficList = this.get(key);
+			}
+		}
+		return ficList;
+	}
+	
 }

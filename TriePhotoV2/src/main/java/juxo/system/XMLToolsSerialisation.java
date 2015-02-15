@@ -59,6 +59,10 @@ public final class XMLToolsSerialisation {
 	    return object;
 	}
 	
+	/**
+	 * Suppresion d'un fichier sérialisé
+	 * @param fileName
+	 */
 	public static void DeleteFile(String fileName){
 		File f = new File("target"+Fichier.SEPARATOR+"XML"+Fichier.SEPARATOR+fileName+".xml");
 		if(f.delete()){

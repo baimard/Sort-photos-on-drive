@@ -12,11 +12,12 @@ import juxo.system.XMLToolsSerialisation;
  *
  */
 public class Calendriers extends ArrayList<Calendrier> implements Serializable  {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 3L;
 
+	
+	/**
+	 * Permet de sérialiser la liste des calendriers
+	 */
     public void enregistrerObjet(){
     	try{
     		XMLToolsSerialisation.encodeToFile( this, "calendriers");
@@ -25,6 +26,9 @@ public class Calendriers extends ArrayList<Calendrier> implements Serializable  
     	}
     }
     
+    /**
+     * Permet de charger une liste de calendriers sérialisées
+     */
     public static void chargerCalendrier(){
     	try {
     		Calendriers c = (Calendriers) XMLToolsSerialisation.decodeFromFile("calendriers");

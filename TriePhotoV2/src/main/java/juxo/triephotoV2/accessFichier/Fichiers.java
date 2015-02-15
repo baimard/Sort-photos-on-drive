@@ -3,6 +3,8 @@ package juxo.triephotoV2.accessFichier;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Iterator;
 
 import juxo.notification.AfficherNotification;
 
@@ -195,4 +197,6 @@ public class Fichiers extends ArrayList<Fichier>{
 			}
 		}
 	}
+	
+
 }

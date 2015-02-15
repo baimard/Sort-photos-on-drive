@@ -41,6 +41,8 @@ public class ConnexionGoogle {
 	/**
 	 * Renvoie une connexion aux API GOOGLE
 	 * https://console.developers.google.com/
+	 * En premier lieu il y aura un test qui permettra de controler
+	 * si un objet connexion n'a pas déjà été sérialisé
 	 * @param api_key
 	 * @param secret
 	 * @throws URISyntaxException 
@@ -91,7 +93,9 @@ public class ConnexionGoogle {
 		ConnexionGoogle.token = new OAuth2Token(clientId, CALENDAR_SCOPE);
 	}
 	
-	
+	/**
+	 * Permet de créer un buil pour rafraichir un accès à google
+	 */
 	public void buildRefreshToken(){
 		token.refreshToken(clientId, CALENDAR_SCOPE);
 	}
@@ -196,6 +200,9 @@ public class ConnexionGoogle {
 		}
 	}
 	
+	/**
+	 * Sérialisation de l'objet token
+	 */
     public void enregistrerObjet(){
     	try{
     		XMLToolsSerialisation.encodeToFile(ConnexionGoogle.token, "token");
@@ -204,6 +211,9 @@ public class ConnexionGoogle {
     	}
     }
 
+    /**
+     * Désérialisation de l'objet token
+     */
     public static void chargerToken(){
     	try{
     		ConnexionGoogle.token = (OAuth2Token) XMLToolsSerialisation.decodeFromFile("token");

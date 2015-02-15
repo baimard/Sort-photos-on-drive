@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import javax.swing.JList;
 
 /**
- * Déprécié
+ * n'est plus utilisé dans le projet courant
  * @author Juxo
  *
  */

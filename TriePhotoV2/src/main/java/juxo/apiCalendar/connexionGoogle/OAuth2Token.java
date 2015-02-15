@@ -10,12 +10,7 @@ import org.glassfish.jersey.client.oauth2.OAuth2FlowGoogleBuilder;
 import org.glassfish.jersey.client.oauth2.TokenResult;
 
 public class OAuth2Token implements Serializable {
-	
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 2L;
-
     private String authURI;
     private String tokenAcess;
     private String refreshToken;
@@ -24,9 +19,10 @@ public class OAuth2Token implements Serializable {
     private int statut;
     private int expirationDelay;
 	
-	public OAuth2Token(){
-		
-	}
+    /**
+     * Constructeur vide pour la sérialisation
+     */
+	public OAuth2Token(){}
 	
 	
 	/***
@@ -73,7 +69,7 @@ public class OAuth2Token implements Serializable {
     }
     
     /***
-     * Si on a déjà une clef d'accès
+     * Si on a déjà une clef d'accès, on peut initialiser le token avec cette clef
      * @param token
      */
     public OAuth2Token(String token) {
