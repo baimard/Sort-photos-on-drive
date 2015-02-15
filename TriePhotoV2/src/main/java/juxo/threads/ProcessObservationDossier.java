@@ -4,11 +4,9 @@ import java.awt.AWTException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-
 import juxo.notification.AfficherNotification;
 import juxo.system.Parametrage;
 import juxo.triephotoV2.accessFichier.Fichier;
-import juxo.triephotoV2.accessFichier.Fichiers;
 import juxo.triephotoV2.accessFichier.MapDateFichiers;
 import juxo.triephotoV2.methode.AbstractSortMethod;
 import juxo.triephotoV2.methode.ComparatorSortMethod;
@@ -39,7 +37,7 @@ public class ProcessObservationDossier extends Thread {
 				Parametrage p = Parametrage.getInstance();
 				//réinitialisation de la liste de fichiers
 				Fichier.listFic = new MapDateFichiers();
-				Fichiers.generationListe(new Fichier(p.getDossierSource()));
+				MapDateFichiers.listFichier(new Fichier(p.getDossierSource()));
 				
 				//Analyse des photos avec les méthodes de trie demandées par l'utilisateur
 				if(Fichier.listFic.size()>0){

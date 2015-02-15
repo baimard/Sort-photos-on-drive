@@ -1,29 +1,16 @@
 package juxo.triephotoV2.accessFichier;
-
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Iterator;
-
 import juxo.notification.AfficherNotification;
 
+/**
+ * Surcharge de la class Arraylist
+ * Pour adapter nos méthodes à utiliser sur la liste de fichiers
+ * @author Juxo
+ *
+ */
 public class Fichiers extends ArrayList<Fichier>{
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
-	
-	/***
-	 * Création d'un objet fichiers avec sa liste de fichiers format String
-	 * @param dossier
-	 * @throws IOException
-	 */
-	public static void generationListe(Fichier dossier) throws IOException {
-		listFichier(dossier.listFiles());
-	}
 
 	/**
 	 * Déplace les fichiers de la liste dans le nouveau nom de dossier
@@ -73,6 +60,10 @@ public class Fichiers extends ArrayList<Fichier>{
 		supprimerFichier(faSupprimer);
 	}
 
+	/**
+	 * Supprimer un fichier d'une liste de fichiers
+	 * @param f
+	 */
 	public void supprimerFichier(ArrayList<Fichier> f){
 		for(Fichier fic : f){
 			this.remove(fic);
@@ -164,6 +155,12 @@ public class Fichiers extends ArrayList<Fichier>{
 		}
 	}
 	
+	/**
+	 * Vérifie la validité d'une string pour renommer un fichier
+	 * (Modifier pour utiliser une REGEX)
+	 * @param s
+	 * @return
+	 */
 	public boolean isThisStringValid(String s)
     {
         for (int i=0 ; i<s.length() ; i++)
@@ -177,26 +174,5 @@ public class Fichiers extends ArrayList<Fichier>{
         }
         return true;
     }
-
-	/**
-	 * Trie des fichiers contenus dans un dossier
-	 * On parcour le dossier sans se soucier de son arborescence
-	 * @param Nwxdossier
-	 * @throws IOException
-	 */
 	
-	public static void listFichier(File[] listeFichiers) throws IOException {
-		//On parcours tous les fichiers
-		Fichier monfic = null;
-		for (File fic : listeFichiers) {
-			if(!(fic.isHidden())){
-				monfic = new Fichier(fic.getPath());
-			} 
-			if (monfic!= null && monfic.isDirectory()){
-				listFichier(monfic.listFiles());
-			}
-		}
-	}
-	
-
 }

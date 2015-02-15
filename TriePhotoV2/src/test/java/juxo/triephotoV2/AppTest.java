@@ -6,8 +6,10 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+
 import org.junit.Test;
 import org.junit.Ignore;
+
 import juxo.apiCalendar.Calendrier;
 import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
 import juxo.apiCalendar.definitionClasse.Items;
@@ -17,6 +19,7 @@ import juxo.threads.ProcessChargementEvenements;
 import juxo.triephotoV2.accessFichier.Fichier;
 import juxo.triephotoV2.accessFichier.FichierComparatorDirectoryParent;
 import juxo.triephotoV2.accessFichier.Fichiers;
+import juxo.triephotoV2.accessFichier.MapDateFichiers;
 import juxo.triephotoV2.methode.AbstractSortMethod;
 import juxo.triephotoV2.methode.SortByDayDate;
 import juxo.triephotoV2.methode.SortByEvent;
@@ -33,7 +36,7 @@ public class AppTest
 		ConnexionGoogle.googleConnexion = new ConnexionGoogle();
 		
 		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball2");
-		Fichiers.listFichier(f.listFiles());
+		MapDateFichiers.listFichier(f.listFiles());
 		Fichiers maCollec = Fichier.listFic.getAllFichierItem();
 		Collections.sort(maCollec, new FichierComparatorDirectoryParent());
 		//maCollec.renommerFichiersParLieu();
@@ -49,7 +52,7 @@ public class AppTest
 	public void testChargementFichiers() throws IOException{
 		Fichier f = new Fichier("/Users/Juxo/Pictures/est");
 		
-		Fichiers.listFichier(f.listFiles());
+		MapDateFichiers.listFichier(f.listFiles());
 		java.util.Iterator<Calendar> i = Fichier.listFic.keySet().iterator();
 		while(i.hasNext()){
 			Calendar cal = i.next();
@@ -65,7 +68,7 @@ public class AppTest
 	@Test
 	public void testTrieFichier() throws IOException{
 		Fichier f = new Fichier("/Users/Romain/Pictures/Baseball2");
-		Fichiers.listFichier(f.listFiles());
+		MapDateFichiers.listFichier(f.listFiles());
 		ArrayList<Fichier> maCollec = Fichier.listFic.getAllFichierItem();
 	//	Collections.sort(maCollec, new FichierComparatorDate());
 		Collections.sort(maCollec, new FichierComparatorDirectoryParent());
@@ -97,7 +100,7 @@ public class AppTest
 		tConnexionGoogle.join();
 		
 		new Parametrage("/Users/Juxo/Pictures/est", "/Users/Juxo/Pictures/est/trie");
-		Fichiers.listFichier(new File(Parametrage.getInstance().getDossierSource()).listFiles());
+		MapDateFichiers.listFichier(new File(Parametrage.getInstance().getDossierSource()).listFiles());
 		
 		AbstractSortMethod sortEvent = new SortByEvent(1);
 		sortEvent.trie();

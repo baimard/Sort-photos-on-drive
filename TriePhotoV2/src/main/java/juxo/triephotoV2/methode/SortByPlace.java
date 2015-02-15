@@ -7,13 +7,16 @@ import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
 import juxo.system.Parametrage;
 import juxo.triephotoV2.accessFichier.Fichier;
 
+/**
+ * trie par coordonnées GPS d'un fichier
+ * @author Juxo
+ *
+ */
 public class SortByPlace extends AbstractSortMethod {
 
 	private static SortByPlace mySort;
 	
-	public SortByPlace(){
-		
-	}
+	public SortByPlace(){}
 	
 	public SortByPlace(int p) {
 		super(p);
@@ -24,13 +27,13 @@ public class SortByPlace extends AbstractSortMethod {
 	public void trie() {
 		try {
 			new ConnexionGoogle();
+			if(ConnexionGoogle.googleConnexion!=null){
+				Fichier.listFic.trieFichiersParLieu(Parametrage.getInstance().getDossierDestination());
+			}
 		} catch (IOException | URISyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e);
 		}
-		if(ConnexionGoogle.googleConnexion!=null){
-			Fichier.listFic.trieFichiersParLieu(Parametrage.getInstance().getDossierDestination());
-		}
+
 	}
 
 	public static SortByPlace getInstance(){

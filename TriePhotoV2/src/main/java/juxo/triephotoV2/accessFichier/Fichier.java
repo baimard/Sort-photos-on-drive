@@ -7,12 +7,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Iterator;
-
 import javax.imageio.ImageIO;
-
 import juxo.apiCalendar.connexionGoogle.ConnexionGoogle;
-
 import com.drew.imaging.ImageMetadataReader;
 import com.drew.imaging.ImageProcessingException;
 import com.drew.lang.GeoLocation;
@@ -20,20 +16,21 @@ import com.drew.metadata.Metadata;
 import com.drew.metadata.exif.ExifSubIFDDirectory;
 import com.drew.metadata.exif.GpsDirectory;
 
-
+/**
+ * Surcharge de la classe fichier pour ajouter des fonctionnalités
+ * @author Juxo
+ *
+ */
 public class Fichier extends File{
 	
 
 	private static final long serialVersionUID = 1L;
-	
 	public static MapDateFichiers listFic = new MapDateFichiers();
 	public static final String SEPARATOR = "" + separatorChar;
-	
 	private Calendar ladatefic;
 	private Boolean deplacable;
 	private double lat;
 	private double lon;
-	
 	
 	/***
 	 * Création d'un fichier à partir de son path
@@ -244,6 +241,7 @@ public class Fichier extends File{
 	
 	/**
 	 * On met une image en cache avec une certaine hauteur et largeur
+	 * Pour pouvoir l'afficher dans une interface graphique par exemple
 	 * @param image
 	 * @param Largeur
 	 * @param Longueur
@@ -260,7 +258,7 @@ public class Fichier extends File{
 	}
 	
 	/**
-	 * Renvoie le path du fichier.
+	 * Renvoie le path du fichier
 	 */
 	public String toString(){
 		return this.getPath();
@@ -300,7 +298,7 @@ public class Fichier extends File{
 	}
 	
 	/**
-	 * Renomme un fichier avec le lieu
+	 * Renommer un fichier avec le lieu de prise de vue
 	 * @param iterator
 	 */
 	public void renommerFichierParLieu(int iterator) {
@@ -316,7 +314,7 @@ public class Fichier extends File{
 	}
 	
 	/**
-	 * Renomme un fichier avec le choix du nom par l'utilisateur
+	 * Renommer un fichier avec le choix du nom par l'utilisateur
 	 * @param iterator
 	 */
 	public void renommerFichier(String nom, int iterator){

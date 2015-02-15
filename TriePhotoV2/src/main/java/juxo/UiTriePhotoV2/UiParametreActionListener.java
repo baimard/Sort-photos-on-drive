@@ -119,7 +119,7 @@ public class UiParametreActionListener implements ActionListener {
 				AfficherNotification.AfficherMsgNotification("Veuillez choisir le dossier source pour renommer les fichiers");
 			} else{
 				try {
-					Fichiers.generationListe(new Fichier(UiParametre.f.selectDossierRenom.getText()));
+					MapDateFichiers.listFichier(new Fichier(UiParametre.f.selectDossierRenom.getText()));
 				} catch (IOException e2) {
 					e2.printStackTrace();
 				}
@@ -150,8 +150,7 @@ public class UiParametreActionListener implements ActionListener {
 					UiParametre.f.getCodAuthent().setText("Vous êtes connecté");
 				}
 			} catch (IOException | URISyntaxException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				System.out.println(e1);
 			}
 			break;
 

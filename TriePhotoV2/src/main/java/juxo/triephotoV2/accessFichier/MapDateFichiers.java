@@ -1,5 +1,7 @@
 package juxo.triephotoV2.accessFichier;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -19,7 +21,7 @@ public class MapDateFichiers extends HashMap<Calendar, Fichiers> {
 	private static final long serialVersionUID = 6L;
 
 	/**
-	 * Trie tous les fichiers en indiquant le nom du dossier de destination
+	 * Déplace tous les fichiers en indiquant le nom du dossier de destination
 	 * Les fichiers sont triés dans ANNEE/MOIS/NomDossierDestination
 	 * @param nomDossier
 	 */
@@ -29,6 +31,11 @@ public class MapDateFichiers extends HashMap<Calendar, Fichiers> {
 		}
 	}
 	 
+	/**
+	 * Déplace tous les fichiers par date du jour de prise de vue
+	 * Les fichiers sont triés dans ANNEE/MOIS/JOUR
+	 * @param nomDossier
+	 */
 	public void trieFichiersDateJour(String nomDossierDestination){
 		for(Fichiers lesFichiers : this.values()){
 			lesFichiers.deplacerTousLesFichierDateJour(nomDossierDestination);
@@ -78,12 +85,21 @@ public class MapDateFichiers extends HashMap<Calendar, Fichiers> {
 		supprimerDesEntrees(listeDesObjetsSupprimer);
 	}
 	
+	/**
+	 * Supprime de la liste de fichiers à déplacer
+	 * les fichiers passés en paramètre
+	 * @param l
+	 */
 	public void supprimerDesEntrees(ArrayList<Calendar> l){
 		for(Calendar c : l){
 			this.remove(c);
 		}
 	}
 	
+	/**
+	 * Renvoie une collection de fichiers indépendamment de la map
+	 * @return
+	 */
 	public Fichiers getAllFichierItem(){
 		Fichiers newList  = new Fichiers();
 		for(Fichiers lesFichiers : this.values()){
@@ -95,7 +111,7 @@ public class MapDateFichiers extends HashMap<Calendar, Fichiers> {
 	}
 	
 	/**
-	 * Permet de renvoyer la liste de fichier concernant une date
+	 * Permet de renvoyer la liste de fichiers concernant une date
 	 * @param d
 	 * @return
 	 */
@@ -113,6 +129,35 @@ public class MapDateFichiers extends HashMap<Calendar, Fichiers> {
 			}
 		}
 		return ficList;
+	}
+	
+	/**
+	 * Chargement d'une liste de fichier à partir d'un dossier de base
+	 * On parcour le dossier sans se soucier de son arborescence
+	 * @param Nwxdossier
+	 * @throws IOException
+	 */
+	
+	public static void listFichier(File[] listeFichiers) throws IOException {
+		//On parcours tous les fichiers
+		Fichier monfic = null;
+		for (File fic : listeFichiers) {
+			if(!(fic.isHidden())){
+				monfic = new Fichier(fic.getPath());
+			} 
+			if (monfic!= null && monfic.isDirectory()){
+				listFichier(monfic.listFiles());
+			}
+		}
+	}
+	
+	/***
+	 * Création d'un objet fichiers avec sa liste de fichiers format String
+	 * @param dossier
+	 * @throws IOException
+	 */
+	public static void listFichier(Fichier dossier) throws IOException {
+		listFichier(dossier.listFiles());
 	}
 	
 }
