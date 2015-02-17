@@ -11,7 +11,6 @@ import java.util.Random;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -37,6 +36,7 @@ public class UiQuestion extends JDialog {
 	    this.setSize(800, 700);
 	    this.setLocationRelativeTo(null);
 	    this.setResizable(false);
+	    this.setAlwaysOnTop(true);
 	    this.setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 	    Image icone =   Toolkit.getDefaultToolkit().getImage(getClass().getResource("/pictograms-nps-services-library.png"));
         this.setIconImage(icone);
@@ -68,7 +68,7 @@ public class UiQuestion extends JDialog {
 		JLabel txtTitre = new JLabel("<html><h1><u><em>Gestion des evenements</em></u></h1></html> ");
 		JLabel txtEvent = new JLabel("<html><strong>Voici la liste des évènements de vos calendriers. Veuillez sélectionner l'évènement <br> correspondant à vos images :</strong></html> ");
         JLabel txtPhotos = new JLabel("<html><strong>Attention, des images peuvent ne pas être affichées en raison de leu format</strong></html>");
-        JButton valideButton = new JButton("Déplacer les images");
+        //JButton valideButton = new JButton("Déplacer les images");
      
 		listEve = new JList<Evenement>(listEvenement);
 	    
@@ -173,7 +173,7 @@ public class UiQuestion extends JDialog {
 				    }
 				}
 		    
-		   panBtn.add(valideButton);
+		  // panBtn.add(valideButton);
 		   panPhotos.add(panPhotos11); 
 		   panPhotos.add(panPhotos12);
 		   listpan.add(panTitre);
@@ -181,14 +181,14 @@ public class UiQuestion extends JDialog {
 		   listpan.add(panPhotos);
 		   listpan.add(panBtn);
 		   
-				valideButton.addActionListener(new UiQuestionActionListener(this));
-				this.getContentPane().add(listpan);
-		
-				
+				//valideButton.addActionListener();
+		   		listEve.addMouseListener(new UiQuestionActionListener(this));
+				this.getContentPane().add(listpan);	
 			}
 
 			public Evenement showUiQuestion(){
 				this.setVisible(true);
+				this.setAlwaysOnTop(false);
 				return listEve.getSelectedValue();
 			}
 			

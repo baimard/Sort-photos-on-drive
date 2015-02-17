@@ -112,13 +112,13 @@ public class UiParametre extends JFrame {
 	private JComboBox<ComboIntervalTemps> frequences;
 
 	public UiParametre() {
-	
 	 
 		f = this;
 		
 		this.setTitle("Paramétrage");
 		this.setSize(600, 700);
 		this.setResizable(true);
+		this.setAlwaysOnTop(true);
 		setLocationRelativeTo(this.getParent());
 		
 
@@ -588,7 +588,7 @@ public class UiParametre extends JFrame {
 		this.add(barreDefilement);
 		
 		this.setVisible(true);
-		
+		this.setAlwaysOnTop(false);
 		//TESTE
 		OAuth2Token token=null;
 		try{

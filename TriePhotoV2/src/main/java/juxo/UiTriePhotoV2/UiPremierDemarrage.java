@@ -53,7 +53,7 @@ public class UiPremierDemarrage extends JFrame {
 		this.setSize(790, 770);
 		this.setResizable(true);
 		this.setBackground(Color.WHITE);
-
+		this.setAlwaysOnTop(true);
 		this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/icone-principale.png")));
 
 		JPanel fenetre = new JPanel();
@@ -466,6 +466,7 @@ public class UiPremierDemarrage extends JFrame {
 
 		setLocationRelativeTo(this.getParent());
 		this.setVisible(true);
+		this.setAlwaysOnTop(false);
 		//Initialisation
 		boutonReinitial.setEnabled(false);
 

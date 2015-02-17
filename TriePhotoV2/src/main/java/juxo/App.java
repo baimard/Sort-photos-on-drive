@@ -12,8 +12,9 @@ import juxo.threads.ProcessObservationDossier;
 
 public class App {
 	public static void main(String[] args) throws IOException {
-
 		try {
+			System.setProperty("apple.awt.UIElement", "true");
+			
 			new AfficherNotification();
 			Parametrage.chargerObjet();
 			//Connexion Google
@@ -29,7 +30,6 @@ public class App {
 				Thread t = new ProcessObservationDossier();
 				t.start();
 			}
-
 		} catch (AWTException | URISyntaxException e) {
 			e.printStackTrace();
 		}
