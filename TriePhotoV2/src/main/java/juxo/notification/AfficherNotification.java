@@ -83,7 +83,7 @@ public class AfficherNotification {
 	 */
 	public static synchronized void AfficherMsgNotification(String msg) {
 		if (trayIcon1 != null && Parametrage.getInstance().isSeeNotification())
-			trayIcon1.displayMessage(msg, null, TrayIcon.MessageType.INFO);
+			trayIcon1.displayMessage(msg, "Message important", TrayIcon.MessageType.INFO);
 	}
 	
 	/**

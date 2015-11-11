@@ -2,6 +2,7 @@ package juxo.triephotoV2.apiCalendar;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.net.UnknownHostException;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -62,7 +63,7 @@ public class apiCalendarTest{
 	
 	@Ignore
 	@Test
-	public void testRefreshToken(){
+	public void testRefreshToken() throws UnknownHostException{
 		ConnexionGoogle.googleConnexion.getToken().setRefreshToken("1/1jBVZ4Sw9bxIuJtJ0wtPgRk11Smk4OWh0UbJlg0Hrap90RDknAdJa_sgfheVM0XT");
 		ConnexionGoogle.googleConnexion.buildRefreshToken();
 		System.out.println("new token google : " + ConnexionGoogle.googleConnexion.getToken().getTokenAcess());

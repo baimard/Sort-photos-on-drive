@@ -3,12 +3,16 @@ package juxo.apiCalendar.connexionGoogle;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.net.URLEncoder;
+import java.net.UnknownHostException;
 
 import javax.swing.JOptionPane;
 import javax.ws.rs.BadRequestException;
+import javax.ws.rs.ProcessingException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Invocation.Builder;
@@ -52,11 +56,11 @@ public class ConnexionGoogle {
 		
 		chargerToken();
 		
-		if(token!=null){
+		if(token!=null && connexionTest()){
 			token.refreshToken(clientId, CALENDAR_SCOPE);
 		}
 		
-		if(token==null || token.getStatut()==400 ){
+		if((token==null || token.getStatut()==400) && connexionTest() ){
 			buildRequestToken();
 			openResquestTokenUrl();
 			String code = JOptionPane.showInputDialog("Veuillez indiquer le code retour");
@@ -70,6 +74,7 @@ public class ConnexionGoogle {
 		}
 		
 	}
+	
 	
 	/**
 	 * Fournit une connexion si on a déjà un TOKEN (Jeton)
@@ -96,7 +101,7 @@ public class ConnexionGoogle {
 	/**
 	 * Permet de créer un buil pour rafraichir un accès à google
 	 */
-	public void buildRefreshToken(){
+	public void buildRefreshToken() throws UnknownHostException{
 		token.refreshToken(clientId, CALENDAR_SCOPE);
 	}
 	
@@ -175,6 +180,8 @@ public class ConnexionGoogle {
 			System.out.println(e);
 		}catch(NullPointerException e){
 			System.out.println("Pas de ville ou erreur de connexion");
+		}catch(ProcessingException e){
+			System.out.println("Pas de ville ou erreur de connexion");
 		}
 		return ville;
 	}
@@ -222,6 +229,24 @@ public class ConnexionGoogle {
     	}
     }
 
+    /**
+	 * Test de connexion à internet
+	 * @return
+	 */
+	public static boolean connexionTest(){
+	    String strUrl = "http://google.com";
+
+	    try {
+	        URL url = new URL(strUrl);
+	        HttpURLConnection urlConn = (HttpURLConnection) url.openConnection();
+	        urlConn.connect();
+	    } catch (IOException e) {
+	        return false;
+	    }
+	    
+		return true;
+	}
+    
 	public OAuth2Token getToken() {
 		return token;
 	}
