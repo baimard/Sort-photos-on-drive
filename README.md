@@ -1,9 +1,11 @@
 G1R0
 
-# Projet trie de photos
+# Projet tri de photos
+
+Actuellement, les grandes sociétés ont choisi de créer des programmes qui construisent des librairies complexes pour organiser vos photos. Je pense qu'il serait utile de créer une solution alternative qui permet de trier ses photos directement sur vos disques, et ne pas surcharger la mémoire avec des librairies qui peuvent être lourdes.
 
 Objet du projet : 
-- Fournir une solution de trie de photos directement sur le disque dur
+- Fournir une solution de tri de photos directement sur le disque dur
 - Permettre de trier ses photos de manière cohérente en utilisant des données de réseaux sociaux
 - Créer une application autonome
  
